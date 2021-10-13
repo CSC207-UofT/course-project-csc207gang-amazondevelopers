@@ -25,5 +25,5 @@ public class User {
         this.listPosts = new ArrayList<>();
         this.shoppingCart = new ArrayList<>();
         this.currentSearches = new ArrayList<>();
-    }
+    } //
 }
