@@ -1,0 +1,2 @@
+public class postManager {
+}
