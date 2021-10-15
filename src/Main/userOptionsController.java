@@ -11,6 +11,7 @@ public class userOptionsController {
     options.add("browse");
     options.add("search");
 
+
     public void userInput() throws Exception {
 
         System.out.println("What would you like to do? Input one of Search, Post, Browse");
