@@ -51,5 +51,5 @@ public class Product {
     // setter for sizes
     public void setSizes(String psize) {this.sizes = psize;}
 
-
+//
 }
