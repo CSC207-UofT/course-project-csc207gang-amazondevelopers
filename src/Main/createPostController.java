@@ -13,10 +13,16 @@ public class createPostController {
 
             inOut.sendOutput("Input Product Price:");
             String pricestring = inOut.getInput();
-            float price = float(pricestring);
+            float price = Float.parseFloat(pricestring);
             //error if cannot be converted
             inOut.sendOutput("Input Product Category:");
             String category = inOut.getInput();
+
+            inOut.sendOutput("Input Product ID:");
+            String id = inOut.getInput();
+
+            inOut.sendOutput("Input Product Quantity");
+            int quantity = Integer.parseInt(inOut.getInput());
 
             inOut.sendOutput("Input true or false If product Has a size");
             String tfstring = inOut.getInput();
@@ -40,10 +46,10 @@ public class createPostController {
                 tags.add(inOut.getInput());
             }
             if (sizetf){
-                postmanager.createPost(tags,u,postdescription,product_name,price,category,size);
+                postmanager.createPost(tags,u,postdescription,product_name,price,category,size,id,quantity);
             }
             else{
-                postmanager.createPost(tags,u,postdescription,product_name,price,category);
+                postmanager.createPost(tags,u,postdescription,product_name,price,category,id,quantity);
             }
 
 
