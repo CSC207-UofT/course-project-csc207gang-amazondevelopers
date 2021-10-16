@@ -53,19 +53,7 @@ public class userManager {
      *         false if username is already in use by another user.
      */
     private boolean checkUsernameStatus(String username){
-        return masterManager.getterUser(username) == null;
-    }
-
-    /**
-     * Method that takes in a User and a Product and adds the Product to User's shopping cart.
-     *
-     * @param productToBuy Product to add to User's shopping cart.
-     * @param user User whose shopping cart productToBuy is added to.
-     */
-    public void addToShoppingCart(Product productToBuy, User user){
-        List<Product> current_cart = user.getShoppingCart();
-        current_cart.add(productToBuy);
-        user.setShoppingCart(current_cart);
+        return masterManager.getterUser(username) == "This user does not exist, try again.";
     }
 
     /**
@@ -108,20 +96,50 @@ public class userManager {
         user.setVerified(true);
     }
 
+
     /**
-     * Method that takes in a User and the index of the product to be searched in the User's
-     * currentSearches list.
-     * Returns the Product at that index in the User's currentSearches list.
-     * Precondition: Index less than the length of the currentSearches list.
+     * Method that takes in a User and an int representing the index of the Product in the User's currentSearches.
+     * Add the product at that index to the user's shopping cart.
+     * Return true if product is successfully added to user's shopping cart and false otherwise.
      *
-     * @param user User to be verified
-     * @param index Index of the product in the user's currentSearches list
-     * @return Product at index in the User's currentSearches list.
+     * @param index index of the Product in user's currentSearches list.
+     * @param user User whose shopping cart the product is added to.
+     * @return true if product is successfully added to user's shopping cart and false otherwise.
      */
-    public Product productAtIndex(User user, int index){
+    public boolean addToShoppingCartSearches(int index, User user){
         List<Product> currentSearchList = user.getCurrentSearches();
-        return currentSearchList.get(index);
+        // index out of bounds
+        if (index >= currentSearchList.size()){
+            return false;
+        }
+        Product productToBuy = currentSearchList.get(index);
+        List<Product> current_cart = user.getShoppingCart();
+        current_cart.add(productToBuy);
+        user.setShoppingCart(current_cart);
+        return true;
     }
 
-
+    /**
+     * Method that takes in a User and an int representing the index of the Post in the User's
+     * feed.
+     * Add the product in the post at that index to the user's shopping cart.
+     * Return true if product is successfully added to user's shopping cart and false otherwise.
+     *
+     * @param index index of the post of user's feed.
+     * @param user User whose shopping cart the product is added to.
+     * @return true if product is successfully added to user's shopping cart and false otherwise.
+     */
+    public boolean addToShoppingCartFeed(int index, User user){
+        List<Post> currentFeed = user.getFeed();
+        // index out of bounds
+        if (index >= currentFeed.size()){
+            return false;
+        }
+        Post postAtIndex = currentFeed.get(index);
+        Product productToBuy = postAtIndex.getPost_topic();
+        List<Product> current_cart = user.getShoppingCart();
+        current_cart.add(productToBuy);
+        user.setShoppingCart(current_cart);
+        return true;
+    }
 }
