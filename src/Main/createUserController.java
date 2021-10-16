@@ -10,6 +10,7 @@ public class createUserController {
 
     /**
      * Takes user input for a username, password, and profile description for a new user profile.
+     * @param inOut
      */
     public void userCreator(InOut inOut){
         inOut.sendOutput("Input username (must be less than 20 characters):");

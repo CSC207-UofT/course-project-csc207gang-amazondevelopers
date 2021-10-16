@@ -2,11 +2,16 @@ import InputAndOutput.InOut;
 
 import java.io.IOException;
 /**
- * A controller class that adds items to a users cart.
+ * A controller class that adds items to the user's cart upon request.
  */
 public class cartController {
     private userManager userManager = new userManager();
 
+    /**
+     * Takes in user input to add desired items to a user's cart from the search.
+     * @param inOut an instance of the command line
+     * @param user the profile of the user who is buying.
+     */
     public void addToCartSearch(InOut inOut, User user) {
         inOut.sendOutput("What product would you like to buy? (Input index):");
         try {
@@ -40,6 +45,11 @@ public class cartController {
         }
     }
 
+    /**
+     * Takes in user input to add desired items to a user's cart from the user's feed.
+     * @param inOut an instance of the command line
+     * @param user the profile of the user who is buying.
+     */
     public void addToCartFeed(InOut inOut, User user){
         inOut.sendOutput("What product would you like to buy? (Input index):");
         try {
