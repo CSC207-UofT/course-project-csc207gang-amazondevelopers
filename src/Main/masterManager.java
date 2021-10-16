@@ -60,8 +60,12 @@ public class masterManager {
 
     }
 
-    public static ArrayList<Product> getSearchList(String tagWord) {
-        return Master.productTagMap.get(tagWord);
+    public static Object getSearchList(String tagWord) {
+        if (Master.productTagMap.containsKey(tagWord)){
+        return Master.productTagMap.get(tagWord);}
+        else{
+            return false;
+        }
     }
 
 
