@@ -19,7 +19,7 @@ public class User {
      * as empty Arraylists.
      *
      * @param username this user's username.
-     */
+     */ //
 
     public User(String username){
         this.username = username;
