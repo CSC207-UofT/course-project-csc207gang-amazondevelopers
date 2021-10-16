@@ -12,5 +12,7 @@ public class postManager {
         Product p = productmanager.createProduct(n,id,pr,c,quantity);
         Post post = new Post(p,t,d,u);
         um.addToPostList(post,u); /* need userManager to implement this method*/
+
     }
 }
+
