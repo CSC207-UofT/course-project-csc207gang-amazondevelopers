@@ -54,7 +54,7 @@ public class userManager {
      */
     private boolean checkUsernameStatus(String username){
         return masterManager.getterUser(username) == null;
-    } //
+    }
 
     /**
      * Method that takes in a User and a Product and adds the Product to User's shopping cart.
