@@ -6,7 +6,7 @@ public class postManager {
     public Post createPost (ArrayList<String > t, User u, String d, objects to initialize product){
         private Product p = productmanager.createProduct(variables);/*need to know what variables to create a product are*/
         private Post post = new Post(p,t,d,u);
-        usermanager.addToPostList(u,post); /* need userManager to implement this method*/
+        usermanager.addToPostList(post,u); 
         return post;
     }
 }
