@@ -40,7 +40,7 @@ public class cartController {
         }
     }
 
-    public void addToCartBrowse(InOut inOut, User user){
+    public void addToCartFeed(InOut inOut, User user){
         inOut.sendOutput("What product would you like to buy? (Input index):");
         try {
             String stringIndex = inOut.getInput();
