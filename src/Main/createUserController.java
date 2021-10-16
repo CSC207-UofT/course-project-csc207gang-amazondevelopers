@@ -7,7 +7,6 @@ import java.io.IOException;
 public class createUserController {
 
     private userManager userManager = new userManager();
-    private masterManager masterManager = new masterManager();
 
     /**
      * Takes user input for a username, password, and profile description for a new user profile.
@@ -16,7 +15,7 @@ public class createUserController {
         inOut.sendOutput("Input username (must be less than 20 characters):");
         try{
             boolean validUsername = false;
-            String username = "";
+            String username;
 
             // code to enforce a limit to the length of the username, 20 characters max
             while (!validUsername){

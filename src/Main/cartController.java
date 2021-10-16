@@ -16,6 +16,7 @@ public class cartController {
                 int productIndex = Integer.parseInt(stringIndex);
                 boolean validIndex = false;
                 while(!validIndex){
+                    // try and add the product at the index to the users cart
                     if (userManager.addToShoppingCartSearches(productIndex, user)){
                         validIndex = true;
                         inOut.sendOutput("Successfully added to cart.");
