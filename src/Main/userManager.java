@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class userManager {
@@ -53,8 +52,9 @@ public class userManager {
      * @return true if username is not taken by another user and returns
      *         false if username is already in use by another user.
      */
-    private boolean checkUsernameStatus(String username){
-        return masterManager.getterUser(username) == "This user does not exist, try again.";
+
+    private boolean checkUsernameStatus(String username) {
+        return masterManager.getterUser(username).equals(false);
     }
 
     /**
@@ -143,14 +143,4 @@ public class userManager {
         user.setShoppingCart(current_cart);
         return true;
     }
-
-    /**
-     * Method that takes in a User and empties their cart.
-     *
-     * @param user User whose Shopping cart needs to be emptied
-     */
-    public void emptyShoppingCart(User user){
-        user.setShoppingCart(new ArrayList<>());
-    }
-
 }
