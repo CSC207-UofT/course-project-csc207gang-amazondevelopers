@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class postManager {
+public class postManager{
     private productManager productmanager = new productManager();
     private userManager usermanager = new userManager();
     // create a post and the product it is based on, add this post to the postList in the user that created it

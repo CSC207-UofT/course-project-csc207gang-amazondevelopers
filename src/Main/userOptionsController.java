@@ -4,7 +4,7 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class userOptionsController {
+public class userOptionsController{
     User user;
 
     public userOptionsController(User user){
@@ -14,7 +14,7 @@ public class userOptionsController {
     public void userInput(SystemInOut input) throws IOException {
 
         input.sendOutput("What would you like to do? Input one of Search, Post, Browse");
-        String userDecision = input.getInput();
+        String userDecision = input.getInput().toLowerCase();
 
         try{
             switch (userDecision) {

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class browseController {
+public class browseController{
     public void searchFeed(InOut inOut, User user){
         userManager userManager = new userManager();
         List<Post> PostList = userManager.getFeedTotal(user);

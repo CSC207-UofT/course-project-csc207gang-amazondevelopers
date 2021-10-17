@@ -4,10 +4,10 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class loginOptionsController {
+public class loginOptionsController{
     SystemInOut inOut = new SystemInOut();
 
-    public void userInput() throws IOException {
+    public boolean userInput() throws IOException {
         inOut.sendOutput("What would you like to do? Input one of signin or signup");
         String userDecision = inOut.getInput().toLowerCase();
         try{
@@ -20,9 +20,11 @@ public class loginOptionsController {
                     if (existingUser instanceof User) {
                         userOptionsController optionsController = new userOptionsController((User) existingUser);
                         optionsController.userInput(inOut);
+                        return true;
 
                     }
-                    inOut.sendOutput("Something went wrong, rerun the program");
+                    inOut.sendOutput("Something went wrong");
+                    return false;
 
 
 
@@ -31,20 +33,20 @@ public class loginOptionsController {
                     //
                     createUserController newUserController = new createUserController();
                     newUserController.userCreator(inOut);
+                    return true;
 
 
-                }
-                throw new IOException("That is not an accepted input, please try again!");
-                // throws exception in case the input is not in the available options of inputs
-            } catch (IOException e) {
-                e.printStackTrace();
             }
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return false;
+
     }
+}
 
 // need code for browseController, searchController, and createPostController in order to output
 // the correct information
-
 
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 /**
  * A class that store all users and products in the marketplace
  */
-public class Master {
+public class Master{
     // a dictionary mapping the string usernames to users
     public static HashMap<String, User> userDict = new HashMap<>();
     // a dictionary mapping the string product IDs to products
