@@ -21,7 +21,6 @@ public class masterManager {
             return false;
         }
 
-
     }
 
     /**
