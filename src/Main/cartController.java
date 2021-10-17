@@ -12,6 +12,7 @@ public class cartController {
      * @param inOut an instance of the command line
      * @param user the profile of the user who is buying.
      */
+    // should these methods return a boolean
     public void addToCartSearch(InOut inOut, User user) {
         inOut.sendOutput("What product would you like to buy? (Input index):");
         try {

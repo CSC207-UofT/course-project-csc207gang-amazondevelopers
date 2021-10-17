@@ -16,21 +16,36 @@ public class searchController {
 
 
     public void searchProducts(InOut inOut){
-        boolean validTag = false;
         String tagWord;
         masterManager masterManager = new masterManager();
 
         inOut.sendOutput("Search by tag: ");
-        try{
+        try {
+            tagWord = inOut.getInput();
+            boolean validTag = false;
             // code to enforce a limit to the length of the username, 20 characters max
-            while (!validTag){
-                tagWord = inOut.getInput();
-                // check if the tage word is valid
+            while (!validTag) {
+                    // get the list of products matching the tag word
+                    ArrayList<Product> productList = masterManager.getSearchList(tagWord);
+                    if (!productList.isEmpty()) {
+                        cartController cart = new cartController();
+                        // where do we get the current users information from
+                        cart.addToCartSearch(inOut, user);
+                        validTag = true;
 
-                // fix this
-                List<> searchList = masterManager.getSearchList(tagWord);
+                    } else {
+                        inOut.sendOutput("There are no products matching that tag. Search for a new tag: ");
+                        tagWord = inOut.getInput();
+                    }
 
-                if ()
+            }
+
+
+            }catch(IOException e){
+                inOut.sendOutput("An error occurred, try again.");
+            }
+
+               }
 
                     /* ignore this, this is just for reference
                 if (username.length() <= 20 && userManager.createUser(username)){
@@ -76,7 +91,7 @@ public class searchController {
 
 
 
-
+        /*
         if (masterManager.getSearchList(tagWord).equals(false)){
             return false;}
         else{
@@ -96,5 +111,5 @@ public class searchController {
 
 
         }
+        */
     }
-}
