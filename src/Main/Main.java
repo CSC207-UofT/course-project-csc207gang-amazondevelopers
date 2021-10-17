@@ -1,5 +1,7 @@
 import InputAndOutput.SystemInOut;
 
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,7 +10,7 @@ public class Main {
         userOptionsController options = new userOptionsController();
         try {
             options.userInput();
-        } catch(Exception e){
+        } catch(IOException e){
             inOut.sendOutput("error occurred");
         }
 
