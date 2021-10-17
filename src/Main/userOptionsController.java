@@ -14,7 +14,7 @@ public class userOptionsController{
     public void userInput(SystemInOut input) throws IOException {
 
         try{
-            input.sendOutput("What would you like to do? Input one of Search, Post, Browse");
+            input.sendOutput("What would you like to do? Input one of Search, Post, Browse, Buy Cart");
             String userDecision = input.getInput().toLowerCase();
                 if (Objects.equals(userDecision, "post")) {
                     // redirects to createPostController class
@@ -26,10 +26,15 @@ public class userOptionsController{
                     browseController browseController = new browseController();
                     browseController.searchFeed(input, this.user);
                 }
-                else {// (Objects.equals(userDecision, "search"))  {
+                else if (Objects.equals(userDecision, "search"))  {
                     // redirects to searchController and returns relevant search info
                     searchController searchController = new searchController();
                     searchController.searchProducts(input, this.user);
+                }
+                else{ //(Objects.equals(userDecision, "Buy Cart"))
+                    userManager userManager = new userManager();
+                    userManager.emptyShoppingCart(user);
+                    input.sendOutput("Shopping cart is empty.");
                 }
                 // TODO: handle else case
             // throw new IOException("That is not an accepted input, please try again!");

@@ -114,10 +114,13 @@ public class userManager{
             return false;
         }
         Product productToBuy = productList.get(index);
-        List<Product> current_cart = user.getShoppingCart();
-        current_cart.add(productToBuy);
-        user.setShoppingCart(current_cart);
-        return true;
+        if (productToBuy.getQuantity() > 0){
+            List<Product> current_cart = user.getShoppingCart();
+            current_cart.add(productToBuy);
+            user.setShoppingCart(current_cart);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -147,5 +150,14 @@ public class userManager{
     public List<Post> getFeedTotal(User user){
         return user.getFeed();
 
+    }
+
+    public void emptyShoppingCart(User user){
+        List<Product> currentShoppingCart = user.getShoppingCart();
+        productManager productManager = new productManager();
+        for (Product product : currentShoppingCart){
+            productManager.decreaseQuantity(product, 1);
+        }
+        user.setShoppingCart(new ArrayList<>());
     }
 }
