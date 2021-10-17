@@ -14,6 +14,5 @@ public class UserTest {
     @Test(timeout = 50)
     public void TestUser() {
         assertEquals(0, user1.getListFollowing().size());
-
     }
 }

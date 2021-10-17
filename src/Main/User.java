@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User{
 
     // instance variables
     private String username;
@@ -20,6 +20,8 @@ public class User {
      *
      * @param username this user's username.
      */
+
+
 
     public User(String username){
         this.username = username;

@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class userManager {
+public class userManager{
 
     /**
      * Creates a new User object.
@@ -142,5 +142,10 @@ public class userManager {
         current_cart.add(productToBuy);
         user.setShoppingCart(current_cart);
         return true;
+    }
+
+    public List<Post> getFeedTotal(User user){
+        return user.getFeed();
+
     }
 }

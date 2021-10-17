@@ -1,5 +1,5 @@
 
-public class productManager {
+public class productManager{
 
 
     /**
