@@ -4,7 +4,7 @@ import java.io.IOException;
 /**
  * A controller class that adds items to the user's cart upon request.
  */
-public class cartController {
+public class cartController{
     private userManager userManager = new userManager();
 
     /**

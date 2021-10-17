@@ -4,7 +4,7 @@ import java.io.IOException;
  * A controller class that creates a new user, and adds this user to the list of all users.
  */
 // javadoc needs work
-public class createUserController {
+public class createUserController{
 
 
     public createUserController(){

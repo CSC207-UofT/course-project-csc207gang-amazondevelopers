@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * A use case class that accesses and modulated manager entity.
  */
-public class masterManager {
+public class masterManager{
 
 
 

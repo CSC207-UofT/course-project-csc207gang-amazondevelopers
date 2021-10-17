@@ -12,7 +12,7 @@ import java.util.List;
  * word.
  */
 
-public class searchController {
+public class searchController{
 
 
     public void searchProducts(InOut inOut, User user){

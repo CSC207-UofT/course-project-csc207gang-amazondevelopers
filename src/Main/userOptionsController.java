@@ -4,7 +4,7 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class userOptionsController {
+public class userOptionsController{
     User user;
 
     public userOptionsController(User user){

@@ -4,7 +4,7 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class loginOptionsController {
+public class loginOptionsController{
     SystemInOut inOut = new SystemInOut();
 
     public boolean userInput() throws IOException {

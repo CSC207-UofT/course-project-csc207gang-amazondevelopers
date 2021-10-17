@@ -2,7 +2,7 @@ import InputAndOutput.InOut;
 
 import java.io.IOException;
 
-public class signInController {
+public class signInController{
     /**
      *
      * @param inOut
