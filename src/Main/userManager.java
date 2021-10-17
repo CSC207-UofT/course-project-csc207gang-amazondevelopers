@@ -147,11 +147,22 @@ public class userManager{
         return true;
     }
 
+    /**
+     * Takes in a User and returns the user's feed.
+     *
+     * @param user The user whose feed is returned
+     * @return The user's feed
+     */
     public List<Post> getFeedTotal(User user){
         return user.getFeed();
-
     }
 
+
+    /**
+     * Takes in a User and empties their shopping cart.
+     *
+     * @param user The User's whose shopping cart needs to be emptied.
+     */
     public void emptyShoppingCart(User user){
         List<Product> currentShoppingCart = user.getShoppingCart();
         productManager productManager = new productManager();

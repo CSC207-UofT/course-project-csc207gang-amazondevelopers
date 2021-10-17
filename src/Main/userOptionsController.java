@@ -1,16 +1,26 @@
-import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
-
 import java.io.IOException;
 import java.util.Objects;
 
 public class userOptionsController{
     User user;
 
+    /**
+     * Creates a userOptionsController object.
+     * Takes in a User.
+     *
+     * @param user A user object.
+     */
     public userOptionsController(User user){
         this.user = user;
     }
 
+    /**
+     * Gives user four options: Search, Post, Browse or Buy Cart.
+     *
+     * @param input an object that implements InOut interface
+     * @throws IOException
+     */
     public void userInput(SystemInOut input) throws IOException {
 
         try{
@@ -44,6 +54,3 @@ public class userOptionsController{
         }
     }
 }
-
-// need code for browseController, searchController, and createPostController in order to output
-// the correct information

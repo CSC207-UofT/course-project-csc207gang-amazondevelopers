@@ -1,7 +1,9 @@
 import InputAndOutput.SystemInOut;
-
 import java.io.IOException;
-import java.util.ArrayList;
+
+/**
+ * This is the main class. Running this class gives access to the program.
+ */
 
 public class Main{
 

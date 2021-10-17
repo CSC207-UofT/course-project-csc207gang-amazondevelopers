@@ -19,7 +19,6 @@ public class masterManager{
         }else{
             return false;
         }
-
     }
 
     /**
@@ -28,7 +27,7 @@ public class masterManager{
      * return a string indicating that the product does not exist.
      * If the object does not exist, return false, and the command line interface will give a message that
      * the product does not exist.
-     * @return porductDict
+     * @return productDict
      */
     public static Object getterProduct(String productID){
         if(Master.productDict.containsKey(productID)) {
@@ -55,9 +54,15 @@ public class masterManager{
      */
     public static void setterProduct(String productID, Product item){
         Master.productDict.put(productID, item);
-
     }
 
+    /**
+     * Takes in a String representing the tagWord and returns a list of products that have
+     * this tagWord.
+     *
+     * @param tagWord The tag of the product whose corresponding object is returned
+     * @return List of products that have the tagWord
+     */
     public static ArrayList<Product> getSearchList(String tagWord) {
         if (Master.productTagMap.containsKey(tagWord)){
         return Master.productTagMap.get(tagWord);}
@@ -66,7 +71,14 @@ public class masterManager{
         }
     }
 
-
+    /**
+     * Takes in a Product and a String representing the tag of the product.
+     * If tag already exists, adds the product to the already existing list corresponding to the
+     * tag "key". Otherwise, add the new tag and product to the list in Master.
+     *
+     * @param tag The tag of the product.
+     * @param product The product that needs to be added.
+     */
     public static void setterProductTagMap(String tag, Product product){
         if (Master.productTagMap.containsKey(tag)){
             ArrayList<Product> currentProducts = Master.productTagMap.get(tag);
@@ -76,10 +88,7 @@ public class masterManager{
             newList.add(product);
             Master.productTagMap.put(tag, newList);
         }
-
     }
-
-
 }
 
 

@@ -3,7 +3,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class createPostController{
-    public void postCreator(InOut inOut, User u){
+
+    /**
+     * Takes in a User and an object that implements inOut and creates a post for the User.
+     *
+     *
+     * @param inOut an object that implements InOut interface
+     * @param user A User object
+     */
+
+    public void postCreator(InOut inOut, User user){
         postManager postmanager = new postManager();
         //ask user to input username
         inOut.sendOutput("Input Product Name:");
@@ -47,10 +56,10 @@ public class createPostController{
                 tags.add(inOut.getInput());
             }
             if (sizetf){
-                postmanager.createPost(tags,u,postdescription,product_name,id,price,category,sizeOther,quantity);
+                postmanager.createPost(tags,user,postdescription,product_name,id,price,category,sizeOther,quantity);
             }
             else{
-                postmanager.createPost(tags,u,postdescription,product_name,id,price,category,quantity);
+                postmanager.createPost(tags,user,postdescription,product_name,id,price,category,quantity);
             }
             inOut.sendOutput("Post has been created");
         } catch (IOException e) {
