@@ -1,15 +1,29 @@
+import InputAndOutput.InOut;
+import InputAndOutput.SystemInOut;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class browseController {
+    public void searchFeed(InOut inOut, User user){
+        userManager userManager = new userManager();
+        List<Post> PostList = userManager.getFeedTotal(user);
+        if (!PostList.isEmpty()) {
+            cartController cart = new cartController();
+            cart.addToCartFeed(inOut, user);
 
-    public String User() throws Exception{
-        try {
-            var x = "";
-            // for loop here with information drawn from users this User() is followingw
-            return x;
+        } else {
+            inOut.sendOutput("There was an error, please restart the program");
 
-            throw new Exception("That user does not exist, try again!");
-            // throw exception if the user doesn't exist
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+
     }
-}
+
+    }
+
+
+
+
+

@@ -21,6 +21,8 @@ public class User {
      * @param username this user's username.
      */
 
+
+
     public User(String username){
         this.username = username;
         this.listPosts = new ArrayList<>();

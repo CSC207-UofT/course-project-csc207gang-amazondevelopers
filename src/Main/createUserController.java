@@ -6,11 +6,21 @@ import java.io.IOException;
 // javadoc needs work
 public class createUserController {
 
+
+    public createUserController(){
+    }
+
+    public void userSignUp(InOut inOut){
+        inOut.sendOutput("Input your new username");
+    }
+
+
     /**
      * Takes user input for a username, password, and profile description for a new user profile.
      * @param inOut
      */
     public void userCreator(InOut inOut){
+        userManager userManagerInstance = new userManager();
         inOut.sendOutput("Input username (must be less than 20 characters):");
         try{
             boolean validUsername = false;
@@ -20,7 +30,7 @@ public class createUserController {
             while (!validUsername){
                 username = inOut.getInput();
                 // check if user can be created, if not then username is either too long or has already been taken
-                if (username.length() <= 20 && userManager.createUser(username)){
+                if (username.length() <= 20 && userManagerInstance.createUser(username)){
                     validUsername = true;
                     inOut.sendOutput("User profile successfully created.");
                     // print out username for the user to look over

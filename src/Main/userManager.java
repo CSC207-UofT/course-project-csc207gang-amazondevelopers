@@ -143,4 +143,9 @@ public class userManager {
         user.setShoppingCart(current_cart);
         return true;
     }
+
+    public List<Post> getFeedTotal(User user){
+        return user.getFeed();
+
+    }
 }
