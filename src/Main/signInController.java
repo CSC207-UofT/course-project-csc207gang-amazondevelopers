@@ -25,7 +25,7 @@ public class signInController {
                     return result;
                 }
                 else{
-                    inOut.sendOutput("Please input a valid username or rerun the program to signup or .");
+                    inOut.sendOutput("Please input a valid username or rerun the program to signup.");
 
                 }
             }
