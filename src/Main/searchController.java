@@ -10,7 +10,14 @@ import java.util.ArrayList;
 
 public class searchController {
 
-    public ArrayList<Product> getSearchItems(String tagWord){
-        return masterManager.getSearchList(tagWord);
+    public Object getSearchItems(String tagWord){
+
+        if (masterManager.getSearchList(tagWord).equals(false)){
+            return false;}
+        else{
+
+            return masterManager.getSearchList(tagWord);
+
+        }
     }
 }

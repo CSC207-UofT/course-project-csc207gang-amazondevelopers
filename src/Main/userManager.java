@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class userManager {
@@ -142,4 +143,14 @@ public class userManager {
         user.setShoppingCart(current_cart);
         return true;
     }
+
+    /**
+     * Method that takes in a User and empties their cart.
+     *
+     * @param user User whose Shopping cart needs to be emptied
+     */
+    public void emptyShoppingCart(User user){
+        user.setShoppingCart(new ArrayList<>());
+    }
+
 }
