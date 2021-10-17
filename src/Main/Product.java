@@ -1,5 +1,5 @@
 
-public class Product {
+public class Product{
     private String name;
     private String id;
     private float price;

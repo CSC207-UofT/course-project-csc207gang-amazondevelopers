@@ -2,7 +2,7 @@ import InputAndOutput.InOut;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class createPostController {
+public class createPostController{
     public void postCreator(InOut inOut, User u){
         postManager postmanager = new postManager();
         //ask user to input username

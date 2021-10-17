@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class userOptionsController {
+public class userOptionsController{
     User user;
 
     public userOptionsController(User user){

@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class Post {
+public class Post{
     private Product post_topic; /* The product that the post is about */
     private ArrayList<String> tags;/* The tags about the posts */
     private String description;/* The description or information about a post*/

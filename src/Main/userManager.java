@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class userManager {
+public class userManager{
 
     /**
      * Creates a new User object.
