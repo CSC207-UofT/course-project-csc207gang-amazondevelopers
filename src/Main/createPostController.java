@@ -52,6 +52,7 @@ public class createPostController {
             else{
                 postmanager.createPost(tags,u,postdescription,product_name,id,price,category,quantity);
             }
+            inOut.sendOutput("Post has been created");
         } catch (IOException e) {
             inOut.sendOutput("An error occurred, try again.");
         }
