@@ -2,7 +2,6 @@ import InputAndOutput.InOut;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * take user input from command line interface and
@@ -13,7 +12,6 @@ import java.util.List;
  */
 
 public class searchController{
-
 
     public void searchProducts(InOut inOut, User user){
         String tagWord;

@@ -1,8 +1,11 @@
 package InputAndOutput;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+/**
+ * Takes in input from the user as a String and gives output back to the user.
+ */
 
 public class SystemInOut implements InOut {
     BufferedReader reader;
