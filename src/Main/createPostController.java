@@ -5,15 +5,14 @@ import java.util.ArrayList;
 public class createPostController {
     public void postCreator(InOut inOut, User u){
         postManager postmanager = new postManager();
-        String size = new String();
         //ask user to input username
         inOut.sendOutput("Input Product Name:");
         try{
             String product_name = inOut.getInput();
 
             inOut.sendOutput("Input Product Price:");
-            String pricestring = inOut.getInput();
-            float price = Float.parseFloat(pricestring);
+            String priceString = inOut.getInput();
+            float price = Float.parseFloat(priceString);
             //error if cannot be converted
             inOut.sendOutput("Input Product Category:");
             String category = inOut.getInput();
@@ -28,16 +27,18 @@ public class createPostController {
             String tfstring = inOut.getInput();
             boolean sizetf = Boolean.valueOf(tfstring);
 
+            String sizeOther = "";
+
             if (sizetf){
                 inOut.sendOutput("Input the Product size");
-                String size = inOut.getInput();
+                sizeOther = inOut.getInput();
             }
 
             inOut.sendOutput("Input the Post Description");
             String postdescription = inOut.getInput();
 
             inOut.sendOutput("Input the number of Tags you want the Post to have");
-            int tagnumber = int(inOut.getInput());
+            int tagnumber = Integer.parseInt(inOut.getInput());
 
             ArrayList<String> tags = new ArrayList<>();
 
@@ -46,10 +47,10 @@ public class createPostController {
                 tags.add(inOut.getInput());
             }
             if (sizetf){
-                postmanager.createPost(tags,u,postdescription,product_name,price,category,size,id,quantity);
+                postmanager.createPost(tags,u,postdescription,product_name,id,price,category,sizeOther,quantity);
             }
             else{
-                postmanager.createPost(tags,u,postdescription,product_name,price,category,id,quantity);
+                postmanager.createPost(tags,u,postdescription,product_name,id,price,category,quantity);
             }
         } catch (IOException e) {
             inOut.sendOutput("An error occurred, try again.");
