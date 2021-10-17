@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class userManager{
@@ -107,13 +108,12 @@ public class userManager{
      * @param user User whose shopping cart the product is added to.
      * @return true if product is successfully added to user's shopping cart and false otherwise.
      */
-    public static boolean addToShoppingCartSearches(int index, User user){
-        List<Product> currentSearchList = user.getCurrentSearches();
+    public static boolean addToShoppingCartSearches(int index, User user, ArrayList<Product> productList){
         // index out of bounds
-        if (index >= currentSearchList.size()){
+        if (index >= productList.size()){
             return false;
         }
-        Product productToBuy = currentSearchList.get(index);
+        Product productToBuy = productList.get(index);
         List<Product> current_cart = user.getShoppingCart();
         current_cart.add(productToBuy);
         user.setShoppingCart(current_cart);

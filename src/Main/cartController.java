@@ -1,11 +1,13 @@
 import InputAndOutput.InOut;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  * A controller class that adds items to the user's cart upon request.
  */
 public class cartController{
-    private userManager userManager = new userManager();
+    // private userManager userManager = new userManager();
 
     /**
      * Takes in user input to add desired items to a user's cart from the search.
@@ -13,7 +15,7 @@ public class cartController{
      * @param user the profile of the user who is buying.
      */
     // should these methods return a boolean
-    public void addToCartSearch(InOut inOut, User user) {
+    public void addToCartSearch(InOut inOut, User user, ArrayList<Product> productList) {
         inOut.sendOutput("What product would you like to buy? (Input index):");
         try {
             String stringIndex = inOut.getInput();
@@ -23,7 +25,7 @@ public class cartController{
                 boolean validIndex = false;
                 while(!validIndex){
                     // try and add the product at the index to the users cart
-                    if (userManager.addToShoppingCartSearches(productIndex, user)){
+                    if (userManager.addToShoppingCartSearches(productIndex, user, productList)){
                         validIndex = true;
                         inOut.sendOutput("Successfully added to cart.");
                     }

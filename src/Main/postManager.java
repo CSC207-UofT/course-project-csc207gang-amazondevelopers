@@ -8,6 +8,9 @@ public class postManager{
         Product p = productmanager.createProduct(productName, id, price, category, size, quantity);
         Post post = new Post(p,t,d,u);
         usermanager.addToPostList(post,u);
+        for (String tag : post.getTags()) {
+            masterManager.setterProductTagMap(tag, post.getPost_topic());
+        }
         return post;
     }
     public Post createPost (ArrayList<String > t, User u, String d, String productName, String id, float price,
@@ -15,6 +18,9 @@ public class postManager{
         Product p = productmanager.createProduct(productName, id, price, category, quantity);
         Post post = new Post(p,t,d,u);
         usermanager.addToPostList(post,u);
+        for (String tag : post.getTags()) {
+            masterManager.setterProductTagMap(tag, post.getPost_topic());
+        }
         return post;
     }
 }
