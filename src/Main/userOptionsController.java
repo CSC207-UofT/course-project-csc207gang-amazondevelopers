@@ -26,11 +26,12 @@ public class userOptionsController{
                     browseController browseController = new browseController();
                     browseController.searchFeed(input, this.user);
                 }
-                else if (Objects.equals(userDecision, "search"))  {
+                else {// (Objects.equals(userDecision, "search"))  {
                     // redirects to searchController and returns relevant search info
                     searchController searchController = new searchController();
                     searchController.searchProducts(input, this.user);
                 }
+                // TODO: handle else case
             // throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs
         } catch (IOException e) {
