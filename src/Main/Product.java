@@ -1,9 +1,11 @@
 
 public class Product {
     private String name;
+    private String id;
     private float price;
     private String category;
     private String sizes;
+    private int quantity;
 
     /**
      * Creates a new Product object.
@@ -13,25 +15,37 @@ public class Product {
      *
      */
 
-    public Product(String name, float price, String category, String sizes) {
-        this.name = name;
-        this.price = price;
-        this.category = category;
-        this.sizes = sizes;
-    }
 
-    public Product(String name, float price, String category) {
+    public Product(String name, String id, float price, String category, int quantity) {
         this.name = name;
+        this.id = id;
         this.price = price;
         this.category = category;
         this.sizes = null;
+        this.quantity = quantity;
     }
+
+    public Product(String name, String id, float price, String category, String sizes, int quantity) {
+        this.name = name;
+        this.id = id;
+        this.price = price;
+        this.category = category;
+        this.sizes = sizes;
+        this.quantity = quantity;
+    }
+
 
     // getter for name of product
     public String getName() {return name;}
 
     // setter for name of product
     public void setName(String pname) {this.name = pname;}
+
+    // getter for id of product
+    public String getId() {return id;}
+
+    //setter for id of product
+    public void setId(String pid) {this.id = pid;}
 
     // getter for price of product
     public float getPrice() {return price;}
@@ -51,5 +65,10 @@ public class Product {
     // setter for sizes
     public void setSizes(String psize) {this.sizes = psize;}
 
-//
+    //getter for quantity
+    public int getQuantity() {return quantity;}
+
+    //setter for quantity
+    public void setQuantity(int pquantity) {this.quantity = pquantity;}
+
 }
