@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class masterManager {
 
 
+
+
     /**
      * A getter of a user from the User dictionary. Which has the username of the user as Strings and the User as the value.
      * If the username exit in the dictionary, return the user, othermwise, return a string indicating that the
@@ -60,11 +62,11 @@ public class masterManager {
 
     }
 
-    public static Object getSearchList(String tagWord) {
+    public static ArrayList<Product> getSearchList(String tagWord) {
         if (Master.productTagMap.containsKey(tagWord)){
         return Master.productTagMap.get(tagWord);}
         else{
-            return false;
+            return new ArrayList<>();
         }
     }
 

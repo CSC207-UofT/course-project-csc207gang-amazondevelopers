@@ -1,4 +1,8 @@
+import InputAndOutput.InOut;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * take user input from command line interface and
@@ -10,14 +14,37 @@ import java.util.ArrayList;
 
 public class searchController {
 
-    public Object getSearchItems(String tagWord){
 
-        if (masterManager.getSearchList(tagWord).equals(false)){
-            return false;}
-        else{
+    public void searchProducts(InOut inOut, User user){
+        String tagWord;
 
-            return masterManager.getSearchList(tagWord);
+        inOut.sendOutput("Search by tag: ");
+        try {
+            tagWord = inOut.getInput();
+            boolean validTag = false;
+            // code to enforce a limit to the length of the username, 20 characters max
+            while (!validTag) {
+                    // get the list of products matching the tag word
+                    ArrayList<Product> productList = masterManager.getSearchList(tagWord);
+                    if (!productList.isEmpty()) {
+                        cartController cart = new cartController();
+                        // where do we get the current users information from
+                        cart.addToCartSearch(inOut, user);
+                        validTag = true;
 
-        }
+                    } else {
+                        inOut.sendOutput("There are no products matching that tag. Search for a new tag: ");
+                        tagWord = inOut.getInput();
+                    }
+
+            }
+
+
+            }catch(IOException e){
+                inOut.sendOutput("An error occurred, try again.");
+            }
+
+               }
+
+
     }
-}
