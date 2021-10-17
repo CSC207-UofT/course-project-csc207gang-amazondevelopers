@@ -6,8 +6,6 @@ import java.io.IOException;
 // javadoc needs work
 public class createUserController {
 
-    private userManager userManager = new userManager();
-
     /**
      * Takes user input for a username, password, and profile description for a new user profile.
      * @param inOut

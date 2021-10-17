@@ -14,10 +14,8 @@ import java.util.List;
 
 public class searchController {
 
-
     public void searchProducts(InOut inOut){
         String tagWord;
-        masterManager masterManager = new masterManager();
 
         inOut.sendOutput("Search by tag: ");
         try {
