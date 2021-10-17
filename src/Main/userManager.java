@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class userManager{
@@ -10,7 +11,7 @@ public class userManager{
      * @param username User's username.
      * @return true if user is created and false if user not created
      */
-    public boolean createUser(String username){
+    public static boolean createUser(String username){
         User newUser = new User(username);
         // this username does not exist
         if (checkUsernameStatus(username)){
@@ -53,7 +54,7 @@ public class userManager{
      *         false if username is already in use by another user.
      */
 
-    private boolean checkUsernameStatus(String username) {
+    private static boolean checkUsernameStatus(String username) {
         return masterManager.getterUser(username).equals(false);
     }
 
@@ -107,13 +108,12 @@ public class userManager{
      * @param user User whose shopping cart the product is added to.
      * @return true if product is successfully added to user's shopping cart and false otherwise.
      */
-    public boolean addToShoppingCartSearches(int index, User user){
-        List<Product> currentSearchList = user.getCurrentSearches();
+    public static boolean addToShoppingCartSearches(int index, User user, ArrayList<Product> productList){
         // index out of bounds
-        if (index >= currentSearchList.size()){
+        if (index >= productList.size()){
             return false;
         }
-        Product productToBuy = currentSearchList.get(index);
+        Product productToBuy = productList.get(index);
         List<Product> current_cart = user.getShoppingCart();
         current_cart.add(productToBuy);
         user.setShoppingCart(current_cart);
@@ -130,7 +130,7 @@ public class userManager{
      * @param user User whose shopping cart the product is added to.
      * @return true if product is successfully added to user's shopping cart and false otherwise.
      */
-    public boolean addToShoppingCartFeed(int index, User user){
+    public static boolean addToShoppingCartFeed(int index, User user){
         List<Post> currentFeed = user.getFeed();
         // index out of bounds
         if (index >= currentFeed.size()){
