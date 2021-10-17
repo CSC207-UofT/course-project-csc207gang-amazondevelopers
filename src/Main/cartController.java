@@ -10,7 +10,7 @@ public class cartController{
     // private userManager userManager = new userManager();
 
     /**
-     * Takes in user input to add desired items to a user's cart from the search.
+     * Takes in user input to add desired items to a user's cart from the search option.
      * @param inOut an instance of the command line
      * @param user the profile of the user who is buying.
      */
@@ -30,7 +30,7 @@ public class cartController{
                         inOut.sendOutput("Successfully added to cart.");
                     }
                     else{
-                        inOut.sendOutput("Error, please enter a valid index.");
+                        inOut.sendOutput("Error, please enter a valid index or this product is out of stock.");
                         stringIndex = inOut.getInput();
                         productIndex = Integer.parseInt(stringIndex);
                     }
