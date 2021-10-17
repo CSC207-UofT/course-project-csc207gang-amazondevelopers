@@ -1,10 +1,11 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class userOptionsController {
 
     Scanner input = new Scanner(System.in);
 
-    public Object userInput() throws Exception {
+    public Object userInput() throws IOException {
 
         System.out.println("What would you like to do? Input one of Search, Post, Browse");
         String userDecision = input.nextLine().toLowerCase();
@@ -21,9 +22,9 @@ public class userOptionsController {
                     // redirects to searchController and returns relevant search info
                     return new searchController();
             }
-            throw new Exception("That is not an accepted input, please try again!");
+            throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
