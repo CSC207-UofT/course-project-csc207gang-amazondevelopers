@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * A controller class that adds items to the user's cart upon request.
  */
 public class cartController{
-    // private userManager userManager = new userManager();
 
     /**
      * Takes in user input to add desired items to a user's cart from the search option.
@@ -25,7 +24,8 @@ public class cartController{
                 boolean validIndex = false;
                 while(!validIndex){
                     // try and add the product at the index to the users cart
-                    if (userManager.addToShoppingCartSearches(productIndex, user, productList)){
+                    userManager userManager = new userManager(user);
+                    if (userManager.addToShoppingCartSearches(productIndex, productList)){
                         validIndex = true;
                         inOut.sendOutput("Successfully added to cart.");
                     }
@@ -63,7 +63,8 @@ public class cartController{
                 boolean validIndex = false;
                 while(!validIndex){
                     // try and add the product at the index to the users cart
-                    if (userManager.addToShoppingCartFeed(productIndex, user)){
+                    userManager userManager = new userManager(user);
+                    if (userManager.addToShoppingCartFeed(productIndex)){
                         validIndex = true;
                         inOut.sendOutput("Successfully added to cart.");
                     }

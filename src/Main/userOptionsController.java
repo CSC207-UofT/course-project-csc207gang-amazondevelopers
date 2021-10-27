@@ -42,11 +42,11 @@ public class userOptionsController{
                     searchController.searchProducts(input, this.user);
                 }
                 else{ //(Objects.equals(userDecision, "Buy Cart"))
-                    userManager userManager = new userManager();
-                    userManager.emptyShoppingCart(user);
+                    userManager userManager = new userManager(this.user);
+                    userManager.emptyShoppingCart();
                     input.sendOutput("Shopping cart is empty.");
                 }
-                // TODO: handle else case
+                // TODO: handle else case (should have an error displayed when something other than these four options are entered)
             // throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs
         } catch (IOException e) {
