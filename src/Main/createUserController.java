@@ -22,6 +22,7 @@ public class createUserController{
     public void userCreator(InOut inOut){
         userManager userManagerInstance = new userManager();
         inOut.sendOutput("Input username (must be less than 20 characters):");
+        // also need to make sure that user doesnt put a bunch of spaces as a username
         try{
             boolean validUsername = false;
             String username;
