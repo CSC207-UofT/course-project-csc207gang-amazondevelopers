@@ -1,4 +1,3 @@
-
 public class Product{
     private String name;
     private String id;
@@ -14,7 +13,6 @@ public class Product{
      * product or null if there is only one size.
      *
      */
-
 
     public Product(String name, String id, float price, String category, int quantity) {
         this.name = name;

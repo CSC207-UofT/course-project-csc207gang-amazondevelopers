@@ -1,14 +1,14 @@
 import InputAndOutput.InOut;
-
 import java.io.IOException;
 
 public class signInController{
+
     /**
+     * Lets user sign into the program.
      *
-     * @param inOut
+     * @param inOut an object that implements InOut interface
      * @return
      */
-
 
     public Object userSignIn(InOut inOut){
         inOut.sendOutput("Input username:");
@@ -26,21 +26,13 @@ public class signInController{
                 }
                 else{
                     inOut.sendOutput("Please input a valid username or rerun the program to signup.");
-
                 }
             }
-
-
-
         } catch (IOException e) {
             inOut.sendOutput("An error occurred, try again.");
             // maybe restart user creation process over again if exception is thrown
         }
         // ideas: give user an option to redo user creation
-
         return false;
-
-
     }
-
 }

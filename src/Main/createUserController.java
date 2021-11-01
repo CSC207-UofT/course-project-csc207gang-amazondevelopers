@@ -3,21 +3,13 @@ import java.io.IOException;
 /**
  * A controller class that creates a new user, and adds this user to the list of all users.
  */
-// javadoc needs work
+
 public class createUserController{
 
-
-    public createUserController(){
-    }
-
-    public void userSignUp(InOut inOut){
-        inOut.sendOutput("Input your new username");
-    }
-
-
     /**
-     * Takes user input for a username, password, and profile description for a new user profile.
-     * @param inOut
+     * Takes user input for a username, password, and profile description and creates a new user profile.
+     *
+     * @param inOut an object that implements InOut interface
      */
     public void userCreator(InOut inOut){
         userManager userManagerInstance = new userManager();

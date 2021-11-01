@@ -2,7 +2,6 @@ import InputAndOutput.InOut;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * take user input from command line interface and
@@ -13,7 +12,6 @@ import java.util.List;
  */
 
 public class searchController{
-
 
     public void searchProducts(InOut inOut, User user){
         String tagWord;
@@ -26,10 +24,11 @@ public class searchController{
             while (!validTag) {
                     // get the list of products matching the tag word
                     ArrayList<Product> productList = masterManager.getSearchList(tagWord);
+                    inOut.sendOutput(productList);
                     if (!productList.isEmpty()) {
                         cartController cart = new cartController();
                         // where do we get the current users information from
-                        cart.addToCartSearch(inOut, user);
+                        cart.addToCartSearch(inOut, user, productList);
                         validTag = true;
 
                     } else {
