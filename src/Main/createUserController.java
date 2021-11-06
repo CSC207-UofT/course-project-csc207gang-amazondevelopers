@@ -12,7 +12,6 @@ public class createUserController{
      * @param inOut an object that implements InOut interface
      */
     public void userCreator(InOut inOut){
-        userManager userManagerInstance = new userManager();
         inOut.sendOutput("Input username (must be less than 20 characters):");
         try{
             boolean validUsername = false;
@@ -22,7 +21,7 @@ public class createUserController{
             while (!validUsername){
                 username = inOut.getInput();
                 // check if user can be created, if not then username is either too long or has already been taken
-                if (username.length() <= 20 && userManagerInstance.createUser(username)){
+                if (username.length() <= 20 && createUserUseCase.createUser(username)){
                     validUsername = true;
                     inOut.sendOutput("User profile successfully created.");
                     // print out username for the user to look over

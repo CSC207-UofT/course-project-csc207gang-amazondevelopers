@@ -12,8 +12,8 @@ public class browseController{
      */
 
     public void searchFeed(InOut inOut, User user){
-        userManager userManager = new userManager();
-        List<Post> PostList = userManager.getFeedTotal(user);
+        userManager userManager = new userManager(user);
+        List<Post> PostList = userManager.getFeedTotal();
         inOut.sendOutput(PostList);
         if (!PostList.isEmpty()) {
             cartController cart = new cartController();
