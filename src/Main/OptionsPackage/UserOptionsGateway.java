@@ -36,9 +36,9 @@ public class UserOptionsGateway {
                 // save the cart of the user
                 String username = user.getUsername();
                 UserReadWriter rw = new UserReadWriter();
-                HashMap<String, Object> usersSavedDict = rw.readFromFile("user.ser");
+                HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
                 usersSavedDict.put(username, user);
-                rw.saveToFile("user.ser", usersSavedDict);
+                rw.saveToFile("src/Main/user.ser", usersSavedDict);
             }
             else if(userDecision.equals("2")){
                 // create the product,

@@ -25,7 +25,7 @@ public class SignInController {
 
         // access the serialized file for this user.
         UserReadWriter rw = new UserReadWriter();
-        HashMap<String, Object> usersSavedDict = rw.readFromFile("user.ser");
+        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
 
         if (usersSavedDict.containsKey(username)){
             return (User)usersSavedDict.get(username);
