@@ -10,6 +10,8 @@ import java.util.HashMap;
 
 public class SignInController {
 
+
+
     /**
      * Return a user, either a new one with the given username, or an old user, that was previously saved in our system
      * @param username The username inputted from the user

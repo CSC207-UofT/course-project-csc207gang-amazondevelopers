@@ -1,6 +1,7 @@
-package ProductFunctions;
+package OptionsPackage;
 
 import InputAndOutput.SystemInOut;
+import ProductFunctions.Product;
 
 import java.util.List;
 

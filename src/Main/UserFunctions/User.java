@@ -1,17 +1,20 @@
 package UserFunctions;
 
+import ProductFunctions.Product;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+// TODO add posts
 
 public class User implements Serializable {
     // instance variables
     private String username;
-    private List<Post> listPosts;
+//    private List<OptionsPackage.Post> listPosts;
     private List<Product> shoppingCart;
     private List<Product> currentSearches;
     private List<User> listFollowing;
-    private List<Post> feed;
+//    private List<OptionsPackage.Post> feed;
     private boolean isVerified;
 
     /**
@@ -27,11 +30,11 @@ public class User implements Serializable {
 
     public User(String username){
         this.username = username;
-        this.listPosts = new ArrayList<>();
+//        this.listPosts = new ArrayList<>();
         this.shoppingCart = new ArrayList<>();
         this.currentSearches = new ArrayList<>();
         this.listFollowing = new ArrayList<>();
-        this.feed = new ArrayList<>();
+//        this.feed = new ArrayList<>();
         this.isVerified = false;
     }
 
@@ -46,14 +49,14 @@ public class User implements Serializable {
     }
 
     // getter for instance variable listPosts
-    public List<Post> getListPosts() {
-        return listPosts;
-    }
+//    public List<OptionsPackage.Post> getListPosts() {
+//        return listPosts;
+//    }
 
     // setter for instance variable listPosts
-    public void setListPosts(List<Post> listPosts) {
-        this.listPosts = listPosts;
-    }
+//    public void setListPosts(List<OptionsPackage.Post> listPosts) {
+//        this.listPosts = listPosts;
+//    }
 
     // getter for instance variable shoppingCart
     public List<Product> getShoppingCart() {
@@ -86,14 +89,14 @@ public class User implements Serializable {
     }
 
     // getter for instance variable feed
-    public List<Post> getFeed() {
-        return feed;
-    }
-
-    //setter for instance variable feed
-    public void setFeed(List<Post> feed) {
-        this.feed = feed;
-    }
+//    public List<OptionsPackage.Post> getFeed() {
+//        return feed;
+//    }
+//
+//    //setter for instance variable feed
+//    public void setFeed(List<OptionsPackage.Post> feed) {
+//        this.feed = feed;
+//    }
 
     // getter for instance variable isVerified
     public boolean isVerified() {

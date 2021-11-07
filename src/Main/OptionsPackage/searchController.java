@@ -1,14 +1,11 @@
-package ProductFunctions;
+package OptionsPackage;
 
-import InputAndOutput.InOut;
-import UserFunctions.User;
-import UserFunctions.UserReadWriter;
-import UserFunctions.cartController;
+import ProductFunctions.Product;
+import ProductFunctions.ProductReadWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * take user input from command line interface and
