@@ -1,7 +1,6 @@
 package ProductFunctions;
 
 import InputAndOutput.SystemInOut;
-import UserFunctions.UserReadWriter;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,7 +8,7 @@ import java.util.HashMap;
 public class CreateProduct {
 
     public void addProductToRepo(SystemInOut input) throws IOException, ClassNotFoundException {
-        CreatePorductGateway productGate = new CreatePorductGateway();
+        CreateProductGateway productGate = new CreateProductGateway();
         Product newProduct = productGate.createNewProductFromInput(input);
         String tag = newProduct.getCategory();
 

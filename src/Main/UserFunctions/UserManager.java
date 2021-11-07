@@ -2,7 +2,7 @@ package UserFunctions;
 
 import java.util.List;
 
-public class userManager{
+public class UserManager {
 
 // TODO redo this class
 //

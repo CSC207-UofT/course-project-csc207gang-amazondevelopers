@@ -4,7 +4,7 @@ import InputAndOutput.SystemInOut;
 
 import java.io.IOException;
 
-public class CreatePorductGateway {
+public class CreateProductGateway {
 
     public Product createNewProductFromInput(SystemInOut input) throws IOException {
 

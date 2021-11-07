@@ -21,7 +21,6 @@ public class WelcomePageGateway {
         String userDecision = inOut.getInput();
 
         try {
-
             if (userDecision.equals("1")) {
                 SignInGateway signInGate = new SignInGateway();
                 String username = signInGate.getUsername(inOut);
@@ -40,9 +39,6 @@ public class WelcomePageGateway {
                     signUp.allowSignUp(newUsername);
                     // recurse back to login page after sign up
                     this.userLoginDecision(inOut);
-
-
-
 
             }else if(userDecision.equals("3")){
                 System.exit(0);

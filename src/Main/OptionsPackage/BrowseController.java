@@ -1,12 +1,6 @@
 package OptionsPackage;
 
-import InputAndOutput.InOut;
-import UserFunctions.cartManager;
-import UserFunctions.userManager;
-
-import java.util.List;
-
-public class browseController{
+public class BrowseController {
     // TODO
 //    public void searchFeed(InOut inOut, User user){
 //        userManager userManager = new userManager();

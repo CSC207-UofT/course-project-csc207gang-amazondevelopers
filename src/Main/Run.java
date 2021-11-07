@@ -3,7 +3,7 @@ import login.WelcomePageGateway;
 
 import java.io.IOException;
 
-public class Main{
+public class Run {
 
     public static void main(String[] args) throws IOException {
         SystemInOut inOut = new SystemInOut();

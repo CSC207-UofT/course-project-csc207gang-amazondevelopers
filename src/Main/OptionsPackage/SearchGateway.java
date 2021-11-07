@@ -3,7 +3,7 @@ package OptionsPackage;
 import InputAndOutput.SystemInOut;
 import ProductFunctions.Product;
 import UserFunctions.User;
-import UserFunctions.cartManager;
+import UserFunctions.CartManager;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class SearchGateway {
 
     public List<Product> allowSearch(SystemInOut input) throws IOException, ClassNotFoundException {
-        searchController searchController = new searchController();
+        SearchController searchController = new SearchController();
 
         input.sendOutput("What is a tag word for your product of interest?");
         String tagOfInterest = input.getInput();
@@ -21,7 +21,7 @@ public class SearchGateway {
 
     public void allowBuy(SystemInOut input, User user) throws IOException, ClassNotFoundException {
 
-        tagInterestItemsPresenter presenter = new tagInterestItemsPresenter();
+        TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
         List<Product> productsOfInterest = this.allowSearch(input);
         presenter.presentTagList(productsOfInterest, input);
 
@@ -39,7 +39,7 @@ public class SearchGateway {
             if (indexInt < productsOfInterest.size()){
                 Product itemOfInterest = productsOfInterest.get(indexInt);
                 // add this product to the cart
-                cartManager cart = new cartManager();
+                CartManager cart = new CartManager();
                 cart.addToCart(itemOfInterest, user);
 
             }else{

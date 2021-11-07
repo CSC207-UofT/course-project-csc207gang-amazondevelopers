@@ -5,7 +5,7 @@ import ProductFunctions.Product;
 
 import java.util.List;
 
-public class tagInterestItemsPresenter {
+public class TagInterestItemsPresenter {
     public void presentTagList(List<Product> productsOfInterest, SystemInOut inOut){
         inOut.sendOutput(productsOfInterest);
 

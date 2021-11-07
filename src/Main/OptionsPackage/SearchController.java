@@ -17,7 +17,7 @@ import java.util.HashMap;
  * word.
  */
 
-public class searchController{
+public class SearchController {
 
 
     public ArrayList<Product> searchProducts(String tag) throws IOException, ClassNotFoundException {
