@@ -2,7 +2,9 @@ package OptionsPackage;
 
 import ProductFunctions.Product;
 import ProductFunctions.ProductReadWriter;
+import UserFunctions.UserReadWriter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,8 +21,16 @@ public class searchController{
 
 
     public ArrayList<Product> searchProducts(String tag) throws IOException, ClassNotFoundException {
+
+        File file = new File("src/Main/product.ser");
+        if (file.length() == 0){
+            UserReadWriter rw = new UserReadWriter();
+            HashMap<String, Object> emptyHashMap = new HashMap<>();
+            rw.saveToFile("src/Main/product.ser", emptyHashMap);
+        }
+
         ProductReadWriter rw = new ProductReadWriter();
-        HashMap<String, Object> productSavedDict = rw.readFromFile("product.ser");
+        HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/product.ser");
 
         if (productSavedDict.containsKey(tag)){
             return (ArrayList<Product>) productSavedDict.get(tag);

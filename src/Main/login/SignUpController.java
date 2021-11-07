@@ -12,7 +12,7 @@ public class SignUpController {
 
     public void allowSignUp(String username) throws IOException, ClassNotFoundException {
 
-
+// TODO Delete user, check if there are multiple of same usernames.
 
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
