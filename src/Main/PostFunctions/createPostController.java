@@ -1,4 +1,8 @@
+package PostFunctions;
+
 import InputAndOutput.InOut;
+import UserFunctions.User;
+
 import java.io.IOException;
 import java.util.ArrayList;
 

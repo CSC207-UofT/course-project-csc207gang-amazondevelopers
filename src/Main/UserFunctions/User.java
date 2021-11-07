@@ -1,8 +1,10 @@
+package UserFunctions;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User{
-
+public class User implements Serializable {
     // instance variables
     private String username;
     private List<Post> listPosts;
@@ -102,5 +104,4 @@ public class User{
     public void setVerified(boolean verified) {
         isVerified = verified;
     }
-
 }

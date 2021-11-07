@@ -5,14 +5,20 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class loginOptionsController{
-    SystemInOut inOut = new SystemInOut();
+    SystemInOut inOut;
+
+    public loginOptionsController(SystemInOut inOut){
+        this.inOut = inOut;
+    }
+
+
 
     public boolean userInput() throws IOException {
-        inOut.sendOutput("What would you like to do? Input one of signin or signup");
-        String userDecision = inOut.getInput().toLowerCase();
+        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup");
+        String userDecision = inOut.getInput();
         try{
             switch (userDecision) {
-                case "signin":
+                case "1":
                     //
 
                     signInController newSignInController = new signInController();
@@ -46,7 +52,7 @@ public class loginOptionsController{
     }
 }
 
-// need code for browseController, searchController, and createPostController in order to output
+// need code for browseController, ProductFunctions.searchController, and PostFunctions.createPostController in order to output
 // the correct information
 
 

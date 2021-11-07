@@ -1,3 +1,5 @@
+package PostFunctions;
+
 import java.util.ArrayList;
 public class postManager{
     private productManager productmanager = new productManager();

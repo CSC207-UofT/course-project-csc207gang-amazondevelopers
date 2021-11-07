@@ -1,5 +1,8 @@
+package ProductFunctions;
 
-public class Product{
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String name;
     private String id;
     private float price;
@@ -70,5 +73,4 @@ public class Product{
 
     //setter for quantity
     public void setQuantity(int pquantity) {this.quantity = pquantity;}
-
 }

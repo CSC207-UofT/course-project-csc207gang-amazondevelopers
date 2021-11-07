@@ -1,11 +1,14 @@
+package UserFunctions;
+
 import InputAndOutput.InOut;
+import UserFunctions.userManager;
 
 import java.io.IOException;
 /**
  * A controller class that adds items to the user's cart upon request.
  */
 public class cartController{
-    private userManager userManager = new userManager();
+    private UserFunctions.userManager userManager = new userManager();
 
     /**
      * Takes in user input to add desired items to a user's cart from the search.
