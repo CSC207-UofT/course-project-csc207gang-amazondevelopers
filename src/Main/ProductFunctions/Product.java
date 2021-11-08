@@ -37,6 +37,14 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    /**
+     *
+     * @return the string representation of the product
+     */
+    public String toString() {
+        return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
+    }
+
 
     // getter for name of product
     public String getName() {return name;}

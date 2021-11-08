@@ -23,7 +23,7 @@ public class SearchGateway {
 
         TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
         List<Product> productsOfInterest = this.allowSearch(input);
-        presenter.presentTagList(productsOfInterest, input);
+        presenter.presentTagList(productsOfInterest, input); // check if product list is empty
 
         input.sendOutput("Would you like to purchase one of the items?" +
                 "enter the number of your choice\n 1.Yes\n2.No");
@@ -44,14 +44,16 @@ public class SearchGateway {
 
             }else{
                 input.sendOutput("incorrect index, try again");
-                this.allowBuy(input, user);
+                this.allowBuy(input, user); // let user input new index instead of searching again
             }
 
 
         }
         else {
-            SearchGateway search = new SearchGateway();
-            search.allowSearch(input);
+            // SearchGateway search = new SearchGateway();
+            // search.allowSearch(input);
+            // should ask if user wants to exit out of search here or search again
+            allowBuy(input, user);
         }
 
     }
