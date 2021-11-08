@@ -1,61 +1,10 @@
 package UserFunctions;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 public class UserManager {
 
 // TODO redo this class
-
-    // delete user account
-    /* returns true if user account has been deleted, false if otherwise*/
-    public boolean deactivateAccount(User user) throws IOException, ClassNotFoundException {
-        UserReadWriter rw = new UserReadWriter();
-        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-        String username = user.getUsername();
-
-        if (usersSavedDict.containsKey(username)){
-            usersSavedDict.remove(username);
-            rw.saveToFile("src/Main/user.ser", usersSavedDict);
-            return true;
-        }
-        else {return false;}
-    }
-
-
-    // edit user account
-    public void editUserProfile(){
-        // edit username
-    }
-
-    // keep track of posts
-
-
-    // change user following list
-    public void addToFollowingList(User user, User toFollow){
-        List<User> followingList = user.getListFollowing();
-        followingList.add(toFollow);
-
-
-
-        //        List<User> currentFollowing = user.getListFollowing();
-//        currentFollowing.add(newFollowing);
-//        user.setListFollowing(currentFollowing);
-//
-//        // update feed of user
-//        List<OptionsPackage.Post> userCurrentFeed = user.getFeed();
-//        userCurrentFeed.addAll(newFollowing.getListPosts());
-//        user.setFeed(userCurrentFeed);
-    }
-    // change users cart - add and delete
-
-
-
-
-
-
-
 //
 //
 //    /**
