@@ -1,5 +1,6 @@
 package loginTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
@@ -29,9 +30,11 @@ public class SignInControllerTest extends SignInController{
     @Test
     void testSignInReal() throws IOException, ClassNotFoundException {
         assertEquals(signin.allowSignIn("test1", inOut).getUsername(), "test1");
+        // tests if a user that exists will be allowed to sign in
     }
     @Test
     void testSignInFake() throws IOException, ClassNotFoundException{
         assertEquals(signin.allowSignIn("test2", inOut).getUsername(), "");
+        // tests if a user that does not exist will be not be allowed to sign in
     }
 }
