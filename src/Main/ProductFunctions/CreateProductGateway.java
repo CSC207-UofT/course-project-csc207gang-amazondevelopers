@@ -2,6 +2,7 @@ package ProductFunctions;
 
 import InputAndOutput.SystemInOut;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ import OptionsPackage.UserOptionsGateway;
 
 public class CreateProductGateway {
 
-    public Product createNewProductFromInput(SystemInOut input, User user) throws Exception {
+    public Product createNewProductFromInput(SystemInOut input, User user) throws IOException {
         Undo undo = new Undo();
         undo.add_data("Name");
         undo.add_data("ID");
@@ -25,14 +26,14 @@ public class CreateProductGateway {
         undo.add_state("Category");
         undo.add_state("Quantity");
         undo.add_state("Size");
-        while(undo.isComplete() == false) {
+        while(!undo.isComplete()) {
             if (undo.get_Current_State() == "Name") {
                 input.sendOutput("What is the name of the product?");
                 String name = input.getInput();
-                if (name == "*"){
+                if (name.equals("*")){
                    UserOptionsGateway uo = new UserOptionsGateway(user);
                    uo.userInput(input);
-                   throw new Exception();
+                   throw new IOException();
                 }
                 else{
                     undo.setDataPoint(name);
@@ -41,7 +42,7 @@ public class CreateProductGateway {
             if (undo.get_Current_State() == "ID") {
                 input.sendOutput("What is the ID of the product?");
                 String ID = input.getInput();
-                if (ID == "*"){
+                if (ID.equals("*")){
                     undo.undo();
                 }
                 else{
@@ -51,7 +52,7 @@ public class CreateProductGateway {
             if (undo.get_Current_State() == "Price") {
                 input.sendOutput("What is the price of this product?");
                 String priceString = input.getInput();
-                if (priceString == "*"){
+                if (priceString.equals("*")){
                     undo.undo();
                 }
                 else{
@@ -63,7 +64,7 @@ public class CreateProductGateway {
             if (undo.get_Current_State() == "Category") {
                 input.sendOutput("What is the Category of this product?");
                 String category = input.getInput();
-                if (category == "*"){
+                if (category.equals("*")){
                     undo.undo();
                 }
                 else{
@@ -74,7 +75,7 @@ public class CreateProductGateway {
             if (undo.get_Current_State() == "Quantity") {
                 input.sendOutput("What is the quantity of this product? Please enter an integer");
                 String quantityString = input.getInput();
-                if (quantityString == "*"){
+                if (quantityString.equals("*")){
                     undo.undo();
                 }
                 else {
