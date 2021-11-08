@@ -44,8 +44,11 @@ public class WelcomePageGateway {
                     keepRunning = false;
                     //System.exit(0);
 
-                } else {
-                    this.userLoginDecision(inOut);
+                }
+                else {
+                    inOut.sendOutput("Try again");
+                    // this.userLoginDecision(inOut);
+
                 }
 
             } catch (Exception exception) {
