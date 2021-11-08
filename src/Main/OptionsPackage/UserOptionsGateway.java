@@ -32,7 +32,7 @@ public class UserOptionsGateway {
                 SearchGateway searchGate = new SearchGateway();
                 searchGate.allowBuy(input, user);
 
-                searchGate.allowBuy(input, user);
+               // searchGate.allowBuy(input, user);
                 // save the cart of the user
                 String username = user.getUsername();
                 UserReadWriter rw = new UserReadWriter();
