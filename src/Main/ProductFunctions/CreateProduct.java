@@ -14,9 +14,10 @@ public class CreateProduct {
         String tag = newProduct.getCategory();
 
         ProductReadWriter rw = new ProductReadWriter();
-        HashMap<String, Object> productsSavedDict = rw.readFromFile("product.ser");
+        HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main/product.ser");
         productsSavedDict.put(tag, newProduct);
-        rw.saveToFile("product.ser", productsSavedDict);
+        rw.saveToFile("src/Main/product.ser", productsSavedDict);
+        System.out.println("Product successfully created:" + newProduct);
 
     }
 
