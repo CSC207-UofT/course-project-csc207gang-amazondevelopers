@@ -42,7 +42,7 @@ public class Product implements Serializable {
      * @return the string representation of the product
      */
     public String toString() {
-        return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
+        return name + " (" + id + ")"+ "\n" + ": $" + price + ", "+ "\n" + quantity + " in stock, "+ "\n" + "size "+ sizes;
     }
 
 
