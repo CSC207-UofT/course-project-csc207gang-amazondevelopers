@@ -8,7 +8,7 @@ import UserFunctions.User;
 
 public class CreateProduct {
 
-    public void addProductToRepo(SystemInOut input, User user) throws IOException, ClassNotFoundException {
+    public void addProductToRepo(SystemInOut input, User user) throws Exception {
         CreateProductGateway productGate = new CreateProductGateway();
         Product newProduct = productGate.createNewProductFromInput(input,user);
         String tag = newProduct.getCategory();

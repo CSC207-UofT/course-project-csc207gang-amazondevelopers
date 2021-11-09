@@ -12,7 +12,7 @@ import OptionsPackage.UserOptionsGateway;
 
 public class CreateProductGateway {
 
-    public Product createNewProductFromInput(SystemInOut input, User user) throws IOException {
+    public Product createNewProductFromInput(SystemInOut input, User user) throws Exception {
         Undo undo = new Undo();
         undo.add_data("Name");
         undo.add_data("ID");

@@ -9,42 +9,56 @@ import java.io.IOException;
 import java.util.List;
 
 public class SearchGateway {
-
-    public List<Product> allowSearch(SystemInOut input) throws IOException, ClassNotFoundException {
+    public List<Product> allowSearch(SystemInOut input, User user) throws IOException, ClassNotFoundException, Exception {
         SearchController searchController = new SearchController();
 
         input.sendOutput("What is a tag word for your product of interest?");
         String tagOfInterest = input.getInput();
-        return searchController.searchProducts(tagOfInterest);
-
+        if (tagOfInterest.equals("*")){
+            UserOptionsGateway uo = new UserOptionsGateway(user);
+            uo.userInput(input);
+            throw new Exception();
+        }
+        else {
+            return searchController.searchProducts(tagOfInterest);
+        }
     }
 
-    public void allowBuy(SystemInOut input, User user) throws IOException, ClassNotFoundException {
+    public void allowBuy(SystemInOut input, User user) throws Exception {
 
         TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
-        List<Product> productsOfInterest = this.allowSearch(input);
+        List<Product> productsOfInterest = this.allowSearch(input,user);
         presenter.presentTagList(productsOfInterest, input); // check if product list is empty
 
         input.sendOutput("Would you like to purchase one of the items?" +
                 "enter the number of your choice\n 1.Yes\n2.No");
         String decisionToBuy = input.getInput();
-
+        if (decisionToBuy.equals("*")){
+            productsOfInterest = this.allowSearch(input,user);
+            return;
+        }
         if (decisionToBuy.equals("1")){
             // then the user wants to buy
             input.sendOutput("Please select the index of the item that you want to buy. The index is the " +
                     "integer value for the position of the item on the list, with the first item being at " +
                     "the 0th index.");
             String itemIndex = input.getInput();
-            int indexInt = Integer.parseInt(itemIndex);
-            if (indexInt < productsOfInterest.size()){
-                Product itemOfInterest = productsOfInterest.get(indexInt);
-                // add this product to the cart
-                CartManager cart = new CartManager();
-                cart.addToCart(itemOfInterest, user);
+            if (itemIndex.equals("*")){
+                this.allowBuy(input, user);
+                return;
+            }
+            else {
+                int indexInt = Integer.parseInt(itemIndex);
+                if (indexInt < productsOfInterest.size()) {
+                    Product itemOfInterest = productsOfInterest.get(indexInt);
+                    // add this product to the cart
+                    CartManager cart = new CartManager();
+                    cart.addToCart(itemOfInterest, user);
 
-            }else{
-                input.sendOutput("incorrect index, try again");
-                this.allowBuy(input, user); // let user input new index instead of searching again
+                } else {
+                    input.sendOutput("incorrect index, try again");
+                    this.allowBuy(input, user); // let user input new index instead of searching again
+                }
             }
 
 

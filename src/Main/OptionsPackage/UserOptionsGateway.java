@@ -21,7 +21,7 @@ public class UserOptionsGateway {
         this.user = user;
     }
 
-    public void userInput(SystemInOut input) throws IOException {
+    public void userInput(SystemInOut input) throws Exception {
         boolean keepRunning = true;
         while(keepRunning) {
             input.sendOutput("What would you like to do? Input a number for " +

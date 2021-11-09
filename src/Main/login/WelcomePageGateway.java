@@ -18,7 +18,7 @@ public class WelcomePageGateway {
         boolean keepRunning = true;
         while(keepRunning) {
         inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n" +
-                "3.Quit");
+                "3.Quit\n Input * at any time to undo your action");
 
         String userDecision = inOut.getInput();
             try {
