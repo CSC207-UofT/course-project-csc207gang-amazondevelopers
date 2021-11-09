@@ -34,7 +34,7 @@ public class SearchGateway {
                 "enter the number of your choice\n 1.Yes\n2.No");
         String decisionToBuy = input.getInput();
         if (decisionToBuy.equals("*")){
-            productsOfInterest = this.allowSearch(input,user);
+            this.allowBuy(input, user);
             return;
         }
         if (decisionToBuy.equals("1")){
