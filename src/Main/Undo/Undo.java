@@ -38,8 +38,10 @@ public class Undo {
      * @param dataPoint can be any object that needs to be entered.
      */
     public void setDataPoint(Object dataPoint){
-        this.data.put(this.states.get(this.current_state),dataPoint);
-        this.current_state = this.current_state + 1;
+        if(this.isComplete() == false) {
+            this.data.put(this.states.get(this.current_state), dataPoint);
+            this.current_state = this.current_state + 1;
+        }
     }
 
     /**
