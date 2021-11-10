@@ -2,6 +2,7 @@ package ProductFunctions;
 
 import java.io.IOException;
 import java.util.HashMap;
+import UserFunctions.User;
 
 public class CreateProductGateway implements CreateProductGatewayInterface {
 
@@ -17,4 +18,5 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
         productsSavedDict.put(productId, newProduct);
         rw.saveToFile("src/Main/IdToProduct.ser", idToProductDict);
     }
+
 }
