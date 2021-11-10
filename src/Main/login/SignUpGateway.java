@@ -10,7 +10,8 @@ import java.util.HashMap;
 
 public class SignUpGateway implements SignUpGatewayInterface {
 
-    public void allowSignUp(String username) throws IOException, ClassNotFoundException {
+    @Override
+    public void allowSignUp(String username, SystemInOut input) throws IOException, ClassNotFoundException {
 
 // TODO Delete user, check if there are multiple of same usernames.
 
@@ -24,9 +25,14 @@ public class SignUpGateway implements SignUpGatewayInterface {
         // access the serialized file for this user.
         UserReadWriter rw = new UserReadWriter();
         HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-        usersSavedDict.put(username, new User(username));
-        rw.saveToFile("src/Main/user.ser", usersSavedDict);
-    }
+        if (!usersSavedDict.containsKey(username)) {
+            usersSavedDict.put(username, new User(username));
+            rw.saveToFile("src/Main/user.ser", usersSavedDict);
+        }
+        input.sendOutput("This username is takes, please enter another one!");
+        SignUpController signUp = new SignUpController();
+        signUp.getNewUsername(input);
 
+    }
 
 }
