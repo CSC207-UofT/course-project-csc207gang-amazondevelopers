@@ -29,7 +29,7 @@ public class UserOptionsController {
         try{
             if(userDecision.equals("1")) {
                 // redirects to OptionsPackage.searchController and returns relevant search info
-                SearchController searchGate = new SearchController();
+                BuyGateway searchGate = new BuyGateway();;
                 searchGate.allowBuy(input, user);
 
                // searchGate.allowBuy(input, user);

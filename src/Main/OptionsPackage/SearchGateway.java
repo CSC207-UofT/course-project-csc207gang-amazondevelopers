@@ -19,7 +19,6 @@ import java.util.HashMap;
 
 public class SearchGateway {
 
-
     public ArrayList<Product> searchProducts(String tag) throws IOException, ClassNotFoundException {
 
         File file = new File("src/Main/product.ser");
