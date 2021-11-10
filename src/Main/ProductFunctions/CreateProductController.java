@@ -4,8 +4,9 @@ import InputAndOutput.SystemInOut;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
+import Undo.Undo;
 
-import UndoPackage.Undo;
 import UserFunctions.User;
 import OptionsPackage.UserOptionsController;
 
@@ -26,7 +27,7 @@ public class CreateProductController {
         undo.addState("Quantity");
         undo.addState("Size");
         while(!undo.isComplete()) {
-            if (undo.getCurrentState() == "Name") {
+            if (Objects.equals(undo.getCurrentState(), "Name")) {
                 input.sendOutput("What is the name of the product?");
                 String name = input.getInput();
                 if (name.equals("*")){
@@ -38,7 +39,7 @@ public class CreateProductController {
                     undo.setDataPoint(name);
                 }
             }
-            if (undo.getCurrentState() == "ID") {
+            if (Objects.equals(undo.getCurrentState(), "ID")) {
                 input.sendOutput("What is the ID of the product?");
                 String ID = input.getInput();
                 if (ID.equals("*")){
@@ -48,7 +49,7 @@ public class CreateProductController {
                     undo.setDataPoint(ID);
                 }
             }
-            if (undo.getCurrentState() == "Price") {
+            if (Objects.equals(undo.getCurrentState(), "Price")) {
                 input.sendOutput("What is the price of this product?");
                 String priceString = input.getInput();
                 if (priceString.equals("*")){
@@ -60,7 +61,7 @@ public class CreateProductController {
                 }
 
             }
-            if (undo.getCurrentState() == "Category") {
+            if (Objects.equals(undo.getCurrentState(), "Category")) {
                 input.sendOutput("What is the Category of this product?");
                 String category = input.getInput();
                 if (category.equals("*")){
@@ -71,7 +72,7 @@ public class CreateProductController {
                 }
             }
 
-            if (undo.getCurrentState() == "Quantity") {
+            if (Objects.equals(undo.getCurrentState(), "Quantity")) {
                 input.sendOutput("What is the quantity of this product? Please enter an integer");
                 String quantityString = input.getInput();
                 if (quantityString.equals("*")){
@@ -82,19 +83,19 @@ public class CreateProductController {
                     undo.setDataPoint(quantity);
                 }
             }
-            if (undo.getCurrentState() == "Size") {
+            if (Objects.equals(undo.getCurrentState(), "Size")) {
                 input.sendOutput("What is the size of this product? Press enter No Size if this product does not have a size");
                 String sizeInput = input.getInput();
             }
         }
-        HashMap output = undo.get_Data();
-        if (! output.get("Size").equals("No Size")){
-            Product newProduct = new Product((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),(int) output.get("Quantity"));
-            return newProduct;
-        }else{
-            Product newProduct = new Product((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
-            return newProduct;
-        }
+        HashMap<String, Object> output = undo.get_Data();
 
+        if (! output.get("Size").equals("No Size")){
+            ProductManager productManager = new ProductManager();
+            return productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),(int) output.get("Quantity"));
+        }else{
+            ProductManager productManager = new ProductManager();
+            return productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
+        }
     }
 }

@@ -1,4 +1,4 @@
-package UndoPackage;
+package Undo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,3 +87,4 @@ public class Undo {
         this.data.put(dataname,"");
     }
 }
+

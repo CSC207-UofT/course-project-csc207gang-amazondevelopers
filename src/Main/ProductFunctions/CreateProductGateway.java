@@ -1,24 +1,22 @@
 package ProductFunctions;
 
-import InputAndOutput.SystemInOut;
-
+import java.io.IOException;
 import java.util.HashMap;
 import UserFunctions.User;
 
-public class CreateProductGateway {
+public class CreateProductGateway implements CreateProductGatewayInterface {
 
-    public void addProductToRepo(SystemInOut input, User user) throws Exception {
-        CreateProductController productGate = new CreateProductController();
-        Product newProduct = productGate.createNewProductFromInput(input,user);
+    public void addProductToRepo(Product newProduct, String productId) throws IOException, ClassNotFoundException {
         String tag = newProduct.getCategory();
-
         ProductReadWriter rw = new ProductReadWriter();
+
         HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main/product.ser");
         productsSavedDict.put(tag, newProduct);
         rw.saveToFile("src/Main/product.ser", productsSavedDict);
-        System.out.println("Product successfully created:" + newProduct);
 
+        HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main/IdToProduct.ser");
+        productsSavedDict.put(productId, newProduct);
+        rw.saveToFile("src/Main/IdToProduct.ser", idToProductDict);
     }
-
 
 }
