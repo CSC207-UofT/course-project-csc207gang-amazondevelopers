@@ -5,8 +5,8 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
-
 import Undo.Undo;
+
 import UserFunctions.User;
 import OptionsPackage.UserOptionsController;
 
@@ -97,6 +97,5 @@ public class CreateProductController {
             ProductManager productManager = new ProductManager();
             return productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
         }
-
     }
 }
