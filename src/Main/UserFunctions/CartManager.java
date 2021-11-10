@@ -12,9 +12,5 @@ public class CartManager {
     public void addToCart(Product item, User user){
         List<Product> userCart = user.getShoppingCart();
         userCart.add(item);
-
     }
-
-
-
 }

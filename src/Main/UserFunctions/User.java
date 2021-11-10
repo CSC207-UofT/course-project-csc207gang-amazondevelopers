@@ -14,7 +14,7 @@ public class User implements Serializable {
     private List<Product> shoppingCart;
     private List<Product> currentSearches;
     private List<User> listFollowing;
-//    private List<OptionsPackage.Post> feed;
+    private List<OptionsPackage.Post> feed;
     private boolean isVerified;
 
     /**
@@ -92,8 +92,8 @@ public class User implements Serializable {
 //    public List<OptionsPackage.Post> getFeed() {
 //        return feed;
 //    }
-//
-//    //setter for instance variable feed
+
+    // setter for instance variable feed
 //    public void setFeed(List<OptionsPackage.Post> feed) {
 //        this.feed = feed;
 //    }
