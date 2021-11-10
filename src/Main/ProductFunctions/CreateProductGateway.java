@@ -5,16 +5,13 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class CreateProductGateway {
+public class CreateProductGateway implements productSetterGatwewayInterface {
 
-    public void addProductToRepo(SystemInOut input) throws IOException, ClassNotFoundException {
-        CreateProductController productGate = new CreateProductController();
-        Product newProduct = productGate.createNewProductFromInput(input);
+    public void addProductToRepo(Product newProduct) throws IOException, ClassNotFoundException {
         String tag = newProduct.getCategory();
-
         ProductReadWriter rw = new ProductReadWriter();
-        HashMap<String, Object> productsSavedDict = rw.readFromFile("product.ser");
+        HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main/product.ser");
         productsSavedDict.put(tag, newProduct);
-        rw.saveToFile("product.ser", productsSavedDict);
+        rw.saveToFile("src/Main/product.ser", productsSavedDict);
     }
 }

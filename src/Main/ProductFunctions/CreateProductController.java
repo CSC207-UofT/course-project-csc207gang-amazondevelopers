@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class CreateProductController {
 
-    public Product createNewProductFromInput(SystemInOut input) throws IOException {
+    public Product createNewProductFromInput(SystemInOut input) throws IOException, ClassNotFoundException {
 
         input.sendOutput("What is the name of the product?");
         String name = input.getInput();
@@ -22,7 +22,6 @@ public class CreateProductController {
         String category = input.getInput();
 
         input.sendOutput("What is the size of this product? Press enter if this product does not have a size");
-
         String sizeInput = input.getInput();
 
 
@@ -31,12 +30,11 @@ public class CreateProductController {
         int quantity = Integer.parseInt(quantityString);
 
         if (! sizeInput.equals("")){
-            String size = sizeInput;
-            Product newProduct = new Product(name, ID, price, category, size, quantity);
-            return newProduct;
+            ProductManager productManager = new ProductManager();
+            return productManager.createProduct(name, ID, price, category, sizeInput, quantity);
         }else{
-            Product newProduct = new Product(name, ID, price, category, quantity);
-            return newProduct;
+            ProductManager productManager = new ProductManager();
+            return productManager.createProduct(name, ID, price, category, quantity);
         }
 
     }
