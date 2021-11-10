@@ -6,6 +6,9 @@ import java.io.IOException;
 
 public class ProductManager {
 
+    CreateProductGatewayInterface createProduct;
+    GetProductGatewayInterface getProduct;
+
     /**
      * Create a new Product object.
      * This method takes in a String for Product name, a float for the Product price, another String for the
@@ -15,12 +18,23 @@ public class ProductManager {
      * @return a newly created product.
      */
 
+
+
+    public ProductManager(CreateProductGatewayInterface createProduct){
+        this.createProduct = createProduct;
+
+    }
+
+    public ProductManager(GetProductGatewayInterface getProduct){
+        this.getProduct = getProduct;
+    }
+
+
     public Product createProduct(String name, String id, Double price, String category, String size, int quantity) throws IOException, ClassNotFoundException {
         Product newProduct = new Product(name, id, price, category, size, quantity);
         if (checkProductStatus(id)){
             //product not yet created
-            CreateProductGateway createProductGateway = new CreateProductGateway();
-            createProductGateway.addProductToRepo(newProduct, newProduct.getId());
+            createProduct.addProductToRepo(newProduct, newProduct.getId());
             return newProduct;
         }
         return null;
@@ -31,8 +45,7 @@ public class ProductManager {
         Product newProduct = new Product(name, id, price, category, quantity);
         if (checkProductStatus(id)) {
             //product not yet created
-            CreateProductGateway createProductGateway = new CreateProductGateway();
-            createProductGateway.addProductToRepo(newProduct, newProduct.getId());
+            createProduct.addProductToRepo(newProduct, newProduct.getId());
             return newProduct;
         }
         return null;
@@ -47,8 +60,7 @@ public class ProductManager {
      * @return true successfully decreased amount and false otherwise.
      */
     public boolean decreaseQuantity(String productId, int quantity) throws IOException, ClassNotFoundException {
-        GetProductGateway getProductGateway = new GetProductGateway();
-        Product productOfId = getProductGateway.getProduct(productId);
+        Product productOfId = getProduct.getProduct(productId);
         if (productOfId != null){
             int newQuantity = productOfId.getQuantity() - quantity;
             if (newQuantity > 0) {
@@ -69,8 +81,7 @@ public class ProductManager {
      * @return true successfully increased amount and false otherwise.
      */
     public boolean increaseQuantity(String productId, int quantity) throws IOException, ClassNotFoundException {
-        GetProductGateway getProductGateway = new GetProductGateway();
-        Product productOfId = getProductGateway.getProduct(productId);
+        Product productOfId = getProduct.getProduct(productId);
         if (productOfId != null){
             int newQuantity = productOfId.getQuantity() + quantity;
             productOfId.setQuantity(newQuantity);
@@ -88,8 +99,7 @@ public class ProductManager {
      * @return true if product exists and false otherwise.
      */
     private boolean checkProductStatus(String id) throws IOException, ClassNotFoundException {
-        GetProductGateway getProductGateway = new GetProductGateway();
-        Product productOfId = getProductGateway.getProduct(id);
+        Product productOfId = getProduct.getProduct(id);
         return productOfId != null;
     }
 }

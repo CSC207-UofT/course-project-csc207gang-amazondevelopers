@@ -8,9 +8,7 @@ import UserFunctions.User;
 import java.io.IOException;
 import java.util.List;
 
-public class BuyGateway {
-
-    // TODO use this same class in browse and everywhere else you want to buy
+public class BuyController {
 
     public void allowBuy(SystemInOut input, User user) throws IOException, ClassNotFoundException {
 

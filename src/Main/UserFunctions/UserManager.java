@@ -3,10 +3,10 @@ package UserFunctions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class userManager{
+public class UserManager{
     private User user;
 
-    public userManager(User user) {
+    public UserManager(User user) {
         this.user = user;
     }
 
@@ -54,22 +54,22 @@ public class userManager{
         user.setListPosts(currentListPosts);
     }
 
-    /**
-     * Method that takes in a User, who is added to this.user's follow list.
-     *
-     * @param newFollowing User to add to user's follow list
-     *
-     */
-    public void addToFollowingList(User newFollowing){
-        List<User> currentFollowing = this.user.getListFollowing();
-        currentFollowing.add(newFollowing);
-        this.user.setListFollowing(currentFollowing);
-
-        // update feed of user
-        List<Post> userCurrentFeed = this.user.getFeed();
-        userCurrentFeed.addAll(newFollowing.getListPosts());
-        this.user.setFeed(userCurrentFeed);
-    }
+//    /**
+//     * Method that takes in a User, who is added to this.user's follow list.
+//     *
+//     * @param newFollowing User to add to user's follow list
+//     *
+//     */
+//    public void addToFollowingList(User newFollowing){
+//        List<String> currentFollowing = this.user.getListFollowing();
+//        currentFollowing.add(newFollowing);
+//        this.user.setListFollowing(currentFollowing);
+//
+//        // update feed of user
+//        List<Post> userCurrentFeed = this.user.getFeed();
+//        userCurrentFeed.addAll(newFollowing.getListPosts());
+//        this.user.setFeed(userCurrentFeed);
+//    }
 
     /**
      * Method that verifies the User.

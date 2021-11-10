@@ -13,10 +13,24 @@ public class User implements Serializable {
 //    private List<OptionsPackage.Post> listPosts;
     private List<Product> shoppingCart;
     private List<Product> currentSearches;
-    private List<User> listFollowing;
+    private List<String> listFollowing; // people we follow
+    private List<String> listFollowers; // people that follow me
+
+    // I follow [Um, Alber, adam]
+    // People following me [Um, adam]
+
+    //produc1
+    //um, adam -> update feed with product1
+
+    //albert posts product2
+    //my feed changes
+
+
+
     private List<OptionsPackage.Post> feed;
     private boolean isVerified;
 
+// TODO add list of posts
     /**
      * Creates a new User object.
      * This constructor takes in 1 argument, a string username.
@@ -25,6 +39,8 @@ public class User implements Serializable {
      *
      * @param username this user's username.
      */
+
+
 
 
 
@@ -79,7 +95,7 @@ public class User implements Serializable {
     }
 
     // getter for instance variable listFollowing
-    public List<User> getListFollowing() {
+    public List<String> getListFollowing() {
         return listFollowing;
     }
 
