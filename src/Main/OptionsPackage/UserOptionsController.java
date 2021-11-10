@@ -2,7 +2,6 @@ package OptionsPackage;
 
 import InputAndOutput.SystemInOut;
 
-import ProductFunctions.CreateProduct;
 import ProductFunctions.CreateProductGateway;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
@@ -14,10 +13,10 @@ import java.util.HashMap;
 // right now, we can only search and buy and add products.
 // TODO we will later impelement browse and post
 
-public class UserOptionsGateway {
+public class UserOptionsController {
     User user;
 
-    public UserOptionsGateway(User user){
+    public UserOptionsController(User user){
         this.user = user;
     }
 
@@ -32,7 +31,7 @@ public class UserOptionsGateway {
             try {
                 if (userDecision.equals("1")) {
                     // redirects to OptionsPackage.searchController and returns relevant search info
-                    SearchGateway searchGate = new SearchGateway();
+                    SearchController searchGate = new SearchController();
                     searchGate.allowBuy(input, user);
 
                     // searchGate.allowBuy(input, user);
@@ -45,7 +44,7 @@ public class UserOptionsGateway {
                 } else if (userDecision.equals("2")) {
                     // create the product,
                     // TODO then add it as a post
-                    CreateProduct createProduct = new CreateProduct();
+                    CreateProductGateway createProduct = new CreateProductGateway();
                     createProduct.addProductToRepo(input, user);
 
                 } else if (userDecision.equals("3")) {

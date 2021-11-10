@@ -2,7 +2,7 @@ package login;
 
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
-import OptionsPackage.UserOptionsGateway;
+import OptionsPackage.UserOptionsController;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  */
 
-public class WelcomePageGateway {
+public class WelcomePageController {
 
 
     public void userLoginDecision(SystemInOut inOut) throws IOException {
@@ -28,7 +28,7 @@ public class WelcomePageGateway {
 
                     SignInController signIn = new SignInController();
                     User signedInUser = signIn.allowSignIn(username, inOut);
-                    UserOptionsGateway options = new UserOptionsGateway(signedInUser);
+                    UserOptionsController options = new UserOptionsController(signedInUser);
                     options.userInput(inOut);
 
                 } else if (userDecision.equals("2")) {
