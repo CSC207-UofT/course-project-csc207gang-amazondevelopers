@@ -17,8 +17,6 @@ public class Product implements Serializable {
      * product or null if there is only one size.
      *
      */
-
-
     public Product(String name, String id, Double price, String category, int quantity) {
         this.name = name;
         this.id = id;

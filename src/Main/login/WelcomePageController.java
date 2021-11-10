@@ -2,7 +2,7 @@ package login;
 
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
-import OptionsPackage.UserOptionsGateway;
+import OptionsPackage.UserOptionsController;
 
 import java.io.IOException;
 
@@ -11,31 +11,29 @@ import java.io.IOException;
  *
  */
 
-public class WelcomePageGateway {
-
+public class WelcomePageController {
 
     public void userLoginDecision(SystemInOut inOut) throws IOException {
-        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n" +
-                "3.Quit");
+        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n 3.Quit");
 
         String userDecision = inOut.getInput();
 
         try {
             if (userDecision.equals("1")) {
-                SignInGateway signInGate = new SignInGateway();
+                SignInController signInGate = new SignInController();
                 String username = signInGate.getUsername(inOut);
 
-                SignInController signIn = new SignInController();
+                SignInGateway signIn = new SignInGateway();
                 User signedInUser = signIn.allowSignIn(username, inOut);
-                UserOptionsGateway options = new UserOptionsGateway(signedInUser);
+                UserOptionsController options = new UserOptionsController(signedInUser);
                 options.userInput(inOut);
 
                 }
             else if (userDecision.equals("2")) {
-                    SignUpGateway signUpGate = new SignUpGateway();
+                    SignUpController signUpGate = new SignUpController();
                     String newUsername = signUpGate.getNewUsername(inOut);
 
-                    SignUpController signUp = new SignUpController();
+                    SignUpGateway signUp = new SignUpGateway();
                     signUp.allowSignUp(newUsername);
                     // recurse back to login page after sign up
                     this.userLoginDecision(inOut);
