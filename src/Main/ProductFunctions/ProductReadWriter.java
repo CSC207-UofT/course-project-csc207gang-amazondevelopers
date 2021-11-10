@@ -25,7 +25,6 @@ public class ProductReadWriter implements ReadWriter {
         output.close();
     }
 
-
     /**
      * Store the users to file at filePath.
      *

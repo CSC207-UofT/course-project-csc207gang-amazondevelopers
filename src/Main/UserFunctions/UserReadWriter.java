@@ -24,7 +24,6 @@ public class UserReadWriter implements ReadWriter{
         output.close();
     }
 
-
     /**
      * Store the users to file at filePath.
      *
