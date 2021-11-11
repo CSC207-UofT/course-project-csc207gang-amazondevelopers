@@ -34,7 +34,7 @@ public class ProductManager {
         Product newProduct = new Product(name, id, price, category, size, quantity);
         if (checkProductStatus(id)){
             //product not yet created
-            createProduct.addProductToRepo(newProduct, newProduct.getId());
+            createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
             return newProduct;
         }
         return null;
@@ -45,7 +45,7 @@ public class ProductManager {
         Product newProduct = new Product(name, id, price, category, quantity);
         if (checkProductStatus(id)) {
             //product not yet created
-            createProduct.addProductToRepo(newProduct, newProduct.getId());
+            createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
             return newProduct;
         }
         return null;

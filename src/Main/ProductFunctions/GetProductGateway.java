@@ -12,8 +12,7 @@ import java.util.HashMap;
  */
 
 public class GetProductGateway implements GetProductGatewayInterface{
-
-    //TODO what to do if the lenth of file is 0 check function of this class
+    // ID to product
 
     public Product getProduct(String productId) throws IOException, ClassNotFoundException {
 

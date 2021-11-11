@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SearchController {
 
-    public List<Product> allowSearch(SystemInOut input) throws IOException, ClassNotFoundException {
+    public List<String> allowSearch(SystemInOut input) throws IOException, ClassNotFoundException {
         SearchGateway searchController = new SearchGateway();
 
         input.sendOutput("What is a tag word for your product of interest?");
