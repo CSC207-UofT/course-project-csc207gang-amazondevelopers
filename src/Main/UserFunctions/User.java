@@ -21,6 +21,7 @@ public class User implements Serializable {
     private List<String> listFollowing; // people we follow
     private List<String> listFollowers; // people that follow me
     private List<OptionsPackage.Post> feed;
+    private List<String> productsPosted; // the list of all products that this user has posted.
 
     // I follow [Um, Alber, adam]
     // People following me [Um, adam]
@@ -52,6 +53,14 @@ public class User implements Serializable {
         this.currentSearches = new ArrayList<>();
         this.listFollowing = new ArrayList<>();
 //        this.feed = new ArrayList<>();
+    }
+
+    public List<String> getListFollowers(){
+        return listFollowers;
+    }
+
+    public List<String> getProductsPosted(){
+        return productsPosted;
     }
 
     // getter for instance variable username
