@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class SearchGateway {
 
-    public ArrayList<Product> searchProducts(String tag) throws IOException, ClassNotFoundException {
+    public ArrayList<String> searchProducts(String tag) throws IOException, ClassNotFoundException {
 
         File file = new File("src/Main/product.ser");
         if (file.length() == 0){
@@ -32,7 +32,7 @@ public class SearchGateway {
         HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/product.ser");
 
         if (productSavedDict.containsKey(tag)){
-            return (ArrayList<Product>) productSavedDict.get(tag);
+            return (ArrayList<String>) productSavedDict.get(tag);
         }
         // if the user does not exist, return a user with an empty username, which the empty username is unaccepted
         // username anyways

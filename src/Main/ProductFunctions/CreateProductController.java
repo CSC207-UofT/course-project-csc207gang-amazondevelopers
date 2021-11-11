@@ -89,12 +89,14 @@ public class CreateProductController {
             }
         }
         HashMap<String, Object> output = undo.get_Data();
+        CreateProductGateway productGate = new CreateProductGateway();
 
         if (! output.get("Size").equals("No Size")){
-            ProductManager productManager = new ProductManager();
+
+            ProductManager productManager = new ProductManager(productGate);
             return productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),(int) output.get("Quantity"));
         }else{
-            ProductManager productManager = new ProductManager();
+            ProductManager productManager = new ProductManager(productGate);
             return productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
         }
     }

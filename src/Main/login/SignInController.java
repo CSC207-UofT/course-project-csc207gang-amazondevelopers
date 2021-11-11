@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class SignInController {
 
+
     String getUsername(SystemInOut inOut) throws IOException {
         inOut.sendOutput("What is your username? (please do not leave this field empty)");
         String username = inOut.getInput();

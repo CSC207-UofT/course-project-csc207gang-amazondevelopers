@@ -19,3 +19,5 @@ public interface ReadWriter {
      */
     HashMap<String, Object> readFromFile(String filepath) throws IOException, ClassNotFoundException;
 }
+
+

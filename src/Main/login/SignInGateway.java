@@ -5,6 +5,7 @@ import UserFunctions.ReadWriter;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -20,6 +21,14 @@ public class SignInGateway implements  SignInGatewayInterface {
      */
 
     public User allowSignIn(String username, SystemInOut inOut) throws IOException, ClassNotFoundException {
+
+        File file = new File("src/Main/user.ser");
+        if (file.length() == 0){
+            inOut.sendOutput("No user exists yet, please sign up.");
+            WelcomePageController welcome = new WelcomePageController();
+            welcome.userLoginDecision(inOut);
+
+        }
 
         // access the serialized file for this user.
         UserReadWriter rw = new UserReadWriter();
