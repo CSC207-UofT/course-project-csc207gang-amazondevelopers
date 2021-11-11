@@ -13,15 +13,18 @@ import java.util.HashMap;
 
 public class DeleteProductsGateway {
 
-    Product product;
+    String product;
     User user;
 
-    public DeleteProductsGateway(Product product, User user) {
+    public DeleteProductsGateway(String product, User user) {
         this.product = product;
         this.user = user;
     }
 
     public void deleteProduct(String id, SystemInOut input) throws IOException, ClassNotFoundException {
+
+
+
         File file = new File("src/Main/IdToProduct.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.
@@ -30,6 +33,8 @@ public class DeleteProductsGateway {
             if (productSavedDict.containsKey(id)) {
                 productSavedDict.remove(id);
                 rw.saveToFile("src/Main/IdToProduct.ser", productSavedDict);
+
+
 
             }
             input.sendOutput("This product does not exist, so it cannot be deleted ");

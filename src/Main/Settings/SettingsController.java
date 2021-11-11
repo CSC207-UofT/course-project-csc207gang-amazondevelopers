@@ -9,6 +9,7 @@ import login.WelcomePageController;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 public class SettingsController {
     User user;
@@ -29,13 +30,45 @@ public class SettingsController {
         try{
             if(userDecision.equals("1")) {
                 // delete this acocunt
+                DeleteUserGateway deleteThisUser = new DeleteUserGateway(user);
+                deleteThisUser.deleteUser(user.getUsername(), input);
 
+                // [123, 1234]
+                //0
+                //123
 
-                // delete their products
+                // product
+                //{tag:[123, 1234]}
+
+                //prodictID
+                //{123:product}
+
 
             }
             else if(userDecision.equals("2")){
-                // change username
+                ChangeUsernameGateway changeUsernameG = new ChangeUsernameGateway(user);
+                input.sendOutput("What do you want to set as your new username?");
+                String oldUsername = user.getUsername();
+                String newUsername = input.getInput();
+                changeUsernameG.changeUsername(newUsername, input);
+                // people who follow me, want my username to change for them
+                List<String> followers = user.getListFollowers();
+                for (String person : followers){
+                    if (person.equals(oldUsername)){
+                        followers.remove(person);
+                        followers.add(newUsername);
+                    }
+                }
+                // people who I follow, want the username to change for thei list
+                List<String> following = user.getListFollowing();
+                for (String person : following){
+
+                    if (person.equals(oldUsername)){
+                        followers.remove(person);
+                        followers.add(newUsername);
+                    }
+
+                // TODO change this username everywhere in this user's following list
             }
             else if(userDecision.equals("3")) {
                 // a new options gateways to make changes to your products
@@ -47,7 +80,7 @@ public class SettingsController {
             }
             throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

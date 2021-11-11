@@ -1,6 +1,7 @@
 package OptionsPackage;
 
 import InputAndOutput.SystemInOut;
+import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;
 import UserFunctions.CartManager;
 import UserFunctions.User;
@@ -17,7 +18,7 @@ public class BuyController {
         TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
         SearchController browse = new SearchController();
 
-        List<Product> productsOfInterest = browse.allowSearch(input);
+        List<String> productsOfInterest = browse.allowSearch(input);
         presenter.presentTagList(productsOfInterest, input);
 
         input.sendOutput("Would you like to purchase one of the items?" +
@@ -30,12 +31,21 @@ public class BuyController {
                     "integer value for the position of the item on the list, with the first item being at " +
                     "the 0th index.");
             String itemIndex = input.getInput();
+
             int indexInt = Integer.parseInt(itemIndex);
+
+
+            if (indexInt < 0){
+                this.allowBuy(input, user);
+            }
+
             if (indexInt < productsOfInterest.size()){
-                Product itemOfInterest = productsOfInterest.get(indexInt);
+                GetProductGateway productG = new GetProductGateway();
+                String itemAtIndex = productsOfInterest.get(indexInt);
+                Product productToAddToCart = productG.getProduct(itemAtIndex);
                 // add this product to the cart
                 CartManager cart = new CartManager();
-                cart.addToCart(itemOfInterest, user);
+                cart.addToCart(productToAddToCart, user);
 
 
             }else{
