@@ -3,10 +3,10 @@ package UserFunctions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class userManager{
+public class UserManager{
     private User user;
 
-    public userManager(User user) {
+    public UserManager (User user) {
         this.user = user;
     }
 
