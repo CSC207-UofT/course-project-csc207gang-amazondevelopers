@@ -6,6 +6,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 // TODO add posts
+// TODO
+// addMoney, spendMoney, money variable with the amount of money they have
+//
+
+
 
 public class User implements Serializable {
     // instance variables
@@ -15,6 +20,7 @@ public class User implements Serializable {
     private List<Product> currentSearches;
     private List<String> listFollowing; // people we follow
     private List<String> listFollowers; // people that follow me
+    private List<OptionsPackage.Post> feed;
 
     // I follow [Um, Alber, adam]
     // People following me [Um, adam]
@@ -26,9 +32,6 @@ public class User implements Serializable {
     //my feed changes
 
 
-
-    private List<OptionsPackage.Post> feed;
-    private boolean isVerified;
 
 // TODO add list of posts
     /**
@@ -42,8 +45,6 @@ public class User implements Serializable {
 
 
 
-
-
     public User(String username){
         this.username = username;
 //        this.listPosts = new ArrayList<>();
@@ -51,7 +52,6 @@ public class User implements Serializable {
         this.currentSearches = new ArrayList<>();
         this.listFollowing = new ArrayList<>();
 //        this.feed = new ArrayList<>();
-        this.isVerified = false;
     }
 
     // getter for instance variable username
@@ -100,7 +100,7 @@ public class User implements Serializable {
     }
 
     // setter for instance variable listFollowing
-    public void setListFollowing(List<User> listFollowing) {
+    public void setListFollowing(List<String> listFollowing) {
         this.listFollowing = listFollowing;
     }
 
@@ -114,13 +114,5 @@ public class User implements Serializable {
 //        this.feed = feed;
 //    }
 
-    // getter for instance variable isVerified
-    public boolean isVerified() {
-        return isVerified;
-    }
 
-    // setter for instance variable isVerified
-    public void setVerified(boolean verified) {
-        isVerified = verified;
-    }
 }
