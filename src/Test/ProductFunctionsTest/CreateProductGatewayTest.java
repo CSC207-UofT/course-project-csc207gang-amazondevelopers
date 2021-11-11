@@ -1,9 +1,13 @@
 package ProductFunctionsTest;
 
+import InputAndOutput.InOut;
 import ProductFunctions.CreateProductGateway;
 import ProductFunctions.Product;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 public class CreateProductGatewayTest {
     CreateProductGateway createProductGateway = new CreateProductGateway();
