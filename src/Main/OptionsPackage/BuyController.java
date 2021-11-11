@@ -13,18 +13,18 @@ public class BuyController {
 
     // TODO what happen after they decide to buy?
 
-    public void allowBuy(SystemInOut input, User user) throws IOException, ClassNotFoundException {
+    public void allowBuy(User user) throws IOException, ClassNotFoundException {
+        SystemInOut input = new SystemInOut();
 
         TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
         SearchController search = new SearchController();
 
-
-        List<String> productsOfInterest = search.allowSearch(input);
+        List<String> productsOfInterest = search.allowSearch();
 
         // loop to keep checking if the user wants to buy something from the search results
         boolean keepRunning = true;
         while(keepRunning) {
-            presenter.presentTagList(productsOfInterest, input);
+            presenter.presentTagList(productsOfInterest);
             input.sendOutput("Would you like to purchase one of the items?" +
                 "enter the number of your choice\n 1.Yes\n2.No\nType 'exit' if you would like to exit.");
             String decisionToBuy = input.getInput();
@@ -59,7 +59,7 @@ public class BuyController {
 
             } else if (decisionToBuy.equals("2")) {
                 // let the user search for something new if they dont want to buy something
-                search.allowSearch(input);
+                search.allowSearch();
                 keepRunning = false;
             } else {
                 // end the loop, thereby ending the call to BuyController

@@ -1,15 +1,10 @@
 package Settings;
 
-import InputAndOutput.SystemInOut;
-import OptionsPackage.UserOptionsController;
-import ProductFunctions.Product;
-import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 public class DeleteUserGateway {
 

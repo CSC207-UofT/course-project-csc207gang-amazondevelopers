@@ -2,7 +2,7 @@ package OptionsPackage;
 
 public class BrowseController {
     // TODO
-//    public void searchFeed(InOut inOut, User user){
+//    public void searchFeed(User user){
 //        userManager userManager = new userManager();
 //        List<OptionsPackage.Post> PostList = userManager.getFeedTotal(user);
 //        if (!PostList.isEmpty()) {
