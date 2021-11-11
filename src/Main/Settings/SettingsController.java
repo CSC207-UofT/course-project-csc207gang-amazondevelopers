@@ -56,4 +56,3 @@ public class SettingsController {
 //    DeleteUserGateway deleter = new DeleteUserGateway(user);
 //                deleter.deleteUser(user.getUsername(), input);
     // modify your product quantity
-}
