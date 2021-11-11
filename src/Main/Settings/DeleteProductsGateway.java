@@ -1,5 +1,6 @@
 package Settings;
 
+import ProductFunctions.Product;
 import ProductFunctions.ProductReadWriter;
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +19,15 @@ public class DeleteProductsGateway implements DeleteProductGatewayInterface {
         if (!(file.length() == 0)) {
             // access the serialized file for this user.
             ProductReadWriter rw = new ProductReadWriter();
-            HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/IdToProduct.ser");
+            HashMap<String, Object> productSavedHash = rw.readFromFile("src/Main/IdToProduct.ser");
+            HashMap<String, Object> tagToIDListHash = rw.readFromFile("src/Main/Product.ser");
             for (String id: listIds){
-                if (productSavedDict.containsKey(id)) {
-                    productSavedDict.remove(id);
+                Product product = (Product) productSavedHash.get(id);
+                String category = product.getCategory();
+                List<String> idsList = (List<String>) tagToIDListHash.get(category);
+                idsList.remove(id);
+                if (productSavedHash.containsKey(id)) {
+                    productSavedHash.remove(id);
                 }
                 else {
                     // if that string id does not exist
@@ -29,7 +35,8 @@ public class DeleteProductsGateway implements DeleteProductGatewayInterface {
                 }
             }
             // saving back the updated hashmap
-            rw.saveToFile("src/Main/IdToProduct.ser", productSavedDict);
+            rw.saveToFile("src/Main/IdToProduct.ser", productSavedHash);
+            rw.saveToFile("src/Main/Product.ser", tagToIDListHash);
             return true;
         }
         // no product do not exist

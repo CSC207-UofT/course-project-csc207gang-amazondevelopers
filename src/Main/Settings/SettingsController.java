@@ -33,8 +33,9 @@ public class SettingsController {
                     // need to remove all the followers/following stuff
                     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
                     ProductDeletionUseCase productDeletionUseCase = new ProductDeletionUseCase(this.user, deleteProductsGateway);
-                    if(productDeletionUseCase.deleteProducts().equals(true)) {
-                        // need to update feed or something 
+                    if(productDeletionUseCase.deleteProducts()) {
+                        // need to update feed or something
+
                     }
                 }
                 // user does not exist
