@@ -1,14 +1,10 @@
 package Settings;
 
 import InputAndOutput.SystemInOut;
-import OptionsPackage.BuyController;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
-import UserFunctions.UserReadWriter;
-import login.WelcomePageController;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 public class SettingsController {
@@ -29,9 +25,23 @@ public class SettingsController {
 
         try{
             if(userDecision.equals("1")) {
-                // delete this acocunt
-                DeleteUserGateway deleteThisUser = new DeleteUserGateway(user);
-                deleteThisUser.deleteUser(user.getUsername(), input);
+                // delete this account
+                DeleteUserGateway deleteUserGateway = new DeleteUserGateway();
+                UserDeletionUseCase deleteUser = new UserDeletionUseCase(this.user, deleteUserGateway);
+                // if the user has been deleted, then we delete the products that user posted
+                if (deleteUser.deleteUser().equals(true)) {
+                    // need to remove all the followers/following stuff
+                    DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
+                    ProductDeletionUseCase productDeletionUseCase = new ProductDeletionUseCase(this.user, deleteProductsGateway);
+                    if(productDeletionUseCase.deleteProducts()) {
+                        // need to update feed or something
+
+                    }
+                }
+                // user does not exist
+                else {
+                    input.sendOutput("This user does not exist. User deletion unsuccessful.");
+                }
 
                 // [123, 1234]
                 //0
@@ -45,7 +55,7 @@ public class SettingsController {
 
 
             }
-            else if(userDecision.equals("2")){
+            else if(userDecision.equals("2")) {
                 ChangeUsernameGateway changeUsernameG = new ChangeUsernameGateway(user);
                 input.sendOutput("What do you want to set as your new username?");
                 String oldUsername = user.getUsername();
@@ -53,22 +63,23 @@ public class SettingsController {
                 changeUsernameG.changeUsername(newUsername, input);
                 // people who follow me, want my username to change for them
                 List<String> followers = user.getListFollowers();
-                for (String person : followers){
-                    if (person.equals(oldUsername)){
+                for (String person : followers) {
+                    if (person.equals(oldUsername)) {
                         followers.remove(person);
                         followers.add(newUsername);
                     }
                 }
                 // people who I follow, want the username to change for thei list
                 List<String> following = user.getListFollowing();
-                for (String person : following){
+                for (String person : following) {
 
-                    if (person.equals(oldUsername)){
+                    if (person.equals(oldUsername)) {
                         followers.remove(person);
                         followers.add(newUsername);
                     }
 
-                // TODO change this username everywhere in this user's following list
+                    // TODO change this username everywhere in this user's following list
+                }
             }
             else if(userDecision.equals("3")) {
                 // a new options gateways to make changes to your products
