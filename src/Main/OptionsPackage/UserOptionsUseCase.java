@@ -54,9 +54,8 @@ public class UserOptionsUseCase {
             }
             else if(userDecision.equals("4")){
                 // this user wants to browse posts of the users it is following
-                // redirects to OptionsPackage.browseController and return feed
-                // OptionsPackage.browseController OptionsPackage.browseController = new OptionsPackage.browseController();
-                // OptionsPackage.browseController.searchFeed(input, this.user);
+                BrowseController browseController = new BrowseController(this.user);
+                browseController.presentFeed();
             }
             else if (userDecision.equals("5")){
                 SettingsController settings = new SettingsController(user);
