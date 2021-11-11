@@ -32,8 +32,8 @@ public class UserOptionsController {
         try{
             if(userDecision.equals("1")) {
                 // redirects to OptionsPackage.searchController and returns relevant search info
-                BuyController searchGate = new BuyController();;
-                searchGate.allowBuy(input, user);
+                BuyController buyController = new BuyController();;
+                buyController.allowBuy(input, user);
 
                // searchGate.allowBuy(input, user);
                 // save the cart of the user
