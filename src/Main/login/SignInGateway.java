@@ -1,7 +1,6 @@
 package login;
 
 import InputAndOutput.SystemInOut;
-import UserFunctions.ReadWriter;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 
@@ -20,12 +19,13 @@ public class SignInGateway implements  SignInGatewayInterface {
      * @throws ClassNotFoundException
      */
 
-    public User allowSignIn(String username, SystemInOut inOut) throws IOException, ClassNotFoundException {
+    public User allowSignIn(String username) throws IOException, ClassNotFoundException {
+        SystemInOut inOut = new SystemInOut();
 
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
             inOut.sendOutput("No user exists yet, please sign up.");
-            WelcomePageController welcome = new WelcomePageController();
+            WelcomePageUseCase welcome = new WelcomePageUseCase();
             welcome.userLoginDecision(inOut);
 
         }
