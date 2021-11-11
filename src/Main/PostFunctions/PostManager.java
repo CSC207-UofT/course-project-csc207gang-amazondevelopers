@@ -63,6 +63,7 @@ public class PostManager {
         post.setCanRate(bool);
     }
 
+
     /**
      * Takes in a Post and sets ability to comment as true or false.
      * @param post the post that the user wants to change comment settings.
@@ -71,6 +72,7 @@ public class PostManager {
     public void changeCommentSettings(Post post, boolean bool) {
         post.setCanComment(bool);
     }
+    //maybe add methods to check if we can see comments and reviews
 
 
 
