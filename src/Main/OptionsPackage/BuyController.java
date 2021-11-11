@@ -10,6 +10,8 @@ import java.util.List;
 
 public class BuyController {
 
+    // TODO what happen after they decide to buy?
+
     public void allowBuy(SystemInOut input, User user) throws IOException, ClassNotFoundException {
 
         TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
@@ -34,6 +36,7 @@ public class BuyController {
                 // add this product to the cart
                 CartManager cart = new CartManager();
                 cart.addToCart(itemOfInterest, user);
+
 
             }else{
                 input.sendOutput("incorrect index, try again");

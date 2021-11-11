@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class CartManager {
 
+    // TODO buying
     public void addToCart(Product item, User user){
         List<Product> userCart = user.getShoppingCart();
         userCart.add(item);

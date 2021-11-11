@@ -24,6 +24,8 @@ public class FollowGateway {
             if (usersSavedDict.containsKey(username)) {
                 this.user.getListFollowing().add(username);
 
+
+
                 SaveUserChangesGateways saveChanges = new SaveUserChangesGateways();
                 saveChanges.save(user.getUsername(), user);
 
