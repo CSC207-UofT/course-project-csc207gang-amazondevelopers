@@ -1,23 +1,37 @@
 package OptionsPackage;
 
-public class BrowseController {
-    // TODO
-//    public void searchFeed(InOut inOut, User user){
-//        userManager userManager = new userManager();
-//        List<OptionsPackage.Post> PostList = userManager.getFeedTotal(user);
-//        if (!PostList.isEmpty()) {
-//            cartManager cart = new cartManager();
-//            cart.addToCartFeed(inOut, user);
-//
-//        } else {
-//            inOut.sendOutput("There was an error, please restart the program");
-//
-//        }
-//
-//
-//    }
+import InputAndOutput.SystemInOut;
+import UserFunctions.User;
 
+import java.io.IOException;
+import java.util.List;
+
+public class BrowseController {
+    User user;
+
+    public BrowseController(User user) {
+        this.user = user;
     }
+
+    /**
+     *
+     * @return presents the feed (list of posts that the users that this user follow have posted) of the user. if feed is not
+     * empty, allows user to buy from their feed.
+     *
+     */
+    public void presentFeed() throws IOException, ClassNotFoundException {
+        BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
+        List<Post> userFeed = browseUseCase.getFeed();
+        SystemInOut systemInOut = new SystemInOut();
+        systemInOut.sendOutput(userFeed);
+        //if the feed of the user is not empty
+        if (userFeed.size() != 0){
+           BuyController buyController = new BuyController();
+           buyController.allowBuy(systemInOut, this.user);
+        }
+    }
+}
+
 
 
 

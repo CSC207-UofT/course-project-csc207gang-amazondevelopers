@@ -1,5 +1,4 @@
 package UserFunctions;
-
 import OptionsPackage.Post;
 import ProductFunctions.Product;
 
@@ -21,7 +20,7 @@ public class User implements Serializable {
     private List<Product> currentSearches;
     private List<String> listFollowing; // people we follow
     private List<String> listFollowers; // people that follow me
-    private List<OptionsPackage.Post> feed;
+    private List<Post> feed;
     private List<String> productsPosted; // the list of all products that this user has posted.
 
     // I follow [Um, Alber, adam]
@@ -115,9 +114,9 @@ public class User implements Serializable {
     }
 
     // getter for instance variable feed
-//    public List<OptionsPackage.Post> getFeed() {
-//        return feed;
-//    }
+    public List<Post> getFeed() {
+        return feed;
+    }
 
     // setter for instance variable feed
 //    public void setFeed(List<OptionsPackage.Post> feed) {
