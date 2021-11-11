@@ -2,6 +2,7 @@ package Settings;
 
 import InputAndOutput.SystemInOut;
 import OptionsPackage.BuyController;
+import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 import login.WelcomePageController;
@@ -20,13 +21,17 @@ public class SettingsController {
     public void getSettingOptions(SystemInOut input) throws IOException {
 
         input.sendOutput("What would you like to do? Input a number for " +
-                "your ideal option:\n 1.Delete your account \n 2.change your username \n 3. Edit you products ");
+                "your ideal option:\n 1.Delete your account \n 2.change your username \n 3. Edit you products \n" +
+                "4. Back to all options");
 
         String userDecision = input.getInput();
 
         try{
             if(userDecision.equals("1")) {
                 // delete this acocunt
+
+
+                // delete their products
 
             }
             else if(userDecision.equals("2")){
@@ -36,6 +41,10 @@ public class SettingsController {
                 // a new options gateways to make changes to your products
             }
 
+            else if(userDecision.equals("4")) {
+                UserOptionsController options = new UserOptionsController(user);
+                options.userInput(input);
+            }
             throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs
         } catch (IOException e) {
