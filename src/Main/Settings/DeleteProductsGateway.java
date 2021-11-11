@@ -1,52 +1,38 @@
 package Settings;
 
-import InputAndOutput.SystemInOut;
-import OptionsPackage.UserOptionsController;
-import ProductFunctions.Product;
 import ProductFunctions.ProductReadWriter;
-import UserFunctions.User;
-import UserFunctions.UserReadWriter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
-public class DeleteProductsGateway {
+public class DeleteProductsGateway implements DeleteProductGatewayInterface {
 
-    String product;
-    User user;
-
-    public DeleteProductsGateway(String product, User user) {
-        this.product = product;
-        this.user = user;
-    }
-
-    public void deleteProduct(String id, SystemInOut input) throws IOException, ClassNotFoundException {
-
-
-
+    /**
+     * Deletes the products of this user from the product.ser file and the IdToProduct.ser file.
+     *
+     * @return true if all products were successfully deleted and false otherwise.
+     */
+    public boolean deleteProducts(List<String> listIds) throws IOException, ClassNotFoundException {
         File file = new File("src/Main/IdToProduct.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.
             ProductReadWriter rw = new ProductReadWriter();
             HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/IdToProduct.ser");
-            if (productSavedDict.containsKey(id)) {
-                productSavedDict.remove(id);
-                rw.saveToFile("src/Main/IdToProduct.ser", productSavedDict);
-
-
-
+            for (String id: listIds){
+                if (productSavedDict.containsKey(id)) {
+                    productSavedDict.remove(id);
+                }
+                else {
+                    // if that string id does not exist
+                    return false;
+                }
             }
-            input.sendOutput("This product does not exist, so it cannot be deleted ");
-            SettingsController options = new SettingsController(user);
-            options.getSettingOptions(input);
-
+            // saving back the updated hashmap
+            rw.saveToFile("src/Main/IdToProduct.ser", productSavedDict);
+            return true;
         }
-        input.sendOutput("This product does not exist, so it cannot be deleted ");
-        SettingsController options = new SettingsController(user);
-        options.getSettingOptions(input);
-
-
+        // no product do not exist
+        return false;
     }
-
 }

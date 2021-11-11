@@ -1,5 +1,6 @@
 package UserFunctions;
 
+import OptionsPackage.Post;
 import ProductFunctions.Product;
 
 import java.io.Serializable;
@@ -15,7 +16,7 @@ import java.util.List;
 public class User implements Serializable {
     // instance variables
     private String username;
-//    private List<OptionsPackage.Post> listPosts;
+    // private List<OptionsPackage.Post> listPosts;
     private List<Product> shoppingCart;
     private List<Product> currentSearches;
     private List<String> listFollowing; // people we follow
@@ -48,7 +49,7 @@ public class User implements Serializable {
 
     public User(String username){
         this.username = username;
-//        this.listPosts = new ArrayList<>();
+        // this.listPosts = new ArrayList<>();
         this.shoppingCart = new ArrayList<>();
         this.currentSearches = new ArrayList<>();
         this.listFollowing = new ArrayList<>();
@@ -74,7 +75,7 @@ public class User implements Serializable {
     }
 
     // getter for instance variable listPosts
-//    public List<OptionsPackage.Post> getListPosts() {
+//    public List<Post> getListPosts() {
 //        return listPosts;
 //    }
 
