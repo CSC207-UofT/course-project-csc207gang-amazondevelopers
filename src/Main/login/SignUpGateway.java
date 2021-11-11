@@ -11,9 +11,8 @@ import java.util.HashMap;
 public class SignUpGateway implements SignUpGatewayInterface {
 
     @Override
-    public void allowSignUp(String username, SystemInOut input) throws IOException, ClassNotFoundException {
-
-// TODO Delete user, check if there are multiple of same usernames.
+    public void allowSignUp(String username) throws IOException, ClassNotFoundException {
+        SystemInOut input = new SystemInOut();
 
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
@@ -31,7 +30,7 @@ public class SignUpGateway implements SignUpGatewayInterface {
         }
         input.sendOutput("This username is takes, please enter another one!");
         SignUpController signUp = new SignUpController();
-        signUp.getNewUsername(input);
+        signUp.getNewUsername();
 
     }
 

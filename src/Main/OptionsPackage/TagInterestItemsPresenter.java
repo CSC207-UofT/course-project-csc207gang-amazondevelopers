@@ -10,15 +10,17 @@ import java.util.List;
 
 // sends out list of products
 public class TagInterestItemsPresenter {
-    public void presentTagList(List<String> productsOfInterest, SystemInOut inOut) throws IOException, ClassNotFoundException {
-
-
+    public void presentTagList(List<String> IDProductOfInterest) throws IOException, ClassNotFoundException {
+        SystemInOut inOut = new SystemInOut();
         ArrayList<String> stringProductList = new ArrayList<>();
-        for (String itemID : productsOfInterest){
+        // TODO: change this to get the toString for Post instead of for the product.
+        for (String itemID : IDProductOfInterest ){
             GetProductGateway product = new GetProductGateway();
             Product ourProduct = product.getProduct(itemID);
-            String productString = ourProduct.toString();
-            stringProductList.add(productString);
+            if (product != null) {
+                String productString = ourProduct.toString();
+                stringProductList.add(productString);
+            }
         }
         inOut.sendOutput(stringProductList);
 
