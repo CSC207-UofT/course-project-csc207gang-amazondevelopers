@@ -5,7 +5,7 @@ import InputAndOutput.SystemInOut;
 import Settings.SettingsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
-import login.WelcomePageController;
+import login.WelcomePageUseCase;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -70,7 +70,7 @@ public class UserOptionsController {
             }
 
             else if (userDecision.equals("6")){
-                WelcomePageController welcome = new WelcomePageController();
+                WelcomePageUseCase welcome = new WelcomePageUseCase();
                 welcome.userLoginDecision(input);
             }
 
