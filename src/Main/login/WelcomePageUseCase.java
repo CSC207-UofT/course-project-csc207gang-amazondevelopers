@@ -11,19 +11,20 @@ import java.io.IOException;
  *
  */
 
-public class WelcomePageController {
+public class WelcomePageUseCase {
 
 
-    public void userLoginDecision(SystemInOut inOut) throws IOException {
+    public void userLoginDecision(String userDecision) throws IOException {
+        SystemInOut inOut = new SystemInOut();
         boolean keepRunning = true;
         while(keepRunning) {
-            inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n" +
-                    "3.Quit\n Input * at any time to undo your action");
 
-            String userDecision = inOut.getInput();
+
+
             try {
                 if (userDecision.equals("1")) {
-                    SignInController signInGate = new SignInController();
+                    // sign in
+                    SignInGatewayInterface signInGate;
                     String username = signInGate.getUsername(inOut);
 
                     SignInGateway signIn = new SignInGateway();

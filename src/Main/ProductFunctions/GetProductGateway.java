@@ -21,9 +21,6 @@ public class GetProductGateway implements GetProductGatewayInterface{
             // TODO check this
             return null;
         }
-
-
-
         ProductReadWriter rw = new ProductReadWriter();
         HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main/IdToProduct.ser");
         if (idToProductDict.get(productId) != null){

@@ -1,5 +1,6 @@
 import InputAndOutput.SystemInOut;
-import login.WelcomePageController;
+import login.WPController;
+import login.WelcomePageUseCase;
 
 import java.io.IOException;
 
@@ -7,8 +8,10 @@ public class Run {
 
     public static void main(String[] args) throws IOException {
         SystemInOut inOut = new SystemInOut();
-        WelcomePageController initialLogin = new WelcomePageController();
-        initialLogin.userLoginDecision(inOut);
+        WPController welcomePageContoller = new WPController();
+        String userDecision = welcomePageContoller.getWPInput(inOut);
+        WelcomePageUseCase WPUsedCase = new WelcomePageUseCase();
+        WPUsedCase.userLoginDecision(userDecision);
 
         }
     }

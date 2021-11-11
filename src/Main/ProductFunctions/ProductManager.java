@@ -9,17 +9,6 @@ public class ProductManager {
     CreateProductGatewayInterface createProduct;
     GetProductGatewayInterface getProduct;
 
-    /**
-     * Create a new Product object.
-     * This method takes in a String for Product name, a float for the Product price, another String for the
-     * product category, and also a String for size.
-     * Returns true if Product is created and false otherwise.
-     *
-     * @return a newly created product.
-     */
-
-
-
     public ProductManager(CreateProductGatewayInterface createProduct){
         this.createProduct = createProduct;
 
@@ -29,7 +18,14 @@ public class ProductManager {
         this.getProduct = getProduct;
     }
 
-
+    /**
+     * Create a new Product object.
+     * This method takes in a String for Product name, a double for the Product price, another String for the
+     * product category, a String for size, and an int for the quantitiy.
+     * Returns the Product if created and null otherwise.
+     *
+     * @return a newly created product or null.
+     */
     public Product createProduct(String name, String id, Double price, String category, String size, int quantity) throws IOException, ClassNotFoundException {
         Product newProduct = new Product(name, id, price, category, size, quantity);
         if (checkProductStatus(id)){
@@ -41,6 +37,15 @@ public class ProductManager {
     }
 
     //Overloaded method for if there is no size attributed to this Product
+
+    /**
+     * Create a new Product object.
+     * This method takes in a String for Product name, a double for the Product price, another String for the
+     * product category, and an int for the quantitiy.
+     * Returns the Product if created and null otherwise.
+     *
+     * @return a newly created product or null.
+     */
     public Product createProduct(String name, String id, Double price, String category, int quantity) throws IOException, ClassNotFoundException {
         Product newProduct = new Product(name, id, price, category, quantity);
         if (checkProductStatus(id)) {

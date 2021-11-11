@@ -14,8 +14,6 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
     public void addProductToRepo(Product newProduct, String productId, String tag) throws IOException,
             ClassNotFoundException {
 
-
-
         File file = new File("src/Main/product.ser");
         if (file.length() == 0){
             UserReadWriter rw = new UserReadWriter();
