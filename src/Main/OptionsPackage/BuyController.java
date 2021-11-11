@@ -1,6 +1,7 @@
 package OptionsPackage;
 
 import InputAndOutput.SystemInOut;
+import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;
 import UserFunctions.CartManager;
 import UserFunctions.User;
@@ -17,7 +18,8 @@ public class BuyController {
         TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
         SearchController search = new SearchController();
 
-        List<Product> productsOfInterest = search.allowSearch(input);
+
+        List<String> productsOfInterest = search.allowSearch(input);
         presenter.presentTagList(productsOfInterest, input);
 
         input.sendOutput("Would you like to purchase one of the items?" +
@@ -36,10 +38,12 @@ public class BuyController {
                     String itemIndex = input.getInput();
                     int indexInt = Integer.parseInt(itemIndex);
                     if (indexInt < productsOfInterest.size()) {
-                        Product itemOfInterest = productsOfInterest.get(indexInt);
+                        GetProductGateway productG = new GetProductGateway();
+                        String itemAtIndex = productsOfInterest.get(indexInt);
+                        Product productToAddToCart = productG.getProduct(itemAtIndex);
                         // add this product to the cart
                         CartManager cart = new CartManager();
-                        cart.addToCart(itemOfInterest, user);
+                        cart.addToCart(productToAddToCart, user);
                         boughtOrExit = true;
                     } else if (itemIndex.equals("exit")) {
                         boughtOrExit = true;
@@ -53,6 +57,7 @@ public class BuyController {
                 keepChecking = false;
             } else {
                 return;
+
             }
         }
 
