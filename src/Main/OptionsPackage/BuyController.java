@@ -8,9 +8,9 @@ import UserFunctions.User;
 import java.io.IOException;
 import java.util.List;
 
-public class BuyGateway {
+public class BuyController {
 
-    // TODO use this same class in browse and everywhere else you want to buy
+    // TODO what happen after they decide to buy?
 
     public void allowBuy(SystemInOut input, User user) throws IOException, ClassNotFoundException {
 
@@ -36,6 +36,7 @@ public class BuyGateway {
                 // add this product to the cart
                 CartManager cart = new CartManager();
                 cart.addToCart(itemOfInterest, user);
+
 
             }else{
                 input.sendOutput("incorrect index, try again");

@@ -36,7 +36,7 @@ public class WelcomePageController {
                     String newUsername = signUpGate.getNewUsername(inOut);
 
                     SignUpGateway signUp = new SignUpGateway();
-                    signUp.allowSignUp(newUsername);
+                    signUp.allowSignUp(newUsername, inOut);
                     // recurse back to login page after sign up
                     //this.userLoginDecision(inOut);
 

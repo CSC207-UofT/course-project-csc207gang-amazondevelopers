@@ -2,8 +2,10 @@ package OptionsPackage;
 
 import InputAndOutput.SystemInOut;
 
+import Settings.SettingsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
+import login.WelcomePageController;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,14 +24,15 @@ public class UserOptionsController {
     public void userInput(SystemInOut input) throws IOException {
 
         input.sendOutput("What would you like to do? Input a number for " +
-                "your ideal option:\n 1.Search and buy \n 2.Make a post \n 3.Follow another user \n 4.Browse and buy");
-        String userDecision = input.getInput();
+                "your ideal option:\n 1.Search and buy \n 2.Make a post \n 3.Follow another user \n 4.Browse and buy" +
+                "\n 5. Settings \n 6.logout ");
 
+        String userDecision = input.getInput();
 
         try{
             if(userDecision.equals("1")) {
                 // redirects to OptionsPackage.searchController and returns relevant search info
-                BuyGateway searchGate = new BuyGateway();;
+                BuyController searchGate = new BuyController();;
                 searchGate.allowBuy(input, user);
 
                // searchGate.allowBuy(input, user);
@@ -49,12 +52,26 @@ public class UserOptionsController {
                 // this user wants to follow another user.
                 // this user needs to enter the username of the user they want to follow
                 // This user then needs to be added to this user's follow list
+                input.sendOutput("What is the username of the person you would like to follow?");
+                String usernameToFollow = input.getInput();
+                UserFunctions.FollowGateway following = new UserFunctions.FollowGateway(user);
+                following.follow(usernameToFollow, input);
+
             }
             else if(userDecision.equals("4")){
                 // this user wants to browse posts of the users it is following
                 // redirects to OptionsPackage.browseController and return feed
                 // OptionsPackage.browseController OptionsPackage.browseController = new OptionsPackage.browseController();
                 // OptionsPackage.browseController.searchFeed(input, this.user);
+            }
+            else if (userDecision.equals("5")){
+                SettingsController settings = new SettingsController(user);
+                settings.getSettingOptions(input);
+            }
+
+            else if (userDecision.equals("6")){
+                WelcomePageController welcome = new WelcomePageController();
+                welcome.userLoginDecision(input);
             }
 
 //  implement allowing the user to browse, and create a post
