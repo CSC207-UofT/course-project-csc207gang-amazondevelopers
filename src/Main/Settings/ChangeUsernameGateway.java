@@ -2,13 +2,13 @@ package Settings;
 
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
+import OptionsPackage.UserOptionsUseCase;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 public class ChangeUsernameGateway {
     User user;
@@ -17,7 +17,8 @@ public class ChangeUsernameGateway {
         this.user = user;
     }
 
-    public void changeUsername(String newUsername, SystemInOut input) throws IOException, ClassNotFoundException {
+    public void changeUsername(String newUsername) throws IOException, ClassNotFoundException {
+        SystemInOut input = new SystemInOut();
         File file = new File("src/Main/user.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.
@@ -34,12 +35,12 @@ public class ChangeUsernameGateway {
 
             input.sendOutput("This username does not exist, so it cannot be deleted ");
             UserOptionsController options = new UserOptionsController(user);
-            options.userInput(input);
+            options.getOption();
 
         }
         input.sendOutput("This username does not exist, so it cannot be deleted ");
         UserOptionsController options = new UserOptionsController(user);
-        options.userInput(input);
+        options.getOption();
 
 
     }

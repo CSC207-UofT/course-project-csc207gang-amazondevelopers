@@ -5,14 +5,17 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
+
+import OptionsPackage.UserOptionsController;
 import Undo.Undo;
 
 import UserFunctions.User;
-import OptionsPackage.UserOptionsController;
+import OptionsPackage.UserOptionsUseCase;
 
 public class CreateProductController {
 
-    public Product createNewProductFromInput(SystemInOut input, User user) throws Exception {
+    public Product createNewProductFromInput(User user) throws Exception {
+        SystemInOut input = new SystemInOut();
         Undo undo = new Undo();
         undo.addData("Name");
         undo.addData("ID");
@@ -32,7 +35,7 @@ public class CreateProductController {
                 String name = input.getInput();
                 if (name.equals("*")){
                     UserOptionsController uo = new UserOptionsController(user);
-                    uo.userInput(input);
+                    uo.getOption();
                     throw new IOException();
                 }
                 else{
