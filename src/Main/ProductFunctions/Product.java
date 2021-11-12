@@ -60,6 +60,7 @@ public class Product implements Serializable {
     public Double getPrice() {return price;}
 
     //setter for price of product
+    // Precondition: price >= 0
     public void setPrice(Double pprice) {this.price = pprice;}
 
     // getter for category of product
@@ -78,5 +79,7 @@ public class Product implements Serializable {
     public int getQuantity() {return quantity;}
 
     //setter for quantity
-    public void setQuantity(int pquantity) {this.quantity = pquantity;}
+    public void setQuantity(int pquantity) {
+        this.quantity = Math.max(pquantity, 0);
+    }
 }
