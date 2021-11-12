@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class UserOptionsController{
     User user;
+
     public UserOptionsController(User user){
         this.user = user;
     }

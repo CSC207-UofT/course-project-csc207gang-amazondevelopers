@@ -1,5 +1,5 @@
 package UserFunctions;
-import OptionsPackage.Post;
+import PostFunctions.Post;
 import ProductFunctions.Product;
 
 import java.io.Serializable;
