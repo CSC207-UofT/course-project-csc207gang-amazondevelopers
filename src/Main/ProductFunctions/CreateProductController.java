@@ -1,5 +1,6 @@
 package ProductFunctions;
 
+import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 
 import java.io.IOException;
@@ -21,8 +22,8 @@ import OptionsPackage.UserOptionsUseCase;
  */
 public class CreateProductController {
 
-    public Product createNewProductFromInput(User user) throws Exception {
-        SystemInOut input = new SystemInOut();
+    public Product createNewProductFromInput(SystemInOut input, User user) throws Exception {
+        // SystemInOut input = new SystemInOut();
         Undo undo = new Undo();
         undo.addData("Name");
         undo.addData("ID");
@@ -73,7 +74,12 @@ public class CreateProductController {
                 }
                 else{
                     Double price = Double.parseDouble(priceString);
-                    undo.setDataPoint(price);
+                    if (price >= 0) {
+                        undo.setDataPoint(price);
+                    }
+                    else{
+                        input.sendOutput("Price must be greater than or equal to 0.");
+                    }
                 }
 
             }
