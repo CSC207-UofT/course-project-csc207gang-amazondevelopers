@@ -26,6 +26,7 @@ public class SignInControllerTest extends SignInController{
         user = new User("test1");
     }
 
+
     @Test
     void testSignInReal() throws IOException, ClassNotFoundException {
         assertEquals(signin.allowSignIn("test1", inOut).getUsername(), "test1");
