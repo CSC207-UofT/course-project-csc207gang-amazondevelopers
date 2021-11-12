@@ -8,10 +8,15 @@ import java.util.Objects;
 
 import OptionsPackage.UserOptionsController;
 import Undo.Undo;
+import PostFunctions.Post;
+import PostFunctions.PostManager;
 
 import UserFunctions.User;
 import OptionsPackage.UserOptionsUseCase;
 
+/**
+ * Class to create a specific product and its related post.
+ */
 public class CreateProductController {
 
     public Product createNewProductFromInput(User user) throws Exception {
@@ -23,12 +28,18 @@ public class CreateProductController {
         undo.addData("Category");
         undo.addData("Quantity");
         undo.addData("Size");
+        undo.addData("Caption");
+        undo.addData("CanComment");
+        undo.addData("CanRate");
         undo.addState("Name");
         undo.addState("ID");
         undo.addState("Price");
         undo.addState("Category");
         undo.addState("Quantity");
         undo.addState("Size");
+        undo.addState("Caption");
+        undo.addState("CanComment");
+        undo.addState("CanRate");
         while(!undo.isComplete()) {
             if (Objects.equals(undo.getCurrentState(), "Name")) {
                 input.sendOutput("What is the name of the product?");
@@ -86,21 +97,69 @@ public class CreateProductController {
                     undo.setDataPoint(quantity);
                 }
             }
-            if (Objects.equals(undo.getCurrentState(), "Size")) {
+            if (Objects.equals(undo.getCurrentState(), "CanComment")) {
                 input.sendOutput("What is the size of this product? Press enter No Size if this product does not have a size");
                 String sizeInput = input.getInput();
+                if (sizeInput.equals("*")){
+                    undo.undo();
+                }
+                else {
+                    undo.setDataPoint(sizeInput);
+                }
+            }
+            if (Objects.equals(undo.getCurrentState(), "Caption")) {
+                input.sendOutput("What is the caption of your post?");
+                String captionInput = input.getInput();
+                if (captionInput.equals("*")){
+                    undo.undo();
+                }
+                else {
+                    undo.setDataPoint(captionInput);
+                }
+            }
+            if (Objects.equals(undo.getCurrentState(), "CanComment")) {
+                input.sendOutput("Would you like your post to have Comments? Input 1 for yes, 2 for no");
+                String commentInput = input.getInput();
+                if (commentInput.equals("*")){
+                    undo.undo();
+                }
+                else if(commentInput.equals("1")){
+                    undo.setDataPoint(true);
+                }
+                else if(commentInput.equals("2")){
+                    undo.setDataPoint(false);
+                }
+                //If they didnt enter these 3 options
+            }
+            if (Objects.equals(undo.getCurrentState(), "CanRate")) {
+                input.sendOutput("Would you like your post to have Ratings? Input 1 for yes, 2 for no");
+                String ratingInput = input.getInput();
+                if (ratingInput.equals("*")) {
+                    undo.undo();
+                } else if (ratingInput.equals("1")) {
+                    undo.setDataPoint(true);
+                } else if (ratingInput.equals("2")) {
+                    undo.setDataPoint(false);
+                }
+                //If they didnt enter these 3 options
             }
         }
         HashMap<String, Object> output = undo.get_Data();
         CreateProductGateway productGate = new CreateProductGateway();
 
-        if (! output.get("Size").equals("No Size")){
+        if (!output.get("Size").equals("No Size")){
 
             ProductManager productManager = new ProductManager(productGate);
-            return productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),(int) output.get("Quantity"));
+            Product newproduct = productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),(int) output.get("Quantity"));
+            PostManager postManager = new PostManager();
+            Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),(boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
+            return newproduct;
         }else{
             ProductManager productManager = new ProductManager(productGate);
-            return productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
+            Product newproduct = productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
+            PostManager postManager = new PostManager();
+            Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),(boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
+            return newproduct;
         }
     }
 }

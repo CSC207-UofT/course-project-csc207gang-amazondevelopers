@@ -2,7 +2,8 @@ package UserFunctions;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import PostFunctions.Post;
+import ProductFunctions.Product;
 public class UserAddToCartUseCase {
 
 
