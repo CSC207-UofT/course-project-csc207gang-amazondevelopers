@@ -1,8 +1,9 @@
 package login;
 
 import InputAndOutput.SystemInOut;
-import UserFunctions.User;
 import OptionsPackage.UserOptionsController;
+import UserFunctions.User;
+import OptionsPackage.UserOptionsUseCase;
 
 import java.io.IOException;
 
@@ -13,44 +14,44 @@ import java.io.IOException;
 
 public class WelcomePageController {
 
+    /**
+     * Use case class that decides which classes to call, given the input from the user. Then, calls the methods
+     * needed to perform the respective functions.
+     */
+    public void userLoginDecision() throws IOException {
+        SystemInOut inOut = new SystemInOut();
+        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n" +
+                "3.Quit\n Input * at any time to undo your action");
+        // user input
+        String userDecision = inOut.getInput();
 
-    public void userLoginDecision(SystemInOut inOut) throws IOException {
         boolean keepRunning = true;
         while(keepRunning) {
-            inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n" +
-                    "3.Quit\n Input * at any time to undo your action");
-
-            String userDecision = inOut.getInput();
             try {
                 if (userDecision.equals("1")) {
-                    SignInController signInGate = new SignInController();
-                    String username = signInGate.getUsername(inOut);
-
+                    // sign in
+                    SignInController signInCont = new SignInController();
+                    String username = signInCont.getUsername();
+                    // the user is directed to option page
                     SignInGateway signIn = new SignInGateway();
-                    User signedInUser = signIn.allowSignIn(username, inOut);
+                    User signedInUser = signIn.allowSignIn(username);
                     UserOptionsController options = new UserOptionsController(signedInUser);
-                    options.userInput(inOut);
+                    options.getOption();
 
                 } else if (userDecision.equals("2")) {
-                    SignUpController signUpGate = new SignUpController();
-                    String newUsername = signUpGate.getNewUsername(inOut);
+                    SignUpController signUpCont = new SignUpController();
+                    String newUsername = signUpCont.getNewUsername();
 
                     SignUpGateway signUp = new SignUpGateway();
-                    signUp.allowSignUp(newUsername, inOut);
-                    // recurse back to login page after sign up
-                    //this.userLoginDecision(inOut);
+                    signUp.allowSignUp(newUsername);
+                    // recurse back to login page after sign up to then sign in
 
                 } else if (userDecision.equals("3")) {
                     keepRunning = false;
-                    //System.exit(0);
-
                 }
                 else {
                     inOut.sendOutput("Try again");
-                    // this.userLoginDecision(inOut);
-
                 }
-
             } catch (Exception exception) {
                 exception.printStackTrace();
             }

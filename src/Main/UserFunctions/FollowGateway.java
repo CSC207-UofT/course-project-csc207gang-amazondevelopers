@@ -3,6 +3,7 @@ package UserFunctions;
 
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
+import OptionsPackage.UserOptionsUseCase;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +34,7 @@ public class FollowGateway {
             }
             input.sendOutput("this user you want to follow does not exist, please try again");
             UserOptionsController options = new UserOptionsController(user);
-            options.userInput(input);
+            options.getOption();
         }
     }
 }
