@@ -1,15 +1,12 @@
 package follow_users;
 
 import InputAndOutput.SystemInOut;
-import OptionsPackage.BuyController;
-import OptionsPackage.SearchGateway;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import login.GetUserGateway;
 import login.SaveUserGateway;
 
 import java.io.IOException;
-import java.util.List;
 
 public class FollowController {
 
@@ -36,7 +33,7 @@ public class FollowController {
             UOC.getOption();
         }
         SaveUserGateway saveUserGateway = new SaveUserGateway(this.user);
-        GetUserGateway getUserGateway = new GetUserGateway(this.user);
+        GetUserGateway getUserGateway = new GetUserGateway();
         UserFollowingUseCase userFollowingUseCase = new UserFollowingUseCase(this.user, saveUserGateway, getUserGateway);
         userFollowingUseCase.addToFollowingList(userInput);
     }

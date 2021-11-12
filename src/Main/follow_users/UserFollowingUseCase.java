@@ -38,7 +38,7 @@ public class UserFollowingUseCase {
         listFollowersFollowUser.add(this.user.getUsername());
 
         // save both users to the user.ser file
-        saveUserGateway.saveUser(this.user);
-        saveUserGateway.saveUser(userFollower);
+        saveUserGateway.saveUser(this.user.getUsername(), this.user);
+        saveUserGateway.saveUser(newFollowing, userFollower);
     }
 }

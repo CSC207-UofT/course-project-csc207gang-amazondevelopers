@@ -8,7 +8,6 @@ import Settings.SettingsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 import follow_users.FollowController;
-import follow_users.FollowGateway;
 import login.WelcomePageController;
 
 import java.io.IOException;

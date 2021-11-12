@@ -3,7 +3,6 @@ package login;
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
-import OptionsPackage.UserOptionsUseCase;
 
 import java.io.IOException;
 
@@ -32,18 +31,17 @@ public class WelcomePageController {
                     SignInController signInCont = new SignInController();
                     String username = signInCont.getUsername();
                     // the user is directed to option page
-                    SignInGateway signIn = new SignInGateway();
-                    User signedInUser = signIn.allowSignIn(username);
+                    GetUserGateway signIn = new GetUserGateway();
+                    User signedInUser = signIn.getUser(username);
                     UserOptionsController options = new UserOptionsController(signedInUser);
                     options.getOption();
                     this.userLoginDecision();
 
 
                 } else if (userDecision.equals("2")) {
-                    SignUpController signUpCont = new SignUpController();
-                    String newUsername = signUpCont.getNewUsername();
                     SignUpGateway signUp = new SignUpGateway();
-                    signUp.allowSignUp(newUsername);
+                    SignUpUseCase signUpUseCase = new SignUpUseCase(signUp);
+                    signUpUseCase.allowSignUp();
                     // recurse back to login page after sign up to then sign in
                     this.userLoginDecision();
 
