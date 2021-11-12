@@ -46,7 +46,7 @@ public class UserOptionsUseCase {
             else if(userDecision.equals("2")){
                 // create the product,
                 CreateProductController productC = new CreateProductController();
-                productC.createNewProductFromInput(user);
+                productC.createNewProductFromInput(input, user);
                 // then add it as a post
             }
             // follow

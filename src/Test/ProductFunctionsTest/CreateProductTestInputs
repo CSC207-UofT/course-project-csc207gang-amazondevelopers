@@ -1,0 +1,101 @@
+createProductSizeTest
+shoe
+7235617782136781667163817
+5
+shoes
+2
+1
+
+createProductNoSizeTest
+shoe
+7235617782136781667163817
+5
+shoes
+2
+No Size
+
+createProductUndoNameTest
+shoe
+*
+dress
+7235617782136781667163817
+5
+shoes
+2
+No Size
+
+createProductMultipleUndoTest
+shoe
+*
+dress
+40
+*
+7235617782136781667163817
+5
+*
+400
+shoes
+*
+pants
+2
+No Size
+*
+Size
+3
+
+createProductBadInputsAllStringsTest
+jawdhwkjshkj
+kjsadhkahsdk
+jhagsdjh
+wkjwk
+ajsdgasjgj
+kahjiqwweiuo
+
+createProductDuplicateProductsTest
+shoe
+7235617782136781667163817
+5
+shoes
+2
+No Size
+
+shoe
+7235617782136781667163817
+5
+shoes
+2
+No Size
+
+createProductBadInputsNegativePriceTest
+shoe
+7235617782136781667163817
+-500
+50
+shoes
+2
+No Size
+
+createProductBadInputsZeroPriceTest
+shoe
+7235617782136781667163817
+0
+shoes
+2
+No Size
+
+createProductBadInputsNegativeQuantityTest
+shoe
+7235617782136781667163817
+5
+shoes
+-50
+No Size
+
+createProductBadInputsZeroQuantityTest
+shoe
+7235617782136781667163817
+5
+shoes
+0
+No Size
+
