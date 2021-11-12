@@ -25,8 +25,7 @@ public class WelcomePageController {
         // user input
         String userDecision = inOut.getInput();
 
-        boolean keepRunning = true;
-        while(keepRunning) {
+
             try {
                 if (userDecision.equals("1")) {
                     // sign in
@@ -37,20 +36,23 @@ public class WelcomePageController {
                     User signedInUser = signIn.allowSignIn(username);
                     UserOptionsController options = new UserOptionsController(signedInUser);
                     options.getOption();
+                    this.userLoginDecision();
+
 
                 } else if (userDecision.equals("2")) {
                     SignUpController signUpCont = new SignUpController();
                     String newUsername = signUpCont.getNewUsername();
-
                     SignUpGateway signUp = new SignUpGateway();
                     signUp.allowSignUp(newUsername);
                     // recurse back to login page after sign up to then sign in
+                    this.userLoginDecision();
 
                 } else if (userDecision.equals("3")) {
-                    keepRunning = false;
+                    this.userLoginDecision();
                 }
                 else {
                     inOut.sendOutput("Try again");
+
                 }
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -58,7 +60,7 @@ public class WelcomePageController {
         }
 
     }
-}
+
 
 
 
