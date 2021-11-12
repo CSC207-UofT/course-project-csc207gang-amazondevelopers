@@ -22,6 +22,7 @@ public class SignUpControllerTest extends SignUpController{
         signup = new SignUpController();
     }
 
+
     @Test
     void testSignUpWorks() throws IOException, ClassNotFoundException {
         signup.allowSignUp("test1");

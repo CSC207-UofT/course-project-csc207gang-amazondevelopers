@@ -25,6 +25,7 @@ public class SearchControllerTest extends SearchController {
         assertEquals(searchController.searchProducts(tag), list);
     }
 
+
     void testThrowsException() throws IOException, ClassNotFoundException{
         ;
     }
