@@ -18,9 +18,6 @@ public class WelcomePageUseCase {
         SystemInOut inOut = new SystemInOut();
         boolean keepRunning = true;
         while(keepRunning) {
-
-
-
             try {
                 if (userDecision.equals("1")) {
                     // sign in
