@@ -39,8 +39,5 @@ public class GetUserGateway {
             signUp.getNewUsername();
         }
         return null;
-
-
-
     }
 }

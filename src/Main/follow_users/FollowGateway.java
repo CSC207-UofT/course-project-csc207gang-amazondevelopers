@@ -1,28 +1,14 @@
 package follow_users;
-
-
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
-import OptionsPackage.UserOptionsUseCase;
-import PostFunctions.Post;
 import UserFunctions.SaveUserChangesGateways;
-import UserFunctions.User;
 import UserFunctions.UserReadWriter;
-import UserFunctions.UserUseCase;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FollowGateway {
-    // This user  signed in
-    User user;
-
-    public FollowGateway(User user) {
-        this.user = user;
-    }
 
     public void follow(String username) throws IOException, ClassNotFoundException {
         // username is the username of the new person that I want to follow
@@ -44,5 +30,7 @@ public class FollowGateway {
             FollowController followOptions = new FollowController(user);
             followOptions.allowFollow();
         }
+        UserOptionsController userOptionsController = new UserOptionsController(user);
+        userOptionsController.getOption();
     }
 }
