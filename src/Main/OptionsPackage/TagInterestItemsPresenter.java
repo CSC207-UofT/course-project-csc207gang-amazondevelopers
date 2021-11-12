@@ -10,6 +10,7 @@ import java.util.List;
 
 // sends out list of products
 public class TagInterestItemsPresenter {
+
     public void presentTagList(List<String> IDProductOfInterest) throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
         ArrayList<String> stringProductList = new ArrayList<>();
@@ -17,15 +18,13 @@ public class TagInterestItemsPresenter {
         for (String itemID : IDProductOfInterest ){
             GetProductGateway product = new GetProductGateway();
             Product ourProduct = product.getProduct(itemID);
-            if (product != null) {
-                String productString = ourProduct.toString();
-                stringProductList.add(productString);
-            }
+            String productString = ourProduct.toString();
+            stringProductList.add(productString);
         }
         inOut.sendOutput(stringProductList);
-
-
    }
 
-    }
+
+
+}
 

@@ -25,10 +25,9 @@ public class UserOptionsUseCase {
         SystemInOut input = new SystemInOut();
         try{
             if(userDecision.equals("1")) {
-                SearchController searchC = new SearchController();
-                // redirects to OptionsPackage.searchController and returns relevant search info
-                BuyController buyController = new BuyController();;
-                buyController.allowBuy(user);
+                // redirects to searchController and returns relevant search info
+                SearchController searchController = new SearchController(user);
+                searchController.allowSearch();
 
                 // save the cart of the user
                 String username = user.getUsername();

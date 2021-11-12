@@ -13,20 +13,16 @@ public class BuyController {
 
     // TODO what happen after they decide to buy?
 
-    public void allowBuy(User user) throws IOException, ClassNotFoundException {
+    public void allowBuy(User user, List<String> listIds) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
-
         TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
-        SearchController search = new SearchController();
 
-        List<String> productsOfInterest = search.allowSearch();
-
-        // loop to keep checking if the user wants to buy something from the search results
+        // loop to keep checking if the user wants to buy something from the list
         boolean keepRunning = true;
         while(keepRunning) {
-            presenter.presentTagList(productsOfInterest);
+            presenter.presentTagList(listIds);
             input.sendOutput("Would you like to purchase one of the items?" +
-                "enter the number of your choice\n 1.Yes\n2.No\nType 'exit' if you would like to exit.");
+                "enter the number of your choice\n 1.Yes\n 2.No.(Search or browse again) \n Type 'R' to choose another option from the menu.");
             String decisionToBuy = input.getInput();
 
             if (decisionToBuy.equals("1")) {
@@ -38,9 +34,9 @@ public class BuyController {
                             "the 0th index. Type exit if you would like to go back to your search result.");
                     String itemIndex = input.getInput();
                     int indexInt = Integer.parseInt(itemIndex);
-                    if (indexInt < productsOfInterest.size()) {
+                    if (indexInt < listIds.size()) {
                         GetProductGateway productG = new GetProductGateway();
-                        String itemAtIndex = productsOfInterest.get(indexInt);
+                        String itemAtIndex = listIds.get(indexInt);
                         Product productToAddToCart = productG.getProduct(itemAtIndex);
                         // add this product to the cart
                         CartManager cart = new CartManager();
@@ -58,13 +54,16 @@ public class BuyController {
                 }
 
             } else if (decisionToBuy.equals("2")) {
+                // end the loop, thereby ending the call to BuyController
+                keepRunning = false;
+            } else if (decisionToBuy.equals("R")) {
                 // let the user search for something new if they dont want to buy something
-                search.allowSearch();
+                UserOptionsController userOptionsController = new UserOptionsController(user);
+                userOptionsController.getOption();
                 keepRunning = false;
             } else {
                 // end the loop, thereby ending the call to BuyController
                 keepRunning = false;
-
             }
         }
 
