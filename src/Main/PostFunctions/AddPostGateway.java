@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class AddPostGateway() {
+public class AddPostGateway implements AddPostGatewayInterface{
 
     /**
      * Adds a post to a users post list in the .ser file
