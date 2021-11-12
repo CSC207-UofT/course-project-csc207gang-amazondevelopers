@@ -10,6 +10,7 @@ import OptionsPackage.UserOptionsController;
 import Undo.Undo;
 import PostFunctions.Post;
 import PostFunctions.PostManager;
+import PostFunctions.AddPostGateway;
 
 import UserFunctions.User;
 import OptionsPackage.UserOptionsUseCase;
@@ -153,12 +154,16 @@ public class CreateProductController {
             Product newproduct = productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),(int) output.get("Quantity"));
             PostManager postManager = new PostManager();
             Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),(boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
+            AddPostGateway postGate = new AddPostGateway();
+            postGate.addPost(newpost,user);
             return newproduct;
         }else{
             ProductManager productManager = new ProductManager(productGate);
             Product newproduct = productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
             PostManager postManager = new PostManager();
             Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),(boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
+            AddPostGateway postGate = new AddPostGateway();
+            postGate.addPost(newpost,user);
             return newproduct;
         }
     }
