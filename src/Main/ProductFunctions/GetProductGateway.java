@@ -1,7 +1,9 @@
 package ProductFunctions;
 
 import InputAndOutput.SystemInOut;
-import UserFunctions.UserReadWriter;
+import OptionsPackage.UserOptionsController;
+import OptionsPackage.UserOptionsUseCase;
+import UserFunctions.User;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,10 +17,13 @@ public class GetProductGateway implements GetProductGatewayInterface{
     // ID to product
 
     public Product getProduct(String productId) throws IOException, ClassNotFoundException {
+        SystemInOut input = new SystemInOut();
 
         File file = new File("src/Main/IdToProduct.ser");
         if (file.length() == 0){
-            // TODO check this
+            input.sendOutput("There are no products in this program yet!");
+            // go back to options
+            // go back to options
             return null;
         }
         ProductReadWriter rw = new ProductReadWriter();
@@ -26,6 +31,7 @@ public class GetProductGateway implements GetProductGatewayInterface{
         if (idToProductDict.get(productId) != null){
             return (Product) idToProductDict.get(productId);
         }
+        // go back to option
         return null;
     }
 }

@@ -6,13 +6,14 @@ import java.io.IOException;
 
 public class SignUpController {
 
-    String getNewUsername(SystemInOut inOut) throws IOException {
+    String getNewUsername() throws IOException {
+        SystemInOut inOut = new SystemInOut();
         inOut.sendOutput("What would you like to put as your username? " +
-                "(please do not leave this field empty)");
+                "(please do not leave this field empty and do not put * as your usernmar)");
         String newUsername = inOut.getInput();
-        while (newUsername.equals("")){
+        if (newUsername.equals("") | newUsername.equals("*")){
             inOut.sendOutput("Invalid Username, please reenter your username.");
-            this.getNewUsername(inOut);
+            this.getNewUsername();
         }return newUsername;
 
     }

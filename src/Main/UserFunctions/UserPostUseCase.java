@@ -1,6 +1,6 @@
 package UserFunctions;
 
-import OptionsPackage.Post;
+import PostFunctions.Post;
 
 import java.util.ArrayList;
 import java.util.List;

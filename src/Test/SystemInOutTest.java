@@ -1,13 +1,11 @@
 import InputAndOutput.InOut;
-import ProductFunctions.Product;
 
 import java.io.*;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.Scanner;
 
 public class SystemInOutTest implements InOut {
-
+    
     private final Scanner reader;
 
     /**
@@ -33,6 +31,7 @@ public class SystemInOutTest implements InOut {
     @Override
     public void sendOutput(Object s) {
         System.out.println(s);
+
     }
 
 }

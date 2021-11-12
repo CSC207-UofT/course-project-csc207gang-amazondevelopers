@@ -2,10 +2,10 @@ package Settings;
 
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
+import OptionsPackage.UserOptionsUseCase;
 import UserFunctions.User;
 
 import java.io.IOException;
-import java.util.List;
 
 public class SettingsController {
     User user;
@@ -15,10 +15,11 @@ public class SettingsController {
 
     }
 
-    public void getSettingOptions(SystemInOut input) throws IOException {
-
+    public void getSettingOptions() throws IOException {
+        SystemInOut input = new SystemInOut();
         input.sendOutput("What would you like to do? Input a number for " +
-                "your ideal option:\n *. Back to all options");
+                "your ideal option (Sign in in not implemented" +
+                "efficiently, please try again in phase 2 :)\n *. Back to all options");
 
         String userDecision = input.getInput();
 
@@ -88,7 +89,7 @@ public class SettingsController {
 
             if(userDecision.equals("*")) {
                 UserOptionsController options = new UserOptionsController(user);
-                options.userInput(input);
+                options.getOption();
             }
             throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs
