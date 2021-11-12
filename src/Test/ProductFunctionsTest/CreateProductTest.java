@@ -37,7 +37,7 @@ public class CreateProductTest {
 
 
     @Test
-    void createProductSizeTest() throws Exception {
+    public void createProductSizeTest() throws Exception {
         // read the header
         testInOut.getInput();
         Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
@@ -60,7 +60,7 @@ public class CreateProductTest {
     }
 
     @Test
-    void createProductNoSizeTest() throws Exception {
+    public void createProductNoSizeTest() throws Exception {
         testInOut.getInput();
         Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
@@ -76,7 +76,7 @@ public class CreateProductTest {
     }
 
     @Test
-    void createProductUndoNameTest() throws Exception {
+    public void createProductUndoNameTest() throws Exception {
         testInOut.getInput();
         Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
@@ -93,7 +93,7 @@ public class CreateProductTest {
     }
 
     @Test
-    void createProductMultipleUndoTest() throws Exception {
+    public void createProductMultipleUndoTest() throws Exception {
         testInOut.getInput();
         Product actualProduct =  createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
