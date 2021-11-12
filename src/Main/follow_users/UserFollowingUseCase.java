@@ -1,4 +1,4 @@
-package UserFunctions;
+package follow_users;
 
 public class UserFollowingUseCase {
 

@@ -15,6 +15,7 @@ import PostFunctions.AddPostGateway;
 import UserFunctions.User;
 import OptionsPackage.UserOptionsUseCase;
 
+// TODO FIX CODE SMELL!! Too long method
 /**
  * Class to create a specific product and its related post.
  */
@@ -151,19 +152,27 @@ public class CreateProductController {
         if (!output.get("Size").equals("No Size")){
 
             ProductManager productManager = new ProductManager(productGate);
-            Product newproduct = productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),(int) output.get("Quantity"));
+            Product newproduct = productManager.createProduct((String)output.get("Name"), (String)output.get("ID"),
+                    (double)output.get("Price"),(String) output.get("Category"), (String)output.get("Size"),
+                    (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
-            Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),(boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
+            Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),
+                    (boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost,user);
+            productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
             return newproduct;
         }else{
             ProductManager productManager = new ProductManager(productGate);
-            Product newproduct = productManager.createProduct((String)output.get("Name"), (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),(int) output.get("Quantity"));
+            Product newproduct = productManager.createProduct((String)output.get("Name"),
+                    (String)output.get("ID"), (double)output.get("Price"),(String) output.get("Category"),
+                    (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
-            Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),(boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
+            Post newpost = postManager.createPost(newproduct, (String)output.get("Caption"),
+                    (boolean)output.get("CanComment"), (boolean)output.get("CanRate"));
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost,user);
+            productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
             return newproduct;
         }
     }

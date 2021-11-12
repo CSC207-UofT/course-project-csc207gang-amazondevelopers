@@ -18,7 +18,7 @@ public class AddPostGateway implements AddPostGatewayInterface{
     public void addPost(Post post, User user) throws IOException, ClassNotFoundException {
         File file = new File("src/Main/user.ser");
         if (!(file.length() == 0)) {
-            UserReadWriter rw = new UserReadWriter();
+            PostReadWriter rw = new PostReadWriter();
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
             if (usersSavedDict.containsKey(user.getUsername())) {
                 user.addToPostList(post);

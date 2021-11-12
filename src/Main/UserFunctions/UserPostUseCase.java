@@ -1,5 +1,7 @@
 package UserFunctions;
 
+import PostFunctions.Post;
+
 import java.util.ArrayList;
 import java.util.List;
 

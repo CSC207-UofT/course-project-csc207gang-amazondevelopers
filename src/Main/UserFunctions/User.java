@@ -79,9 +79,9 @@ public class User implements Serializable {
 //    }
 
     // setter for instance variable listPosts
-//    public void setListPosts(List<OptionsPackage.Post> listPosts) {
-//        this.listPosts = listPosts;
-//    }
+    public void setListPosts(List<Post> listPosts) {
+        this.listPosts = listPosts;
+    }
 
     // getter for instance variable shoppingCart
     public List<Product> getShoppingCart() {

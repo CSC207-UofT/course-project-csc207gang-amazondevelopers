@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // sends out list of products
-public class TagInterestItemsPresenter {
+public class ListOfProductsPresenter {
 
     public void presentTagList(List<String> IDProductOfInterest) throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();

@@ -1,4 +1,4 @@
-package OptionsPackage;
+package Browse;
 import PostFunctions.Post;
 import UserFunctions.User;
 
@@ -17,7 +17,7 @@ public class BrowseUseCase {
      * @return the feed (list of posts that the users that this user follow have posted) of the user.
      */
     public List<Post> getFeed() {
-        this.user.getFeed();
+        return this.user.getFeed();
     }
 
     /**
@@ -27,7 +27,7 @@ public class BrowseUseCase {
     public List<String> getlistIds(List<Post> userFeed) {
         ArrayList<String> stringProductList = new ArrayList<>();
         for (Post aPost: userFeed){
-            String stringPost = aPost.toString();
+            String stringPost = aPost.getProductDescription();
             stringProductList.add(stringPost);
         }
         return stringProductList;

@@ -1,4 +1,6 @@
-package OptionsPackage;
+package Browse;
+import OptionsPackage.BuyController;
+import OptionsPackage.UserOptionsController;
 import PostFunctions.Post;
 import UserFunctions.User;
 import java.io.IOException;
@@ -18,6 +20,7 @@ public class BrowseController {
      *
      */
     public void presentFeed() throws IOException, ClassNotFoundException {
+
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         List<Post> userFeed = browseUseCase.getFeed();
         List<String> feedIds = browseUseCase.getlistIds(userFeed);
