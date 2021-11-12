@@ -9,16 +9,14 @@ import ProductFunctions.ProductManager;
 import Settings.DeleteProductsGateway;
 import Settings.ProductDeletionUseCase;
 import UserFunctions.User;
-import org.junit.jupiter.api.*;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static org.junit.Assert.*;
 
 
 public class CreateProductTest {
@@ -33,7 +31,7 @@ public class CreateProductTest {
         }
     }
     User testUser = new User("TestCreateProductUser");
-    DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway()
+    DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
     ProductDeletionUseCase deleteProducts = new ProductDeletionUseCase(testUser, deleteProductsGateway);
     CreateProductController createProduct = new CreateProductController();
 
@@ -47,12 +45,12 @@ public class CreateProductTest {
         // move to the next set of inputs for next test
         testInOut.getInput();
 
-        Assertions.assertEquals("shoe", actualProduct.getName());
-        Assertions.assertEquals("7235617782136781667163817", actualProduct.getId());
-        Assertions.assertEquals(5, actualProduct.getPrice());
-        Assertions.assertEquals("shoes", actualProduct.getCategory());
-        Assertions.assertEquals(2, actualProduct.getQuantity());
-        Assertions.assertEquals("1", actualProduct.getSizes());
+        assertEquals("shoe", actualProduct.getName());
+        assertEquals("7235617782136781667163817", actualProduct.getId());
+        assertEquals(5, (double) actualProduct.getPrice());
+        assertEquals("shoes", actualProduct.getCategory());
+        assertEquals(2, actualProduct.getQuantity());
+        assertEquals("1", actualProduct.getSizes());
 
         ArrayList<String> products = new ArrayList<>();
         products.add("1");
@@ -67,12 +65,12 @@ public class CreateProductTest {
         Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
 
-        Assertions.assertEquals("shoe", actualProduct.getName());
-        Assertions.assertEquals("7235617782136781667163817", actualProduct.getId());
-        Assertions.assertEquals(5, actualProduct.getPrice());
-        Assertions.assertEquals("shoes", actualProduct.getCategory());
-        Assertions.assertEquals(2, actualProduct.getQuantity());
-        Assertions.assertNull(actualProduct.getSizes());
+        assertEquals("shoe", actualProduct.getName());
+        assertEquals("7235617782136781667163817", actualProduct.getId());
+        assertEquals(5, (double)actualProduct.getPrice());
+        assertEquals("shoes", actualProduct.getCategory());
+        assertEquals(2, actualProduct.getQuantity());
+        assertNull(actualProduct.getSizes());
 
         deleteProducts.deleteProducts();
     }
@@ -80,16 +78,16 @@ public class CreateProductTest {
     @Test
     void createProductUndoNameTest() throws Exception {
         testInOut.getInput();
-        Product actualProduct =  createProduct.createNewProductFromInput(testInOut, testUser);
+        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
 
 
-        Assertions.assertEquals("dress", actualProduct.getName());
-        Assertions.assertEquals("7235617782136781667163817", actualProduct.getId());
-        Assertions.assertEquals(5, actualProduct.getPrice());
-        Assertions.assertEquals("shoes", actualProduct.getCategory());
-        Assertions.assertEquals(2, actualProduct.getQuantity());
-        Assertions.assertNull(actualProduct.getSizes());
+        assertEquals("dress", actualProduct.getName());
+        assertEquals("7235617782136781667163817", actualProduct.getId());
+        assertEquals(5, (double) actualProduct.getPrice());
+        assertEquals("shoes", actualProduct.getCategory());
+        assertEquals(2, actualProduct.getQuantity());
+        assertNull(actualProduct.getSizes());
 
         deleteProducts.deleteProducts();
     }
@@ -101,15 +99,16 @@ public class CreateProductTest {
         testInOut.getInput();
 
 
-        Assertions.assertEquals("dress", actualProduct.getName());
-        Assertions.assertEquals("7235617782136781667163817", actualProduct.getId());
-        Assertions.assertEquals(400, actualProduct.getPrice());
-        Assertions.assertEquals("pants", actualProduct.getCategory());
-        Assertions.assertEquals(2, actualProduct.getQuantity());
-        Assertions.assertEquals("3", actualProduct.getSizes());
+        assertEquals("dress", actualProduct.getName());
+        assertEquals("7235617782136781667163817", actualProduct.getId());
+        assertEquals(400, (double)actualProduct.getPrice());
+        assertEquals("pants", actualProduct.getCategory());
+        assertEquals(2, actualProduct.getQuantity());
+        assertEquals("3", actualProduct.getSizes());
 
         deleteProducts.deleteProducts();
     }
+
 //
 //    @Test
 //    void createProductBadInputsAllStringsTest() throws Exception {
