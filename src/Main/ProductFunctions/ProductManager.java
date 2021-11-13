@@ -1,7 +1,4 @@
 package ProductFunctions;
-
-import InputAndOutput.SystemInOut;
-
 import java.io.IOException;
 
 public class ProductManager {
@@ -27,9 +24,9 @@ public class ProductManager {
      * @return a newly created product or null.
      */
     public Product createProduct(String name, String id, Double price, String category, String size, int quantity) throws IOException, ClassNotFoundException {
-        Product newProduct = new Product(name, id, price, category, size, quantity);
-        if (checkProductStatus(id)){
+        if (getProduct.getProduct(id) == null){
             //product not yet created
+            Product newProduct = new Product(name, id, price, category, size, quantity);
             createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
             return newProduct;
         }
@@ -47,9 +44,9 @@ public class ProductManager {
      * @return a newly created product or null.
      */
     public Product createProduct(String name, String id, Double price, String category, int quantity) throws IOException, ClassNotFoundException {
-        Product newProduct = new Product(name, id, price, category, quantity);
-        if (checkProductStatus(id)) {
+        if (getProduct.getProduct(id).equals(null)) {
             //product not yet created
+            Product newProduct = new Product(name, id, price, category, quantity);
             createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
             return newProduct;
         }
@@ -65,7 +62,7 @@ public class ProductManager {
      * @return true successfully decreased amount and false otherwise.
      */
     public boolean decreaseQuantity(String productId, int quantity) throws IOException, ClassNotFoundException {
-        Product productOfId = getProduct.getProduct(productId);
+        Product productOfId = (Product) getProduct.getProduct(productId);
         if (productOfId != null){
             int newQuantity = productOfId.getQuantity() - quantity;
             if (newQuantity > 0) {
@@ -86,7 +83,7 @@ public class ProductManager {
      * @return true successfully increased amount and false otherwise.
      */
     public boolean increaseQuantity(String productId, int quantity) throws IOException, ClassNotFoundException {
-        Product productOfId = getProduct.getProduct(productId);
+        Product productOfId = (Product) getProduct.getProduct(productId);
         if (productOfId != null){
             int newQuantity = productOfId.getQuantity() + quantity;
             productOfId.setQuantity(newQuantity);
@@ -94,17 +91,5 @@ public class ProductManager {
         }
         //means that product does not exists
         return false;
-    }
-
-    /**
-     * Method that takes in a String representing an id.
-     * Returns true if product associated with the id exists and false otherwise.
-     *
-     * @param id Id of product whose status is checked.
-     * @return true if product exists and false otherwise.
-     */
-    private boolean checkProductStatus(String id) throws IOException, ClassNotFoundException {
-        Product productOfId = getProduct.getProduct(id);
-        return productOfId != null;
     }
 }

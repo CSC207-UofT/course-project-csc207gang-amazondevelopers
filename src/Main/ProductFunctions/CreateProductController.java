@@ -105,7 +105,7 @@ public class CreateProductController {
                     undo.setDataPoint(quantity);
                 }
             }
-            if (Objects.equals(undo.getCurrentState(), "CanComment")) {
+            if (Objects.equals(undo.getCurrentState(), "Size")) {
                 input.sendOutput("What is the size of this product? Press enter No Size if this product does not have a size");
                 String sizeInput = input.getInput();
                 if (sizeInput.equals("*")){

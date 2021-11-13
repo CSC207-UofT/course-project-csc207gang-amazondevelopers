@@ -15,7 +15,6 @@ public class SignUpController {
             inOut.sendOutput("Invalid Username, please reenter your username.");
             this.getNewUsername();
         }return newUsername;
-
     }
 
 

@@ -17,7 +17,7 @@ public class ListOfProductsPresenter {
         // TODO: change this to get the toString for Post instead of for the product.
         for (String itemID : IDProductOfInterest ){
             GetProductGateway product = new GetProductGateway();
-            Product ourProduct = product.getProduct(itemID);
+            Product ourProduct = (Product) product.getProduct(itemID);
             String productString = ourProduct.toString();
             stringProductList.add(productString);
         }

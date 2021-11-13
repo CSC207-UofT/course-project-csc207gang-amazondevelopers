@@ -16,20 +16,19 @@ import java.util.HashMap;
 public class GetProductGateway implements GetProductGatewayInterface{
     // ID to product
 
-    public Product getProduct(String productId) throws IOException, ClassNotFoundException {
+    public Object getProduct(String productId) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
 
         File file = new File("src/Main/IdToProduct.ser");
         if (file.length() == 0){
             input.sendOutput("There are no products in this program yet!");
             // go back to options
-            // go back to options
             return null;
         }
         ProductReadWriter rw = new ProductReadWriter();
         HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main/IdToProduct.ser");
         if (idToProductDict.get(productId) != null){
-            return (Product) idToProductDict.get(productId);
+            return idToProductDict.get(productId);
         }
         // go back to option
         return null;

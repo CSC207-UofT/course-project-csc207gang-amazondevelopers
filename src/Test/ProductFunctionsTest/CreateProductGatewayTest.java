@@ -1,7 +1,6 @@
 package ProductFunctionsTest;
 
 import InputAndOutput.InOut;
-import OptionsPackage.TagInterestItemsPresenter;
 import ProductFunctions.CreateProductGateway;
 import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;

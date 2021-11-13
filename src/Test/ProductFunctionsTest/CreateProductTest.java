@@ -1,11 +1,8 @@
 package ProductFunctionsTest;
 
-import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import ProductFunctions.CreateProductController;
-import ProductFunctions.CreateProductGateway;
 import ProductFunctions.Product;
-import ProductFunctions.ProductManager;
 import Settings.DeleteProductsGateway;
 import Settings.ProductDeletionUseCase;
 import UserFunctions.User;
