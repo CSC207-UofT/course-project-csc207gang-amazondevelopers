@@ -113,11 +113,15 @@ public class CreateProductController {
                 String commentInput = input.getInput();
                 if (commentInput.equals("*")) {
                     undo.undo();
-                } else if (commentInput.equals("1")) {
-                    undo.setDataPoint(true);
-                } else if (commentInput.equals("2")) {
-                    undo.setDataPoint(false);
                 }
+                else{
+                    undo.setDataPoint(commentInput);
+                }
+//                } else if (commentInput.equals("1")) {
+//                    undo.setDataPoint(true);
+//                } else if (commentInput.equals("2")) {
+//                    undo.setDataPoint(false);
+//                }
                 //If they didnt enter these 3 options
             }
             if (Objects.equals(undo.getCurrentState(), "CanRate")) {
@@ -125,11 +129,15 @@ public class CreateProductController {
                 String ratingInput = input.getInput();
                 if (ratingInput.equals("*")) {
                     undo.undo();
-                } else if (ratingInput.equals("1")) {
-                    undo.setDataPoint(true);
-                } else if (ratingInput.equals("2")) {
-                    undo.setDataPoint(false);
                 }
+                else{
+                    undo.setDataPoint(ratingInput);
+                }
+//                if (ratingInput.equals("1")) {
+//                    undo.setDataPoint(true);
+//                } else if (ratingInput.equals("2")) {
+//                    undo.setDataPoint(false);
+//                }
                 //If they didnt enter these 3 options
             }
         }
@@ -137,19 +145,25 @@ public class CreateProductController {
         CreateProductGateway productGate = new CreateProductGateway();
 
         String id = generateID();
+        boolean comment;
+        boolean rate;
+        comment = output.get("CanComment") == "1";
+        rate = output.get("CanRate") == "1";
 
         if (!output.get("Size").equals("No Size")) {
 
             ProductManager productManager = new ProductManager(productGate);
+
             Product newproduct = productManager.createProduct((String) output.get("Name"), id,
                     (double) output.get("Price"), (String) output.get("Category"), (String) output.get("Size"),
                     (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    (boolean) output.get("CanComment"), (boolean) output.get("CanRate"));
+                    comment, rate);
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
+            input.sendOutput("Product was created.");
             return newproduct;
         } else {
             ProductManager productManager = new ProductManager(productGate);
@@ -158,10 +172,11 @@ public class CreateProductController {
                     (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    (boolean) output.get("CanComment"), (boolean) output.get("CanRate"));
+                    comment, rate);
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
+            input.sendOutput("Product was created.");
             return newproduct;
         }
 

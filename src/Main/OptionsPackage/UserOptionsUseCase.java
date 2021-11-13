@@ -46,7 +46,7 @@ public class UserOptionsUseCase {
                 // create the product,
                 CreateProductController productC = new CreateProductController();
                 productC.createNewProductFromInput(input, user);
-                // then add it as a post
+
             }
             // follow
             else if(userDecision.equals("3")){
@@ -67,21 +67,17 @@ public class UserOptionsUseCase {
                 SettingsController settings = new SettingsController(user);
                 settings.getSettingOptions();
             }
-            // logout
 
+            // logout
             else if (userDecision.equals("6")){
                 WelcomePageController welcome = new WelcomePageController();
                 welcome.userLoginDecision();
             }
 
-//  implement allowing the user to browse, and create a post
-//            }else if(userDecision == "2"){
-//                // redirects to PostFunctions.createPostController class
-//                createPostController postController = new createPostController();
-//                postController.postCreator(input, this.user);
-
-            throw new IOException("That is not an accepted input, please try again!");
-            // throws exception in case the input is not in the available options of inputs
+            else{
+               UserOptionsController userOptionsController = new UserOptionsController(user);
+               userOptionsController.getOption();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
