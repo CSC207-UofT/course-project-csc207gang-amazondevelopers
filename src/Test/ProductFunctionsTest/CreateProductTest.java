@@ -2,6 +2,7 @@ package ProductFunctionsTest;
 
 import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
+import PostFunctions.Post;
 import ProductFunctions.CreateProductController;
 import ProductFunctions.CreateProductGateway;
 import ProductFunctions.Product;
@@ -37,7 +38,7 @@ public class CreateProductTest {
 
 
     @Test
-    void createProductSizeTest() throws Exception {
+    public void createProductSizeTest() throws Exception {
         // read the header
         testInOut.getInput();
         Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
@@ -52,15 +53,20 @@ public class CreateProductTest {
         assertEquals(2, actualProduct.getQuantity());
         assertEquals("1", actualProduct.getSizes());
 
-        ArrayList<String> products = new ArrayList<>();
-        products.add("1");
+        Post newPost = testUser.getListPosts().get(0);
+        assertEquals("these are shoes", newPost.getCaption());
+        assertTrue(newPost.getCanComment());
+        assertTrue(newPost.getCanRate());
+
+        // ArrayList<String> products = new ArrayList<>();
+        // products.add("1");
 
         deleteProducts.deleteProducts();
 
     }
 
     @Test
-    void createProductNoSizeTest() throws Exception {
+    public void createProductNoSizeTest() throws Exception {
         testInOut.getInput();
         Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
@@ -72,11 +78,58 @@ public class CreateProductTest {
         assertEquals(2, actualProduct.getQuantity());
         assertNull(actualProduct.getSizes());
 
+        Post newPost = testUser.getListPosts().get(0);
+        assertEquals("these are shoes", newPost.getCaption());
+        assertTrue(newPost.getCanComment());
+        assertFalse(newPost.getCanRate());
+
         deleteProducts.deleteProducts();
     }
 
     @Test
-    void createProductUndoNameTest() throws Exception {
+    public void createProductCantCommentTest() throws Exception {
+        testInOut.getInput();
+        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
+        testInOut.getInput();
+
+        assertEquals("shoe", actualProduct.getName());
+        assertEquals("7235617782136781667163817", actualProduct.getId());
+        assertEquals(5, (double)actualProduct.getPrice());
+        assertEquals("shoes", actualProduct.getCategory());
+        assertEquals(2, actualProduct.getQuantity());
+        assertNull(actualProduct.getSizes());
+
+        Post newPost = testUser.getListPosts().get(0);
+        assertEquals("these are shoes", newPost.getCaption());
+        assertFalse(newPost.getCanComment());
+        assertTrue(newPost.getCanRate());
+
+        deleteProducts.deleteProducts();
+    }
+
+    @Test
+    public void createProductCantRateTest() throws Exception {
+        testInOut.getInput();
+        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
+        testInOut.getInput();
+
+        assertEquals("shoe", actualProduct.getName());
+        assertEquals("7235617782136781667163817", actualProduct.getId());
+        assertEquals(5, (double)actualProduct.getPrice());
+        assertEquals("shoes", actualProduct.getCategory());
+        assertEquals(2, actualProduct.getQuantity());
+        assertNull(actualProduct.getSizes());
+
+        Post newPost = testUser.getListPosts().get(0);
+        assertEquals("these are shoes", newPost.getCaption());
+        assertTrue(newPost.getCanComment());
+        assertFalse(newPost.getCanRate());
+
+        deleteProducts.deleteProducts();
+    }
+
+    @Test
+    public void createProductUndoNameTest() throws Exception {
         testInOut.getInput();
         Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
@@ -93,7 +146,7 @@ public class CreateProductTest {
     }
 
     @Test
-    void createProductMultipleUndoTest() throws Exception {
+    public void createProductMultipleUndoTest() throws Exception {
         testInOut.getInput();
         Product actualProduct =  createProduct.createNewProductFromInput(testInOut, testUser);
         testInOut.getInput();
@@ -105,6 +158,11 @@ public class CreateProductTest {
         assertEquals("pants", actualProduct.getCategory());
         assertEquals(2, actualProduct.getQuantity());
         assertEquals("3", actualProduct.getSizes());
+
+        Post newPost = testUser.getListPosts().get(0);
+        assertEquals("these are shoes", newPost.getCaption());
+        assertFalse(newPost.getCanComment());
+        assertTrue(newPost.getCanRate());
 
         deleteProducts.deleteProducts();
     }

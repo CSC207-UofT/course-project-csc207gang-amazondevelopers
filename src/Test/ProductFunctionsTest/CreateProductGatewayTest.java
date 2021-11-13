@@ -1,7 +1,6 @@
 package ProductFunctionsTest;
 
 import InputAndOutput.InOut;
-import OptionsPackage.TagInterestItemsPresenter;
 import ProductFunctions.CreateProductGateway;
 import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;
@@ -20,11 +19,10 @@ public class CreateProductGatewayTest {
     CreateProductGateway createProductGateway = new CreateProductGateway();
     // ProductManager productManager = new ProductManager(createProductGateway);
     GetProductGateway getProductGateway = new GetProductGateway();
-    TagInterestItemsPresenter tagPresenter = new TagInterestItemsPresenter();
 
 
     @Test
-    void addProductToRepoNewProductBasicTest() throws IOException, ClassNotFoundException {
+    public void addProductToRepoNewProductBasicTest() throws IOException, ClassNotFoundException {
 
         Product expectedProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
         createProductGateway.addProductToRepo(expectedProduct, "!", "shoes");
@@ -39,15 +37,13 @@ public class CreateProductGatewayTest {
 
     }
 
-    void addProductToRepoDuplicateProductsTest() throws IOException, ClassNotFoundException {
+    @Test
+    public void addProductToRepoDuplicateProductsTest() throws IOException, ClassNotFoundException {
         Product product1 = new Product("shoe", "1", 5.0, "shoes", "2",1);
         Product product2 = new Product("shoe", "1", 5.0, "shoes", "2",1);
         createProductGateway.addProductToRepo(product1, "1", "shoes");
         createProductGateway.addProductToRepo(product2, "1", "shoes");
 
-
-
-        tagPresenter.presentTagList();
 
         Product actualProduct = getProductGateway.getProduct("1");
 
@@ -59,14 +55,13 @@ public class CreateProductGatewayTest {
         assertSame("2", actualProduct.getSizes());
     }
 
-    void addProductToRepoProductNewTag(){
+    public void addProductToRepoProductNewTag(){
     }
 
-    void addProductToRepoProductPreExistingTag(){
+    public void addProductToRepoProductPreExistingTag(){
     }
 
-    void addProductToRepoProductIdsDontMatch(){
-
+    public void addProductToRepoProductIdsDontMatch(){
     }
 
 

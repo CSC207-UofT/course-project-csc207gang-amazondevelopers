@@ -4,7 +4,7 @@ import ProductFunctions.CreateProductController;
 import ProductFunctions.CreateProductGateway;
 import ProductFunctions.Product;
 import ProductFunctions.ProductManager;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 
