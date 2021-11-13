@@ -160,7 +160,7 @@ public class CreateProductController {
             PostManager postManager = new PostManager();
 
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    comment, rate);
+                    comment, rate, user);
 
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
@@ -175,7 +175,7 @@ public class CreateProductController {
             PostManager postManager = new PostManager();
 
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    comment, rate);
+                    comment, rate, user);
 
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
