@@ -26,11 +26,23 @@ public class GetProductGateway implements GetProductGatewayInterface{
             return null;
         }
         ProductReadWriter rw = new ProductReadWriter();
-        HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main/IdToProduct.ser");
-        if (idToProductDict.get(productId) != null){
-            return idToProductDict.get(productId);
+        HashMap<String, Object> idToProductHashMap = rw.readFromFile("src/Main/IdToProduct.ser");
+        if (idToProductHashMap.get(productId) != null){
+            return idToProductHashMap.get(productId);
         }
         // go back to option
         return null;
+    }
+    public HashMap<String, Object> getHashMap() throws IOException, ClassNotFoundException {
+        File file = new File("src/Main/IdToProduct.ser");
+        if (file.length() == 0) {
+            return new HashMap<>();
+        }
+        else {
+            ProductReadWriter rw = new ProductReadWriter();
+            return rw.readFromFile("src/Main/IdToProduct.ser");
+        }
+
+
     }
 }
