@@ -37,7 +37,7 @@ public class BuyController {
                     if (indexInt < listIds.size()) {
                         GetProductGateway productG = new GetProductGateway();
                         String itemAtIndex = listIds.get(indexInt);
-                        Product productToAddToCart = productG.getProduct(itemAtIndex);
+                        Product productToAddToCart = (Product) productG.getProduct(itemAtIndex);
                         // add this product to the cart
                         CartManager cart = new CartManager();
                         cart.addToCart(productToAddToCart, user);

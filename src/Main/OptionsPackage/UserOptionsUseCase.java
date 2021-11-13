@@ -55,7 +55,6 @@ public class UserOptionsUseCase {
                 // This user then needs to be added to this user's follow list
                 FollowController followC = new FollowController(user);
                 followC.allowFollow();
-
             }
             // browse
             else if(userDecision.equals("4")){
