@@ -57,7 +57,7 @@ public class Undo {
      * @return true if its complete, false if its not
      */
     public boolean isComplete(){
-        return this.current_state == this.states.size() - 1;
+        return this.current_state == this.states.size();
     }
 
     /**

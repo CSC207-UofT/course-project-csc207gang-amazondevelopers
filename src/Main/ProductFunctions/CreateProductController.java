@@ -147,8 +147,8 @@ public class CreateProductController {
         String id = generateID();
         boolean comment;
         boolean rate;
-        comment = output.get("CanComment") == "1";
-        rate = output.get("CanRate") == "1";
+        comment = output.get("CanComment").equals("1");
+        rate = output.get("CanRate").equals("1");
 
         if (!output.get("Size").equals("No Size")) {
 

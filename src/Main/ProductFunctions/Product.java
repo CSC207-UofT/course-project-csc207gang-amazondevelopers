@@ -70,7 +70,8 @@ public class Product implements Serializable {
     public void setCategory(String pcategory) {this.category = pcategory;}
 
     // getter for sizes
-    public String getSizes() {return sizes;}
+    // returns an Object since size can be a string or null
+    public Object getSizes() {return sizes;}
 
     // setter for sizes
     public void setSizes(String psize) {this.sizes = psize;}
