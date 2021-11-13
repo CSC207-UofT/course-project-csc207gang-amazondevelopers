@@ -11,6 +11,13 @@ import java.util.HashMap;
 public class GetPostGateway {
     // ID to product
 
+    /**
+     *
+     * @param productId
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public Post getPost(String productId) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         File file = new File("src/Main/IdToPost.ser");

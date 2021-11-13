@@ -8,7 +8,13 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class SignUpGateway implements SignUpGatewayInterface {
-
+    /**
+     * Checks if username is available by checking within the user.ser file
+     * @param username the username of the user
+     * @param user the user object
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     @Override
     public void allowSignUp(String username, User user) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();

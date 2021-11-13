@@ -5,7 +5,10 @@ import InputAndOutput.SystemInOut;
 import java.io.IOException;
 
 public class SignUpController {
-
+    /**
+     * @return String representing the username inputted by the user
+     * @throws IOException
+     */
     String getNewUsername() throws IOException {
         SystemInOut inOut = new SystemInOut();
         inOut.sendOutput("What would you like to put as your username? " +

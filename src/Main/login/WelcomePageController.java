@@ -45,11 +45,11 @@ public class WelcomePageController {
                     this.userLoginDecision();
 
                 } else if (userDecision.equals("3")) {
-                    // this.userLoginDecision();
+                    System.exit(0);
                 }
                 else {
                     inOut.sendOutput("Try again");
-
+                    this.userLoginDecision();
                 }
             } catch (Exception exception) {
                 exception.printStackTrace();
