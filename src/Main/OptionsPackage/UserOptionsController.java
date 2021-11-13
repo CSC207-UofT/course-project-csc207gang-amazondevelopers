@@ -20,5 +20,6 @@ public class UserOptionsController{
         String userDecision = input.getInput();
         UserOptionsUseCase optionsUC = new UserOptionsUseCase(user);
         optionsUC.userInput(userDecision);
+        this.getOption();
     }
 }

@@ -24,13 +24,9 @@ public class ProductManager {
      * @return a newly created product or null.
      */
     public Product createProduct(String name, String id, Double price, String category, String size, int quantity) throws IOException, ClassNotFoundException {
-        if (getProduct.getProduct(id) == null){
-            //product not yet created
-            Product newProduct = new Product(name, id, price, category, size, quantity);
-            createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
-            return newProduct;
-        }
-        return null;
+        Product newProduct = new Product(name, id, price, category, size, quantity);
+        createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
+        return newProduct;
     }
 
     //Overloaded method for if there is no size attributed to this Product
@@ -44,13 +40,9 @@ public class ProductManager {
      * @return a newly created product or null.
      */
     public Product createProduct(String name, String id, Double price, String category, int quantity) throws IOException, ClassNotFoundException {
-        if (getProduct.getProduct(id).equals(null)) {
-            //product not yet created
-            Product newProduct = new Product(name, id, price, category, quantity);
-            createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
-            return newProduct;
-        }
-        return null;
+        Product newProduct = new Product(name, id, price, category, quantity);
+        createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
+        return newProduct;
     }
 
     /**

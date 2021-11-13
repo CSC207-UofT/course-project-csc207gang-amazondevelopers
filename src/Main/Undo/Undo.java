@@ -17,8 +17,8 @@ public class Undo {
      */
     public Undo(){
         this.current_state = 0;
-        this.data = new HashMap<String,Object>();
-        this.states = new ArrayList<String>();
+        this.data = new HashMap<>();
+        this.states = new ArrayList<>();
     }
 
     /**
@@ -38,7 +38,7 @@ public class Undo {
      * @param dataPoint can be any object that needs to be entered.
      */
     public void setDataPoint(Object dataPoint){
-        if(this.isComplete() == false) {
+        if(!this.isComplete()) {
             this.data.put(this.states.get(this.current_state), dataPoint);
             this.current_state = this.current_state + 1;
         }
@@ -57,12 +57,7 @@ public class Undo {
      * @return true if its complete, false if its not
      */
     public boolean isComplete(){
-        if (this.current_state == this.states.size() - 1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return this.current_state == this.states.size() - 1;
     }
 
     /**
