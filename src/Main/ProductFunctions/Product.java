@@ -41,7 +41,7 @@ public class Product implements Serializable {
      */
     public String toString() {
         if (this.sizes == null){
-            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, ";
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
         }
         else{
             return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
@@ -52,7 +52,11 @@ public class Product implements Serializable {
     public String getName() {return name;}
 
     // setter for name of product
-    public void setName(String pname) {this.name = pname;}
+    public void setName(String pname) {
+        if (!pname.equals("")) {
+            this.name = pname;
+        }
+    }
 
     // getter for id of product
     public String getId() {return id;}
@@ -64,8 +68,15 @@ public class Product implements Serializable {
     public Double getPrice() {return price;}
 
     //setter for price of product
-    // Precondition: price >= 0
-    public void setPrice(Double pprice) {this.price = pprice;}
+    public void setPrice(Double pprice) {
+        if (pprice < 0){
+            this.price = 0.0;
+        }
+        else{
+            // round to 2 decimal places
+            this.price = (double) Math.round(pprice * 100)/100;
+        }
+    }
 
     // getter for category of product
     public String getCategory() {return category;}
@@ -78,7 +89,14 @@ public class Product implements Serializable {
     public Object getSizes() {return sizes;}
 
     // setter for sizes
-    public void setSizes(String psize) {this.sizes = psize;}
+    public void setSizes(String psize) {
+        if (psize.equals("")){
+            this.sizes = null;
+        }
+        else{
+            this.sizes = psize;
+        }
+    }
 
     //getter for quantity
     public int getQuantity() {return quantity;}

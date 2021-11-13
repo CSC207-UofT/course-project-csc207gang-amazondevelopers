@@ -78,7 +78,7 @@ public class CreateProductTest {
         // ArrayList<String> products = new ArrayList<>();
         // products.add("1");
 
-        deleteProducts.deleteProducts();
+        // deleteProducts.deleteProducts();
 
     }
 
@@ -106,7 +106,7 @@ public class CreateProductTest {
         assertTrue(newPost.getCanComment());
         assertFalse(newPost.getCanRate());
 
-        deleteProducts.deleteProducts();
+        // deleteProducts.deleteProducts();
     }
 
     @Test
@@ -127,8 +127,8 @@ public class CreateProductTest {
         assertFalse(newPost.getCanComment());
         assertTrue(newPost.getCanRate());
 
-        deleteProducts.deleteProducts();
-        assertTrue(testUser.getProductsPosted().isEmpty());
+       //  deleteProducts.deleteProducts();
+       // assertTrue(testUser.getProductsPosted().isEmpty());
     }
 
     @Test
@@ -150,7 +150,7 @@ public class CreateProductTest {
         assertTrue(newPost.getCanComment());
         assertFalse(newPost.getCanRate());
 
-        deleteProducts.deleteProducts();
+        // deleteProducts.deleteProducts();
     }
 
     @Test
@@ -166,7 +166,7 @@ public class CreateProductTest {
         assertEquals(2, actualProduct.getQuantity());
         assertNull(actualProduct.getSizes());
 
-        deleteProducts.deleteProducts();
+        // deleteProducts.deleteProducts();
     }
 
     @Test
@@ -186,7 +186,7 @@ public class CreateProductTest {
         assertFalse(newPost.getCanComment());
         assertTrue(newPost.getCanRate());
 
-        deleteProducts.deleteProducts();
+        // deleteProducts.deleteProducts();
     }
 
 //
