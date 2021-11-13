@@ -40,9 +40,13 @@ public class Product implements Serializable {
      * @return the string representation of the product
      */
     public String toString() {
-        return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
+        if (this.sizes == null){
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, ";
+        }
+        else{
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
+        }
     }
-
 
     // getter for name of product
     public String getName() {return name;}
