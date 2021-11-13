@@ -28,7 +28,7 @@ public class SearchController {
             BuyController buyController = new BuyController();
             buyController.allowBuy(this.user, listProductIds);
         }
-        // list of tags is empty, send user back to choose another option
+        // list of ids is empty, send user back to choose another option
         else{
             UserOptionsController userOptionsController = new UserOptionsController(this.user);
             userOptionsController.getOption();

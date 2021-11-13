@@ -26,12 +26,17 @@ public class SaveUserGateway {
             if (usersSavedDict.containsKey(username)) {
                 usersSavedDict.replace(username, userToBeSaved);
             }
-            input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
-            FollowController followOptions = new FollowController(user);
-            followOptions.allowFollow();
+            else {
+                input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
+                FollowController followOptions = new FollowController(user);
+                followOptions.allowFollow();
+            }
         }
-        input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
-        UserOptionsController userOptionsController = new UserOptionsController(user);
-        userOptionsController.getOption();
+        else{
+            input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
+            UserOptionsController userOptionsController = new UserOptionsController(user);
+            userOptionsController.getOption();
+        }
+
     }
 }

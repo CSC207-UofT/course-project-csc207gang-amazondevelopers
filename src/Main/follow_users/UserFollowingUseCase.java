@@ -29,13 +29,17 @@ public class UserFollowingUseCase {
         // updating list of following of this.user
         this.user.setListFollowing(currentFollowing);
         User userFollower = getUserGateway.getUser(newFollowing);
-        List<Post> userFollowerFeed = userFollower.getFeed();
+        List<Post> userFollowerPost = userFollower.getListPosts();
         List<Post> thisUserCurrentFeed = this.user.getFeed();
-        // updating feed of this.user
-        thisUserCurrentFeed.addAll(userFollowerFeed);
+        if (userFollowerPost.size() != 0) {
+            // updating feed of this.user
+            thisUserCurrentFeed.addAll(userFollowerPost);
+            this.user.setFeed(thisUserCurrentFeed);
+        }
         // updating list of followers of follow user
         List<String> listFollowersFollowUser = userFollower.getListFollowers();
         listFollowersFollowUser.add(this.user.getUsername());
+        userFollower.setListFollowers(listFollowersFollowUser);
 
         // save both users to the user.ser file
         saveUserGateway.saveUser(this.user.getUsername(), this.user);

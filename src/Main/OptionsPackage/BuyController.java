@@ -19,7 +19,7 @@ public class BuyController {
         ListOfProductsPresenter presenter = new ListOfProductsPresenter();
 
         // loop to keep checking if the user wants to buy something from the list
-        presenter.presentTagList(listIds);
+        presenter.presentList(listIds);
             input.sendOutput("Would you like to purchase one of the items?" +
                 "enter the number of your choice\n 1.Yes\n 2.No take me back to Search\n " +
                     "Type 'R' to choose another option from the menu.");
@@ -45,7 +45,6 @@ public class BuyController {
                         // else from the search results or not (returned to the outer while loop)
                         //TODO allow user to buy sth or not by emptying their cart
                         boughtOrExit = true;
-                        this.allowBuy(user,listIds);
                     } else if (itemIndex.equals("exit")) {
                         // return to the outer while loop so user can decide if they want to do something else other than buy
                         boughtOrExit = true;
