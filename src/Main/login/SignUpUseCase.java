@@ -7,6 +7,10 @@ import java.io.IOException;
 public class SignUpUseCase {
     SignUpGateway signUpGateway;
 
+    /**
+     *
+     * @param signUpGateway
+     */
     public SignUpUseCase(SignUpGateway signUpGateway) {
         this.signUpGateway = signUpGateway;
     }

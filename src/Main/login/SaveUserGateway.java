@@ -15,6 +15,14 @@ public class SaveUserGateway {
         this.user = user;
     }
 
+    /**
+     * Saves a hashmap to user.ser file, with key value pair being username to user
+     * @param username A string representing the username
+     * @param userToBeSaved the user object that matches the username
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+
     public void saveUser(String username, User userToBeSaved) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         // check if username of the person we want to add exists
