@@ -3,7 +3,6 @@ package login;
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 public class SignUpGateway implements SignUpGatewayInterface {
 
     @Override
-    public void allowSignUp(String username) throws IOException, ClassNotFoundException {
+    public void allowSignUp(String username, User user) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
 
         File file = new File("src/Main/user.ser");
@@ -25,12 +24,18 @@ public class SignUpGateway implements SignUpGatewayInterface {
         UserReadWriter rw = new UserReadWriter();
         HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
         if (!usersSavedDict.containsKey(username)) {
-            usersSavedDict.put(username, new User(username));
+            usersSavedDict.put(username, user);
             rw.saveToFile("src/Main/user.ser", usersSavedDict);
         }
-        input.sendOutput("This username is takes, please enter another one!");
-        SignUpController signUp = new SignUpController();
-        signUp.getNewUsername();
+        else{
+            input.sendOutput("This username is takes, please enter another one!");
+            SignUpController signUp = new SignUpController();
+            signUp.getNewUsername();
+        }
+
+
+
+
 
     }
 

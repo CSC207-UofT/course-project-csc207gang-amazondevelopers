@@ -12,17 +12,17 @@ import java.util.List;
 public class BuyController {
 
     // TODO what happen after they decide to buy?
+    // TODO Phase 2: Fix method too long code smell!
 
     public void allowBuy(User user, List<String> listIds) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
-        TagInterestItemsPresenter presenter = new TagInterestItemsPresenter();
+        ListOfProductsPresenter presenter = new ListOfProductsPresenter();
 
         // loop to keep checking if the user wants to buy something from the list
-        boolean keepRunning = true;
-        while(keepRunning) {
-            presenter.presentTagList(listIds);
+        presenter.presentTagList(listIds);
             input.sendOutput("Would you like to purchase one of the items?" +
-                "enter the number of your choice\n 1.Yes\n 2.No.(Search or browse again) \n Type 'R' to choose another option from the menu.");
+                "enter the number of your choice\n 1.Yes\n 2.No take me back to Search\n " +
+                    "Type 'R' to choose another option from the menu.");
             String decisionToBuy = input.getInput();
 
             if (decisionToBuy.equals("1")) {
@@ -37,35 +37,45 @@ public class BuyController {
                     if (indexInt < listIds.size()) {
                         GetProductGateway productG = new GetProductGateway();
                         String itemAtIndex = listIds.get(indexInt);
-                        Product productToAddToCart = productG.getProduct(itemAtIndex);
+                        Product productToAddToCart = (Product) productG.getProduct(itemAtIndex);
                         // add this product to the cart
                         CartManager cart = new CartManager();
                         cart.addToCart(productToAddToCart, user);
                         // the user has bought something, so user can now decide if they want to buy something
                         // else from the search results or not (returned to the outer while loop)
+                        //TODO allow user to buy sth or not by emptying their cart
                         boughtOrExit = true;
+                        this.allowBuy(user,listIds);
                     } else if (itemIndex.equals("exit")) {
                         // return to the outer while loop so user can decide if they want to do something else other than buy
                         boughtOrExit = true;
+                        this.allowBuy(user,listIds);
                     } else {
                         input.sendOutput("incorrect index, try again");
                         // user needs to type in a new index/'exit' in next iteration of this loop
+                        this.allowBuy(user,listIds);
                     }
                 }
 
             } else if (decisionToBuy.equals("2")) {
                 // end the loop, thereby ending the call to BuyController
-                keepRunning = false;
-            } else if (decisionToBuy.equals("R")) {
+                SearchController SC = new SearchController(user);
+                SC.allowSearch();
+
+            }
+
+
+            else if (decisionToBuy.equals("R")) {
                 // let the user search for something new if they dont want to buy something
                 UserOptionsController userOptionsController = new UserOptionsController(user);
                 userOptionsController.getOption();
-                keepRunning = false;
+                this.allowBuy(user,listIds);
             } else {
                 // end the loop, thereby ending the call to BuyController
-                keepRunning = false;
+                input.sendOutput("invalid input");
+                this.allowBuy(user, listIds);
             }
         }
 
     }
-}
+

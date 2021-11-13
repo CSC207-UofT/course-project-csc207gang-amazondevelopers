@@ -2,11 +2,12 @@ package PostFunctions;
 
 import ProductFunctions.Product;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import UserFunctions.User;
 
-public class Post {
+public class Post implements Serializable {
     private int likes;
     private Product product;
     private List<Float> ratings;
@@ -39,9 +40,10 @@ public class Post {
     public String getCaption() {
         return this.caption;
     }
-    public String getProduct() {
+    public String getProductToString() {
         return product.toString();
     }
+    public Product getProduct(){return product;}
     public int getLikes() {
         return likes;
     }

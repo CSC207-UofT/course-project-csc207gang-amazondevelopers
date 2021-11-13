@@ -35,6 +35,15 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
             productsSavedDict.put(tag,newList);
         }
         // {ID: product}
+
+        File file2 = new File("src/Main/IdToProduct.ser");
+        // if no hashmap exists yet
+        if (file2.length() == 0){
+            UserReadWriter readWriter = new UserReadWriter();
+            HashMap<String, List<String>> emptyHashMap = new HashMap<>();
+            readWriter.saveToFile("src/Main/IdToProduct.ser", emptyHashMap);
+        }
+
         HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main/IdToProduct.ser");
         productsSavedDict.put(productId, newProduct);
         rw.saveToFile("src/Main/IdToProduct.ser", idToProductDict);
