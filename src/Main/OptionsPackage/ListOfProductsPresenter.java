@@ -11,6 +11,12 @@ import java.util.List;
 // sends out list of products
 public class ListOfProductsPresenter {
 
+    /**
+     *
+     * @param IDProductOfInterest
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void presentList(List<String> IDProductOfInterest) throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
         ArrayList<String> stringProductList = new ArrayList<>();

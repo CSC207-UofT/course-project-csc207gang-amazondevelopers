@@ -23,6 +23,10 @@ public class UserOptionsUseCase {
 
     // TODO: too long method!
 
+    /**
+     *
+     * @param userDecision
+     */
     public void userInput(String userDecision) {
         SystemInOut input = new SystemInOut();
         try{

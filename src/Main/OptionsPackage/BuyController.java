@@ -14,6 +14,13 @@ public class BuyController {
     // TODO what happen after they decide to buy?
     // TODO Phase 2: Fix method too long code smell!
 
+    /**
+     *
+     * @param user
+     * @param listIds
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void allowBuy(User user, List<String> listIds) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         ListOfProductsPresenter presenter = new ListOfProductsPresenter();

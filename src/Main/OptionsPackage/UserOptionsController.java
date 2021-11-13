@@ -12,6 +12,10 @@ public class UserOptionsController{
         this.user = user;
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void getOption() throws IOException {
         SystemInOut input = new SystemInOut();
         input.sendOutput("What would you like to do? Input a number for " +
