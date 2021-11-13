@@ -159,7 +159,7 @@ public class CreateProductController {
                     (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    (boolean) output.get("CanComment"),  (boolean)output.get("CanRate"));
+                    (boolean) output.get("CanComment"),  (boolean)output.get("CanRate"), user);
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
@@ -172,7 +172,7 @@ public class CreateProductController {
                     (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    (boolean)output.get("CanComment"),  (boolean)output.get("CanRate"));
+                    (boolean)output.get("CanComment"),  (boolean)output.get("CanRate"), user);
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
