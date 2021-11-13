@@ -1,28 +1,54 @@
 createProductSizeTest
 shoe
-7235617782136781667163817
 5
 shoes
 2
 1
+these are shoes
+1
+1
 
 createProductNoSizeTest
 shoe
-7235617782136781667163817
 5
 shoes
 2
 No Size
+these are shoes
+1
+1
+
+createProductCantCommentTest
+shoe
+5
+shoes
+2
+No Size
+these are shoes
+2
+1
+
+createProductCantRateTest
+shoe
+5
+shoes
+2
+No Size
+these are shoes
+1
+2
 
 createProductUndoNameTest
 shoe
 *
 dress
-7235617782136781667163817
 5
 shoes
 2
 No Size
+these are shoes
+1
+1
 
 createProductMultipleUndoTest
 shoe
@@ -30,7 +56,6 @@ shoe
 dress
 40
 *
-7235617782136781667163817
 5
 *
 400
@@ -42,6 +67,11 @@ No Size
 *
 Size
 3
+these are shoes
+1
+1
+*
+2
 
 createProductBadInputsAllStringsTest
 jawdhwkjshkj
@@ -53,14 +83,12 @@ kahjiqwweiuo
 
 createProductDuplicateProductsTest
 shoe
-7235617782136781667163817
 5
 shoes
 2
 No Size
 
 shoe
-7235617782136781667163817
 5
 shoes
 2
@@ -68,7 +96,6 @@ No Size
 
 createProductBadInputsNegativePriceTest
 shoe
-7235617782136781667163817
 -500
 50
 shoes
@@ -77,7 +104,6 @@ No Size
 
 createProductBadInputsZeroPriceTest
 shoe
-7235617782136781667163817
 0
 shoes
 2
@@ -85,7 +111,6 @@ No Size
 
 createProductBadInputsNegativeQuantityTest
 shoe
-7235617782136781667163817
 5
 shoes
 -50
@@ -93,7 +118,6 @@ No Size
 
 createProductBadInputsZeroQuantityTest
 shoe
-7235617782136781667163817
 5
 shoes
 0

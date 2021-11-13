@@ -1,111 +1,111 @@
 package ProductFunctionsTest;
 
-import InputAndOutput.SystemInOut;
 import ProductFunctions.Product;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ProductTest {
 
-//     @Test
-//     void createProductWithSizeTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+     @Test
+     public void createProductWithSizeTest() {
+         Product actualProduct = new Product("shoes", "1", 5.0, "shoes", "2",1);
 
-//         assertTrue(actualProduct.getName() == "shoe");
-//         assertTrue(actualProduct.getId() == "1");
-//         assertTrue(actualProduct.getPrice() == 5);
-//         assertTrue(actualProduct.getCategory() == "shoes");
-//         assertTrue(actualProduct.getQuantity() == 1);
-//         assertTrue(actualProduct.getSizes() == "2");
-//     }
+         assertEquals("shoes", actualProduct.getName());
+         assertEquals("1", actualProduct.getId());
+         assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+         assertEquals("shoes", actualProduct.getCategory());
+         assertEquals("2", actualProduct.getSizes());
+         assertEquals(1, actualProduct.getQuantity());
+     }
 
-//     @Test
-//     void createProductWithoutSizeTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes",1);
-//         assertTrue(actualProduct.getName() == "shoe");
-//         assertTrue(actualProduct.getId() == "1");
-//         assertTrue(actualProduct.getPrice() == 5);
-//         assertTrue(actualProduct.getCategory() == "shoes");
-//         assertTrue(actualProduct.getQuantity() == 1);
-//         assertTrue(actualProduct.getSizes() == null);
-//     }
-
-
-
-
-
-//     @Test
-//     void toStringWithSizeTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         String productString = actualProduct.toString();
-//         assertTrue(productString.equals("shoe (1): $5.0, 1 in stock, 2"));
-//     }
-
-//     @Test
-//     void toStringWithoutSizeTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes",1);
-//         String productString = actualProduct.toString();
-//         assertTrue(productString.equals("shoe (1): $5.0, 1 in stock"));
-//     }
+     @Test
+     public void createProductWithoutSizeTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes",1);
+         assertEquals("shoe", actualProduct.getName());
+         assertEquals("1", actualProduct.getId());
+         assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+         assertEquals("shoes", actualProduct.getCategory());
+         assertEquals(1, actualProduct.getQuantity());
+         assertNull(actualProduct.getSizes());
+     }
 
 
 
 
 
+     @Test
+     public void toStringWithSizeTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+         String productString = actualProduct.toString();
+         assertEquals("shoe (1): $5.0, 1 in stock, 2", productString);
+     }
 
-//     @Test
-//     void getNameBasicTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", 1);
-//         assertTrue(actualProduct.getName().equals("shoe"));
-//     }
-
-//     @Test
-//     void setNameBasicTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
-
-//         assertTrue(actualProduct.getName() == "shoe");
-//         assertTrue(actualProduct.getId() == "1");
-//         assertTrue(actualProduct.getPrice() == 5);
-//         assertTrue(actualProduct.getCategory() == "shoes");
-//         assertTrue(actualProduct.getQuantity() == 1);
-//         assertTrue(actualProduct.getSizes() == "2");
-//     }
-
-//     @Test
-//     void setNameEmptyStringTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         actualProduct.setName("");
-
-//         assertTrue(actualProduct.getName() != "");
-//     }
+     @Test
+     public void toStringWithoutSizeTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes",1);
+         String productString = actualProduct.toString();
+         assertEquals("shoe (1): $5.0, 1 in stock", productString);
+     }
 
 
 
 
 
-//     @Test
-//     void getIDBasicTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
 
-//         assertTrue(actualProduct.getId() == "1");
-//     }
+     @Test
+     public void getNameBasicTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", 1);
+         assertEquals("shoe", actualProduct.getName());
+     }
 
-//     @Test
-//     void setIDBasicTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+     @Test
+     public void setNameBasicTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
 
-//         actualProduct.setId("5");
-//         assertTrue(actualProduct.getId() == "5");
-//     }
+         actualProduct.setName("pants");
 
-//     @Test
-//     void setIDNegativeIdTest() {
-//         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         actualProduct.setId("-500");
-//         assertTrue(actualProduct.getId() != "-500");
-//     }
+         assertEquals("pants", actualProduct.getName());
+         assertEquals("1", actualProduct.getId());
+         assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+         assertEquals("shoes", actualProduct.getCategory());
+         assertEquals(1, actualProduct.getQuantity());
+         assertEquals("2", actualProduct.getSizes());
+     }
 
+     @Test
+     public void setNameEmptyStringTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+         actualProduct.setName("");
+
+         assertNotEquals("", actualProduct.getName());
+     }
+
+
+
+
+
+     @Test
+     public void getIDBasicTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+
+         assertEquals("1", actualProduct.getId());
+     }
+
+     @Test
+     public void setIDBasicTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+
+         actualProduct.setId("5");
+         assertEquals("5", actualProduct.getId());
+     }
+
+     @Test
+     public void setIDNegativeIdTest() {
+         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+         actualProduct.setId("-500");
+         assertEquals("-500", actualProduct.getId());
+     }
+//
 //     @Test
 //     void setIdDuplicateIdsTest() {
 //         Product product1 = new Product("shoe", "1", 5.0, "shoes", "2",1);
@@ -117,147 +117,166 @@ public class ProductTest {
 
 
 
+     @Test
+     public void getPriceBasicTest() {
+         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
+         assertEquals(5.0, product.getPrice(), 0.0);
+     }
 
-//     @Test
-//     void getPriceBasicTest() {
-//         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         assertTrue(product.getPrice() == 5.0);
-//     }
+     @Test
+     public void setPriceBasicTest() {
+         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
+         product.setPrice(25.0);
+         assertEquals(25.0, product.getPrice(), 0.0);
+     }
 
-//     @Test
-//     void setPriceBasicTest() {
-//         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         product.setPrice(25.0);
-//         assertTrue(product.getPrice() == 25.0);
-//     }
+     @Test
+     public void setPriceNegativeTest() {
+         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
+         product.setPrice(-25.0);
+         assertTrue(product.getPrice() >= 0);
+     }
 
-//     @Test
-//     void setPriceNegativeTest() {
-//         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         product.setPrice(-25.0);
-//         assertTrue(product.getPrice() >= 0);
-//     }
+     @Test
+     public void setPriceHigherTest() {
+         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
+         product.setPrice(50.0);
+         assertEquals(50.0, product.getPrice(), 0.0);
+     }
 
-//     @Test
-//     void setPriceHigherTest() {
-//         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         product.setPrice(50.0);
-//         assertTrue(product.getPrice() == 50.0);
-//     }
+     @Test
+     public void setPriceLowerTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setPrice(2.0);
+         assertEquals(2.0, product.getPrice(), 0.0);
+     }
 
-//     @Test
-//     void setPriceLowerTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setPrice(2.0);
-//         assertTrue(product.getPrice() == 2.0);
-//     }
+    @Test
+    public void setPriceZeroTest() {
+        Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+        product.setPrice(0.0);
+        assertEquals(0.0, product.getPrice(), 0.0);
+    }
 
+    @Test
+    public void setPriceDecimalTest() {
+        Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+        product.setPrice(5.23);
+        assertEquals(5.23, product.getPrice(), 0.0);
+    }
 
-
-
-
-
-//     @Test
-//     void getCategoryBasicTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         assertTrue(product.getCategory() == "shoes");
-
-//     }
-
-//     @Test
-//     void setCategoryBasicTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setCategory("shirt");
-//         assertTrue(product.getCategory() == "shirt");
-
-//     }
-
-
-
-
-//     @Test
-//     void getSizesWithSizeTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         assertTrue(product.getSizes() == "2");
-//     }
-
-//     @Test
-//     void getSizesNoSizeTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes",1);
-//         assertTrue(product.getSizes() == null);
-//     }
-
-//     @Test
-//     void setSizesBasicTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setSizes("10");
-//         assertTrue(product.getSizes() == "10");
-//     }
-
-//     @Test
-//     void setSizesEmptyStringTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setSizes("");
-//         assertTrue(product.getSizes() == null);
-//     }
-
-//     @Test
-//     void setSizesNoSizeStartTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes",1);
-//         product.setSizes("5");
-//         assertTrue(product.getSizes() == "5");
-//     }
+    @Test
+    public void setPriceLongDecimalTest() {
+        Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+        product.setPrice(5.231326828189);
+        assertEquals(5.23, product.getPrice(), 0.0);
+    }
 
 
 
 
 
 
-//     @Test
-//     void getQuantityBasicTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         assertTrue(product.getQuantity() == 1);
-//     }
+     @Test
+     public void getCategoryBasicTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         assertEquals("shoes", product.getCategory());
+     }
 
-//     @Test
-//     void setQuantityBasicTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setQuantity(50);
-//         assertTrue(product.getQuantity() == 50);
-//     }
+     @Test
+     public void setCategoryBasicTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setCategory("shirt");
+         assertEquals("shirt", product.getCategory());
 
-//     @Test
-//     void setQuantityNegativeTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setQuantity(-50);
-//         assertTrue(product.getQuantity() == 0);
-//     }
+     }
 
-//     @Test
-//     void setQuantityZeroTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setQuantity(0);
-//         assertTrue(product.getQuantity() == 0);
-//     }
 
-//     @Test
-//     void setQuantityHigherTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
-//         product.setQuantity(9000);
-//         assertTrue(product.getQuantity() == 9000);
-//     }
 
-//     @Test
-//     void setQuantityLowerTest() {
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",500);
-//         product.setQuantity(4);
-//         assertTrue(product.getQuantity() == 4);
-//     }
 
-//     @Test
-//     void setQuantitySameTest(){
-//         Product product = new Product("shoe", "1", 500.0, "shoes", "2",500);
-//         product.setQuantity(500);
-//         assertTrue(product.getQuantity() == 500);
-//     }
+     @Test
+     public void getSizesWithSizeTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         assertEquals("2", product.getSizes());
+     }
+
+     @Test
+     public void getSizesNoSizeTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes",1);
+         assertNull(product.getSizes());
+     }
+
+     @Test
+     public void setSizesBasicTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setSizes("10");
+         assertEquals("10", product.getSizes());
+     }
+
+     @Test
+     public void setSizesEmptyStringTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setSizes("");
+         assertNull(product.getSizes());
+     }
+
+     @Test
+     public void setSizesNoSizeStartTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes",1);
+         product.setSizes("5");
+         assertEquals("5", product.getSizes());
+     }
+
+
+
+
+
+
+     @Test
+     public void getQuantityBasicTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         assertEquals(1, product.getQuantity());
+     }
+
+     @Test
+     public void setQuantityBasicTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setQuantity(50);
+         assertEquals(50, product.getQuantity());
+     }
+
+     @Test
+     public void setQuantityNegativeTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setQuantity(-50);
+         assertEquals(0, product.getQuantity());
+     }
+
+     @Test
+     public void setQuantityZeroTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setQuantity(0);
+         assertEquals(0, product.getQuantity());
+     }
+
+     @Test
+     public void setQuantityHigherTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
+         product.setQuantity(9000);
+         assertEquals(9000, product.getQuantity());
+     }
+
+     @Test
+     public void setQuantityLowerTest() {
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",500);
+         product.setQuantity(4);
+         assertEquals(4, product.getQuantity());
+     }
+
+     @Test
+     public void setQuantitySameTest(){
+         Product product = new Product("shoe", "1", 500.0, "shoes", "2",500);
+         product.setQuantity(500);
+         assertEquals(500, product.getQuantity());
+     }
 }

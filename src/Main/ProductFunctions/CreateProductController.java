@@ -45,12 +45,14 @@ public class CreateProductController {
         while (!undo.isComplete()) {
             if (Objects.equals(undo.getCurrentState(), "Name")) {
                 input.sendOutput("What is the name of the product?");
-                String name = input.getInput();
+                String name = input.getInput().strip();
                 if (name.equals("*")) {
                     UserOptionsController uo = new UserOptionsController(user);
                     uo.getOption();
                     throw new IOException();
-                } else {
+                } else if (name.equals("")) {
+                    input.sendOutput("Product must have a name.");
+                } else{
                     undo.setDataPoint(name);
                 }
             }
@@ -61,11 +63,15 @@ public class CreateProductController {
                 if (priceString.equals("*")) {
                     undo.undo();
                 } else {
-                    double price = Double.parseDouble(priceString);
-                    if (price >= 0) {
-                        undo.setDataPoint(price);
-                    } else {
-                        input.sendOutput("Price must be greater than or equal to 0.");
+                    try {
+                        double price = Double.parseDouble(priceString);
+                        if (price >= 0) {
+                            undo.setDataPoint(price);
+                        } else {
+                            input.sendOutput("Price must be greater than or equal to 0.");
+                        }
+                    }catch(NumberFormatException e){
+                        input.sendOutput("Price must be a number.");
                     }
                 }
 
@@ -81,13 +87,17 @@ public class CreateProductController {
             }
 
             if (Objects.equals(undo.getCurrentState(), "Quantity")) {
-                input.sendOutput("What is the quantity of this product? Please enter an integer");
+                input.sendOutput("What is the quantity of this product? Please enter an integer.");
                 String quantityString = input.getInput();
                 if (quantityString.equals("*")) {
                     undo.undo();
                 } else {
-                    int quantity = Integer.parseInt(quantityString);
-                    undo.setDataPoint(quantity);
+                    try {
+                        int quantity = Integer.parseInt(quantityString);
+                        undo.setDataPoint(quantity);
+                    } catch(NumberFormatException e){
+                        input.sendOutput("Please enter an integer.");
+                    }
                 }
             }
             if (Objects.equals(undo.getCurrentState(), "Size")) {
@@ -113,15 +123,11 @@ public class CreateProductController {
                 String commentInput = input.getInput();
                 if (commentInput.equals("*")) {
                     undo.undo();
+                } else if (commentInput.equals("1")) {
+                    undo.setDataPoint(true);
+                } else if (commentInput.equals("2")) {
+                    undo.setDataPoint(false);
                 }
-                else{
-                    undo.setDataPoint(commentInput);
-                }
-//                } else if (commentInput.equals("1")) {
-//                    undo.setDataPoint(true);
-//                } else if (commentInput.equals("2")) {
-//                    undo.setDataPoint(false);
-//                }
                 //If they didnt enter these 3 options
             }
             if (Objects.equals(undo.getCurrentState(), "CanRate")) {
@@ -130,14 +136,11 @@ public class CreateProductController {
                 if (ratingInput.equals("*")) {
                     undo.undo();
                 }
-                else{
-                    undo.setDataPoint(ratingInput);
+                else if (ratingInput.equals("1")) {
+                    undo.setDataPoint(true);
+                } else if (ratingInput.equals("2")) {
+                    undo.setDataPoint(false);
                 }
-//                if (ratingInput.equals("1")) {
-//                    undo.setDataPoint(true);
-//                } else if (ratingInput.equals("2")) {
-//                    undo.setDataPoint(false);
-//                }
                 //If they didnt enter these 3 options
             }
         }
@@ -145,10 +148,6 @@ public class CreateProductController {
         CreateProductGateway productGate = new CreateProductGateway();
 
         String id = generateID();
-        boolean comment;
-        boolean rate;
-        comment = output.get("CanComment") == "1";
-        rate = output.get("CanRate") == "1";
 
         if (!output.get("Size").equals("No Size")) {
 
@@ -160,7 +159,7 @@ public class CreateProductController {
             PostManager postManager = new PostManager();
 
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    comment, rate, user);
+                    (boolean)output.get("CanComment"), (boolean)output.get("CanRate"), user);
 
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
@@ -173,9 +172,8 @@ public class CreateProductController {
                     id, (double) output.get("Price"), (String) output.get("Category"),
                     (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
-
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-                    comment, rate, user);
+                    (boolean)output.get("CanComment"), (boolean)output.get("CanRate"), user);
 
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
@@ -186,6 +184,7 @@ public class CreateProductController {
 
     }
 
+    // should this be private
     public String generateID() throws IOException, ClassNotFoundException {
         GetProductGateway getProductGateway = new GetProductGateway();
         HashMap<String, Object> hashMap = getProductGateway.getHashMap();
