@@ -2,9 +2,9 @@ package PostFunctions;
 
 import InputAndOutput.SystemInOut;
 import ProductFunctions.Product;
-
+import UserFunctions.User;
 import java.io.IOException;
-
+import ProductFunctions.Product;
 public class PostManager {
 
     /**
@@ -15,9 +15,9 @@ public class PostManager {
      *
      * @return a newly created post.
      */
-    public Post createPost(Product product, String caption, boolean canComment, boolean canRate)
+    public Post createPost(Product product, String caption, boolean canComment, boolean canRate,User user)
     throws IOException, ClassNotFoundException {
-        return new Post(product, caption, canComment, canRate);
+        return new Post(product, caption, canComment, canRate,user);
     }
 
     /**
@@ -74,6 +74,27 @@ public class PostManager {
     }
     //maybe add methods to check if we can see comments and reviews
 
+    public String postToString(Post post){
+        String output = new String();
+        output = "Post made by: " + post.getUser().getUsername() +"\n";
+        output = output + "Product its about: " + post.getProduct().toString() + "\n";
+        output = output + "Caption: " + post.getCaption() + "\n";
+        if (post.getCanComment()){
+            output = output + "Comments: \n";
+            for(int c = 0; c < post.getComments().size(); c++){
+                output = output + post.getComments().get(c) + "\n";
+            }
+        }
+        if (post.getCanRate()){
+            float ratings = 0;
+            for(int c = 0; c < post.getRatings().size(); c++){
+                ratings = ratings + post.getRatings().get(c);
+            }
+            String s = String.valueOf(ratings);
+            output = output + "Ratings are: " + s +"\n" ;
+        }
+        return output;
+    }
 
 
 }

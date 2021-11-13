@@ -5,12 +5,6 @@ import ProductFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-// TODO add posts
-// TODO
-// addMoney, spendMoney, money variable with the amount of money they have
-//
-
-
 
 public class User implements Serializable {
     // instance variables
@@ -19,20 +13,14 @@ public class User implements Serializable {
     private List<Product> shoppingCart;
     private List<Product> currentSearches;
     private List<String> listFollowing; // people we follow
+
+    public void setListFollowers(List<String> listFollowers) {
+        this.listFollowers = listFollowers;
+    }
+
     private List<String> listFollowers; // people that follow me
     private List<Post> feed;
     private List<String> productsPosted; // the list of all products that this user has posted.
-
-    // I follow [Um, Alber, adam]
-    // People following me [Um, adam]
-
-    //produc1
-    //um, adam -> update feed with product1
-
-    //albert posts product2
-    //my feed changes
-
-
 
 // TODO add list of posts
     /**
@@ -44,15 +32,14 @@ public class User implements Serializable {
      * @param username this user's username.
      */
 
-
-
     public User(String username){
         this.username = username;
         this.listPosts = new ArrayList<>();
         this.shoppingCart = new ArrayList<>();
         this.currentSearches = new ArrayList<>();
         this.listFollowing = new ArrayList<>();
-//        this.feed = new ArrayList<>();
+        this.feed = new ArrayList<>();
+        this.listFollowers = new ArrayList<>();
     }
 
     public List<String> getListFollowers(){
@@ -73,10 +60,10 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    // getter for instance variable listPosts
-//    public List<Post> getListPosts() {
-//        return listPosts;
-//    }
+    // getter for list posts
+    public List<Post> getListPosts() {
+        return listPosts;
+    }
 
     // setter for instance variable listPosts
     public void setListPosts(List<Post> listPosts) {
@@ -119,14 +106,12 @@ public class User implements Serializable {
     }
 
     // setter for instance variable feed
-//    public void setFeed(List<OptionsPackage.Post> feed) {
-//        this.feed = feed;
-//    }
+    public void setFeed(List<Post> feed) {
+        this.feed = feed;
+    }
     public void addToPostList(Post post){
         this.listPosts.add(post);
     }
 
-    public List<Post> getListPosts() {
-        return listPosts;
-    }
+
 }

@@ -28,14 +28,16 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
         if (productsSavedDict.containsKey(tag)) {
             List<String> productIDList = (List<String>) productsSavedDict.get(tag);
             productIDList.add(productId);
+            productsSavedDict.put(tag, productIDList);
+            rw.saveToFile("src/Main/Product.ser", productsSavedDict);
         }
         else {
             List<String> newList = new ArrayList<>();
-            newList.add(tag);
             productsSavedDict.put(tag,newList);
+            rw.saveToFile("src/Main/Product.ser", productsSavedDict);
         }
-        // {ID: product}
 
+        // {ID: product}
         File file2 = new File("src/Main/IdToProduct.ser");
         // if no hashmap exists yet
         if (file2.length() == 0){
@@ -45,7 +47,7 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
         }
 
         HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main/IdToProduct.ser");
-        productsSavedDict.put(productId, newProduct);
+        idToProductDict.put(productId, newProduct);
         rw.saveToFile("src/Main/IdToProduct.ser", idToProductDict);
         }
 
