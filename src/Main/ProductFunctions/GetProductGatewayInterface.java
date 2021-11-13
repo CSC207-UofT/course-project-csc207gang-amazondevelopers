@@ -5,5 +5,5 @@ import UserFunctions.User;
 import java.io.IOException;
 
 public interface GetProductGatewayInterface {
-    public Product getProduct(String productId) throws IOException, ClassNotFoundException;
+    public Object getProduct(String productId) throws IOException, ClassNotFoundException;
 }

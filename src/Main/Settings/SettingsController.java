@@ -18,8 +18,7 @@ public class SettingsController {
     public void getSettingOptions() throws IOException {
         SystemInOut input = new SystemInOut();
         input.sendOutput("What would you like to do? Input a number for " +
-                "your ideal option (Sign in in not implemented" +
-                "efficiently, please try again in phase 2 :)\n *. Back to all options");
+                "your ideal option (Not fully implemented, please try again in phase 2 :)\n *. Back to all options");
 
         String userDecision = input.getInput();
 

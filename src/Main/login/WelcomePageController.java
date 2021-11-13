@@ -3,7 +3,6 @@ package login;
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
-import OptionsPackage.UserOptionsUseCase;
 
 import java.io.IOException;
 
@@ -20,8 +19,7 @@ public class WelcomePageController {
      */
     public void userLoginDecision() throws IOException {
         SystemInOut inOut = new SystemInOut();
-        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n" +
-                "3.Quit\n Input * at any time to undo your action");
+        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n 3.Quit");
         // user input
         String userDecision = inOut.getInput();
 
@@ -32,18 +30,17 @@ public class WelcomePageController {
                     SignInController signInCont = new SignInController();
                     String username = signInCont.getUsername();
                     // the user is directed to option page
-                    SignInGateway signIn = new SignInGateway();
-                    User signedInUser = signIn.allowSignIn(username);
+                    GetUserGateway signIn = new GetUserGateway();
+                    User signedInUser = signIn.getUser(username);
                     UserOptionsController options = new UserOptionsController(signedInUser);
                     options.getOption();
                     this.userLoginDecision();
 
 
                 } else if (userDecision.equals("2")) {
-                    SignUpController signUpCont = new SignUpController();
-                    String newUsername = signUpCont.getNewUsername();
                     SignUpGateway signUp = new SignUpGateway();
-                    signUp.allowSignUp(newUsername);
+                    SignUpUseCase signUpUseCase = new SignUpUseCase(signUp);
+                    signUpUseCase.allowSignUp();
                     // recurse back to login page after sign up to then sign in
                     this.userLoginDecision();
 

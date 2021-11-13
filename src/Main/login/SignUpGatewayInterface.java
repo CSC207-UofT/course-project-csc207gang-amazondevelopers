@@ -1,11 +1,10 @@
 package login;
 
-import InputAndOutput.SystemInOut;
-
+import UserFunctions.User;
 import java.io.IOException;
 
 public interface SignUpGatewayInterface {
-    public void allowSignUp(String username) throws IOException, ClassNotFoundException;
+    public void allowSignUp(String username, User user) throws IOException, ClassNotFoundException;
 }
 
 
