@@ -114,9 +114,6 @@ public class CreateProductController {
                 if (commentInput.equals("*")) {
                     undo.undo();
                 }
-//                else{
-//                    undo.setDataPoint(commentInput);
-//                }
                 else if (commentInput.equals("1")) {
                     undo.setDataPoint(true);
                 } else if (commentInput.equals("2")) {
@@ -130,9 +127,6 @@ public class CreateProductController {
                 if (ratingInput.equals("*")) {
                     undo.undo();
                 }
-//                else{
-//                    undo.setDataPoint(ratingInput);
-//                }
                 else if (ratingInput.equals("1")) {
                     undo.setDataPoint(true);
                 } else if (ratingInput.equals("2")) {
@@ -145,10 +139,6 @@ public class CreateProductController {
         CreateProductGateway productGate = new CreateProductGateway();
 
         String id = generateID();
-//        boolean comment;
-//        boolean rate;
-//        comment = output.get("CanComment").equals("1");
-//        rate = output.get("CanRate").equals("1");
 
         if (!output.get("Size").equals("No Size")) {
 
