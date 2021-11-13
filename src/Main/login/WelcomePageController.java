@@ -49,7 +49,7 @@ public class WelcomePageController {
                 }
                 else {
                     inOut.sendOutput("Try again");
-
+                    this.userLoginDecision();
                 }
             } catch (Exception exception) {
                 exception.printStackTrace();
