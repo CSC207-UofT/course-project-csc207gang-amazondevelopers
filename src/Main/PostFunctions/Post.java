@@ -5,6 +5,7 @@ import ProductFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import UserFunctions.User;
 
 public class Post implements Serializable {
     private int likes;
@@ -15,15 +16,16 @@ public class Post implements Serializable {
     private String caption;
     private boolean canComment;
     private boolean canRate;
+    private User user;
 
-    public Post(Product product, String caption, boolean canComment, boolean canRate) {
+    public Post(Product product, String caption, boolean canComment, boolean canRate, User user) {
         this.likes = 0;
         this.product = product;
         this.description = product.toString();
         this.caption = caption;
         this.canRate = canRate;
         this.canComment = canComment;
-
+        this.user = user;
         //these are first empty arraylists
         this.ratings = new ArrayList<Float>();
         this.comments = new ArrayList<String>();
@@ -75,6 +77,5 @@ public class Post implements Serializable {
     public String getProductDescription() {
         return this.description;
     }
-
-
+    public User getUser(){return this.user;}
 }

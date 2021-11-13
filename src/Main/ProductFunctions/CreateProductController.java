@@ -158,8 +158,10 @@ public class CreateProductController {
                     (double) output.get("Price"), (String) output.get("Category"), (String) output.get("Size"),
                     (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
+
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
                     comment, rate);
+
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
@@ -171,8 +173,10 @@ public class CreateProductController {
                     id, (double) output.get("Price"), (String) output.get("Category"),
                     (int) output.get("Quantity"));
             PostManager postManager = new PostManager();
+
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
                     comment, rate);
+
             AddPostGateway postGate = new AddPostGateway();
             postGate.addPost(newpost, user);
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
