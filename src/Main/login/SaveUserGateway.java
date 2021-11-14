@@ -32,8 +32,8 @@ public class SaveUserGateway implements SaveUserGatewayInterface {
             }
             else {
                 input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
-                FollowController followOptions = new FollowController(userToBeSaved);
-                followOptions.allowFollow();
+                UserOptionsController options = new UserOptionsController(userToBeSaved);
+                options.getOption();
             }
         }
         else{
