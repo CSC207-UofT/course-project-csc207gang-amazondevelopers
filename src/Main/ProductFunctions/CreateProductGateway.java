@@ -11,6 +11,15 @@ import UserFunctions.UserReadWriter;
 
 public class CreateProductGateway implements CreateProductGatewayInterface {
 
+    /**
+     * Add the product given the descriptions to the product.ser and IDtoProduct.ser files
+     * @param newProduct
+     * @param productId
+     * @param tag
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+
     public void addProductToRepo(Product newProduct, String productId, String tag) throws IOException,
             ClassNotFoundException {
 

@@ -5,6 +5,9 @@ import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;
 import UserFunctions.CartManager;
 import UserFunctions.User;
+import UserFunctions.SaveProductGateway;
+import login.SaveUserGateway;
+import login.SaveUserGatewayInterface;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,7 +30,7 @@ public class BuyController {
 
         // loop to keep checking if the user wants to buy something from the list
         presenter.presentList(listIds);
-            input.sendOutput("Would you like to purchase one of the items?" +
+            input.sendOutput("Would you like to add one of the items to your cart?" +
                 "enter the number of your choice\n 1.Yes\n 2.No take me back to Search\n " +
                     "Type 'R' to choose another option from the menu.");
             String decisionToBuy = input.getInput();
@@ -36,7 +39,8 @@ public class BuyController {
                 // then the user wants to buy
                 boolean boughtOrExit = false;
                 while (!boughtOrExit) {
-                    input.sendOutput("Please select the index of the item that you want to buy. The index is the " +
+                    input.sendOutput("Please select the index of the item that you want to add to " +
+                            "your cart. The index is the " +
                             "integer value for the position of the item on the list, with the first item being at " +
                             "the 0th index. Type exit if you would like to go back to your search result.");
                     String itemIndex = input.getInput();
@@ -51,6 +55,30 @@ public class BuyController {
                         // the user has bought something, so user can now decide if they want to buy something
                         // else from the search results or not (returned to the outer while loop)
                         //TODO allow user to buy sth or not by emptying their cart
+
+                        input.sendOutput("would you like to\n1. buy your entire cart\n2.Go back to options");
+                        String optionToBuy = input.getInput();
+
+                        if (optionToBuy.equals("1")){
+                            SaveProductGateway saveProdG = new SaveProductGateway();
+                            SaveUserGateway saveUserGateway = new SaveUserGateway();
+                            CartManager cartUseCase = new CartManager(saveProdG, saveUserGateway);
+                            cartUseCase.emptyCart(user);
+                            input.sendOutput("your cart is now empty, and you have purchased" +
+                                    "the products in it");
+                            UserOptionsController options = new UserOptionsController(user);
+                            options.getOption();
+
+
+                        }else{
+                            UserOptionsController options = new UserOptionsController(user);
+                            options.getOption();
+
+                        }
+
+
+
+
                         boughtOrExit = true;
                     } else if (itemIndex.equals("exit")) {
                         // return to the outer while loop so user can decide if they want to do something else other than buy

@@ -1,19 +1,23 @@
 package ProductFunctions;
+import PostFunctions.AddPostGateway;
+import PostFunctions.AddPostGatewayInterface;
+import PostFunctions.Post;
+import UserFunctions.User;
+
 import java.io.IOException;
 
-public class ProductManager {
+public class ProductUseCase {
 
     CreateProductGatewayInterface createProduct;
     GetProductGatewayInterface getProduct;
 
-    public ProductManager(CreateProductGatewayInterface createProduct){
+
+    public ProductUseCase(CreateProductGatewayInterface createProduct){
         this.createProduct = createProduct;
-
     }
+    public ProductUseCase(){};
 
-    public ProductManager(GetProductGatewayInterface getProduct){
-        this.getProduct = getProduct;
-    }
+
 
     /**
      * Create a new Product object.
@@ -23,13 +27,24 @@ public class ProductManager {
      *
      * @return a newly created product or null.
      */
-    public Product createProduct(String name, String id, Double price, String category, String size, int quantity) throws IOException, ClassNotFoundException {
+
+
+    public Product saveNewProduct(String name, String id, Double price, String category, String size, int quantity)
+            throws IOException, ClassNotFoundException {
         Product newProduct = new Product(name, id, price, category, size, quantity);
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
         return newProduct;
     }
 
+    public void saveNewProductToSer(Product newProduct, User user) throws IOException, ClassNotFoundException {
+        createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
+
+    }
+
+
+
     //Overloaded method for if there is no size attributed to this Product
+
 
     /**
      * Create a new Product object.
@@ -39,11 +54,13 @@ public class ProductManager {
      *
      * @return a newly created product or null.
      */
-    public Product createProduct(String name, String id, Double price, String category, int quantity) throws IOException, ClassNotFoundException {
+    public Product saveNewProduct(String name, String id, Double price, String category, int quantity) throws IOException, ClassNotFoundException {
         Product newProduct = new Product(name, id, price, category, quantity);
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
         return newProduct;
     }
+
+
 
     /**
      * Takes in a product and an int representing the quantity of the product to decrease it by.

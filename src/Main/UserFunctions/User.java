@@ -22,6 +22,7 @@ public class User implements Serializable {
     private List<Post> feed;
     private List<String> productsPosted; // the list of all products that this user has posted.
 
+
 // TODO add list of posts
     /**
      * Creates a new User object.
@@ -75,20 +76,6 @@ public class User implements Serializable {
         return shoppingCart;
     }
 
-    // setter for instance variable shoppingCart
-    public void setShoppingCart(List<Product> shoppingCart) {
-        this.shoppingCart = shoppingCart;
-    }
-
-    // getter for instance variable currentSearches
-    public List<Product> getCurrentSearches() {
-        return currentSearches;
-    }
-
-    // setter for instance variable currentSearches
-    public void setCurrentSearches(List<Product> currentSearches) {
-        this.currentSearches = currentSearches;
-    }
 
     // getter for instance variable listFollowing
     public List<String> getListFollowing() {
@@ -112,6 +99,5 @@ public class User implements Serializable {
     public void addToPostList(Post post){
         this.listPosts.add(post);
     }
-
 
 }
