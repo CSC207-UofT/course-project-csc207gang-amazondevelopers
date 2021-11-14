@@ -119,71 +119,71 @@ public class ProductManagerTest {
     @Test
     public void decreaseQuantityBasic() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity("1", 1);
+        productUseCaseGet.decreaseQuantity(product, 1);
         assertEquals(1, product.getQuantity());
     }
 
     @Test
     public void decreaseQuantityBasic2() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",50);
-        productUseCaseGet.decreaseQuantity("1", 26);
+        productUseCaseGet.decreaseQuantity(product, 26);
         assertEquals(24, product.getQuantity());
     }
 
     @Test
     public void decreaseQuantityNegative() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe383847828", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity("1", -50);
-        Product prod2 =  getProductGateway.getProduct("1");
-        String check = "" + product;
+        productUseCaseGet.decreaseQuantity(product, -50);
+//        Product prod2 =  getProductGateway.getProduct("1");
+//        String check = "" + product;
         assertEquals(0, product.getQuantity());
     }
 
     @Test
     public void decreaseQuantityZero() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity("1", 0);
+        productUseCaseGet.decreaseQuantity(product, 0);
         assertEquals(0, product.getQuantity());
     }
 
-    @Test
-    public void decreaseQuantityProductDoesNotExiist() throws Exception {
-        assertFalse(productUseCaseGet.decreaseQuantity("asdkjshdkjhafj", 1));
-    }
+//    @Test
+//    public void decreaseQuantityProductDoesNotExiist() throws Exception {
+//        assertFalse(productUseCaseGet.decreaseQuantity("asdkjshdkjhafj", 1));
+//    }
 
 
     @Test
     public void increaseQuantityBasic() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity("1", 1);
+        productUseCaseGet.decreaseQuantity(product, 1);
         assertEquals(3, product.getQuantity());
     }
 
     @Test
     public void increaseQuantityBasic2() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity("1", 51);
+        productUseCaseGet.decreaseQuantity(product, 51);
         assertEquals(53, product.getQuantity());
     }
 
     @Test
     public void increaseQuantityNegative() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity("1", -50);
+        productUseCaseGet.decreaseQuantity(product, -50);
         assertEquals(0, product.getQuantity());
     }
 
     @Test
     public void increaseQuantityZero() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.increaseQuantity("1", 0);
+        productUseCaseGet.increaseQuantity(product, 0);
         assertEquals(2, product.getQuantity());
     }
 
-    @Test
-    public void increaseQuantityProductDoesNotExiist() throws Exception {
-        assertFalse(productUseCaseGet.increaseQuantity("hretghghfdgnvfdgds", 5));
-    }
+//    @Test
+//    public void increaseQuantityProductDoesNotExiist() throws Exception {
+//        assertFalse(productUseCaseGet.increaseQuantity("hretghghfdgnvfdgds", 5));
+//    }
 
 
 

@@ -44,7 +44,8 @@ public class CartManager {
         for (Product prod: userCart){
             GetProductGatewayInterface getProductGatewayInterface = new GetProductGateway();
             ProductUseCase prodUseCase = new ProductUseCase(getProductGatewayInterface);
-            prodUseCase.decreaseQuantity(prod.getId(), 1);
+            prodUseCase.decreaseQuantity(prod, 1);
+            // Todo: delete the product with the old information from the file
             saveProductChangesInterface.save(prod.getId(),prod);
         }
 

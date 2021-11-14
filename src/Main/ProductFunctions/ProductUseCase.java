@@ -12,15 +12,18 @@ public class ProductUseCase {
     GetProductGatewayInterface getProduct;
 
 
-    public ProductUseCase(CreateProductGatewayInterface createProduct){
+    public ProductUseCase(CreateProductGatewayInterface createProduct) {
         this.createProduct = createProduct;
     }
-    public ProductUseCase(){};
 
-    public  ProductUseCase(GetProductGatewayInterface getProduct){
-        this.getProduct = getProduct;
+    public ProductUseCase() {
     }
 
+    ;
+
+    public ProductUseCase(GetProductGatewayInterface getProduct) {
+        this.getProduct = getProduct;
+    }
 
 
     /**
@@ -46,7 +49,6 @@ public class ProductUseCase {
     }
 
 
-
     //Overloaded method for if there is no size attributed to this Product
 
 
@@ -65,44 +67,39 @@ public class ProductUseCase {
     }
 
 
-
     /**
      * Takes in a product and an int representing the quantity of the product to decrease it by.
      * Decreases quantity of that product by quantity.
      *
-     * @param productId id of product whose quantity is decreased.
-     * @param quantity Int amount to remove from existing quantity of the product.
+     * @param product product whose quantity is decreased.
+     * @param quantity  Int amount to remove from existing quantity of the product.
      * @return true successfully decreased amount and false otherwise.
      */
-    public boolean decreaseQuantity(String productId, int quantity) throws IOException, ClassNotFoundException {
-        Product productOfId = (Product) getProduct.getProduct(productId);
-        if (productOfId != null){
-            int newQuantity = productOfId.getQuantity() - quantity;
-            if (newQuantity >= 0) {
-                productOfId.setQuantity(newQuantity);
+    public boolean decreaseQuantity(Product product, int quantity) {
+        int newQuantity = product.getQuantity() - quantity;
+        if (newQuantity >= 0) {
+                product.setQuantity(newQuantity);
                 return true;
             }
-        }
-        // means that product does not exist
         return false;
     }
 
     /**
-     * Takes in a product and an int representing the quantity of the product to decrease it by.
-     * Decreases quantity of that product by quantity.
+     * Takes in a product and an int representing the quantity of the product to increase it by.
+     * Increases quantity of that product by quantity.
      *
-     * @param productId id of product whose quantity is decreased.
-     * @param quantity Int amount to add from existing quantity of the product.
+     * @param product Product whose quantity is increased.
+     * @param quantity  Int amount to add from existing quantity of the product.
      * @return true successfully increased amount and false otherwise.
      */
-    public boolean increaseQuantity(String productId, int quantity) throws IOException, ClassNotFoundException {
-        Product productOfId = (Product) getProduct.getProduct(productId);
-        if (productOfId != null){
-            int newQuantity = productOfId.getQuantity() + quantity;
-            productOfId.setQuantity(newQuantity);
+    public boolean increaseQuantity(Product product, int quantity){
+        if (quantity >= 0){
+            int newQuantity = product.getQuantity() + quantity;
+            product.setQuantity(newQuantity);
             return true;
         }
-        //means that product does not exist
-        return false;
+        else {
+            return false;
+        }
     }
 }
