@@ -22,22 +22,23 @@ public class SignUpGateway implements SignUpGatewayInterface {
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
             UserReadWriter rw = new UserReadWriter();
-            HashMap<String, Object> emptyHashMap = new HashMap<>();
-            rw.saveToFile("src/Main/user.ser", emptyHashMap);
+            HashMap<String, Object> newHashMap = new HashMap<>();
+            newHashMap.put(username, user);
+            rw.saveToFile("src/Main/user.ser", newHashMap);
         }
-
-        // access the serialized file for this user.
-        UserReadWriter rw = new UserReadWriter();
-        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-        if (!usersSavedDict.containsKey(username)) {
-            usersSavedDict.put(username, user);
-            rw.saveToFile("src/Main/user.ser", usersSavedDict);
-        }
-        else{ // the user.ser contains
-            input.sendOutput("This username is taken, please enter another one!");
-            SignUpController signUp = new SignUpController();
-            String username2 = signUp.getNewUsername();
-            this.allowSignUp(username2, user);
+        else {
+            // access the serialized file for this user.
+            UserReadWriter rw = new UserReadWriter();
+            HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
+            if (!usersSavedDict.containsKey(username)) {
+                usersSavedDict.put(username, user);
+                rw.saveToFile("src/Main/user.ser", usersSavedDict);
+            } else { // the user.ser contains
+                input.sendOutput("This username is taken, please enter another one!");
+                SignUpController signUp = new SignUpController();
+                String username2 = signUp.getNewUsername();
+                this.allowSignUp(username2, user);
+            }
         }
 
     }

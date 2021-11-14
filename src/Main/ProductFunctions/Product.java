@@ -41,10 +41,10 @@ public class Product implements Serializable {
      */
     public String toString() {
         if (this.sizes == null){
-            return name + " (" + id + ")" + ": $" + price + ", " + " in stock";
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
         }
         else{
-            return name + " (" + id + ")" + ": $" + price + ", " + " in stock, " + sizes;
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
         }
     }
 

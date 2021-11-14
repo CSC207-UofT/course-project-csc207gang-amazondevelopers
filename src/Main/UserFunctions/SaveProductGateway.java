@@ -9,10 +9,10 @@ import java.util.HashMap;
 public class SaveProductGateway implements SaveProductGatewayInterface{
 
     public void save(String productID, Product product) throws IOException, ClassNotFoundException {
-        // save the changed, new user.
+        // save the changed, new Product.
         ProductReadWriter rw = new ProductReadWriter();
         HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/IdToProduct.ser");
         productSavedDict.put(productID, product);
-        rw.saveToFile("src/Main/user.ser", productSavedDict);
+        rw.saveToFile("src/Main/IdToProduct.ser", productSavedDict);
     }
 }
