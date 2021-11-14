@@ -1,17 +1,18 @@
 package ProductFunctions;
 import java.io.IOException;
+import UserFunctions.User;
 
-public class ProductManager {
+public class ProductUseCase {
 
     CreateProductGatewayInterface createProduct;
     GetProductGatewayInterface getProduct;
 
-    public ProductManager(CreateProductGatewayInterface createProduct){
+    public ProductUseCase(CreateProductGatewayInterface createProduct){
         this.createProduct = createProduct;
 
     }
 
-    public ProductManager(GetProductGatewayInterface getProduct){
+    public ProductUseCase(GetProductGatewayInterface getProduct){
         this.getProduct = getProduct;
     }
 
