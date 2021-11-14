@@ -23,6 +23,7 @@ public class ProductManager {
      *
      * @return a newly created product or null.
      */
+    // precondition: id is unique
     public Product createProduct(String name, String id, Double price, String category, String size, int quantity) throws IOException, ClassNotFoundException {
         Product newProduct = new Product(name, id, price, category, size, quantity);
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
@@ -56,13 +57,18 @@ public class ProductManager {
     public boolean decreaseQuantity(String productId, int quantity) throws IOException, ClassNotFoundException {
         Product productOfId = (Product) getProduct.getProduct(productId);
         if (productOfId != null){
-            int newQuantity = productOfId.getQuantity() - quantity;
-            if (newQuantity > 0) {
+            if (quantity >= 0) {
+                int newQuantity = productOfId.getQuantity() - quantity;
                 productOfId.setQuantity(newQuantity);
                 return true;
             }
+            else {
+                productOfId.setQuantity(0);
+                return true;
+            }
+
         }
-        // means that product does not exists
+        // means that product does not exist
         return false;
     }
 

@@ -17,6 +17,7 @@ public class Product implements Serializable {
      * product or null if there is only one size.
      *
      */
+    // Precondition: name != "", price >= 0, quantity >= 0
     public Product(String name, String id, Double price, String category, int quantity) {
         this.name = name;
         this.id = id;
@@ -53,7 +54,7 @@ public class Product implements Serializable {
 
     // setter for name of product
     public void setName(String pname) {
-        if (!pname.equals("")) {
+        if (!pname.strip().equals("")) {
             this.name = pname;
         }
     }
