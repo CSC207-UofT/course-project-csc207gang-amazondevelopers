@@ -1,9 +1,6 @@
 package ProductFunctions;
 
 import InputAndOutput.SystemInOut;
-import OptionsPackage.UserOptionsController;
-import OptionsPackage.UserOptionsUseCase;
-import UserFunctions.User;
 
 import java.io.File;
 import java.io.IOException;

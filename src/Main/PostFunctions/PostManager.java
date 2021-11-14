@@ -1,11 +1,20 @@
 package PostFunctions;
 
 import InputAndOutput.SystemInOut;
+import ProductFunctions.CreateProductGatewayInterface;
+import ProductFunctions.GetProductGatewayInterface;
 import ProductFunctions.Product;
 import UserFunctions.User;
 import java.io.IOException;
 import ProductFunctions.Product;
 public class PostManager {
+
+    AddPostGatewayInterface addPostGateway;
+
+
+    public PostManager(AddPostGatewayInterface addPostGateway){
+        this.addPostGateway = addPostGateway;
+    }
 
     /**
      * Create a new Post object.
@@ -18,6 +27,10 @@ public class PostManager {
     public Post createPost(Product product, String caption, boolean canComment, boolean canRate,User user)
     throws IOException, ClassNotFoundException {
         return new Post(product, caption, canComment, canRate,user);
+    }
+
+    public void savePost(Post newPost, User user) throws IOException, ClassNotFoundException {
+        addPostGateway.addPost(newPost, user);
     }
 
     /**

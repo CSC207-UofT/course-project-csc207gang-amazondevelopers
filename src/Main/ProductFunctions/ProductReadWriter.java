@@ -40,9 +40,9 @@ public class ProductReadWriter implements ReadWriter {
         ObjectInput input = new ObjectInputStream(buffer);
 
         // serialize the Map
-        HashMap<String, Object> productDict = (HashMap<String, Object>) input.readObject();
+        Object productDict = input.readObject();
         input.close();
-        return productDict;
+        return (HashMap<String, Object>) productDict;
 
     }
 }

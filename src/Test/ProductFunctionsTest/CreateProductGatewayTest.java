@@ -1,16 +1,11 @@
 package ProductFunctionsTest;
 
-import InputAndOutput.InOut;
 import ProductFunctions.CreateProductGateway;
 import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;
-import ProductFunctions.ProductManager;
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import static org.junit.Assert.*;
 
