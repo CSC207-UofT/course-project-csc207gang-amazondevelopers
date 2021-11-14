@@ -145,41 +145,72 @@ public class CreateProductController {
             }
         }
         HashMap<String, Object> output = undo.get_Data();
+
+
         CreateProductGateway productGate = new CreateProductGateway();
-
         String id = generateID();
-
         if (!output.get("Size").equals("No Size")) {
 
-            ProductManager productManager = new ProductManager(productGate);
+            ProductUseCase productManager = new ProductUseCase(productGate);
 
-            Product newproduct = productManager.createProduct((String) output.get("Name"), id,
+            Product newproduct = productManager.saveNewProduct((String) output.get("Name"), id,
                     (double) output.get("Price"), (String) output.get("Category"), (String) output.get("Size"),
                     (int) output.get("Quantity"));
-            PostManager postManager = new PostManager();
 
+
+            AddPostGateway addPostGateway = new AddPostGateway();
+            PostManager postManager = new PostManager(addPostGateway);
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
                     (boolean)output.get("CanComment"), (boolean)output.get("CanRate"), user);
+            postManager.savePost(newpost, user);
 
-            AddPostGateway postGate = new AddPostGateway();
-            postGate.addPost(newpost, user);
+            CreateProductGateway createProductGateway = new CreateProductGateway();
+            ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
+            prodUseCase.saveNewProductToSer(newproduct, user);
+
+
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
             input.sendOutput("Product was created.");
             return newproduct;
         } else {
-            ProductManager productManager = new ProductManager(productGate);
-            Product newproduct = productManager.createProduct((String) output.get("Name"),
-                    id, (double) output.get("Price"), (String) output.get("Category"),
+
+            ProductUseCase productManager = new ProductUseCase(productGate);
+
+            Product newproduct = productManager.saveNewProduct((String) output.get("Name"), id,
+                    (double) output.get("Price"), (String) output.get("Category"),
                     (int) output.get("Quantity"));
-            PostManager postManager = new PostManager();
+
+
+            AddPostGateway addPostGateway = new AddPostGateway();
+            PostManager postManager = new PostManager(addPostGateway);
             Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
                     (boolean)output.get("CanComment"), (boolean)output.get("CanRate"), user);
+            postManager.savePost(newpost, user);
 
-            AddPostGateway postGate = new AddPostGateway();
-            postGate.addPost(newpost, user);
+            CreateProductGateway createProductGateway = new CreateProductGateway();
+            ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
+            prodUseCase.saveNewProductToSer(newproduct, user);
+
+
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
             input.sendOutput("Product was created.");
             return newproduct;
+
+//            ///////////////////////// previous else - Delete
+//
+//            AddPostGateway postGate = new AddPostGateway();
+//            ProductUseCase productManager = new ProductUseCase(productGate);
+//            Product newproduct = productManager.saveNewProduct((String) output.get("Name"),
+//                    id, (double) output.get("Price"), (String) output.get("Category"),
+//                    (int) output.get("Quantity"));
+//            PostManager postManager = new PostManager(postGate);
+//            Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
+//                    (boolean)output.get("CanComment"), (boolean)output.get("CanRate"), user);
+//
+//            postGate.addPost(newpost, user);
+//            productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
+//            input.sendOutput("Product was created.");
+//            return newproduct;
         }
 
     }

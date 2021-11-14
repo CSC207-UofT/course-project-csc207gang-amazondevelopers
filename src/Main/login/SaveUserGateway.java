@@ -9,11 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class SaveUserGateway {
-    User user;
 
-    public SaveUserGateway(User user) {
-        this.user = user;
-    }
 
     /**
      * Saves a hashmap to user.ser file, with key value pair being username to user
@@ -23,7 +19,7 @@ public class SaveUserGateway {
      * @throws ClassNotFoundException
      */
 
-    public void saveUser(String username, User userToBeSaved) throws IOException, ClassNotFoundException {
+    public void saveUser(User user, String username, User userToBeSaved) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         // check if username of the person we want to add exists
         File file = new File("src/Main/user.ser");

@@ -2,7 +2,6 @@ package Settings;
 
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
-import OptionsPackage.UserOptionsUseCase;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 

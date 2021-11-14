@@ -5,13 +5,13 @@ import UserFunctions.User;
 import java.io.IOException;
 
 public class SignUpUseCase {
-    SignUpGateway signUpGateway;
+    SignUpGatewayInterface signUpGateway;
 
     /**
      *
      * @param signUpGateway
      */
-    public SignUpUseCase(SignUpGateway signUpGateway) {
+    public SignUpUseCase(SignUpGatewayInterface signUpGateway) {
         this.signUpGateway = signUpGateway;
     }
 
