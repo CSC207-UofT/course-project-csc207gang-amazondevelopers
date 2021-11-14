@@ -13,6 +13,6 @@ public class SaveProductGateway implements SaveProductGatewayInterface{
         ProductReadWriter rw = new ProductReadWriter();
         HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/IdToProduct.ser");
         productSavedDict.put(productID, product);
-        rw.saveToFile("src/Main/user.ser", productSavedDict);
+        rw.saveToFile("src/Main/IdToProduct.ser", productSavedDict);
     }
 }
