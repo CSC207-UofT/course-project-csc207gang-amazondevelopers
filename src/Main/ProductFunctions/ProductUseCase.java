@@ -17,6 +17,10 @@ public class ProductUseCase {
     }
     public ProductUseCase(){};
 
+    public  ProductUseCase(GetProductGatewayInterface getProduct){
+        this.getProduct = getProduct;
+    }
+
 
 
     /**
@@ -36,7 +40,7 @@ public class ProductUseCase {
         return newProduct;
     }
 
-    public void saveNewProductToSer(Product newProduct, User user) throws IOException, ClassNotFoundException {
+    public void saveNewProductToSer(Product newProduct) throws IOException, ClassNotFoundException {
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
 
     }

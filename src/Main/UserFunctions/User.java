@@ -76,6 +76,9 @@ public class User implements Serializable {
         return shoppingCart;
     }
 
+    public void setShoppingCart(List<Product> shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
 
     // getter for instance variable listFollowing
     public List<String> getListFollowing() {
