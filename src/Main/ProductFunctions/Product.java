@@ -41,10 +41,10 @@ public class Product implements Serializable {
      */
     public String toString() {
         if (this.sizes == null){
-            return name + " (" + id + ")" + ": $" + price + ", " + " in stock";
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
         }
         else{
-            return name + " (" + id + ")" + ": $" + price + ", " + " in stock, " + sizes;
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
         }
     }
 
@@ -53,7 +53,7 @@ public class Product implements Serializable {
 
     // setter for name of product
     public void setName(String pname) {
-        if (!pname.equals("")) {
+        if (!pname.strip().equals("")) {
             this.name = pname;
         }
     }
