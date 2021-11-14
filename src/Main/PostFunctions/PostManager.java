@@ -6,7 +6,11 @@ import ProductFunctions.GetProductGatewayInterface;
 import ProductFunctions.Product;
 import UserFunctions.User;
 import java.io.IOException;
+import java.util.List;
+
 import ProductFunctions.Product;
+import login.GetUserGateway;
+
 public class PostManager {
 
     AddPostGatewayInterface addPostGateway;
@@ -31,6 +35,14 @@ public class PostManager {
 
     public void savePost(Post newPost, User user) throws IOException, ClassNotFoundException {
         addPostGateway.addPost(newPost, user);
+        GetUserGateway getUser = new GetUserGateway();
+        List<String> followersList = user.getListFollowers();
+        String username = new String();
+        for (int c = 0; c < followersList.size();c++){
+            username = followersList.get(c);
+            User follower = getUser.getUser(username);
+            addPostGateway.addFeed(newPost,follower);
+        }
     }
 
     /**

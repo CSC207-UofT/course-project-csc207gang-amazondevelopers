@@ -3,7 +3,7 @@ import OptionsPackage.UserOptionsController;
 import UserFunctions.SaveUserChangesGateways;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
-
+import UserFunctions.UserPostUseCase;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,6 +22,18 @@ public class AddPostGateway implements AddPostGatewayInterface{
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
             if (usersSavedDict.containsKey(user.getUsername())) {
                 user.addToPostList(post);
+            }
+            rw.saveToFile("src/Main/user.ser",usersSavedDict);
+        }
+    }
+    public void addFeed(Post post, User user) throws IOException,ClassNotFoundException{
+        File file = new File("src/Main/user.ser");
+        if (!(file.length() == 0)) {
+            PostReadWriter rw = new PostReadWriter();
+            UserPostUseCase upc = new UserPostUseCase(user);
+            HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
+            if (usersSavedDict.containsKey(user.getUsername())) {
+                upc.addToFeed(post);
             }
             rw.saveToFile("src/Main/user.ser",usersSavedDict);
         }
