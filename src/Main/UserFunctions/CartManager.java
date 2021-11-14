@@ -29,9 +29,13 @@ public class CartManager {
 
 
     // TODO buying
-    public void addToCart(Product item, User user){
+    public boolean addToCart(Product item, User user){
         List<Product> userCart = user.getShoppingCart();
-        userCart.add(item);
+        if (item.getQuantity() > 0){
+            userCart.add(item);
+            return true;
+        }
+        return false;
     }
 
     /**

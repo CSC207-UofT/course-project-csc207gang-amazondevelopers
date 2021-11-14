@@ -52,11 +52,12 @@ public class BuyController {
                         Product productToAddToCart = productG.getProduct(itemAtIndex);
                         // add this product to the cart
                         CartManager cart = new CartManager();
-                        cart.addToCart(productToAddToCart, user);
+                        if (!cart.addToCart(productToAddToCart, user)){
+                            input.sendOutput("This product is out of stock. Please select another product.");
+                            this.allowBuy(user, listIds);
+                        }
                         // the user has bought something, so user can now decide if they want to buy something
                         // else from the search results or not (returned to the outer while loop)
-                        //TODO allow user to buy sth or not by emptying their cart
-
 
                         input.sendOutput("would you like to\n1. buy your entire cart\n2.Go back to options");
                         String optionToBuy = input.getInput();
@@ -71,7 +72,7 @@ public class BuyController {
                             CartManager cartUseCaseSaveUser = new CartManager(saveUserGateway);
                             cartUseCaseSaveUser.emptyCart(user);
                             input.sendOutput("your cart is now empty, and you have purchased" +
-                                    "the products in it");
+                                    " the products in it.");
                             UserOptionsController options = new UserOptionsController(user);
                             options.getOption();
 
