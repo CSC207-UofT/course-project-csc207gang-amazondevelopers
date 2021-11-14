@@ -4,6 +4,7 @@ import InputAndOutput.SystemInOut;
 import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;
 import UserFunctions.CartManager;
+import UserFunctions.SaveProductGatewayInterface;
 import UserFunctions.User;
 import UserFunctions.SaveProductGateway;
 import login.SaveUserGateway;
@@ -48,7 +49,7 @@ public class BuyController {
                     if (indexInt < listIds.size()) {
                         GetProductGateway productG = new GetProductGateway();
                         String itemAtIndex = listIds.get(indexInt);
-                        Product productToAddToCart = (Product) productG.getProduct(itemAtIndex);
+                        Product productToAddToCart = productG.getProduct(itemAtIndex);
                         // add this product to the cart
                         CartManager cart = new CartManager();
                         cart.addToCart(productToAddToCart, user);
@@ -56,29 +57,29 @@ public class BuyController {
                         // else from the search results or not (returned to the outer while loop)
                         //TODO allow user to buy sth or not by emptying their cart
 
+
                         input.sendOutput("would you like to\n1. buy your entire cart\n2.Go back to options");
                         String optionToBuy = input.getInput();
 
                         if (optionToBuy.equals("1")){
-                            SaveProductGateway saveProdG = new SaveProductGateway();
-                            SaveUserGateway saveUserGateway = new SaveUserGateway();
-                            CartManager cartUseCase = new CartManager(saveProdG, saveUserGateway);
-                            cartUseCase.emptyCart(user);
+                            // save the product decreased quantity
+                            SaveProductGatewayInterface saveProdG = new SaveProductGateway();
+                            CartManager cartUseCaseUpdateProdQ = new CartManager(saveProdG);
+                            cartUseCaseUpdateProdQ.updateProductQuantity(user);
+                            // save the user with updated cart
+                            SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
+                            CartManager cartUseCaseSaveUser = new CartManager(saveUserGateway);
+                            cartUseCaseSaveUser.emptyCart(user);
                             input.sendOutput("your cart is now empty, and you have purchased" +
                                     "the products in it");
                             UserOptionsController options = new UserOptionsController(user);
                             options.getOption();
-
 
                         }else{
                             UserOptionsController options = new UserOptionsController(user);
                             options.getOption();
 
                         }
-
-
-
-
                         boughtOrExit = true;
                     } else if (itemIndex.equals("exit")) {
                         // return to the outer while loop so user can decide if they want to do something else other than buy
