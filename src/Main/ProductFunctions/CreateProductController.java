@@ -12,7 +12,6 @@ import Undo.Undo;
 import PostFunctions.Post;
 import PostFunctions.PostManager;
 import PostFunctions.AddPostGateway;
-
 import UserFunctions.User;
 
 // TODO FIX CODE SMELL!! Too long method

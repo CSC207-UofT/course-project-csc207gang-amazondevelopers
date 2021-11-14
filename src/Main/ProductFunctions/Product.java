@@ -53,7 +53,7 @@ public class Product implements Serializable {
 
     // setter for name of product
     public void setName(String pname) {
-        if (!pname.equals("")) {
+        if (!pname.strip().equals("")) {
             this.name = pname;
         }
     }
