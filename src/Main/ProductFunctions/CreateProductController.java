@@ -165,7 +165,7 @@ public class CreateProductController {
 
             CreateProductGateway createProductGateway = new CreateProductGateway();
             ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
-            prodUseCase.saveNewProductToSer(newproduct, user);
+            prodUseCase.saveNewProductToSer(newproduct);
 
 
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
@@ -188,7 +188,7 @@ public class CreateProductController {
 
             CreateProductGateway createProductGateway = new CreateProductGateway();
             ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
-            prodUseCase.saveNewProductToSer(newproduct, user);
+            prodUseCase.saveNewProductToSer(newproduct);
 
 
             productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());

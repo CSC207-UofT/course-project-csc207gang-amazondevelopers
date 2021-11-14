@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class SaveUserGateway {
+public class SaveUserGateway implements SaveUserGatewayInterface {
 
 
     /**
@@ -19,26 +19,26 @@ public class SaveUserGateway {
      * @throws ClassNotFoundException
      */
 
-    public void saveUser(User user, String username, User userToBeSaved) throws IOException, ClassNotFoundException {
+    public void saveUser(String username, User userToBeSaved) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         // check if username of the person we want to add exists
         File file = new File("src/Main/user.ser");
-
         if (!(file.length() == 0)) {
             UserReadWriter rw = new UserReadWriter();
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
+            // TODO: why not see that the username of this user that is logged in in contained inside the user.ser file?
             if (usersSavedDict.containsKey(username)) {
-                usersSavedDict.replace(username, userToBeSaved);
+                usersSavedDict.put(username, userToBeSaved);
             }
             else {
                 input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
-                FollowController followOptions = new FollowController(user);
-                followOptions.allowFollow();
+                UserOptionsController options = new UserOptionsController(userToBeSaved);
+                options.getOption();
             }
         }
         else{
             input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
-            UserOptionsController userOptionsController = new UserOptionsController(user);
+            UserOptionsController userOptionsController = new UserOptionsController(userToBeSaved);
             userOptionsController.getOption();
         }
 

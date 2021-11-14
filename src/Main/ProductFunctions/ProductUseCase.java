@@ -1,20 +1,27 @@
 package ProductFunctions;
-import java.io.IOException;
+import PostFunctions.AddPostGateway;
+import PostFunctions.AddPostGatewayInterface;
+import PostFunctions.Post;
 import UserFunctions.User;
+
+import java.io.IOException;
 
 public class ProductUseCase {
 
     CreateProductGatewayInterface createProduct;
     GetProductGatewayInterface getProduct;
 
+
     public ProductUseCase(CreateProductGatewayInterface createProduct){
         this.createProduct = createProduct;
-
     }
+    public ProductUseCase(){};
 
-    public ProductUseCase(GetProductGatewayInterface getProduct){
+    public  ProductUseCase(GetProductGatewayInterface getProduct){
         this.getProduct = getProduct;
     }
+
+
 
     /**
      * Create a new Product object.
@@ -25,7 +32,7 @@ public class ProductUseCase {
      * @return a newly created product or null.
      */
 
-    // precondition: id is unique
+
     public Product saveNewProduct(String name, String id, Double price, String category, String size, int quantity)
             throws IOException, ClassNotFoundException {
         Product newProduct = new Product(name, id, price, category, size, quantity);
@@ -33,10 +40,15 @@ public class ProductUseCase {
         return newProduct;
     }
 
-    public void saveNewProductToSer(Product newProduct, User user) throws IOException, ClassNotFoundException {
+    public void saveNewProductToSer(Product newProduct) throws IOException, ClassNotFoundException {
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
 
     }
+
+
+
+    //Overloaded method for if there is no size attributed to this Product
+
 
     /**
      * Create a new Product object.
@@ -51,6 +63,7 @@ public class ProductUseCase {
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
         return newProduct;
     }
+
 
 
     /**
