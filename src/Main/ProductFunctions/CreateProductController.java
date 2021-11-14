@@ -13,6 +13,7 @@ import PostFunctions.Post;
 import PostFunctions.PostManager;
 import PostFunctions.AddPostGateway;
 import UserFunctions.User;
+import Undo.UndoUseCase;
 
 // TODO FIX CODE SMELL!! Too long method
 /**
@@ -22,50 +23,32 @@ public class CreateProductController {
 
     public Product createNewProductFromInput(SystemInOut input, User user) throws Exception {
         // SystemInOut input = new SystemInOut();
+        UndoUseCase uc = new UndoUseCase();
         Undo undo = new Undo();
-        undo.addData("Name");
-        //undo.addData("ID");
-        undo.addData("Price");
-        undo.addData("Category");
-        undo.addData("Quantity");
-        undo.addData("Size");
-        undo.addData("Caption");
-        undo.addData("CanComment");
-        undo.addData("CanRate");
-        undo.addState("Name");
-        //undo.addState("ID");
-        undo.addState("Price");
-        undo.addState("Category");
-        undo.addState("Quantity");
-        undo.addState("Size");
-        undo.addState("Caption");
-        undo.addState("CanComment");
-        undo.addState("CanRate");
+        uc.setProductController(undo);
         while (!undo.isComplete()) {
-            if (Objects.equals(undo.getCurrentState(), "Name")) {
+            if (Objects.equals(uc.getState(undo), "Name")) {
                 input.sendOutput("What is the name of the product?");
-                String name = input.getInput().strip();
+                String name = input.getInput();
                 if (name.equals("*")) {
-                    UserOptionsController uo = new UserOptionsController(user);
-                    uo.getOption();
-                    throw new IOException();
+                    throw new Exception();
                 } else if (name.equals("")) {
                     input.sendOutput("Product must have a name.");
                 } else{
-                    undo.setDataPoint(name);
+                    uc.addData(undo,name);
                 }
             }
 
-            if (Objects.equals(undo.getCurrentState(), "Price")) {
+            if (Objects.equals(uc.getState(undo), "Price")) {
                 input.sendOutput("What is the price of this product?");
                 String priceString = input.getInput();
                 if (priceString.equals("*")) {
-                    undo.undo();
+                    uc.undo(undo);
                 } else {
                     try {
                         double price = Double.parseDouble(priceString);
                         if (price >= 0) {
-                            undo.setDataPoint(price);
+                            uc.addData(undo,price);
                         } else {
                             input.sendOutput("Price must be greater than or equal to 0.");
                         }
@@ -75,75 +58,75 @@ public class CreateProductController {
                 }
 
             }
-            if (Objects.equals(undo.getCurrentState(), "Category")) {
+            if (Objects.equals(uc.getState(undo), "Category")) {
                 input.sendOutput("What is the Category of this product?");
                 String category = input.getInput();
                 if (category.equals("*")) {
-                    undo.undo();
+                    uc.undo(undo);
                 } else {
-                    undo.setDataPoint(category);
+                    uc.addData(undo,category);
                 }
             }
 
-            if (Objects.equals(undo.getCurrentState(), "Quantity")) {
+            if (Objects.equals(uc.getState(undo), "Quantity")) {
                 input.sendOutput("What is the quantity of this product? Please enter an integer.");
                 String quantityString = input.getInput();
                 if (quantityString.equals("*")) {
-                    undo.undo();
+                    uc.undo(undo);
                 } else {
                     try {
                         int quantity = Integer.parseInt(quantityString);
-                        undo.setDataPoint(quantity);
+                        uc.addData(undo,quantity);
                     } catch(NumberFormatException e){
                         input.sendOutput("Please enter an integer.");
                     }
                 }
             }
-            if (Objects.equals(undo.getCurrentState(), "Size")) {
+            if (Objects.equals(uc.getState(undo), "Size")) {
                 input.sendOutput("What is the size of this product? Press enter No Size if this product does not have a size");
                 String sizeInput = input.getInput();
                 if (sizeInput.equals("*")) {
-                    undo.undo();
+                    uc.undo(undo);
                 } else {
-                    undo.setDataPoint(sizeInput);
+                    uc.addData(undo,sizeInput);
                 }
             }
-            if (Objects.equals(undo.getCurrentState(), "Caption")) {
+            if (Objects.equals(uc.getState(undo), "Caption")) {
                 input.sendOutput("What is the caption of your post?");
                 String captionInput = input.getInput();
                 if (captionInput.equals("*")) {
-                    undo.undo();
+                    uc.undo(undo);
                 } else {
-                    undo.setDataPoint(captionInput);
+                    uc.addData(undo,captionInput);
                 }
             }
-            if (Objects.equals(undo.getCurrentState(), "CanComment")) {
+            if (Objects.equals(uc.getState(undo), "CanComment")) {
                 input.sendOutput("Would you like your post to have Comments? Input 1 for yes, 2 for no");
                 String commentInput = input.getInput();
                 if (commentInput.equals("*")) {
-                    undo.undo();
+                    uc.undo(undo);
                 } else if (commentInput.equals("1")) {
-                    undo.setDataPoint(true);
+                    uc.addData(undo,true);
                 } else if (commentInput.equals("2")) {
-                    undo.setDataPoint(false);
+                    uc.addData(undo,false);
                 }
                 //If they didnt enter these 3 options
             }
-            if (Objects.equals(undo.getCurrentState(), "CanRate")) {
+            if (Objects.equals(uc.getState(undo), "CanRate")) {
                 input.sendOutput("Would you like your post to have Ratings? Input 1 for yes, 2 for no");
                 String ratingInput = input.getInput();
                 if (ratingInput.equals("*")) {
-                    undo.undo();
+                    uc.undo(undo);
                 }
                 else if (ratingInput.equals("1")) {
-                    undo.setDataPoint(true);
+                    uc.addData(undo,true);
                 } else if (ratingInput.equals("2")) {
-                    undo.setDataPoint(false);
+                    uc.addData(undo,false);
                 }
                 //If they didnt enter these 3 options
             }
         }
-        HashMap<String, Object> output = undo.get_Data();
+        HashMap<String, Object> output = uc.getData(undo);
 
 
         CreateProductGateway productGate = new CreateProductGateway();
