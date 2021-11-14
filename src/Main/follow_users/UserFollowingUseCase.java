@@ -3,48 +3,38 @@ package follow_users;
 import InputAndOutput.SystemInOut;
 import PostFunctions.Post;
 import UserFunctions.User;
-import login.GetUserGateway;
-import login.GetUserGatewayInterface;
-import login.SaveUserGateway;
 import login.SaveUserGatewayInterface;
+import login.SignInGatewayInterface;
 
 import java.io.IOException;
 import java.util.List;
 
 public class UserFollowingUseCase {
     User user;
-    SaveUserGateway saveUserGateway;
-    GetUserGateway getUserGateway;
+    SaveUserGatewayInterface saveUserGatewayInterface;
+    SignInGatewayInterface getUserGatewayInterface;
 
-    public UserFollowingUseCase(User user, SaveUserGateway saveUserGateway,
-                                GetUserGateway getUserGateway) {
+    public UserFollowingUseCase(User user, SaveUserGatewayInterface saveUserGateway) {
         this.user = user;
-        this.saveUserGateway = saveUserGateway;
-        this.getUserGateway = getUserGateway;
+        this.saveUserGatewayInterface = saveUserGateway;
     }
-//
-//    public UserFollowingUseCase(User user, SaveUserGatewayInterface saveUserGateway) {
-//        this.user = user;
-//        this.saveUserGateway = saveUserGateway;
-//    }
-//
-//    public UserFollowingUseCase(User user,
-//                                GetUserGatewayInterface getUserGateway) {
-//        this.user = user;
-//        this.getUserGateway = getUserGateway;
-//    }
+
+    public UserFollowingUseCase(User user, SignInGatewayInterface getUserGateway) {
+        this.user = user;
+        this.getUserGatewayInterface = getUserGateway;
+    }
 
     /**
-     * Method that takes in the String username of the user that this.user wants to follow.
+     * Method that takes in the String username of the user that this.user wants to follow and makes the user
+     * a follower of this.user.
      *
      */
-    public void addToFollowingList(String newFollowing) throws IOException, ClassNotFoundException {
+    public void addToFollowingList(String newFollowing, User userFollower) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         List<String> currentFollowing = this.user.getListFollowing();
         currentFollowing.add(newFollowing);
         // updating list of following of this.user
         this.user.setListFollowing(currentFollowing);
-        User userFollower = getUserGateway.getUser(newFollowing);
         List<Post> userFollowerPost = userFollower.getListPosts();
         List<Post> thisUserCurrentFeed = this.user.getFeed();
         if (userFollowerPost.size() != 0) {
@@ -58,9 +48,20 @@ public class UserFollowingUseCase {
         userFollower.setListFollowers(listFollowersFollowUser);
 
         // save both users to the user.ser file
-        saveUserGateway.saveUser(this.user.getUsername(), user);
-        saveUserGateway.saveUser(newFollowing, userFollower);
+        saveUserGatewayInterface.saveUser(this.user.getUsername(), user);
+        saveUserGatewayInterface.saveUser(newFollowing, userFollower);
         input.sendOutput("The user was followed successfully.");
 
     }
+
+    /**
+     * Method that takes in the String username of the user that this.user wants to follow and returns
+     * its type User.
+     * @return User associated with the String username being passed in.
+     */
+    public User getUser(String newFollowing) throws IOException, ClassNotFoundException {
+        return getUserGatewayInterface.getUser(newFollowing);
+    }
+
+
 }

@@ -4,9 +4,9 @@ import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import login.GetUserGateway;
-import login.GetUserGatewayInterface;
 import login.SaveUserGateway;
 import login.SaveUserGatewayInterface;
+import login.SignInGatewayInterface;
 
 import java.io.IOException;
 
@@ -34,15 +34,14 @@ public class FollowController {
             UserOptionsController UOC = new UserOptionsController(user);
             UOC.getOption();
         }
-// String username
 
-
-        SaveUserGateway saveUserGateway = new SaveUserGateway();
-        GetUserGateway getUserGateway = new GetUserGateway();
-        UserFollowingUseCase userFollowingUseCase = new UserFollowingUseCase(
-                this.user, saveUserGateway, getUserGateway);
-        userFollowingUseCase.addToFollowingList(userInput);
-
+        SignInGatewayInterface getUserGateway = new GetUserGateway();
+        UserFollowingUseCase userFollowingUseCase = new UserFollowingUseCase(this.user, getUserGateway);
+        User userFollowing = userFollowingUseCase.getUser(userInput);
+        SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
+        UserFollowingUseCase userFollowingUseCase2 = new UserFollowingUseCase(
+                this.user, saveUserGateway);
+        userFollowingUseCase2.addToFollowingList(userInput, userFollowing);
     }
 }
 
