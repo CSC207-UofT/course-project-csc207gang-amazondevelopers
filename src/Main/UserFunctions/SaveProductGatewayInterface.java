@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface SaveProductGatewayInterface {
 
-    public void save(String productID, Product product) throws IOException, ClassNotFoundException;
+    void save(String productID, Product product) throws IOException, ClassNotFoundException;
 }

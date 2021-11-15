@@ -9,12 +9,17 @@ public class SignUpUseCase {
 
     /**
      *
-     * @param signUpGateway
+     * @param signUpGateway the gateway allowing sign up. Dependency injection.
      */
     public SignUpUseCase(SignUpGatewayInterface signUpGateway) {
         this.signUpGateway = signUpGateway;
     }
 
+    /**
+     * Allow the user to sing up to the program, given their username
+     * @throws IOException error occured during reading a file, when there is an input / output error
+     * @throws ClassNotFoundException the class is not found.
+     */
     public void allowSignUp() throws IOException, ClassNotFoundException {
         SignUpController signUpCont = new SignUpController();
         String newUsername = signUpCont.getNewUsername();

@@ -10,7 +10,7 @@ public class UserReadWriter implements ReadWriter{
      *
      * @param filePath the file to write the records to
      * @param usersDict    stores the list of users to be serialized
-     * @throws IOException
+     * @throws IOException error occured during reading a file, when there is an input / output error
      */
     @Override
     public void saveToFile(String filePath, Object usersDict) throws IOException {
@@ -29,7 +29,7 @@ public class UserReadWriter implements ReadWriter{
      *
      * @param filePath file where the user list is stored
      * @return Dictionary of the user
-     * @throws IOException
+     * @throws IOException error occured during reading a file, when there is an input / output error
      */
     @Override
     public HashMap<String, Object> readFromFile(String filePath) throws IOException, ClassNotFoundException {

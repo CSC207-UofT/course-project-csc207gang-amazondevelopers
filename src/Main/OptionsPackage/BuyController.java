@@ -20,7 +20,7 @@ public class BuyController {
 
     /**
      *
-     * @param user
+     * @param user this user that is signed in
      * @param listIds
      * @throws IOException
      * @throws ClassNotFoundException
