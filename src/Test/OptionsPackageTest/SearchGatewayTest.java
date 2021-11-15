@@ -5,10 +5,6 @@ import ProductFunctions.CreateProductGateway;
 import ProductFunctions.GetProductGateway;
 import ProductFunctions.Product;
 import Settings.DeleteProductsGateway;
-import Settings.DeleteUserGateway;
-import UserFunctions.User;
-import login.GetUserGateway;
-import login.SignUpGateway;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -34,7 +30,6 @@ public class SearchGatewayTest {
 
         assertEquals(expectedArrayList.get(0), actualItemsUnderCategory.get(actualItemsUnderCategory.size() - 1));
 
-        deleteProductsGateway.deleteProducts(expectedArrayList);
 
 
     }
