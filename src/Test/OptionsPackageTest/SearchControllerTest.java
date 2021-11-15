@@ -1,28 +1,32 @@
 package OptionsPackageTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
+//
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import UserFunctions.User;
+import OptionsPackage.UserOptionsController;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import OptionsPackage.SearchController;
 
-public class SearchControllerTest extends SearchController {
+public class SearchControllerTest{
     SearchController searchController;
+    User user;
+    UserOptionsController userOption;
 
     @BeforeEach
     void setUp(){
-        searchController = new SearchController();
+        user = new User("test1");
+        searchController = new SearchController(user);
+        userOption = new UserOptionsController(user);
     }
 
     @Test
-    void testNotInSearch() throws IOException, ClassNotFoundException {
-        String tag = new String("test1");
-        ArrayList<Object> list = new ArrayList<>();
-        assertEquals(searchController.searchProducts(tag), list);
+    public void testNotInSearch() throws IOException, ClassNotFoundException {
+        ;
     }
 
 

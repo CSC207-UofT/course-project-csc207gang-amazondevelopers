@@ -16,7 +16,7 @@ public class SignInController {
      * A controller that takes in user username form the user, and return it as a string.
      * @return String username of the user.
      */
-    String getUsername() throws IOException {
+    public String getUsername() throws IOException {
         SystemInOut inOut = new SystemInOut();
         inOut.sendOutput("What is your username? (please do not leave this field empty)");
         String username = inOut.getInput();
