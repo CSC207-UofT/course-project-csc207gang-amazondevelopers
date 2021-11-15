@@ -1,8 +1,6 @@
 package UserFunctions;
-
 import ProductFunctions.Product;
 import ProductFunctions.ProductReadWriter;
-
 import java.io.IOException;
 import java.util.HashMap;
 

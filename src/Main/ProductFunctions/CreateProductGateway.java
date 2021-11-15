@@ -1,12 +1,9 @@
 package ProductFunctions;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 
 public class CreateProductGateway implements CreateProductGatewayInterface {

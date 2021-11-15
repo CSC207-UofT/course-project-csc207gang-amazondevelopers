@@ -1,7 +1,6 @@
 package Browse;
 import PostFunctions.Post;
 import UserFunctions.User;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,4 @@
 package Settings;
-
-import InputAndOutput.SystemInOut;
-
 import java.io.IOException;
 
 public interface DeleteUserGatewayInterface {

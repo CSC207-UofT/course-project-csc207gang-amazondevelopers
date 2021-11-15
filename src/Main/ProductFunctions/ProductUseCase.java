@@ -1,9 +1,4 @@
 package ProductFunctions;
-import PostFunctions.AddPostGateway;
-import PostFunctions.AddPostGatewayInterface;
-import PostFunctions.Post;
-import UserFunctions.User;
-
 import java.io.IOException;
 
 public class ProductUseCase {
@@ -15,11 +10,6 @@ public class ProductUseCase {
     public ProductUseCase(CreateProductGatewayInterface createProduct) {
         this.createProduct = createProduct;
     }
-
-    public ProductUseCase() {
-    }
-
-    ;
 
     public ProductUseCase(GetProductGatewayInterface getProduct) {
         this.getProduct = getProduct;

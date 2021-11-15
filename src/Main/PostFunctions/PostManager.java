@@ -1,20 +1,13 @@
 package PostFunctions;
-
-import InputAndOutput.SystemInOut;
-import ProductFunctions.CreateProductGatewayInterface;
-import ProductFunctions.GetProductGatewayInterface;
 import ProductFunctions.Product;
 import UserFunctions.User;
 import java.io.IOException;
 import java.util.List;
-
-import ProductFunctions.Product;
 import login.GetUserGateway;
 
 public class PostManager {
 
     AddPostGatewayInterface addPostGateway;
-
 
     public PostManager(AddPostGatewayInterface addPostGateway){
         this.addPostGateway = addPostGateway;
@@ -28,8 +21,7 @@ public class PostManager {
      *
      * @return a newly created post.
      */
-    public Post createPost(Product product, String caption, boolean canComment, boolean canRate,User user)
-    throws IOException, ClassNotFoundException {
+    public Post createPost(Product product, String caption, boolean canComment, boolean canRate,User user) {
         return new Post(product, caption, canComment, canRate,user);
     }
 
@@ -37,11 +29,11 @@ public class PostManager {
         addPostGateway.addPost(newPost, user);
         GetUserGateway getUser = new GetUserGateway();
         List<String> followersList = user.getListFollowers();
-        String username = new String();
-        for (int c = 0; c < followersList.size();c++){
-            username = followersList.get(c);
+        String username;
+        for (String s : followersList) {
+            username = s;
             User follower = getUser.getUser(username);
-            addPostGateway.addFeed(newPost,follower);
+            addPostGateway.addFeed(newPost, follower);
         }
     }
 
@@ -100,14 +92,14 @@ public class PostManager {
     //maybe add methods to check if we can see comments and reviews
 
     public String postToString(Post post){
-        String output = new String();
-        output = "Post made by: " + post.getUser().getUsername() +"\n";
-        output = output + "Product its about: " + post.getProduct().toString() + "\n";
-        output = output + "Caption: " + post.getCaption() + "\n";
+        StringBuilder output;
+        output = new StringBuilder("Post made by: " + post.getUser().getUsername() + "\n");
+        output.append("Product its about: ").append(post.getProduct().toString()).append("\n");
+        output.append("Caption: ").append(post.getCaption()).append("\n");
         if (post.getCanComment()){
-            output = output + "Comments: \n";
+            output.append("Comments: \n");
             for(int c = 0; c < post.getComments().size(); c++){
-                output = output + post.getComments().get(c) + "\n";
+                output.append(post.getComments().get(c)).append("\n");
             }
         }
         if (post.getCanRate()){
@@ -116,9 +108,9 @@ public class PostManager {
                 ratings = ratings + post.getRatings().get(c);
             }
             String s = String.valueOf(ratings);
-            output = output + "Ratings are: " + s +"\n" ;
+            output.append("Ratings are: ").append(s).append("\n");
         }
-        return output;
+        return output.toString();
     }
 
 

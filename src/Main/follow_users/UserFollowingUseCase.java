@@ -1,11 +1,9 @@
 package follow_users;
-
 import InputAndOutput.SystemInOut;
 import PostFunctions.Post;
 import UserFunctions.User;
 import login.SaveUserGatewayInterface;
 import login.SignInGatewayInterface;
-
 import java.io.IOException;
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package login;
-
 import InputAndOutput.SystemInOut;
-
 import java.io.IOException;
 
 public class SignUpController {
