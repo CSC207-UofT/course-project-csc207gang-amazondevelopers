@@ -8,7 +8,7 @@ public class SignUpController {
      * @return String representing the username inputted by the user
      * @throws IOException error occured during reading a file, when there is an input / output error
      */
-    String getNewUsername() throws IOException {
+    public void getNewUsername() throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
         inOut.sendOutput("What would you like to put as your username? " +
                 "(please do not leave this field empty and do not put * as your username)");
@@ -16,7 +16,10 @@ public class SignUpController {
         if (newUsername.equals("") | newUsername.equals("*")){
             inOut.sendOutput("Invalid Username, please reenter your username.");
             this.getNewUsername();
-        }return newUsername;
+        }
+        SignUpGatewayInterface signUpgateway = new SignUpGateway();
+        SignUpUseCase signUpUseCase = new SignUpUseCase(signUpgateway);
+        signUpUseCase.allowSignUp(newUsername);
     }
 
 
