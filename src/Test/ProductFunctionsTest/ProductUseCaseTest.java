@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class ProductManagerTest {
+public class ProductUseCaseTest {
 
     CreateProductGateway createProductGateway = new CreateProductGateway();
     GetProductGateway getProductGateway = new GetProductGateway();
@@ -136,14 +136,14 @@ public class ProductManagerTest {
         productUseCaseGet.decreaseQuantity(product, -50);
 //        Product prod2 =  getProductGateway.getProduct("1");
 //        String check = "" + product;
-        assertEquals(0, product.getQuantity());
+        assertEquals(2, product.getQuantity());
     }
 
     @Test
     public void decreaseQuantityZero() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
         productUseCaseGet.decreaseQuantity(product, 0);
-        assertEquals(0, product.getQuantity());
+        assertEquals(2, product.getQuantity());
     }
 
 //    @Test
@@ -155,22 +155,22 @@ public class ProductManagerTest {
     @Test
     public void increaseQuantityBasic() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity(product, 1);
+        productUseCaseGet.increaseQuantity(product, 1);
         assertEquals(3, product.getQuantity());
     }
 
     @Test
     public void increaseQuantityBasic2() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity(product, 51);
+        productUseCaseGet.increaseQuantity(product, 51);
         assertEquals(53, product.getQuantity());
     }
 
     @Test
     public void increaseQuantityNegative() throws Exception {
         Product product = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes",2);
-        productUseCaseGet.decreaseQuantity(product, -50);
-        assertEquals(0, product.getQuantity());
+        productUseCaseGet.increaseQuantity(product, -50);
+        assertEquals(2, product.getQuantity());
     }
 
     @Test

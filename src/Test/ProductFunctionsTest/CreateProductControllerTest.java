@@ -19,7 +19,7 @@ import java.util.Scanner;
 import static org.junit.Assert.*;
 
 
-public class CreateProductTest {
+public class CreateProductControllerTest {
 
     SignUpGateway signUpGateway = new SignUpGateway();
     // create a new user profile to make products for
