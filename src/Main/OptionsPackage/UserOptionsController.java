@@ -21,7 +21,7 @@ public class UserOptionsController{
 
     /**
      *
-     * @throws IOException
+     * @throws IOException error occured during reading a file, when there is an input / output error
      */
     public void getOption() throws IOException {
         SystemInOut input = new SystemInOut();
@@ -34,8 +34,8 @@ public class UserOptionsController{
     }
 
     /**
-     *
-     * @param userDecision
+     * Gives the user the options after the sign in
+     * @param userDecision the string decision of what the user wants to do when they are signed in.
      */
     public void userInput(String userDecision) {
         SystemInOut input = new SystemInOut();

@@ -20,12 +20,12 @@ public class BuyController {
 
     /**
      *
-     * @param user
+     * @param user this user that is signed in
      * @param listIds
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public void allowBuy(User user, List<String> listIds) throws IOException, ClassNotFoundException {
+    public void allowBuy(User user, List<String> listIds) throws Exception {
         SystemInOut input = new SystemInOut();
         ListOfProductsPresenter presenter = new ListOfProductsPresenter();
 

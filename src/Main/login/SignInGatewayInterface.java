@@ -1,6 +1,5 @@
 package login;
 
-import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 
 import java.io.IOException;

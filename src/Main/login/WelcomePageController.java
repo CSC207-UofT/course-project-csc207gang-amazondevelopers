@@ -19,7 +19,7 @@ public class WelcomePageController {
      */
     public void userLoginDecision() throws IOException {
         SystemInOut inOut = new SystemInOut();
-        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n 3.Quit");
+        inOut.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n 3.Quit\n Input * at anytime to undo your input");
         // user input
         String userDecision = inOut.getInput();
 
