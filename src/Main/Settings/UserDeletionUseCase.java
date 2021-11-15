@@ -4,9 +4,9 @@ import java.io.IOException;
 
 public class UserDeletionUseCase {
     User user;
-    DeleteUserGateway deleteUserGateway;
+    DeleteUserGatewayInterface deleteUserGateway;
 
-    public UserDeletionUseCase(User user, DeleteUserGateway deleteUserGateway) {
+    public UserDeletionUseCase(User user, DeleteUserGatewayInterface deleteUserGateway) {
         this.user = user;
         this.deleteUserGateway = deleteUserGateway;
     }

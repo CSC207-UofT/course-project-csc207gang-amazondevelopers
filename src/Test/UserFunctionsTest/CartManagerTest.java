@@ -1,5 +1,6 @@
 package UserFunctionsTest;
 
+import InputAndOutput.SystemInOut;
 import ProductFunctions.*;
 import Settings.DeleteProductsGateway;
 import Settings.DeleteUserGateway;
@@ -42,9 +43,8 @@ public class CartManagerTest {
     public void setUp() throws IOException, ClassNotFoundException {
         // if there is a preexisting user TestCartManager delete it
         deleteUserGateway.deleteUser("TestCartManager");
-
         // create the new user profile before each test
-        signUpGateway.allowSignUp("TestCartManager", testUser);
+        signUpGateway.allowSignUp( "TestCartManager", testUser);
 
         // save a product to the repo to test with
         productUseCaseCreate.saveNewProductToSer(testProduct);
@@ -127,6 +127,7 @@ public class CartManagerTest {
 
     @Test
     public void emptyCartEmptyTest() throws IOException, ClassNotFoundException {
+        SystemInOut inOut = new SystemInOut();
         assertEquals(0, testUser.getShoppingCart().size());
         cartManagerUser.emptyCart(testUser);
         assertEquals(0, testUser.getShoppingCart().size());

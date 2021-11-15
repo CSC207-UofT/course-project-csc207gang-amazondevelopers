@@ -85,7 +85,7 @@ public class SettingsController {
 
             if(userDecision.equals("*")) {
                 UserOptionsController options = new UserOptionsController(user);
-                options.getOption();
+                options.getOption(input);
             }
             throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs

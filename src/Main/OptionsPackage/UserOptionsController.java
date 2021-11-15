@@ -1,5 +1,6 @@
 package OptionsPackage;
 import Browse.BrowseController;
+import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import ProductFunctions.CreateProductController;
 import Settings.SettingsController;
@@ -21,28 +22,26 @@ public class UserOptionsController{
      *
      * @throws IOException error occured during reading a file, when there is an input / output error
      */
-    public void getOption() throws IOException {
-        SystemInOut input = new SystemInOut();
+    public void getOption(InOut input) throws IOException {
         input.sendOutput("What would you like to do? Input a number for " +
                 "your ideal option:\n 1.Search and buy \n 2.Make a post \n 3.Follow another user \n 4.Browse and buy" +
                 "\n 5.Settings \n 6.logout ");
         String userDecision = input.getInput();
-        this.userInput(userDecision);
-        this.getOption();
+        this.userInput(input, userDecision);
+        this.getOption(input);
     }
 
     /**
      * Gives the user the options after the sign in
      * @param userDecision the string decision of what the user wants to do when they are signed in.
      */
-    public void userInput(String userDecision) {
-        SystemInOut input = new SystemInOut();
+    public void userInput(InOut input, String userDecision) {
         try{
             // search and buy
             if(userDecision.equals("1")) {
                 // redirects to searchController and returns relevant search info
                 SearchController searchController = new SearchController(user);
-                searchController.allowSearch();
+                searchController.allowSearch(input);
 
                 // save the cart of the user
                 // TODO Phase2: separate into gateway
@@ -83,12 +82,12 @@ public class UserOptionsController{
             // logout
             else if (userDecision.equals("6")){
                 WelcomePageController welcome = new WelcomePageController();
-                welcome.userLoginDecision();
+                welcome.userLoginDecision(input);
             }
 
             else{
                 UserOptionsController userOptionsController = new UserOptionsController(user);
-                userOptionsController.getOption();
+                userOptionsController.getOption(input);
             }
         } catch (Exception e) {
             e.printStackTrace();

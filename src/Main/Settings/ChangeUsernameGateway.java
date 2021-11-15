@@ -32,12 +32,12 @@ public class ChangeUsernameGateway {
 
             input.sendOutput("This username does not exist, so it cannot be deleted ");
             UserOptionsController options = new UserOptionsController(user);
-            options.getOption();
+            options.getOption(input);
 
         }
         input.sendOutput("This username does not exist, so it cannot be deleted ");
         UserOptionsController options = new UserOptionsController(user);
-        options.getOption();
+        options.getOption(input);
 
 
     }

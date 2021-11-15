@@ -1,4 +1,6 @@
 package PostFunctions;
+import InputAndOutput.InOut;
+import InputAndOutput.SystemInOut;
 import ProductFunctions.Product;
 import UserFunctions.User;
 import java.io.IOException;

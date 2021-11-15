@@ -1,4 +1,5 @@
 package login;
+import InputAndOutput.InOut;
 import UserFunctions.User;
 import java.io.IOException;
 
@@ -18,9 +19,10 @@ public class SignUpUseCase {
      * @throws IOException error occured during reading a file, when there is an input / output error
      * @throws ClassNotFoundException the class is not found.
      */
-    public void allowSignUp() throws IOException, ClassNotFoundException {
+    public void allowSignUp(InOut inOut) throws IOException, ClassNotFoundException {
+        // TODO: this use case is calling a controller
         SignUpController signUpCont = new SignUpController();
-        String newUsername = signUpCont.getNewUsername();
+        String newUsername = signUpCont.getNewUsername(inOut);
         User newUser = new User(newUsername);
         signUpGateway.allowSignUp(newUsername, newUser);
     }

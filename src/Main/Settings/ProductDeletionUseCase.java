@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ProductDeletionUseCase {
     User user;
-    DeleteProductsGateway deleteProductsGateway;
+    DeleteProductGatewayInterface deleteProductsGateway;
 
-    public ProductDeletionUseCase(User user, DeleteProductsGateway deleteProductsGateway) {
+    public ProductDeletionUseCase(User user, DeleteProductGatewayInterface deleteProductsGateway) {
         this.user = user;
         this.deleteProductsGateway = deleteProductsGateway;
     }

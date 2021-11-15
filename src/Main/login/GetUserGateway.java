@@ -1,4 +1,5 @@
 package login;
+import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
@@ -14,12 +15,13 @@ public class GetUserGateway implements  SignInGatewayInterface {
      * @return A newly created or old user
      */
     public User getUser(String username) throws IOException, ClassNotFoundException {
+        // TODO: gateways should just read and check files, not ask for user input, that should be the job of the controller
         SystemInOut inOut = new SystemInOut();
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
             inOut.sendOutput("No user exists yet, please sign up. You are being redirected to the welcome page.");
             WelcomePageController welcome = new WelcomePageController();
-            welcome.userLoginDecision();
+            welcome.userLoginDecision(inOut);
         }
         // access the serialized file for this user.
         UserReadWriter rw = new UserReadWriter();
@@ -29,7 +31,7 @@ public class GetUserGateway implements  SignInGatewayInterface {
         }
         // if the user does not exist, return a user with an empty username, which the empty username is unaccepted
         // username anyways
-
+        // TODO: fix this
         return new User("");
     }
 }

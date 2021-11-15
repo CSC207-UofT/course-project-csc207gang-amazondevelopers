@@ -31,7 +31,7 @@ public class FollowController {
         String userInput = input.getInput();
         if (userInput.equals("*")){
             UserOptionsController UOC = new UserOptionsController(user);
-            UOC.getOption();
+            UOC.getOption(input);
         }
 
         SignInGatewayInterface getUserGateway = new GetUserGateway();
