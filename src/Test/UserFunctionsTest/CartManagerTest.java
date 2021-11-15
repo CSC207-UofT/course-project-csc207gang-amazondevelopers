@@ -29,7 +29,6 @@ public class CartManagerTest {
     CartManager cartManagerUser = new CartManager(saveUserGateway);
 
     DeleteUserGateway deleteUserGateway = new DeleteUserGateway();
-    CreateProductController createProduct = new CreateProductController();
     SignUpGateway signUpGateway = new SignUpGateway();
 
     User testUser = new User("TestCartManager");
@@ -37,23 +36,24 @@ public class CartManagerTest {
 
     GetProductGateway getProductGateway = new GetProductGateway();
     ProductUseCase productUseCaseCreate = new ProductUseCase(createProductGateway);
-//    ProductUseCase productUseCaseGet = new ProductUseCase(getProductGateway);
     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
 
     @Before
     public void setUp() throws IOException, ClassNotFoundException {
+        // if there is a preexisting user TestCartManager delete it
         deleteUserGateway.deleteUser("TestCartManager");
-        // if there is a preexisting user TestCreateProductUser, delete it
-       // deleteUserGateway.deleteUser("TestCartManager");
+
         // create the new user profile before each test
         signUpGateway.allowSignUp("TestCartManager", testUser);
+
+        // save a product to the repo to test with
         productUseCaseCreate.saveNewProductToSer(testProduct);
 
     }
 
     @After
     public void takeDown() throws IOException, ClassNotFoundException {
-        // delete the test user profile before each test, to delete all the products that were created during the test
+        // delete the test user profile after each test, delete all the products that were created during the test
         deleteUserGateway.deleteUser("TestCartManager");
         ArrayList<String> ids = new ArrayList<>();
         ids.add("TEST");
@@ -63,17 +63,11 @@ public class CartManagerTest {
 
     @Test
     public void addToCartBasicTest() {
-        // Product actualProduct = productUseCaseCreate.saveNewProduct("shoe", "1", 5.0, "shoes", "2",1);
         Product testProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
 
         cartManagerUser.addToCart(testProduct, testUser);
         assertEquals(1, testUser.getShoppingCart().size());
         assertEquals(testProduct, testUser.getShoppingCart().get(0));
-
-//        cartManagerProduct.addToCart(testProduct, testUser);
-//        assertEquals(1, testUser.getShoppingCart().size());
-//        assertEquals(testProduct, testUser.getShoppingCart().get(0));
-
     }
 
     @Test
@@ -84,7 +78,6 @@ public class CartManagerTest {
 
         cartManagerProduct.addToCart(testProduct, testUser);
         assertEquals(0, testUser.getShoppingCart().size());
-
     }
 
 //    @Test
@@ -100,7 +93,6 @@ public class CartManagerTest {
 
     @Test
     public void updateProductQuantityBasicTest() throws IOException, ClassNotFoundException {
-
         cartManagerUser.addToCart(testProduct, testUser);
         assertEquals(1, testUser.getShoppingCart().size());
 
@@ -124,9 +116,6 @@ public class CartManagerTest {
 
     @Test
     public void emptyCartBasicTest() throws IOException, ClassNotFoundException {
-//        Product testProduct = new Product("shoe", "TEST", 5.0, "shoes", "2",1);
-//        productUseCaseCreate.saveNewProductToSer(testProduct);
-
         cartManagerUser.addToCart(testProduct, testUser);
         assertEquals(1, testUser.getShoppingCart().size());
         cartManagerUser.emptyCart(testUser);
@@ -138,10 +127,6 @@ public class CartManagerTest {
 
     @Test
     public void emptyCartEmptyTest() throws IOException, ClassNotFoundException {
-//        Product testProduct = new Product("shoe", "TEST", 5.0, "shoes", "2",1);
-//        productUseCaseCreate.saveNewProductToSer(testProduct);
-
-//        cartManagerUser.addToCart(testProduct, testUser);
         assertEquals(0, testUser.getShoppingCart().size());
         cartManagerUser.emptyCart(testUser);
         assertEquals(0, testUser.getShoppingCart().size());
