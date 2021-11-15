@@ -44,7 +44,7 @@ public class Product implements Serializable {
             return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
         }
         else{
-            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock" + ", " + sizes;
         }
     }
 

@@ -149,9 +149,6 @@ public class CreateProductController {
             CreateProductGateway createProductGateway = new CreateProductGateway();
             ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
             prodUseCase.saveNewProductToSer(newproduct);
-
-
-            productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
             input.sendOutput("Product was created.");
             return newproduct;
         } else {
@@ -173,32 +170,13 @@ public class CreateProductController {
             ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
             prodUseCase.saveNewProductToSer(newproduct);
 
-
-            productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
             input.sendOutput("Product was created.");
             return newproduct;
-
-//            ///////////////////////// previous else - Delete
-//
-//            AddPostGateway postGate = new AddPostGateway();
-//            ProductUseCase productManager = new ProductUseCase(productGate);
-//            Product newproduct = productManager.saveNewProduct((String) output.get("Name"),
-//                    id, (double) output.get("Price"), (String) output.get("Category"),
-//                    (int) output.get("Quantity"));
-//            PostManager postManager = new PostManager(postGate);
-//            Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-//                    (boolean)output.get("CanComment"), (boolean)output.get("CanRate"), user);
-//
-//            postGate.addPost(newpost, user);
-//            productGate.addProductToRepo(newproduct, newproduct.getId(), newproduct.getCategory());
-//            input.sendOutput("Product was created.");
-//            return newproduct;
         }
 
     }
 
-    // should this be private
-    public String generateID() throws IOException, ClassNotFoundException {
+    private String generateID() throws IOException, ClassNotFoundException {
         GetProductGateway getProductGateway = new GetProductGateway();
         HashMap<String, Object> hashMap = getProductGateway.getHashMap();
         int hashMapSize = hashMap.size();

@@ -19,7 +19,7 @@ public class BrowseController {
      * empty, allows user to buy from their feed. If feed is empty, return user back to choose another option.
      *
      */
-    public void presentFeed() throws IOException, ClassNotFoundException {
+    public void presentFeed() throws Exception {
 
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         List<Post> userFeed = browseUseCase.getFeed();
