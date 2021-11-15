@@ -97,5 +97,6 @@ public class User implements Serializable {
     public void addToPostList(Post post){
         this.listPosts.add(post);
     }
+    public void addToFeed(Post post){this.feed.add(post);}
 
 }
