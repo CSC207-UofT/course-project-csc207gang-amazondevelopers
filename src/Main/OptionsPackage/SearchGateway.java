@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class SearchGateway {
 
     /**
-     *
+     * Return a list of product under the <tag> category.
      * @param tag
      * @return
      * @throws IOException
