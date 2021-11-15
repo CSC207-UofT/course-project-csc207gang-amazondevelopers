@@ -1,5 +1,4 @@
 package UserFunctions;
-
 import java.io.IOException;
 
 public interface SaveUserChangesGatewaysInterface {

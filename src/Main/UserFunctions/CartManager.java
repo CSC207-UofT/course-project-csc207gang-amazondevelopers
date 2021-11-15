@@ -1,11 +1,9 @@
 package UserFunctions;
-
 import ProductFunctions.GetProductGateway;
 import ProductFunctions.GetProductGatewayInterface;
 import ProductFunctions.Product;
 import ProductFunctions.ProductUseCase;
 import login.SaveUserGatewayInterface;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -28,7 +26,6 @@ public class CartManager {
     public CartManager(){};
 
 
-    // TODO buying
     public boolean addToCart(Product item, User user){
         List<Product> userCart = user.getShoppingCart();
         if (item.getQuantity() > 0){

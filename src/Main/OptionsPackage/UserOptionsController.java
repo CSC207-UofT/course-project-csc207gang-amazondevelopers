@@ -1,5 +1,4 @@
 package OptionsPackage;
-
 import Browse.BrowseController;
 import InputAndOutput.SystemInOut;
 import ProductFunctions.CreateProductController;
@@ -8,7 +7,6 @@ import UserFunctions.User;
 import UserFunctions.UserReadWriter;
 import follow_users.FollowController;
 import login.WelcomePageController;
-
 import java.io.IOException;
 import java.util.HashMap;
 

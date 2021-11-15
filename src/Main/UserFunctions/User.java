@@ -1,7 +1,6 @@
 package UserFunctions;
 import PostFunctions.Post;
 import ProductFunctions.Product;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,6 @@ public class User implements Serializable {
     private String username;
     private List<Post> listPosts;
     private List<Product> shoppingCart;
-    private List<Product> currentSearches;
     private List<String> listFollowing; // people we follow
 
     public void setListFollowers(List<String> listFollowers) {
@@ -22,8 +20,6 @@ public class User implements Serializable {
     private List<Post> feed;
     private List<String> productsPosted; // the list of all products that this user has posted.
 
-
-// TODO add list of posts
     /**
      * Creates a new User object.
      * This constructor takes in 1 argument, a string username.
@@ -37,7 +33,6 @@ public class User implements Serializable {
         this.username = username;
         this.listPosts = new ArrayList<>();
         this.shoppingCart = new ArrayList<>();
-        this.currentSearches = new ArrayList<>();
         this.listFollowing = new ArrayList<>();
         this.feed = new ArrayList<>();
         this.listFollowers = new ArrayList<>();

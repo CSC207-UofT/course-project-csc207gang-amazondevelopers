@@ -1,8 +1,5 @@
 package PostFunctions;
-import OptionsPackage.UserOptionsController;
-import UserFunctions.SaveUserChangesGateways;
 import UserFunctions.User;
-import UserFunctions.UserReadWriter;
 import UserFunctions.UserPostUseCase;
 import java.io.File;
 import java.io.IOException;

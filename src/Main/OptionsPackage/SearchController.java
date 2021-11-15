@@ -1,11 +1,6 @@
 package OptionsPackage;
-
 import InputAndOutput.SystemInOut;
-import ProductFunctions.Product;
 import UserFunctions.User;
-import UserFunctions.CartManager;
-
-import java.io.IOException;
 import java.util.List;
 
 public class SearchController {
@@ -21,7 +16,6 @@ public class SearchController {
      * choose another option.
      *
      */
-
     public void allowSearch() throws Exception {
         List<String> listProductIds = getProductID();
         if (listProductIds.size() != 0){

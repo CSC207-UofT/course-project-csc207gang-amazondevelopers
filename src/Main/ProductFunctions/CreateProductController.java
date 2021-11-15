@@ -1,13 +1,9 @@
 package ProductFunctions;
-
 import InputAndOutput.SystemInOut;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
-
-import OptionsPackage.UserOptionsController;
 import Undo.Undo;
 import PostFunctions.Post;
 import PostFunctions.PostManager;

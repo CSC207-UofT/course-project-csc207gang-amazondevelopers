@@ -1,9 +1,7 @@
 package Settings;
-
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
-
 import java.io.IOException;
 
 public class SettingsController {
