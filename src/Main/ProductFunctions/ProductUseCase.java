@@ -76,8 +76,8 @@ public class ProductUseCase {
      * @return true successfully decreased amount and false otherwise.
      */
     public boolean decreaseQuantity(Product product, int quantity) {
-        int newQuantity = product.getQuantity() - quantity;
-        if (newQuantity >= 0) {
+        if (quantity >= 0) {
+                int newQuantity = product.getQuantity() - quantity;
                 product.setQuantity(newQuantity);
                 return true;
             }
@@ -98,8 +98,7 @@ public class ProductUseCase {
             product.setQuantity(newQuantity);
             return true;
         }
-        else {
-            return false;
-        }
+
+        return false;
     }
 }
