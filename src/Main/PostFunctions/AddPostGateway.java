@@ -20,9 +20,7 @@ public class AddPostGateway implements AddPostGatewayInterface{
         if (!(file.length() == 0)) {
             PostReadWriter rw = new PostReadWriter();
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-            if (usersSavedDict.containsKey(user.getUsername())) {
-                user.addToPostList(post);
-            }
+            ((User) usersSavedDict.get(user.getUsername())).addToPostList(post);
             rw.saveToFile("src/Main/user.ser",usersSavedDict);
         }
     }
@@ -40,9 +38,7 @@ public class AddPostGateway implements AddPostGatewayInterface{
             PostReadWriter rw = new PostReadWriter();
             UserPostUseCase upc = new UserPostUseCase(user);
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-            if (usersSavedDict.containsKey(user.getUsername())) {
-                upc.addToFeed(post);
-            }
+            ((User) usersSavedDict.get(user.getUsername())).addToFeed(post);
             rw.saveToFile("src/Main/user.ser",usersSavedDict);
         }
     }
