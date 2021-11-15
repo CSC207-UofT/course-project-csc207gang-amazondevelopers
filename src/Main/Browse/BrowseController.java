@@ -3,7 +3,6 @@ import OptionsPackage.BuyController;
 import OptionsPackage.UserOptionsController;
 import PostFunctions.Post;
 import UserFunctions.User;
-import java.io.IOException;
 import java.util.List;
 
 public class BrowseController {
@@ -19,7 +18,7 @@ public class BrowseController {
      * empty, allows user to buy from their feed. If feed is empty, return user back to choose another option.
      *
      */
-    public void presentFeed() throws IOException, ClassNotFoundException {
+    public void presentFeed() throws Exception {
 
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         List<Post> userFeed = browseUseCase.getFeed();

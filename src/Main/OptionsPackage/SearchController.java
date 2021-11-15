@@ -1,11 +1,6 @@
 package OptionsPackage;
-
 import InputAndOutput.SystemInOut;
-import ProductFunctions.Product;
 import UserFunctions.User;
-import UserFunctions.CartManager;
-
-import java.io.IOException;
 import java.util.List;
 
 public class SearchController {
@@ -21,8 +16,7 @@ public class SearchController {
      * choose another option.
      *
      */
-
-    public void allowSearch() throws IOException, ClassNotFoundException {
+    public void allowSearch() throws Exception {
         List<String> listProductIds = getProductID();
         if (listProductIds.size() != 0){
             BuyController buyController = new BuyController();
@@ -41,13 +35,18 @@ public class SearchController {
      * @return A list of strings that are toStrings for posts related to that the category,tag of interest.
      *
      */
-    private List<String> getProductID() throws IOException, ClassNotFoundException {
+    private List<String> getProductID() throws Exception, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         SearchGateway searchGateway = new SearchGateway();
 
         input.sendOutput("What is a tag word for your product of interest?.");
         String tagOfInterest = input.getInput();
-        return searchGateway.searchProducts(tagOfInterest);
+        if (tagOfInterest.equals("*")){
+            throw new Exception();
+        }
+        else {
+            return searchGateway.searchProducts(tagOfInterest);
+        }
     }
 }
 

@@ -1,5 +1,4 @@
 package Settings;
-
 import ProductFunctions.Product;
 import ProductFunctions.ProductReadWriter;
 import java.io.File;

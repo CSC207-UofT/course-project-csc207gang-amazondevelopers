@@ -1,7 +1,5 @@
 package PostFunctions;
-
 import UserFunctions.ReadWriter;
-
 import java.io.*;
 import java.util.HashMap;
 
@@ -10,8 +8,8 @@ public class PostReadWriter implements ReadWriter {
      * Writes the users to file at filePath.
      *
      * @param filePath the file to write the records to
-     * @param postDict    stores the list of posts to be serialized
-     * @throws IOException
+     * @param postDict   stores the list of posts to be serialized
+     * @throws IOException error occured during reading a file, when there is an input / output error
      */
     @Override
     public void saveToFile(String filePath, Object postDict) throws IOException {
@@ -30,7 +28,7 @@ public class PostReadWriter implements ReadWriter {
      *
      * @param filePath file where the user list is stored
      * @return Dictionary of the products
-     * @throws IOException
+     * @throws IOException error occured during reading a file, when there is an input / output error
      */
     @Override
     public HashMap<String, Object> readFromFile(String filePath) throws IOException, ClassNotFoundException {

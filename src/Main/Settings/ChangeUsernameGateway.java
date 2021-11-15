@@ -1,10 +1,8 @@
 package Settings;
-
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
