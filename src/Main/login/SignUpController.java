@@ -6,8 +6,9 @@ import java.io.IOException;
 
 public class SignUpController {
     /**
+     * Gets the username from the user input.
      * @return String representing the username inputted by the user
-     * @throws IOException
+     * @throws IOException error occured during reading a file, when there is an input / output error
      */
     String getNewUsername() throws IOException {
         SystemInOut inOut = new SystemInOut();

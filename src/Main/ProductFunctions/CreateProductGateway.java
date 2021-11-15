@@ -13,11 +13,11 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
 
     /**
      * Add the product given the descriptions to the product.ser and IDtoProduct.ser files
-     * @param newProduct
-     * @param productId
-     * @param tag
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @param newProduct the new product string
+     * @param productId the ID of the product
+     * @param tag the category of the product
+     * @throws IOException error occured during reading a file, when there is an input / output error
+     * @throws ClassNotFoundException throws if the class is not found
      */
 
     public void addProductToRepo(Product newProduct, String productId, String tag) throws IOException,

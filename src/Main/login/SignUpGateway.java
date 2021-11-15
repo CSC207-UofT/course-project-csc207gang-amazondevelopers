@@ -12,8 +12,8 @@ public class SignUpGateway implements SignUpGatewayInterface {
      * Checks if username is available by checking within the user.ser file
      * @param username the username of the user
      * @param user the user object
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @throws IOException error occured during reading a file, when there is an input / output error
+     * @throws ClassNotFoundException thrown if the class is not found
      */
     @Override
     public void allowSignUp(String username, User user) throws IOException, ClassNotFoundException {

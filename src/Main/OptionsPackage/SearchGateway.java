@@ -21,10 +21,10 @@ public class SearchGateway {
 
     /**
      * Return a list of product under the <tag> category.
-     * @param tag
-     * @return
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @param tag the tag that the users is searching for.
+     * @return a string of products that corresponds to the tag
+     * @throws IOException error occured during reading a file, when there is an input / output error
+     * @throws ClassNotFoundException the exception thrown when the class is not found
      */
     public ArrayList<String> searchProducts(String tag) throws IOException, ClassNotFoundException {
 
