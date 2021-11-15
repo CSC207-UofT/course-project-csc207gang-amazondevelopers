@@ -1,9 +1,6 @@
 package OptionsPackage;
-
-import ProductFunctions.Product;
 import ProductFunctions.ProductReadWriter;
 import UserFunctions.UserReadWriter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +17,7 @@ import java.util.HashMap;
 public class SearchGateway {
 
     /**
-     * Return a list of product under the <tag> category.
+     * Return a list of product under the 'tag' category.
      * @param tag the tag that the users is searching for.
      * @return a string of products that corresponds to the tag
      * @throws IOException error occured during reading a file, when there is an input / output error
@@ -34,21 +31,14 @@ public class SearchGateway {
             HashMap<String, Object> emptyHashMap = new HashMap<>();
             rw.saveToFile("src/Main/product.ser", emptyHashMap);
         }
-
         ProductReadWriter rw = new ProductReadWriter();
         HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/product.ser");
 
         if (productSavedDict.containsKey(tag)){
             return (ArrayList<String>) productSavedDict.get(tag);
         }
-        // if the user does not exist, return a user with an empty username, which the empty username is unaccepted
-        // username anyways
-
-
         // an empty list since the tag does not exist
         return new ArrayList<>();
-
-
     }
 
     }

@@ -1,9 +1,7 @@
 package login;
-
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,8 +13,6 @@ public class GetUserGateway implements  SignInGatewayInterface {
      * @param username The username inputted from the user
      * @return A newly created or old user
      */
-
-
     public User getUser(String username) throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
         File file = new File("src/Main/user.ser");
@@ -35,7 +31,5 @@ public class GetUserGateway implements  SignInGatewayInterface {
         // username anyways
 
         return new User("");
-
     }
-
 }

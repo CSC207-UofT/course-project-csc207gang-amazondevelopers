@@ -1,5 +1,4 @@
 package follow_users;
-
 import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;

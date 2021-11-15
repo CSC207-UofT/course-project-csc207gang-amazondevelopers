@@ -3,22 +3,19 @@ import InputAndOutput.SystemInOut;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
-import follow_users.FollowController;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
 public class SaveUserGateway implements SaveUserGatewayInterface {
 
-
     /**
      * Saves a hashmap to user.ser file, with key value pair being username to user
      * @param username A string representing the username
      * @param userToBeSaved the user object that matches the username
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @throws IOException error occured during reading a file, when there is an input / output error
+     * @throws ClassNotFoundException thrown if the class is not found
      */
-
     public void saveUser(String username, User userToBeSaved) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         // check if username of the person we want to add exists

@@ -1,7 +1,5 @@
 package UserFunctions;
-
 import ProductFunctions.Product;
-
 import java.io.IOException;
 
 public interface SaveProductGatewayInterface {

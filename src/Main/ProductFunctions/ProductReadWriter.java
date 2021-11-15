@@ -1,7 +1,5 @@
 package ProductFunctions;
-
 import UserFunctions.ReadWriter;
-
 import java.io.*;
 import java.util.HashMap;
 

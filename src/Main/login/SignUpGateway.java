@@ -1,5 +1,4 @@
 package login;
-
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;

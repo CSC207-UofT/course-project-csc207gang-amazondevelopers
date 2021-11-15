@@ -3,7 +3,6 @@ import OptionsPackage.BuyController;
 import OptionsPackage.UserOptionsController;
 import PostFunctions.Post;
 import UserFunctions.User;
-import java.io.IOException;
 import java.util.List;
 
 public class BrowseController {

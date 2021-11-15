@@ -1,7 +1,5 @@
 package login;
-
 import UserFunctions.User;
-
 import java.io.IOException;
 
 public class SignUpUseCase {

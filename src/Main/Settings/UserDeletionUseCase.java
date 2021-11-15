@@ -1,7 +1,5 @@
 package Settings;
-
 import UserFunctions.User;
-
 import java.io.IOException;
 
 public class UserDeletionUseCase {
