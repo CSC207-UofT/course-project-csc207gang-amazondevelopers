@@ -1,21 +1,42 @@
 package login;
 
 import InputAndOutput.SystemInOut;
-
+import UserFunctions.User;
+import UserFunctions.UserReadWriter;
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
-public class SignUpGateway {
+public class SignUpGateway implements SignUpGatewayInterface {
 
-    String getNewUsername(SystemInOut inOut) throws IOException {
-        inOut.sendOutput("What would you like to put as your username? " +
-                "(please do not leave this field empty)");
-        String newUsername = inOut.getInput();
-        while (newUsername.equals("")){
-            inOut.sendOutput("Invalid Username, please reenter your username.");
-            this.getNewUsername(inOut);
-        }return newUsername;
+    @Override
+    public void allowSignUp(String username, User user) throws IOException, ClassNotFoundException {
+        SystemInOut input = new SystemInOut();
+
+        File file = new File("src/Main/user.ser");
+        if (file.length() == 0){
+            UserReadWriter rw = new UserReadWriter();
+            HashMap<String, Object> emptyHashMap = new HashMap<>();
+            rw.saveToFile("src/Main/user.ser", emptyHashMap);
+        }
+
+        // access the serialized file for this user.
+        UserReadWriter rw = new UserReadWriter();
+        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
+        if (!usersSavedDict.containsKey(username)) {
+            usersSavedDict.put(username, user);
+            rw.saveToFile("src/Main/user.ser", usersSavedDict);
+        }
+        else{
+            input.sendOutput("This username is takes, please enter another one!");
+            SignUpController signUp = new SignUpController();
+            signUp.getNewUsername();
+        }
+
+
+
+
 
     }
-
 
 }

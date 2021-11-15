@@ -1,11 +1,6 @@
 package ProductFunctions;
 
-import UserFunctions.User;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Product implements Serializable {
     private String name;
@@ -14,9 +9,6 @@ public class Product implements Serializable {
     private String category;
     private String sizes;
     private int quantity;
-    private HashMap<User, String> comments;
-    private ArrayList<User> likers;
-    private int likes;
 
     /**
      * Creates a new Product object.
@@ -25,8 +17,6 @@ public class Product implements Serializable {
      * product or null if there is only one size.
      *
      */
-
-
     public Product(String name, String id, Double price, String category, int quantity) {
         this.name = name;
         this.id = id;
@@ -43,9 +33,6 @@ public class Product implements Serializable {
         this.category = category;
         this.sizes = sizes;
         this.quantity = quantity;
-        this.comments = new HashMap<>();
-        this.likers = new ArrayList<>();
-        this.likes = 0;
     }
 
     /**
@@ -53,8 +40,7 @@ public class Product implements Serializable {
      * @return the string representation of the product
      */
     public String toString() {
-        return name + " (" + id + ")"+ "\n" + "$" + price + ", "+ "\n" + quantity + " in stock, "+ "\n"
-                + "size "+ sizes + "\n" + "likes: "+ likes + "\n" +comments + ": " + displayComments();
+        return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock, " + sizes;
     }
 
 
@@ -74,6 +60,7 @@ public class Product implements Serializable {
     public Double getPrice() {return price;}
 
     //setter for price of product
+    // Precondition: price >= 0
     public void setPrice(Double pprice) {this.price = pprice;}
 
     // getter for category of product
@@ -92,64 +79,7 @@ public class Product implements Serializable {
     public int getQuantity() {return quantity;}
 
     //setter for quantity
-    public void setQuantity(int pquantity) {this.quantity = pquantity;}
-
-    public void setLikes(){this.likes = this.likers.size();}
-
-    public int getLikes(){return this.likes;}
-
-    public String[] getComments() {
-
-        ArrayList<String> comments = new ArrayList<>();
-
-        for(Map.Entry<User, String> entry : this.comments.entrySet()){
-            User key = entry.getKey();
-            String value = entry.getValue();
-
-            comments.add(key.getUsername() + ": "+ value);
-
-        }
-        String[] commentsList = new String[comments.size()];
-        commentsList = comments.toArray(commentsList);
-        return commentsList;
-    }
-
-    public StringBuilder displayComments() {
-        StringBuilder comments;
-        comments = new StringBuilder();
-        for(Map.Entry<User, String> entry : this.comments.entrySet()){
-            User key = entry.getKey();
-            String value = entry.getValue();
-
-            if (comments.length() != 0) {
-                comments.append("\n");
-            }
-            comments.append(key.getUsername()).append(": ").append(value);
-        }
-        return comments;
-    }
-
-    public void addLikes(User user){
-        if (!this.likers.contains(user)){
-            this.likers.add(user);
-            this.setLikes();
-        }
-    }
-
-    public void removeLikes(User user){
-        if (this.likers.contains(user)){
-            this.likers.remove(user);
-            this.setLikes();
-        }
-    }
-
-    public void addComments(User user, String comment){
-        this.comments.put(user, comment);
-    }
-
-    public void removeComments(User user){
-        if (this.comments.containsKey(user)){
-            this.comments.remove(user, this.comments.get(user));
-        }
+    public void setQuantity(int pquantity) {
+        this.quantity = Math.max(pquantity, 0);
     }
 }

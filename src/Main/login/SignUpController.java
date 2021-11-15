@@ -1,39 +1,20 @@
 package login;
 
 import InputAndOutput.SystemInOut;
-import UserFunctions.User;
-import UserFunctions.UserReadWriter;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class SignUpController {
 
-    public void allowSignUp(String username) throws IOException, ClassNotFoundException {
-
-// TODO Delete user, check if there are multiple of same usernames.
-
-        File file = new File("src/Main/user.ser");
-        if (file.length() == 0){
-            UserReadWriter rw = new UserReadWriter();
-            HashMap<String, Object> emptyHashMap = new HashMap<>();
-            rw.saveToFile("src/Main/user.ser", emptyHashMap);
-        }
-
-
-
-
-
-        // access the serialized file for this user.
-        UserReadWriter rw = new UserReadWriter();
-        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-        usersSavedDict.put(username, new User(username));
-        rw.saveToFile("src/Main/user.ser", usersSavedDict);
-
-
-
-
+    String getNewUsername() throws IOException {
+        SystemInOut inOut = new SystemInOut();
+        inOut.sendOutput("What would you like to put as your username? " +
+                "(please do not leave this field empty and do not put * as your usernmar)");
+        String newUsername = inOut.getInput();
+        if (newUsername.equals("") | newUsername.equals("*")){
+            inOut.sendOutput("Invalid Username, please reenter your username.");
+            this.getNewUsername();
+        }return newUsername;
     }
 
 

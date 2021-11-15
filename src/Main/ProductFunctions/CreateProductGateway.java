@@ -1,45 +1,45 @@
 package ProductFunctions;
 
-import InputAndOutput.SystemInOut;
-
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class CreateProductGateway {
+import UserFunctions.User;
+import UserFunctions.UserReadWriter;
 
-    public Product createNewProductFromInput(SystemInOut input) throws IOException {
+public class CreateProductGateway implements CreateProductGatewayInterface {
 
+    public void addProductToRepo(Product newProduct, String productId, String tag) throws IOException,
+            ClassNotFoundException {
 
-
-        input.sendOutput("What is the name of the product?");
-        String name = input.getInput();
-
-        input.sendOutput("What is the ID of the product?");
-        String ID = input.getInput();
-
-        input.sendOutput("What is the price of this product?");
-        String priceString = input.getInput();
-        Double price = Double.parseDouble(priceString);
-
-        input.sendOutput("What is the Category of this product?");
-        String category = input.getInput();
-
-        input.sendOutput("What is the size of this product? Press enter if this product does not have a size");
-
-        String sizeInput = input.getInput();
-
-
-        input.sendOutput("What is the quantity of this product? Please enter an integer");
-        String quantityString = input.getInput();
-        int quantity = Integer.parseInt(quantityString);
-
-        if (! sizeInput.equals("")){
-            String size = sizeInput;
-            Product newProduct = new Product(name, ID, price, category, size, quantity);
-            return newProduct;
-        }else{
-            Product newProduct = new Product(name, ID, price, category, quantity);
-            return newProduct;
+        File file = new File("src/Main/product.ser");
+        if (file.length() == 0){
+            UserReadWriter rw = new UserReadWriter();
+            HashMap<String, List<String>> emptyHashMap = new HashMap<>();
+            rw.saveToFile("src/Main/product.ser", emptyHashMap);
         }
 
+        ProductReadWriter rw = new ProductReadWriter();
+
+        HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main/product.ser");
+        // {tag:[ID]}
+        if (productsSavedDict.containsKey(tag)) {
+            List<String> productIDList = (List<String>) productsSavedDict.get(tag);
+            productIDList.add(productId);
+        }
+        else {
+            List<String> newList = new ArrayList<>();
+            newList.add(tag);
+            productsSavedDict.put(tag,newList);
+        }
+        // {ID: product}
+        HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main/IdToProduct.ser");
+        productsSavedDict.put(productId, newProduct);
+        rw.saveToFile("src/Main/IdToProduct.ser", idToProductDict);
+        }
+
+
     }
-}
+

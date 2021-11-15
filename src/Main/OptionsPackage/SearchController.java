@@ -1,48 +1,53 @@
 package OptionsPackage;
 
+import InputAndOutput.SystemInOut;
 import ProductFunctions.Product;
-import ProductFunctions.ProductReadWriter;
-import UserFunctions.UserReadWriter;
+import UserFunctions.User;
+import UserFunctions.CartManager;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-/**
- * take user input from command line interface and
- * Takes in user input tag words and and returns a list of all products that match that description to the user,
- * taking this information from a the masterManager which accese the tageProduct dictionary in master.
- * That dictionary has keys as the tag words for each product, and a list of product associated with that tag
- * word.
- */
+import java.util.List;
 
 public class SearchController {
+    User user;
 
-
-    public ArrayList<Product> searchProducts(String tag) throws IOException, ClassNotFoundException {
-
-        File file = new File("src/Main/product.ser");
-        if (file.length() == 0){
-            UserReadWriter rw = new UserReadWriter();
-            HashMap<String, Object> emptyHashMap = new HashMap<>();
-            rw.saveToFile("src/Main/product.ser", emptyHashMap);
-        }
-
-        ProductReadWriter rw = new ProductReadWriter();
-        HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/product.ser");
-
-        if (productSavedDict.containsKey(tag)){
-            return (ArrayList<Product>) productSavedDict.get(tag);
-        }
-        // if the user does not exist, return a user with an empty username, which the empty username is unaccepted
-        // username anyways
-
-
-        // an empty list since the tag does not exist
-        return new ArrayList<>();
-
-
+    public SearchController(User user) {
+        this.user = user;
     }
 
+    /**
+     * Allows the user to input a tag for possible categories of items that they might be interested in and
+     * allow user to buy if the list of tags is not empty. If list of tags is empty, then send the user back to
+     * choose another option.
+     *
+     */
+
+    public void allowSearch() throws IOException, ClassNotFoundException {
+        List<String> listProductIds = getProductID();
+        if (listProductIds.size() != 0){
+            BuyController buyController = new BuyController();
+            buyController.allowBuy(this.user, listProductIds);
+        }
+        // list of tags is empty, send user back to choose another option
+        else{
+            UserOptionsController userOptionsController = new UserOptionsController(this.user);
+            userOptionsController.getOption();
+        }
     }
+
+    /**
+     * Allows the user to input a tag for possible categories of items that they might be interested in,
+     * and will receive a list of IDs of those products if the tag exists.
+     * @return A list of strings that are toStrings for posts related to that the category,tag of interest.
+     *
+     */
+    private List<String> getProductID() throws IOException, ClassNotFoundException {
+        SystemInOut input = new SystemInOut();
+        SearchGateway searchGateway = new SearchGateway();
+
+        input.sendOutput("What is a tag word for your product of interest?.");
+        String tagOfInterest = input.getInput();
+        return searchGateway.searchProducts(tagOfInterest);
+    }
+}
+

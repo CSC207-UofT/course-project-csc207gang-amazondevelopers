@@ -1,22 +1,40 @@
 package UserFunctions;
-
+import PostFunctions.Post;
 import ProductFunctions.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 // TODO add posts
+// TODO
+// addMoney, spendMoney, money variable with the amount of money they have
+//
+
+
 
 public class User implements Serializable {
     // instance variables
     private String username;
-//    private List<OptionsPackage.Post> listPosts;
+    private List<Post> listPosts;
     private List<Product> shoppingCart;
     private List<Product> currentSearches;
-    private List<User> listFollowing;
-//    private List<OptionsPackage.Post> feed;
-    private boolean isVerified;
+    private List<String> listFollowing; // people we follow
+    private List<String> listFollowers; // people that follow me
+    private List<Post> feed;
+    private List<String> productsPosted; // the list of all products that this user has posted.
 
+    // I follow [Um, Alber, adam]
+    // People following me [Um, adam]
+
+    //produc1
+    //um, adam -> update feed with product1
+
+    //albert posts product2
+    //my feed changes
+
+
+
+// TODO add list of posts
     /**
      * Creates a new User object.
      * This constructor takes in 1 argument, a string username.
@@ -30,12 +48,19 @@ public class User implements Serializable {
 
     public User(String username){
         this.username = username;
-//        this.listPosts = new ArrayList<>();
+        this.listPosts = new ArrayList<>();
         this.shoppingCart = new ArrayList<>();
         this.currentSearches = new ArrayList<>();
         this.listFollowing = new ArrayList<>();
 //        this.feed = new ArrayList<>();
-        this.isVerified = false;
+    }
+
+    public List<String> getListFollowers(){
+        return listFollowers;
+    }
+
+    public List<String> getProductsPosted(){
+        return productsPosted;
     }
 
     // getter for instance variable username
@@ -49,14 +74,14 @@ public class User implements Serializable {
     }
 
     // getter for instance variable listPosts
-//    public List<OptionsPackage.Post> getListPosts() {
+//    public List<Post> getListPosts() {
 //        return listPosts;
 //    }
 
     // setter for instance variable listPosts
-//    public void setListPosts(List<OptionsPackage.Post> listPosts) {
-//        this.listPosts = listPosts;
-//    }
+    public void setListPosts(List<Post> listPosts) {
+        this.listPosts = listPosts;
+    }
 
     // getter for instance variable shoppingCart
     public List<Product> getShoppingCart() {
@@ -79,32 +104,29 @@ public class User implements Serializable {
     }
 
     // getter for instance variable listFollowing
-    public List<User> getListFollowing() {
+    public List<String> getListFollowing() {
         return listFollowing;
     }
 
     // setter for instance variable listFollowing
-    public void setListFollowing(List<User> listFollowing) {
+    public void setListFollowing(List<String> listFollowing) {
         this.listFollowing = listFollowing;
     }
 
     // getter for instance variable feed
-//    public List<OptionsPackage.Post> getFeed() {
-//        return feed;
-//    }
-//
-//    //setter for instance variable feed
+    public List<Post> getFeed() {
+        return feed;
+    }
+
+    // setter for instance variable feed
 //    public void setFeed(List<OptionsPackage.Post> feed) {
 //        this.feed = feed;
 //    }
-
-    // getter for instance variable isVerified
-    public boolean isVerified() {
-        return isVerified;
+    public void addToPostList(Post post){
+        this.listPosts.add(post);
     }
 
-    // setter for instance variable isVerified
-    public void setVerified(boolean verified) {
-        isVerified = verified;
+    public List<Post> getListPosts() {
+        return listPosts;
     }
 }
