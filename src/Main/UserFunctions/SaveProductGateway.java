@@ -3,8 +3,10 @@ package UserFunctions;
 import ProductFunctions.Product;
 import ProductFunctions.ProductReadWriter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class SaveProductGateway implements SaveProductGatewayInterface{
@@ -19,6 +21,13 @@ public class SaveProductGateway implements SaveProductGatewayInterface{
     public void save(String productID, Product product) throws IOException, ClassNotFoundException {
         // save the changed, new Product.
         ProductReadWriter rw = new ProductReadWriter();
+        File file = new File("src/Main/IdToProduct.ser");
+        if (file.length() == 0){
+
+            HashMap<String, Product> emptyHashMap = new HashMap<>();
+            emptyHashMap.put(productID, product);
+            rw.saveToFile("src/Main/IdToProduct.ser", emptyHashMap);
+        }
         HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/IdToProduct.ser");
         productSavedDict.put(productID, product);
         rw.saveToFile("src/Main/IdToProduct.ser", productSavedDict);
