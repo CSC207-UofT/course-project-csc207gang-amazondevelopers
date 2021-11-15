@@ -15,7 +15,7 @@ public class GetUserGateway implements  SignInGatewayInterface {
      * @return A newly created or old user
      */
     public User getUser(String username) throws IOException, ClassNotFoundException {
-        // TODO: gateways should just read and check files, not ask for user input, that should be the job of the controller
+        // TODO: fix coupling
         SystemInOut inOut = new SystemInOut();
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
