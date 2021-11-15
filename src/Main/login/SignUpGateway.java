@@ -34,9 +34,8 @@ public class SignUpGateway implements SignUpGatewayInterface {
                 rw.saveToFile("src/Main/user.ser", usersSavedDict);
             } else { // the user.ser contains
                 input.sendOutput("This username is taken, please enter another one!");
-                SignUpController signUp = new SignUpController();
-                String username2 = signUp.getNewUsername(input);
-                this.allowSignUp(username2, user);
+                SignUpController signUpController = new SignUpController();
+                signUpController.getNewUsername();
             }
         }
 

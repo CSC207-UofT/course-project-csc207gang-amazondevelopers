@@ -35,9 +35,8 @@ public class WelcomePageController {
 
 
                 } else if (userDecision.equals("2")) {
-                    SignUpGateway signUp = new SignUpGateway();
-                    SignUpUseCase signUpUseCase = new SignUpUseCase(signUp);
-                    signUpUseCase.allowSignUp(inOut);
+                    SignUpController signUpController = new SignUpController();
+                    signUpController.getNewUsername();
                     // recurse back to login page after sign up to then sign in
                     this.userLoginDecision(inOut);
 

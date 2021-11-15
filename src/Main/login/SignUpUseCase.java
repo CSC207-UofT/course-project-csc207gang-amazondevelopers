@@ -19,10 +19,7 @@ public class SignUpUseCase {
      * @throws IOException error occured during reading a file, when there is an input / output error
      * @throws ClassNotFoundException the class is not found.
      */
-    public void allowSignUp(InOut inOut) throws IOException, ClassNotFoundException {
-        // TODO: this use case is calling a controller
-        SignUpController signUpCont = new SignUpController();
-        String newUsername = signUpCont.getNewUsername(inOut);
+    public void allowSignUp(String newUsername) throws IOException, ClassNotFoundException {
         User newUser = new User(newUsername);
         signUpGateway.allowSignUp(newUsername, newUser);
     }

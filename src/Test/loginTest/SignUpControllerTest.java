@@ -40,27 +40,27 @@ public class SignUpControllerTest {
         deleteUserGateway.deleteUser("TestSignUpControllerUser");
     }
 
-    @Test
-    public void getNewUsernameValidUsername() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/ SignUpControllerValidUsernameTestInputs");
-        //skip the header of the file
-        testInOut.getInput();
-
-        String newUsername = signup.getNewUsername(testInOut);
-        assertEquals(newUsername, "TestSignUpController");
-        // tests if a user that does not exist will be allowed to sign up
-    }
-
-    @Test
-    public void getNewUsernameInvalidUsername() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/SignUpControllerInvalidUsernameTestInputs");
-        //skip the header of the file
-        testInOut.getInput();
-
-        String newUsername = signup.getNewUsername(testInOut);
-        assertEquals(newUsername, "TestSignUpController");
-        // tests if a user that does not exist will be allowed to sign up
-    }
+//    @Test
+//    public void getNewUsernameValidUsername() throws Exception {
+//        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/ SignUpControllerValidUsernameTestInputs");
+//        //skip the header of the file
+//        testInOut.getInput();
+//
+//        String newUsername = signup.getNewUsername(testInOut);
+//        assertEquals(newUsername, "TestSignUpController");
+//        // tests if a user that does not exist will be allowed to sign up
+//    }
+//
+//    @Test
+//    public void getNewUsernameInvalidUsername() throws Exception {
+//        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/SignUpControllerInvalidUsernameTestInputs");
+//        //skip the header of the file
+//        testInOut.getInput();
+//
+//        String newUsername = signup.getNewUsername();
+//        assertEquals(newUsername, "TestSignUpController");
+//        // tests if a user that does not exist will be allowed to sign up
+//    }
 
 //    @Test
 //    public void getNewUsernameUsernameTakenTest() throws Exception {
