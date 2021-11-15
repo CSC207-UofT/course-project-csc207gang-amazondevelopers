@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 public class UndoTest {
     private Undo undo;
     @Before
-    void setup() throws Exception{
+    public void setup() throws Exception{
         undo = new Undo();
         undo.addData("Name");
         undo.addData("ID");
@@ -25,20 +25,20 @@ public class UndoTest {
     }
 
     @Test
-    void testUndoMethod(){
+    public void testUndoMethod(){
         undo.setDataPoint(0);
         undo.undo();
         assertTrue(undo.getCurrentState().equals("Name"));
     }
 
     @Test
-    void testUndoFirstState(){
+   public void testUndoFirstState(){
         undo.undo();
         assertTrue(undo.getCurrentState().equals("Name"));
     }
 
     @Test
-    void testIsComplete(){
+    public void testIsComplete(){
         undo.setDataPoint(0);
         undo.setDataPoint(0);
         undo.setDataPoint(0);

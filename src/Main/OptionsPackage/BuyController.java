@@ -25,7 +25,7 @@ public class BuyController {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public void allowBuy(User user, List<String> listIds) throws IOException, ClassNotFoundException {
+    public void allowBuy(User user, List<String> listIds) throws Exception {
         SystemInOut input = new SystemInOut();
         ListOfProductsPresenter presenter = new ListOfProductsPresenter();
 
