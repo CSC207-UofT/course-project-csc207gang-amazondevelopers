@@ -1,4 +1,5 @@
 package login;
+import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
@@ -17,7 +18,6 @@ public class SignUpGateway implements SignUpGatewayInterface {
     @Override
     public void allowSignUp(String username, User user) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
-
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
             UserReadWriter rw = new UserReadWriter();
@@ -36,7 +36,6 @@ public class SignUpGateway implements SignUpGatewayInterface {
                 input.sendOutput("This username is taken, please enter another one!");
                 SignUpController signUpController = new SignUpController();
                 signUpController.getNewUsername();
-
             }
         }
 

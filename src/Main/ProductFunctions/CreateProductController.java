@@ -1,4 +1,5 @@
 package ProductFunctions;
+import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ import Undo.UndoUseCase;
  */
 public class CreateProductController {
 
-    public Product createNewProductFromInput(SystemInOut input, User user) throws Exception {
+    public Product createNewProductFromInput(InOut input, User user) throws Exception {
         // SystemInOut input = new SystemInOut();
         UndoUseCase uc = new UndoUseCase();
         Undo undo = new Undo();

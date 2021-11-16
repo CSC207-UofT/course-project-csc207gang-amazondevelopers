@@ -1,4 +1,5 @@
 package OptionsPackage;
+import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 import java.util.List;
@@ -16,16 +17,18 @@ public class SearchController {
      * choose another option.
      *
      */
-    public void allowSearch() throws Exception {
-        List<String> listProductIds = getProductID();
+    public void allowSearch(InOut input) throws Exception {
+        List<String> listProductIds = getProductID(input);
         if (listProductIds.size() != 0){
             BuyController buyController = new BuyController();
-            buyController.allowBuy(this.user, listProductIds);
+            buyController.allowBuy(input, this.user, listProductIds);
         }
         // list of ids is empty, send user back to choose another option
         else{
+            // TODO: tell user that there are no products matching the tag and let them search again
+            input.sendOutput("There are no products matching that tag word. Try again.");
             UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            userOptionsController.getOption();
+            userOptionsController.getOption(input);
         }
     }
 
@@ -35,8 +38,7 @@ public class SearchController {
      * @return A list of strings that are toStrings for posts related to that the category,tag of interest.
      *
      */
-    private List<String> getProductID() throws Exception, ClassNotFoundException {
-        SystemInOut input = new SystemInOut();
+    private List<String> getProductID(InOut input) throws Exception, ClassNotFoundException {
         SearchGateway searchGateway = new SearchGateway();
 
         input.sendOutput("What is a tag word for your product of interest?.");

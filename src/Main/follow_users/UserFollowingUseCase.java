@@ -58,6 +58,7 @@ public class UserFollowingUseCase {
      * @return User associated with the String username being passed in.
      */
     public User getUser(String newFollowing) throws IOException, ClassNotFoundException {
+        // TODO: fix this
         return getUserGatewayInterface.getUser(newFollowing);
     }
 

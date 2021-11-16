@@ -1,4 +1,5 @@
 package Browse;
+import InputAndOutput.SystemInOut;
 import OptionsPackage.BuyController;
 import OptionsPackage.UserOptionsController;
 import PostFunctions.Post;
@@ -19,19 +20,19 @@ public class BrowseController {
      *
      */
     public void presentFeed() throws Exception {
-
+        SystemInOut inOut = new SystemInOut();
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         List<Post> userFeed = browseUseCase.getFeed();
         List<String> feedIds = browseUseCase.getlistIds(userFeed);
         //if the feed of the user is not empty
         if (userFeed.size() != 0){
            BuyController buyController = new BuyController();
-           buyController.allowBuy(this.user, feedIds);
+           buyController.allowBuy(inOut, this.user, feedIds);
         }
         // user's feed is empty
         else{
             UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            userOptionsController.getOption();
+            userOptionsController.getOption(inOut);
         }
     }
 }
