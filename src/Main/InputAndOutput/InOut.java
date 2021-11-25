@@ -7,7 +7,16 @@ import java.io.IOException;
  */
 
 public interface InOut {
-
+    /**
+     *
+     * @return returns a string
+     * @throws IOException exception is thrown if no input is given
+     */
     String getInput() throws IOException;
+
+    /**
+     *
+     * @param s display s to the user
+     */
     void sendOutput(Object s);
 }
