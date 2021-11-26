@@ -25,12 +25,14 @@ public class CreateProductController {
         uc.setProductController(undo);
         while (!undo.isComplete()) {
             if (Objects.equals(uc.getState(undo), "Name")) {
-                input.sendOutput("What is the name of the product?");
+                ProductPresenter productPresenter = new ProductPresenter();
+                productPresenter.nameProductPresent();
+
                 String name = input.getInput();
                 if (name.equals("*")) {
                     throw new Exception();
                 } else if (name.equals("")) {
-                    input.sendOutput("Product must have a name.");
+                    productPresenter.noNameProduct();
                 } else{
                     uc.addData(undo,name);
                 }

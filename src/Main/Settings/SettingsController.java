@@ -1,5 +1,6 @@
 package Settings;
 import InputAndOutput.SystemInOut;
+import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import java.io.IOException;
@@ -85,7 +86,8 @@ public class SettingsController {
 
             if(userDecision.equals("*")) {
                 UserOptionsController options = new UserOptionsController(user);
-                options.getOption(input);
+                EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                options.getOption(input, engPresenter);
             }
             throw new IOException("That is not an accepted input, please try again!");
             // throws exception in case the input is not in the available options of inputs

@@ -1,5 +1,6 @@
 package follow_users;
 import InputAndOutput.SystemInOut;
+import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import login.GetUserGateway;
@@ -9,6 +10,9 @@ import login.SignInGatewayInterface;
 
 import java.io.IOException;
 
+/**
+ * User is the signed in user
+ */
 public class FollowController {
 
     User user;
@@ -26,12 +30,15 @@ public class FollowController {
 
     public void allowFollow() throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
-        input.sendOutput("What is the username of the person that you would you like to follow? or " +
-                "press * to go back to all options menu");
+        EnglishFollowPresenter englishFollowPresenter = new EnglishFollowPresenter(input);
+        englishFollowPresenter.presenterToFollow();
+
+
         String userInput = input.getInput();
         if (userInput.equals("*")){
             UserOptionsController UOC = new UserOptionsController(user);
-            UOC.getOption(input);
+            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+            UOC.getOption(input, engPresenter);
         }
 
         SignInGatewayInterface getUserGateway = new GetUserGateway();
@@ -40,7 +47,8 @@ public class FollowController {
         SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
         UserFollowingUseCase userFollowingUseCase2 = new UserFollowingUseCase(
                 this.user, saveUserGateway);
-        userFollowingUseCase2.addToFollowingList(userInput, userFollowing);
+        EnglishFollowPresenter followPresenter1 = new EnglishFollowPresenter(input);
+        userFollowingUseCase2.addToFollowingList(userInput, userFollowing, followPresenter1);
     }
 }
 

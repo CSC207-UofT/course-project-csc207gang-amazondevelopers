@@ -3,6 +3,9 @@ import InputAndOutput.InOut;
 import UserFunctions.User;
 import java.io.IOException;
 
+/**
+ *
+ */
 public class SignUpUseCase {
     SignUpGatewayInterface signUpGateway;
 

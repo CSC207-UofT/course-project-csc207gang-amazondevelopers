@@ -5,6 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import UserFunctions.User;
 
+/**
+ * <likes> is the number of like for the post
+ * the product that the post include
+ * rating of the the product our of 5 stars
+ * comment for the post
+ * canCommetn and canRate is decided by the creator of the post
+ * the user is the logged in user of the program
+ *
+ */
 public class Post implements Serializable {
     private int likes;
     private Product product;
@@ -16,6 +25,15 @@ public class Post implements Serializable {
     private boolean canRate;
     private User user;
 
+
+    /**
+     * The post
+     * @param product the product being advertised in the post
+     * @param caption the caption that the user puts for the post
+     * @param canComment the choice from the post creater to comment on the post
+     * @param canRate the choice from the post creater to give a rate on the post
+     * @param user the user that created the post
+     */
     public Post(Product product, String caption, boolean canComment, boolean canRate, User user) {
         this.likes = 0;
         this.product = product;
