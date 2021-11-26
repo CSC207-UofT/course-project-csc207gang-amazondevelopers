@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ *
+ */
+// TODO strategy design pattern to extract common code in gateways -
 public class GetUserGateway implements  SignInGatewayInterface {
 
     /**

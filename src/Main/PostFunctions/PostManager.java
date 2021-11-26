@@ -7,9 +7,17 @@ import java.io.IOException;
 import java.util.List;
 import login.GetUserGateway;
 
+/**
+ * The use case class to manage and create posts
+ */
 public class PostManager {
 
     AddPostGatewayInterface addPostGateway;
+
+    /**
+     *
+     * @param addPostGateway To adhere to dependency inversion, this is the gateway to save the post to .ser file
+     */
 
     public PostManager(AddPostGatewayInterface addPostGateway){
         this.addPostGateway = addPostGateway;

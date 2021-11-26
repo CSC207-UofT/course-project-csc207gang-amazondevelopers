@@ -18,6 +18,7 @@ import UserFunctions.User;
 public class CreateProductController {
 
     public Product createNewProductFromInput(InOut input, User user) throws Exception {
+
         ArrayList<Product.Memento> memento_list = new ArrayList<Product.Memento>();
         Product new_product = new Product();
         new_product.set(0);//Sets the state to the state that asks for the products name
@@ -30,7 +31,7 @@ public class CreateProductController {
                 if (name.equals("*")) {
                     throw new Exception(); //Exits the method entirely, returns to the UserOptionsGateway
                 } else if (name.equals("")) {
-                    input.sendOutput("Product must have a name.");
+                    productPresenter.noNameProduct();
                 } else{
                     memento_list.add(new_product.saveToMemento());//Saves the current state of the product
                     new_product.setName(name);

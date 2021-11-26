@@ -4,6 +4,9 @@ import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 import java.util.List;
 
+/**
+ * the user of the program
+ */
 public class SearchController {
     User user;
 
@@ -17,7 +20,7 @@ public class SearchController {
      * choose another option.
      *
      */
-    public void allowSearch(InOut input) throws Exception {
+    public void allowSearch(SystemInOut input) throws Exception {
         List<String> listProductIds = getProductID(input);
         if (listProductIds.size() != 0){
             BuyController buyController = new BuyController();
@@ -28,7 +31,8 @@ public class SearchController {
             // TODO: tell user that there are no products matching the tag and let them search again
             input.sendOutput("There are no products matching that tag word. Try again.");
             UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            userOptionsController.getOption(input);
+            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+            userOptionsController.getOption(input, engPresenter);
         }
     }
 

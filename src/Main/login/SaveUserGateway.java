@@ -1,5 +1,6 @@
 package login;
 import InputAndOutput.SystemInOut;
+import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
@@ -7,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ *
+ */
 public class SaveUserGateway implements SaveUserGatewayInterface {
 
     /**
@@ -30,13 +34,15 @@ public class SaveUserGateway implements SaveUserGatewayInterface {
             else {
                 input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
                 UserOptionsController options = new UserOptionsController(userToBeSaved);
-                options.getOption(input);
+                EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                options.getOption(input, engPresenter);
             }
         }
         else{
             input.sendOutput("User saving was unsuccessful. You are being sent back to choose another option.");
             UserOptionsController userOptionsController = new UserOptionsController(userToBeSaved);
-            userOptionsController.getOption(input);
+            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+            userOptionsController.getOption(input, engPresenter);
         }
 
     }
