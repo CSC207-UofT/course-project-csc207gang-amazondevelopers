@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO:  add Bio
+// TODO add profile picture
 public class User implements Serializable {
     // instance variables
     private String username;

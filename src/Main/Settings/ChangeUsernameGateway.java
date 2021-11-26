@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+// TODO: change password
+//TODO:  change Bio
+// TODO profile picture
 public class ChangeUsernameGateway {
     User user;
 
