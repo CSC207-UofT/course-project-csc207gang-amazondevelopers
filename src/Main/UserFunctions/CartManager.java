@@ -26,6 +26,12 @@ public class CartManager {
 
     public CartManager(){};
 
+    /**
+     *
+     * @param item The product that we want to add to the cart
+     * @param user The user whom we want to add the product to their cart
+     * @return true or false if the product was or was not added to the user's cart
+     */
 
     public boolean addToCart(Product item, User user){
         List<Product> userCart = user.getShoppingCart();
@@ -38,7 +44,7 @@ public class CartManager {
 
     /**
      * Updates the quanitity of the cart when the user buys
-     * @param user
+     * @param user the user whom we want to update their cart
      */
 
     public void updateProductQuantity(User user) throws IOException, ClassNotFoundException {
@@ -54,6 +60,13 @@ public class CartManager {
 
 
     }
+
+    /**
+     *
+     * @param user The user whom we will empty their cart
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
 
     public void emptyCart(User user) throws IOException, ClassNotFoundException {
         List<Product> userCart = user.getShoppingCart();
