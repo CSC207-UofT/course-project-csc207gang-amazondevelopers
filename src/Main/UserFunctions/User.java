@@ -5,12 +5,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Base64;
+import java.util.Objects;
+
 public class User implements Serializable {
     // instance variables
     private String username;
     private List<Post> listPosts;
     private List<Product> shoppingCart;
     private List<String> listFollowing; // people we follow
+    private String password;
 
     public void setListFollowers(List<String> listFollowers) {
         this.listFollowers = listFollowers;
@@ -36,6 +40,17 @@ public class User implements Serializable {
         this.listFollowing = new ArrayList<>();
         this.feed = new ArrayList<>();
         this.listFollowers = new ArrayList<>();
+    }
+
+    Base64.Encoder encrypted = Base64.getEncoder();
+
+    public void setPassword(String password) {
+
+        this.password = encrypted.encodeToString(password.getBytes());
+    }
+
+    public boolean verifyPassword(String password){
+        return this.password.equals(encrypted.encodeToString(password.getBytes()));
     }
 
     public List<String> getListFollowers(){
