@@ -1,20 +1,26 @@
 package ProductFunctions;
 import java.io.Serializable;
+import MementoFunctions.Originator;
+public class Product extends Originator implements Serializable{
+    private String name = "";
+    private String id = "";
+    private Double price = 0.0;
+    private String category = "";
+    private String sizes = "";
+    private int quantity = 0;
 
-public class Product implements Serializable {
-    private String name;
-    private String id;
-    private Double price;
-    private String category;
-    private String sizes;
-    private int quantity;
+    /**
+     * Empty Initializer for use in CreateProductGateway
+     */
+    public Product() {
+
+    }
 
     /**
      * Creates a new Product object.
      * The Constructor takes in 4 arguments, the name of the Product. The price
      * of the Product. The Product category as well as a list of sizes of the
      * product or null if there is only one size.
-     *
      */
     public Product(String name, String id, Double price, String category, int quantity) {
         this.name = name;
@@ -35,20 +41,20 @@ public class Product implements Serializable {
     }
 
     /**
-     *
      * @return the string representation of the product
      */
     public String toString() {
-        if (this.sizes == null){
+        if (this.sizes == null) {
             return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
-        }
-        else{
+        } else {
             return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock" + ", " + sizes;
         }
     }
 
     // getter for name of product
-    public String getName() {return name;}
+    public String getName() {
+        return name;
+    }
 
     // setter for name of product
     public void setName(String pname) {
@@ -58,47 +64,59 @@ public class Product implements Serializable {
     }
 
     // getter for id of product
-    public String getId() {return id;}
+    public String getId() {
+        return id;
+    }
 
     //setter for id of product
-    public void setId(String pid) {this.id = pid;}
+    public void setId(String pid) {
+        this.id = pid;
+    }
 
     // getter for price of product
-    public Double getPrice() {return price;}
+    public Double getPrice() {
+        return price;
+    }
 
     //setter for price of product
     public void setPrice(Double pprice) {
-        if (pprice < 0){
+        if (pprice < 0) {
             this.price = 0.0;
-        }
-        else{
+        } else {
             // round to 2 decimal places
-            this.price = (double) Math.round(pprice * 100)/100;
+            this.price = (double) Math.round(pprice * 100) / 100;
         }
     }
 
     // getter for category of product
-    public String getCategory() {return category;}
+    public String getCategory() {
+        return category;
+    }
 
     //setter for category of product
-    public void setCategory(String pcategory) {this.category = pcategory;}
+    public void setCategory(String pcategory) {
+        this.category = pcategory;
+    }
 
     // getter for sizes
     // returns an Object since size can be a string or null
-    public Object getSizes() {return sizes;}
+    public Object getSizes() {
+        return sizes;
+    }
 
     // setter for sizes
     public void setSizes(String psize) {
-        if (psize.equals("")){
+        if (psize.equals("")) {
             this.sizes = null;
-        }
-        else{
+        } else {
             this.sizes = psize;
         }
     }
 
     //getter for quantity
-    public int getQuantity() {return quantity;}
+    public int getQuantity() {
+        return quantity;
+    }
 
     //setter for quantity
     public void setQuantity(int pquantity) {
