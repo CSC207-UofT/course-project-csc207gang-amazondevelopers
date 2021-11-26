@@ -3,6 +3,9 @@ import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import java.io.IOException;
 
+/**
+ *
+ */
 public class SignUpController {
     /**
      * Gets the username from the user input.
@@ -11,11 +14,13 @@ public class SignUpController {
      */
     public void getNewUsername() throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
-        inOut.sendOutput("What would you like to put as your username? " +
-                "(please do not leave this field empty and do not put * as your username)");
+        // prompt user to sign up
+        SignUpPresenter present = new SignUpPresenter();
+        present.presentSignUp();
+        // save the username of the user
         String newUsername = inOut.getInput();
         if (newUsername.strip().equals("") | newUsername.equals("*")) {
-            inOut.sendOutput("Invalid Username, please reenter your username.");
+            present.failedSignUp();
             this.getNewUsername();
         }
         SignUpGatewayInterface signUpgateway = new SignUpGateway();

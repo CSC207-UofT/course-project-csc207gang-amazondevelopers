@@ -4,6 +4,9 @@ import UserFunctions.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * User is the signed in user
+ */
 public class BrowseUseCase {
 
     User user;

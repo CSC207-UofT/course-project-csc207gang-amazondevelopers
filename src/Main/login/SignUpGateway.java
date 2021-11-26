@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ *
+ */
+
 public class SignUpGateway implements SignUpGatewayInterface {
     /**
      * Checks if username is available by checking within the user.ser file

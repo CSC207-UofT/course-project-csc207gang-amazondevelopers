@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Get the post from the IdToPost.ser file
+ */
 public class GetPostGateway {
 
     /**
@@ -17,7 +20,9 @@ public class GetPostGateway {
         SystemInOut input = new SystemInOut();
         File file = new File("src/Main/IdToPost.ser");
         if (file.length() == 0){
-            input.sendOutput("There are no posts in this program yet!");
+            PostCreationPresenter presenter = new PostCreationPresenter();
+            presenter.noPostPresent();
+
             // go back to options
             // go back to options
             return null;

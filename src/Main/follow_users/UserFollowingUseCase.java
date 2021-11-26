@@ -7,6 +7,9 @@ import login.SignInGatewayInterface;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * User is the signed in user
+ */
 public class UserFollowingUseCase {
     User user;
     SaveUserGatewayInterface saveUserGatewayInterface;
@@ -27,7 +30,7 @@ public class UserFollowingUseCase {
      * a follower of this.user.
      *
      */
-    public void addToFollowingList(String newFollowing, User userFollower) throws IOException, ClassNotFoundException {
+    public void addToFollowingList(String newFollowing, User userFollower, FollowPresenterInterface presenter) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
         List<String> currentFollowing = this.user.getListFollowing();
         currentFollowing.add(newFollowing);
@@ -48,7 +51,7 @@ public class UserFollowingUseCase {
         // save both users to the user.ser file
         saveUserGatewayInterface.saveUser(this.user.getUsername(), user);
         saveUserGatewayInterface.saveUser(newFollowing, userFollower);
-        input.sendOutput("The user was followed successfully.");
+        presenter.presenterFollowed();
 
     }
 

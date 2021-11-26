@@ -1,5 +1,6 @@
 package Settings;
 import InputAndOutput.SystemInOut;
+import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
@@ -35,12 +36,14 @@ public class ChangeUsernameGateway {
 
             input.sendOutput("This username does not exist, so it cannot be deleted ");
             UserOptionsController options = new UserOptionsController(user);
-            options.getOption(input);
+            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+            options.getOption(input, engPresenter);
 
         }
         input.sendOutput("This username does not exist, so it cannot be deleted ");
         UserOptionsController options = new UserOptionsController(user);
-        options.getOption(input);
+        EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+        options.getOption(input, engPresenter);
 
 
     }

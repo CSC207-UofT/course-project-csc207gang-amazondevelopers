@@ -5,10 +5,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Add post to the serialized file.
+ */
 public class AddPostGateway implements AddPostGatewayInterface{
 
     /**
-     * Adds a post to a users post list in the .ser file
+     * Adds a post to a users post list in the user.ser file
      * @param post the post added by the user
      * @param user the user that added the post
      */

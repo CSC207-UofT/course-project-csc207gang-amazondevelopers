@@ -1,11 +1,15 @@
 package Browse;
 import InputAndOutput.SystemInOut;
 import OptionsPackage.BuyController;
+import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
 import PostFunctions.Post;
 import UserFunctions.User;
 import java.util.List;
 
+/**
+ * user is the user logged into the program
+ */
 public class BrowseController {
     User user;
 
@@ -32,7 +36,8 @@ public class BrowseController {
         // user's feed is empty
         else{
             UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            userOptionsController.getOption(inOut);
+            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+            userOptionsController.getOption(inOut, engPresenter);
         }
     }
 }
