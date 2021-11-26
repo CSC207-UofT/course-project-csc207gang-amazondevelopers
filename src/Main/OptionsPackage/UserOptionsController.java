@@ -27,6 +27,9 @@ public class UserOptionsController{
      *
      * @throws IOException error occured during reading a file, when there is an input / output error
      */
+
+    //TODO Controller does not need interface injection: fix for all classes. (delete presenter from the pamaeter)
+
     public void getOption(SystemInOut input, OptionsPresenterInterface presenter) throws IOException {
         presenter.userOptionsMain();
         String userDecision = input.getInput();

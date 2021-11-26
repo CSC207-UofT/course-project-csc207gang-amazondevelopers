@@ -34,6 +34,7 @@ public class BuyController {
         String decisionToBuy = input.getInput();
 
             if (decisionToBuy.equals("1")) {
+
                 // then the user wants to buy
                 boolean boughtOrExit = false;
                 while (!boughtOrExit) {
@@ -106,5 +107,11 @@ public class BuyController {
             }
         }
 
+
+
+
+
     }
+
+
 

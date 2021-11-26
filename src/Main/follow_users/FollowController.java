@@ -17,23 +17,26 @@ public class FollowController {
 
     User user;
 
+    /**
+     * Controller to follow another user by the logged in user
+     * @param user another user to be followed
+     */
+
     public FollowController(User user) {
         this.user = user;
     }
 
     /**
-     * Allows the user to input a tag for possible categories of items that they might be interested in and
-     * allow user to buy if the list of tags is not empty. If list of tags is empty, then send the user back to
-     * choose another option.
+     * Allow the user to follow another user.
      *
      */
 
     public void allowFollow() throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
+        // Ask for the username of the person that this user wants to follow
         EnglishFollowPresenter englishFollowPresenter = new EnglishFollowPresenter(input);
         englishFollowPresenter.presenterToFollow();
-
-
+        // The username of the user that this user wants to follow
         String userInput = input.getInput();
         if (userInput.equals("*")){
             UserOptionsController UOC = new UserOptionsController(user);
