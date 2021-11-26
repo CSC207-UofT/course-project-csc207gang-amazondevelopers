@@ -1,9 +1,11 @@
 package PostFunctions;
+import MementoFunctions.Originator;
 import ProductFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import UserFunctions.User;
+
 
 /**
  * <likes> is the number of like for the post
@@ -14,16 +16,19 @@ import UserFunctions.User;
  * the user is the logged in user of the program
  *
  */
-public class Post implements Serializable {
+
+public class Post extends Originator implements Serializable {
+
     private int likes;
     private Product product;
     private List<Float> ratings;
     private List<String> comments;
-    private String description;
-    private String caption;
-    private boolean canComment;
-    private boolean canRate;
+    private String description = "";
+    private String caption = "";
+    private boolean canComment = false;
+    private boolean canRate = false;
     private User user;
+
 
 
     /**
@@ -34,6 +39,12 @@ public class Post implements Serializable {
      * @param canRate the choice from the post creater to give a rate on the post
      * @param user the user that created the post
      */
+    public Post(Product product, User user){
+        this.product = product;
+        this.user = user;
+        this.ratings = new ArrayList<Float>();
+        this.comments = new ArrayList<String>();
+    }
     public Post(Product product, String caption, boolean canComment, boolean canRate, User user) {
         this.likes = 0;
         this.product = product;
@@ -45,6 +56,10 @@ public class Post implements Serializable {
         //these are first empty arraylists
         this.ratings = new ArrayList<Float>();
         this.comments = new ArrayList<String>();
+    }
+
+    public Post() {
+
     }
 
     /**
@@ -94,4 +109,5 @@ public class Post implements Serializable {
         return this.description;
     }
     public User getUser(){return this.user;}
+
 }
