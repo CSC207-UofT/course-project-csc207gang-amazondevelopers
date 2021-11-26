@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+
+import InputAndOutput.SystemInOut;
+import PostFunctions.CreatePostController;
 import PostFunctions.Post;
-import PostFunctions.PostManager;
-import PostFunctions.AddPostGateway;
 import UserFunctions.User;
 
 // TODO FIX CODE SMELL!! Too long method
@@ -42,6 +43,7 @@ public class CreateProductController {
                 String priceString = input.getInput();
                 if (priceString.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1)); // Restores the product to the last state
+                    memento_list.remove(memento_list.size() -1); // Removes the memento state from the list
                 } else {
                     try {
                         double price = Double.parseDouble(priceString);
@@ -63,6 +65,7 @@ public class CreateProductController {
                 String category = input.getInput();
                 if (category.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1));
+                    memento_list.remove(memento_list.size() -1);
                 } else {
                     memento_list.add(new_product.saveToMemento());
                     new_product.setCategory(category);
@@ -75,6 +78,7 @@ public class CreateProductController {
                 String quantityString = input.getInput();
                 if (quantityString.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1));
+                    memento_list.remove(memento_list.size() -1);
                 } else {
                     try {
                         int quantity = Integer.parseInt(quantityString);
@@ -91,13 +95,15 @@ public class CreateProductController {
                 String sizeInput = input.getInput();
                 if (sizeInput.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1));
+                    memento_list.remove(memento_list.size() -1);
                 } else {
                     memento_list.add(new_product.saveToMemento());
                     new_product.setSizes(sizeInput);
-                    input.sendOutput("Are you happy with this product? Type * for no, or anything else for yes");
+                    input.sendOutput("Are you happy with this product? Type * for no, or anything else for yes.\n If you say yes, you will be asked to create a post about this product");
                     String yes_no = input.getInput();
                     if (yes_no.equals("*")){
                         new_product.restoreFromMemento((memento_list.get(memento_list.size() -1)));
+                        memento_list.remove(memento_list.size() -1);
                     }
                     else{
                         is_product_complete = true;
@@ -108,16 +114,15 @@ public class CreateProductController {
 
         CreateProductGateway productGate = new CreateProductGateway();
         String id = generateID();
+        new_product.setId(id);
         ProductUseCase productManager = new ProductUseCase(productGate);
-        //Create Post Controller
-        //PostManager postManager = new PostManager(addPostGateway);
-        //Post newpost = postManager.createPost(newproduct, (String) output.get("Caption"),
-        // (boolean)output.get("CanComment"), (boolean)output.get("CanRate"), user);
-        //postManager.savePost(newpost, user);
+        CreatePostController cpc = new CreatePostController();
+        SystemInOut out = new SystemInOut();
+        cpc.createPost(out,new_product,user,true);
         CreateProductGateway createProductGateway = new CreateProductGateway();
         ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
         prodUseCase.saveNewProductToSer(new_product);
-        input.sendOutput("Product was created.");
+        input.sendOutput("Product and Post was created.");
         return new_product;
     }
 
