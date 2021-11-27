@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class DeleteUserGateway {
+public class DeleteUserGateway implements DeleteUserGatewayInterface {
 
     /**
      * Takes in the String username of the user that wants to be deleted.

@@ -1,21 +1,50 @@
 package PostFunctions;
+import MementoFunctions.Originator;
 import ProductFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import UserFunctions.User;
 
-public class Post implements Serializable {
+
+/**
+ * <likes> is the number of like for the post
+ * the product that the post include
+ * rating of the the product our of 5 stars
+ * comment for the post
+ * canCommetn and canRate is decided by the creator of the post
+ * the user is the logged in user of the program
+ *
+ */
+
+public class Post extends Originator implements Serializable {
+
     private int likes;
     private Product product;
     private List<Float> ratings;
     private List<String> comments;
-    private String description;
-    private String caption;
-    private boolean canComment;
-    private boolean canRate;
+    private String description = "";
+    private String caption = "";
+    private boolean canComment = false;
+    private boolean canRate = false;
     private User user;
 
+
+
+    /**
+     * The post
+     * @param product the product being advertised in the post
+     * @param caption the caption that the user puts for the post
+     * @param canComment the choice from the post creater to comment on the post
+     * @param canRate the choice from the post creater to give a rate on the post
+     * @param user the user that created the post
+     */
+    public Post(Product product, User user){
+        this.product = product;
+        this.user = user;
+        this.ratings = new ArrayList<Float>();
+        this.comments = new ArrayList<String>();
+    }
     public Post(Product product, String caption, boolean canComment, boolean canRate, User user) {
         this.likes = 0;
         this.product = product;
@@ -27,6 +56,10 @@ public class Post implements Serializable {
         //these are first empty arraylists
         this.ratings = new ArrayList<Float>();
         this.comments = new ArrayList<String>();
+    }
+
+    public Post() {
+
     }
 
     /**
@@ -76,4 +109,5 @@ public class Post implements Serializable {
         return this.description;
     }
     public User getUser(){return this.user;}
+
 }

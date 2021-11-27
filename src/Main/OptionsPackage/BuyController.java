@@ -12,6 +12,9 @@ import login.SaveUserGatewayInterface;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Allow the user to buy products
+ */
 public class BuyController {
     // TODO Phase 2: Fix method too long code smell!
     /**
@@ -21,24 +24,20 @@ public class BuyController {
      * @throws IOException error occured during reading a file, when there is an input / output error
      * @throws ClassNotFoundException thrown if the class is not found.
      */
-    public void allowBuy(InOut input, User user, List<String> listIds) throws Exception {
-        ListOfProductsPresenter presenter = new ListOfProductsPresenter();
+    public void allowBuy(SystemInOut input, User user, List<String> listIds) throws Exception {
+        EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
 
         // loop to keep checking if the user wants to buy something from the list
         presenter.presentList(listIds);
-            input.sendOutput("Would you like to add one of the items to your cart?" +
-                "enter the number of your choice\n 1.Yes\n 2.No take me back to Search\n " +
-                    "Type 'R' to choose another option from the menu.");
-            String decisionToBuy = input.getInput();
+        // present the buying options to the user
+        presenter.optionToBuyPresent();
+        String decisionToBuy = input.getInput();
 
             if (decisionToBuy.equals("1")) {
                 // then the user wants to buy
                 boolean boughtOrExit = false;
                 while (!boughtOrExit) {
-                    input.sendOutput("Please select the index of the item that you want to add to " +
-                            "your cart. The index is the " +
-                            "integer value for the position of the item on the list, with the first item being at " +
-                            "the 0th index. Type exit if you would like to go back to your search result.");
+                    presenter.addToCartPresent();
                     String itemIndex = input.getInput();
                     int indexInt = Integer.parseInt(itemIndex);
                     if (indexInt < listIds.size()) {
@@ -48,13 +47,13 @@ public class BuyController {
                         // add this product to the cart
                         CartManager cart = new CartManager();
                         if (!cart.addToCart(productToAddToCart, user)){
-                            input.sendOutput("This product is out of stock. Please select another product.");
+                            presenter.outOfStockPresent();
                             this.allowBuy(input, user, listIds);
                         }
                         // the user has bought something, so user can now decide if they want to buy something
                         // else from the search results or not (returned to the outer while loop)
 
-                        input.sendOutput("would you like to\n1. buy your entire cart\n2.Go back to options");
+                        presenter.buyOrBackPresent();
                         String optionToBuy = input.getInput();
 
                         if (optionToBuy.equals("1")){
@@ -66,14 +65,15 @@ public class BuyController {
                             SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
                             CartManager cartUseCaseSaveUser = new CartManager(saveUserGateway);
                             cartUseCaseSaveUser.emptyCart(user);
-                            input.sendOutput("your cart is now empty, and you have purchased" +
-                                    " the products in it.");
+                            presenter.cartIsEmptyPresent();
                             UserOptionsController options = new UserOptionsController(user);
-                            options.getOption(input);
+                            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                            options.getOption(input, engPresenter);
 
                         }else{
                             UserOptionsController options = new UserOptionsController(user);
-                            options.getOption(input);
+                            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                            options.getOption(input, engPresenter);
 
                         }
                         boughtOrExit = true;
@@ -82,7 +82,7 @@ public class BuyController {
                         boughtOrExit = true;
                         this.allowBuy(input, user,listIds);
                     } else {
-                        input.sendOutput("incorrect index, try again");
+                        presenter.incorrectIndexPresent();
                         // user needs to type in a new index/'exit' in next iteration of this loop
                         this.allowBuy(input, user,listIds);
                     }
@@ -96,11 +96,12 @@ public class BuyController {
             else if (decisionToBuy.equals("R")) {
                 // let the user search for something new if they dont want to buy something
                 UserOptionsController userOptionsController = new UserOptionsController(user);
-                userOptionsController.getOption(input);
+                EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                userOptionsController.getOption(input, engPresenter);
                 this.allowBuy(input, user,listIds);
             } else {
                 // end the loop, thereby ending the call to BuyController
-                input.sendOutput("invalid input");
+                presenter.invalidInput();
                 this.allowBuy(input, user, listIds);
             }
         }

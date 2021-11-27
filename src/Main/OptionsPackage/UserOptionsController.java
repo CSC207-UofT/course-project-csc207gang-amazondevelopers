@@ -4,13 +4,18 @@ import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import ProductFunctions.CreateProductController;
 import Settings.SettingsController;
+import UserFunctions.SaveUserChangesGateways;
 import UserFunctions.User;
 import UserFunctions.UserReadWriter;
+import follow_users.EnglishFollowPresenter;
 import follow_users.FollowController;
 import login.WelcomePageController;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * the user of the program that is logged in
+ */
 public class UserOptionsController{
     User user;
 
@@ -22,20 +27,19 @@ public class UserOptionsController{
      *
      * @throws IOException error occured during reading a file, when there is an input / output error
      */
-    public void getOption(InOut input) throws IOException {
-        input.sendOutput("What would you like to do? Input a number for " +
-                "your ideal option:\n 1.Search and buy \n 2.Make a post \n 3.Follow another user \n 4.Browse and buy" +
-                "\n 5.Settings \n 6.logout ");
+    public void getOption(SystemInOut input, OptionsPresenterInterface presenter) throws IOException {
+        presenter.userOptionsMain();
         String userDecision = input.getInput();
         this.userInput(input, userDecision);
-        this.getOption(input);
+        EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+        this.getOption(input, engPresenter);
     }
 
     /**
      * Gives the user the options after the sign in
      * @param userDecision the string decision of what the user wants to do when they are signed in.
      */
-    public void userInput(InOut input, String userDecision) {
+    public void userInput(SystemInOut input, String userDecision) {
         try{
             // search and buy
             if(userDecision.equals("1")) {
@@ -44,12 +48,10 @@ public class UserOptionsController{
                 searchController.allowSearch(input);
 
                 // save the cart of the user
-                // TODO Phase2: separate into gateway
                 String username = user.getUsername();
                 UserReadWriter rw = new UserReadWriter();
-                HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-                usersSavedDict.put(username, user);
-                rw.saveToFile("src/Main/user.ser", usersSavedDict);
+                SaveUserChangesGateways saveUserChangesGateways = new SaveUserChangesGateways();
+                saveUserChangesGateways.save(username, user);
 
             }
             // make a post
@@ -87,7 +89,8 @@ public class UserOptionsController{
 
             else{
                 UserOptionsController userOptionsController = new UserOptionsController(user);
-                userOptionsController.getOption(input);
+                EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                userOptionsController.getOption(input, engPresenter);
             }
         } catch (Exception e) {
             e.printStackTrace();
