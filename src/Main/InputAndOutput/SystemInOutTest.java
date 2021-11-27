@@ -1,3 +1,5 @@
+package InputAndOutput;
+
 import InputAndOutput.InOut;
 
 import java.io.*;
