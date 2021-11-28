@@ -33,12 +33,20 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
         inOut.sendOutput(stringProductList);
    }
 
+    /**
+     * Present to the user If the user wants to add products to their cart
+     */
+
    public void optionToBuyPresent(){
         SystemInOut input = new SystemInOut();
        input.sendOutput("Would you like to add one of the items to your cart?" +
                "enter the number of your choice\n 1.Yes\n 2.No take me back to Search\n " +
                "Type 'R' to choose another option from the menu.");
    }
+
+    /**
+     * Present to the user the index of the prodcuts that they want to add to their cart
+     */
 
    public void addToCartPresent(){
        SystemInOut input = new SystemInOut();
@@ -48,12 +56,18 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
                "the 0th index. Type exit if you would like to go back to your search result.");
    }
 
-
+    /**
+     * tell the user that their product is out of stock
+     */
    public void outOfStockPresent(){
        SystemInOut input = new SystemInOut();
        input.sendOutput("This product is out of stock. Please select another product.");
 
    }
+
+    /**
+     * The user buys entire cart or continues to search presenter
+     */
 
    public void buyOrBackPresent(){
        SystemInOut input = new SystemInOut();
@@ -61,29 +75,47 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
 
    }
 
+    /**
+     * of the cart of the user is empty
+     */
    public void cartIsEmptyPresent(){
        SystemInOut input = new SystemInOut();
        input.sendOutput("your cart is now empty, and you have purchased" +
                " the products in it.");
    }
 
+    /**
+     * If the inputted index is incorrect
+     */
    public void incorrectIndexPresent(){
         SystemInOut input = new SystemInOut();
        input.sendOutput("incorrect index, try again");
    }
 
+    /**
+     * invalid input by the user
+     */
    public void invalidInput(){
        SystemInOut input = new SystemInOut();
        input.sendOutput("invalid input");
 
    }
 
+    /**
+     * the option to search, follow, browse, or logout for the user
+     */
    public void userOptionsMain(){
        SystemInOut input = new SystemInOut();
        input.sendOutput("What would you like to do? Input a number for " +
                "your ideal option:\n 1.Search and buy \n 2.Make a post \n 3.Follow another user \n 4.Browse and buy" +
                "\n 5.Settings \n 6.logout ");
    }
+
+    @Override
+    public void noMatchingProductsPresent() {
+        SystemInOut input = new SystemInOut();
+        input.sendOutput("There are no products matching that tag word. Try again.");
+    }
 
 
 }

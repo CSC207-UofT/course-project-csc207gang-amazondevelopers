@@ -10,22 +10,23 @@ import java.util.List;
 
 public interface OptionsPresenterInterface {
 
-    public void presentList(List<String> IDProductOfInterest) throws IOException, ClassNotFoundException;
+     void presentList(List<String> IDProductOfInterest) throws IOException, ClassNotFoundException;
 
-    public void optionToBuyPresent();
+     void optionToBuyPresent();
 
-    public void addToCartPresent();
+     void addToCartPresent();
 
 
-    public void outOfStockPresent();
+     void outOfStockPresent();
 
-    public void buyOrBackPresent();
+     void buyOrBackPresent();
 
-    public void cartIsEmptyPresent();
+     void cartIsEmptyPresent();
 
-    public void incorrectIndexPresent();
+     void incorrectIndexPresent();
 
-    public void invalidInput();
+     void invalidInput();
 
-    public void userOptionsMain();
+     void userOptionsMain();
+     void noMatchingProductsPresent();
 }
