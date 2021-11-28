@@ -96,7 +96,8 @@ public class UserOptionsController{
                 userOptionsController.getOption(input, engPresenter);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
+            presenter.genericException();
         }
     }
 }
