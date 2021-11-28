@@ -119,7 +119,10 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
         SystemInOut input = new SystemInOut();
         input.sendOutput("There are no products matching that tag word. Try again.");
     }
-
+    public void genericException(){
+       SystemInOut input = new SystemInOut();
+       input.sendOutput("Returning to Main Menu");
+    }
 
 }
 

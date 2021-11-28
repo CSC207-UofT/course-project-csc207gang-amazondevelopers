@@ -6,19 +6,31 @@ import UserFunctions.User;
 import java.util.ArrayList;
 
 public class CreatePostController {
+    /**
+     * Method to create a new post from user input. Uses the memento design pattern in the Post class, as it inherites
+     * the Originator superclass.
+     * It also instructs the gateway to add specific posts to the serilized file that stores our data
+     * @param input
+     * @param product Product that the post is about
+     * @param user User makng the post
+     * @param from_product_creation A flag, that is true only if this method is called in CreatePostController
+     * @return A Post that has been created
+     * @throws Exception A generic exception to stop the method, and return to user options controller
+     */
     public Post createPost(SystemInOut input,Product product, User user,boolean from_product_creation) throws Exception {
         ArrayList<Post.Memento> memento_list = new ArrayList<Post.Memento>();
         Post new_post = new Post(product,user);
         new_post.set(0);
         memento_list.add(new_post.saveToMemento());
+        PostControllerPresenter pcp = new PostControllerPresenter();
         boolean is_post_complete = false;
         while (is_post_complete == false){
             if (new_post.getState() == 0) {
-                input.sendOutput("What is the caption of your post?");
+                pcp.presentCaption();
                 String captionInput = input.getInput();
                 if (captionInput.equals("*")) {
                     if(from_product_creation = true){
-                        input.sendOutput("Sorry, you cannot undo from here");
+                        pcp.presentUnableToUndo();
                     }else{
                         throw new Exception();
                     }
@@ -29,7 +41,7 @@ public class CreatePostController {
                 }
             }
             if (new_post.getState() == 1) {
-                input.sendOutput("Would you like your post to have Comments? Input 1 for yes, 2 for no");
+                pcp.presentComments();
                 String commentInput = input.getInput();
                 if (commentInput.equals("*")) {
                     new_post.restoreFromMemento(memento_list.get(memento_list.size() -1));
@@ -46,7 +58,7 @@ public class CreatePostController {
                 //If they didnt enter these 3 options
             }
             if (new_post.getState() == 2) {
-                input.sendOutput("Would you like your post to have Ratings? Input 1 for yes, 2 for no");
+                pcp.presentRatings();
                 String ratingInput = input.getInput();
                 if (ratingInput.equals("*")) {
                     new_post.restoreFromMemento(memento_list.get(memento_list.size() -1));
@@ -56,7 +68,7 @@ public class CreatePostController {
                     memento_list.add(new_post.saveToMemento());
                     new_post.setCanRate(true);
                     new_post.set(2);
-                    input.sendOutput("Are you happy with this post? Type * for no, or anything else for yes.");
+                    pcp.presentPostConformation();
                     String yes_no = input.getInput();
                     if (yes_no.equals("*")){
                         new_post.restoreFromMemento((memento_list.get(memento_list.size() -1)));
@@ -69,7 +81,7 @@ public class CreatePostController {
                     memento_list.add(new_post.saveToMemento());
                     new_post.setCanRate(false);
                     new_post.set(2);
-                    input.sendOutput("Are you happy with this product? Type * for no, or anything else for yes.\n If you say yes, you will be asked to create a post about this product");
+                    pcp.presentPostConformation();
                     String yes_no = input.getInput();
                     if (yes_no.equals("*")){
                         new_post.restoreFromMemento((memento_list.get(memento_list.size() -1)));
