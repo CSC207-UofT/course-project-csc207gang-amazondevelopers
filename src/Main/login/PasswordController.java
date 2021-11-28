@@ -13,7 +13,6 @@ public class PasswordController {
     public void setUserPassword(User user, String password){
         String coded = encrypted.encodeToString(password.getBytes());
         user.setPassword(coded);
-
     }
 
     public boolean verifyPasswordsMatch(String pass1, String pass2){
