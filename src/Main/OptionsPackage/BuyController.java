@@ -34,10 +34,7 @@ public class BuyController {
         String decisionToBuy = input.getInput();
 
             if (decisionToBuy.equals("1")) {
-
                 // then the user wants to buy
-                boolean boughtOrExit = false;
-                while (!boughtOrExit) {
                     presenter.addToCartPresent();
                     String itemIndex = input.getInput();
                     int indexInt = Integer.parseInt(itemIndex);
@@ -51,8 +48,6 @@ public class BuyController {
                             presenter.outOfStockPresent();
                             this.allowBuy(input, user, listIds);
                         }
-                        // the user has bought something, so user can now decide if they want to buy something
-                        // else from the search results or not (returned to the outer while loop)
 
                         presenter.buyOrBackPresent();
                         String optionToBuy = input.getInput();
@@ -67,39 +62,27 @@ public class BuyController {
                             CartManager cartUseCaseSaveUser = new CartManager(saveUserGateway);
                             cartUseCaseSaveUser.emptyCart(user);
                             presenter.cartIsEmptyPresent();
-                            UserOptionsController options = new UserOptionsController(user);
-                            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-
                         }else{
                             UserOptionsController options = new UserOptionsController(user);
                             EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
                             options.getOption(input, engPresenter);
 
                         }
-                        boughtOrExit = true;
                     } else if (itemIndex.equals("exit")) {
-                        // return to the outer while loop so user can decide if they want to do something else other than buy
-                        boughtOrExit = true;
                         this.allowBuy(input, user,listIds);
                     } else {
                         presenter.incorrectIndexPresent();
-                        // user needs to type in a new index/'exit' in next iteration of this loop
                         this.allowBuy(input, user,listIds);
                     }
-                }
             } else if (decisionToBuy.equals("2")) {
                 SearchController SC = new SearchController(user);
                 SC.allowSearch(input);
-
             }
             else if (decisionToBuy.equals("R")) {
-                // let the user search for something new if they dont want to buy something
                 UserOptionsController userOptionsController = new UserOptionsController(user);
                 EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
                 userOptionsController.getOption(input, engPresenter);
-                this.allowBuy(input, user,listIds);
             } else {
-                // end the loop, thereby ending the call to BuyController
                 presenter.invalidInput();
                 this.allowBuy(input, user, listIds);
             }
