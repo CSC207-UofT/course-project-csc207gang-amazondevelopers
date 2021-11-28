@@ -68,7 +68,6 @@ public class BuyController {
                             presenter.cartIsEmptyPresent();
                             UserOptionsController options = new UserOptionsController(user);
                             EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-                            options.getOption(input, engPresenter);
 
                         }else{
                             UserOptionsController options = new UserOptionsController(user);
@@ -88,7 +87,6 @@ public class BuyController {
                     }
                 }
             } else if (decisionToBuy.equals("2")) {
-                // end the loop, thereby ending the call to BuyController
                 SearchController SC = new SearchController(user);
                 SC.allowSearch(input);
 

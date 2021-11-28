@@ -30,9 +30,9 @@ public class SearchController {
         else{
             // TODO: tell user that there are no products matching the tag and let them search again
             input.sendOutput("There are no products matching that tag word. Try again.");
-            UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-            userOptionsController.getOption(input, engPresenter);
+//            UserOptionsController userOptionsController = new UserOptionsController(this.user);
+//            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+//            userOptionsController.getOption(input, engPresenter);
         }
     }
 

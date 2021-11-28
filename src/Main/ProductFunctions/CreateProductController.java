@@ -23,8 +23,10 @@ public class CreateProductController {
         Product new_product = new Product();
         new_product.set(0);//Sets the state to the state that asks for the products name
         memento_list.add(new_product.saveToMemento());
-        boolean is_product_complete = false;
-        while (is_product_complete == false) {
+        ProductPresenter productPresenter = new ProductPresenter();
+
+        boolean isProductComplete = false;
+        while (!isProductComplete) {
             if (new_product.getState() == 0) {
                 input.sendOutput("What is the name of the product?");
                 String name = input.getInput();
@@ -107,7 +109,7 @@ public class CreateProductController {
                         memento_list.remove(memento_list.size() -1);
                     }
                     else{
-                        is_product_complete = true;
+                        isProductComplete = true;
                     }
                 }
             }
