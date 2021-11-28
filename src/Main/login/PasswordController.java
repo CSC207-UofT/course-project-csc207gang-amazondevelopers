@@ -20,6 +20,6 @@ public class PasswordController {
     }
 
     public boolean verifyPassword(User user, String passAttempt){
-        return user.password.equals(encrypted.encodeToString(passAttempt.getBytes()));
+        return (user.password).equals(encrypted.encodeToString(passAttempt.getBytes()));
     }
 }

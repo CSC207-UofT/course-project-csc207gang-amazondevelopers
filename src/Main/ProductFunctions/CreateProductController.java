@@ -31,7 +31,8 @@ public class CreateProductController {
                 if (name.equals("*")) {
                     throw new Exception(); //Exits the method entirely, returns to the UserOptionsGateway
                 } else if (name.equals("")) {
-                    productPresenter.noNameProduct();
+                    ;
+                    //productPresenter.noNameProduct();
                 } else{
                     memento_list.add(new_product.saveToMemento());//Saves the current state of the product
                     new_product.setName(name);
