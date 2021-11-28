@@ -31,6 +31,8 @@ public class GetUserGateway implements  SignInGatewayInterface {
         UserReadWriter rw = new UserReadWriter();
         HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
         if (usersSavedDict.containsKey(username)){
+            PasswordPresenter pass = new PasswordPresenter();
+            pass.promptPasswordSignIn((User)usersSavedDict.get(username));
             return (User)usersSavedDict.get(username);
         }
         // if the user does not exist, return a user with an empty username, which the empty username is unaccepted

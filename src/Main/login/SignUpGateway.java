@@ -22,6 +22,8 @@ public class SignUpGateway implements SignUpGatewayInterface {
     @Override
     public void allowSignUp(String username, User user) throws IOException, ClassNotFoundException {
         SystemInOut input = new SystemInOut();
+        PasswordPresenter pass = new PasswordPresenter();
+        pass.promptPasswordSignUp(user);
         File file = new File("src/Main/user.ser");
         if (file.length() == 0){
             UserReadWriter rw = new UserReadWriter();
