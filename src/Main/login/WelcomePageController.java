@@ -1,5 +1,4 @@
 package login;
-import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
@@ -18,15 +17,15 @@ public class WelcomePageController {
      * needed to perform the respective functions.
      */
     public void userLoginDecision(SystemInOut input) throws IOException {
-        input.sendOutput("What would you like to do? Select the number of choice: \n 1.Signin\n 2.Signup\n 3.Quit\n Input * at anytime to undo your input");
-        // user input
+        WelcomePagePresenter presenter = new WelcomePagePresenter();
+        presenter.decision(input);
         String userDecision = input.getInput();
 
             try {
                 if (userDecision.equals("1")) {
                     // sign in
                     SignInController signInCont = new SignInController();
-                    String username = signInCont.getUsername(input);
+                    String username = signInCont.getUsername();
                     // the user is directed to option page
                     GetUserGateway signIn = new GetUserGateway();
                     User signedInUser = signIn.getUser(username);

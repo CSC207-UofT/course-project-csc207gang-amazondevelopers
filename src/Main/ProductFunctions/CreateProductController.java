@@ -8,7 +8,6 @@ import java.util.Random;
 
 import InputAndOutput.SystemInOut;
 import PostFunctions.CreatePostController;
-import PostFunctions.Post;
 import UserFunctions.User;
 
 // TODO FIX CODE SMELL!! Too long method
@@ -19,21 +18,20 @@ public class CreateProductController {
 
     public Product createNewProductFromInput(InOut input, User user) throws Exception {
 
-        ArrayList<Product.Memento> memento_list = new ArrayList<Product.Memento>();
+        ArrayList<Product.Memento> memento_list = new ArrayList<>();
         Product new_product = new Product();
         new_product.set(0);//Sets the state to the state that asks for the products name
         memento_list.add(new_product.saveToMemento());
-        ProductPresenter productPresenter = new ProductPresenter();
-
-        boolean isProductComplete = false;
-        while (!isProductComplete) {
+        boolean is_product_complete = false;
+        ProductPresenterInterface englishProductPresenter = new EnglishProductPresenter();
+        while (!is_product_complete) {
             if (new_product.getState() == 0) {
-                input.sendOutput("What is the name of the product?");
+                englishProductPresenter.getProductNamePresenter();
                 String name = input.getInput();
                 if (name.equals("*")) {
                     throw new Exception(); //Exits the method entirely, returns to the UserOptionsGateway
                 } else if (name.equals("")) {
-                    productPresenter.noNameProduct();
+                    englishProductPresenter.getProductNamePresenter();
                 } else{
                     memento_list.add(new_product.saveToMemento());//Saves the current state of the product
                     new_product.setName(name);
@@ -42,7 +40,7 @@ public class CreateProductController {
             }
 
             if (new_product.getState() == 1) {
-                input.sendOutput("What is the price of this product?");
+                englishProductPresenter.getProductPricePresenter();
                 String priceString = input.getInput();
                 if (priceString.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1)); // Restores the product to the last state
@@ -55,16 +53,16 @@ public class CreateProductController {
                             new_product.setPrice(price);
                             new_product.set(2);
                         } else {
-                            input.sendOutput("Price must be greater than or equal to 0.");
+                            englishProductPresenter.ProductPriceRangePresenter();
                         }
                     }catch(NumberFormatException e){
-                        input.sendOutput("Price must be a number.");
+                        englishProductPresenter.specifyTypePriceProductPresenter();
                     }
                 }
 
             }
             if (new_product.getState() == 2) {
-                input.sendOutput("What is the Category of this product?");
+                englishProductPresenter.getProductCategoryPresenter();
                 String category = input.getInput();
                 if (category.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1));
@@ -77,7 +75,7 @@ public class CreateProductController {
             }
 
             if (new_product.getState() == 3) {
-                input.sendOutput("What is the quantity of this product? Please enter an integer.");
+                englishProductPresenter.getProductQuantityPresenter();
                 String quantityString = input.getInput();
                 if (quantityString.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1));
@@ -89,12 +87,12 @@ public class CreateProductController {
                         new_product.setQuantity(quantity);
                         new_product.set(4);
                     } catch(NumberFormatException e){
-                        input.sendOutput("Please enter an integer.");
+                        englishProductPresenter.specifyTypeProductPresenter();
                     }
                 }
             }
             if (new_product.getState() == 4) {
-                input.sendOutput("What is the size of this product? Press enter nothing (no characters) if this product does not have a size");
+                englishProductPresenter.getProductSizePresenter();
                 String sizeInput = input.getInput();
                 if (sizeInput.equals("*")) {
                     new_product.restoreFromMemento(memento_list.get(memento_list.size() -1));
@@ -102,14 +100,14 @@ public class CreateProductController {
                 } else {
                     memento_list.add(new_product.saveToMemento());
                     new_product.setSizes(sizeInput);
-                    input.sendOutput("Are you happy with this product? Type * for no, or anything else for yes.\n If you say yes, you will be asked to create a post about this product");
+                    englishProductPresenter.confirmProductCreationPresenter();
                     String yes_no = input.getInput();
                     if (yes_no.equals("*")){
                         new_product.restoreFromMemento((memento_list.get(memento_list.size() -1)));
                         memento_list.remove(memento_list.size() -1);
                     }
                     else{
-                        isProductComplete = true;
+                        is_product_complete = true;
                     }
                 }
             }
@@ -125,7 +123,7 @@ public class CreateProductController {
         CreateProductGateway createProductGateway = new CreateProductGateway();
         ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
         prodUseCase.saveNewProductToSer(new_product);
-        input.sendOutput("Product and Post was created.");
+        englishProductPresenter.creationSuccessPresenter();
         return new_product;
     }
 

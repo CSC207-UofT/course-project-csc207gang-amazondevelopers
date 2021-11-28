@@ -14,14 +14,15 @@ public class SignInController {
      * A controller that takes in user username form the user, and return it as a string.
      * @return String username of the user.
      */
-    public String getUsername(InOut inOut) throws IOException {
-        inOut.sendOutput("What is your username? (please do not leave this field empty)");
+    public String getUsername() throws IOException {
+        SystemInOut inOut = new SystemInOut();
+        SignInPresenter present = new SignInPresenter();
+        present.presentSignIn();
         String username = inOut.getInput();
-        while (username.equals("")){
-            inOut.sendOutput("Invalid Username, please reenter your username.");
-            this.getUsername(inOut);
+        if (username.strip().equals("") | username.equals("*")) {
+            present.failedSignIn();
+            return this.getUsername();
         }
-
         return username;
         }
 }

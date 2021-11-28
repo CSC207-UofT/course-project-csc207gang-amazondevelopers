@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * Allow the user to follow others
  * User is the signed in user
  */
 public class UserFollowingUseCase {
@@ -15,11 +16,22 @@ public class UserFollowingUseCase {
     SaveUserGatewayInterface saveUserGatewayInterface;
     SignInGatewayInterface getUserGatewayInterface;
 
+    /**
+     *
+     * @param user the user that is signed in to the program
+     * @param saveUserGateway saving this user after it added the other user to their list to .ser file
+     */
+
     public UserFollowingUseCase(User user, SaveUserGatewayInterface saveUserGateway) {
         this.user = user;
         this.saveUserGatewayInterface = saveUserGateway;
     }
 
+    /**
+     * Second contructier
+     * @param user the user signed into the program
+     * @param getUserGateway for getting the saved user from the .ser file
+     */
     public UserFollowingUseCase(User user, SignInGatewayInterface getUserGateway) {
         this.user = user;
         this.getUserGatewayInterface = getUserGateway;
@@ -30,8 +42,9 @@ public class UserFollowingUseCase {
      * a follower of this.user.
      *
      */
-    public void addToFollowingList(String newFollowing, User userFollower, FollowPresenterInterface presenter) throws IOException, ClassNotFoundException {
-        SystemInOut input = new SystemInOut();
+    public void addToFollowingList(String newFollowing, User userFollower, FollowPresenterInterface presenter)
+            throws IOException, ClassNotFoundException {
+
         List<String> currentFollowing = this.user.getListFollowing();
         currentFollowing.add(newFollowing);
         // updating list of following of this.user
@@ -61,9 +74,7 @@ public class UserFollowingUseCase {
      * @return User associated with the String username being passed in.
      */
     public User getUser(String newFollowing) throws IOException, ClassNotFoundException {
-        // TODO: fix this
         return getUserGatewayInterface.getUser(newFollowing);
     }
-
 
 }

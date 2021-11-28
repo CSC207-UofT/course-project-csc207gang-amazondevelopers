@@ -24,6 +24,8 @@ public class SignUpUseCase {
      */
     public void allowSignUp(String newUsername) throws IOException, ClassNotFoundException {
         User newUser = new User(newUsername);
+        PasswordPresenter pass = new PasswordPresenter();
+        pass.promptPassword(newUser);
         signUpGateway.allowSignUp(newUsername, newUser);
     }
 }
