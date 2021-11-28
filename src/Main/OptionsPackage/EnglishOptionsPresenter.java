@@ -29,6 +29,9 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
                 String productString = ourProduct.toString();
                 stringProductList.add(productString);
             }
+            else{
+                inOut.sendOutput("There are no products in this program yet!");
+            }
         }
         inOut.sendOutput(stringProductList);
    }

@@ -37,7 +37,6 @@ public class GetProductGateway implements GetProductGatewayInterface{
     public boolean checkId(String productId) throws IOException, ClassNotFoundException {
         File file = new File("src/Main/IdToProduct.ser");
         if (file.length() == 0){
-            input.sendOutput("There are no products in this program yet!");
             return false;
         }
         else{
