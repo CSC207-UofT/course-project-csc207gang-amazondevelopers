@@ -20,7 +20,7 @@ public class SearchController {
      * choose another option.
      *
      */
-    public void allowSearch(SystemInOut input) throws Exception {
+    public void allowSearch(InOut input) throws Exception {
         List<String> listProductIds = getProductID(input);
         if (listProductIds.size() != 0){
             BuyController buyController = new BuyController();

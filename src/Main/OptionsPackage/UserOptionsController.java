@@ -30,7 +30,7 @@ public class UserOptionsController{
 
     //TODO Controller does not need interface injection: fix for all classes. (delete presenter from the pamaeter)
 
-    public void getOption(SystemInOut input, OptionsPresenterInterface presenter) throws IOException {
+    public void getOption(InOut input, OptionsPresenterInterface presenter) throws IOException {
         presenter.userOptionsMain();
         String userDecision = input.getInput();
         this.userInput(input, userDecision);
@@ -42,7 +42,7 @@ public class UserOptionsController{
      * Gives the user the options after the sign in
      * @param userDecision the string decision of what the user wants to do when they are signed in.
      */
-    public void userInput(SystemInOut input, String userDecision) {
+    public void userInput(InOut input, String userDecision) {
         try{
             // search and buy
             if(userDecision.equals("1")) {

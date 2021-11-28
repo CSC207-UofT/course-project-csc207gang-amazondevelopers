@@ -24,7 +24,7 @@ public class BuyController {
      * @throws IOException error occured during reading a file, when there is an input / output error
      * @throws ClassNotFoundException thrown if the class is not found.
      */
-    public void allowBuy(SystemInOut input, User user, List<String> listIds) throws Exception {
+    public void allowBuy(InOut input, User user, List<String> listIds) throws Exception {
         EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
 
         // loop to keep checking if the user wants to buy something from the list
