@@ -141,7 +141,6 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductMultipleUndoTest() throws Exception {
-        // TODO: currently user cannot undo what they input for CanRate as the product is created immediatly after
         SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductMultipleUndoTestInputs");
 
         // skip the header of the file
