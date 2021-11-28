@@ -1,5 +1,4 @@
 package login;
-import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
@@ -19,7 +18,8 @@ public class WelcomePageController {
      */
     public void userLoginDecision(SystemInOut input) throws IOException {
         WelcomePagePresenter presenter = new WelcomePagePresenter();
-        String userDecision = presenter.decision(input);
+        presenter.decision(input);
+        String userDecision = input.getInput();
 
             try {
                 if (userDecision.equals("1")) {
