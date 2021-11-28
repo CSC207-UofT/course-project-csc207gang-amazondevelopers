@@ -97,7 +97,8 @@ public class UserOptionsController{
             }
             // TODO: make exception more specific
         } catch (Exception e) {
-            e.printStackTrace();
+            EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
+            presenter.genericException();
         }
     }
 }
