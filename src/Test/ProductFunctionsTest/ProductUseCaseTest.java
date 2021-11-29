@@ -1,10 +1,10 @@
 package ProductFunctionsTest;
 
-import ProductFunctions.CreateProductGateway;
-import ProductFunctions.GetProductGateway;
-import ProductFunctions.Product;
-import ProductFunctions.ProductUseCase;
-import Settings.DeleteProductsGateway;
+import productFunctions.CreateProductGateway;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
+import productFunctions.ProductUseCase;
+import settingsFunctions.DeleteProductsGateway;
 import org.junit.After;
 import org.junit.Test;
 

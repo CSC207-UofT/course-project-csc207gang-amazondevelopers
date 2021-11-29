@@ -1,4 +1,4 @@
-import InputAndOutput.InOut;
+import inputOutputFunctions.InOut;
 import java.io.IOException;
 import java.util.ArrayList;
 

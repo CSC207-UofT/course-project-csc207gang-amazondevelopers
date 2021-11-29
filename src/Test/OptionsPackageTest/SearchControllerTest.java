@@ -1,17 +1,12 @@
 package OptionsPackageTest;
 //
-import InputAndOutput.SystemInOut;
-import PostFunctions.Post;
-import ProductFunctions.*;
-import Settings.DeleteProductsGateway;
-import Settings.DeleteUserGateway;
-import login.GetUserGateway;
-import login.SignInController;
-import login.SignUpController;
-import login.SignUpGateway;
-import loginTest.SignInControllerTest;
-import UserFunctions.User;
-import OptionsPackage.UserOptionsController;
+import inputOutputFunctions.SystemInOut;
+import productFunctions.*;
+import settingsFunctions.DeleteProductsGateway;
+import settingsFunctions.DeleteUserGateway;
+import loginFunctions.GetUserGateway;
+import loginFunctions.SignUpGateway;
+import userFunctions.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,8 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import OptionsPackage.SearchController;
-import loginTest.SignUpControllerTest;
+import optionsPackage.SearchController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

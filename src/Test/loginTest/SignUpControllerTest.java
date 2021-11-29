@@ -1,21 +1,17 @@
 package loginTest;
 
-import InputAndOutput.SystemInOut;
-import ProductFunctions.CreateProductController;
-import ProductFunctionsTest.CreateProductControllerTest;
-import Settings.DeleteUserGateway;
-import UserFunctions.User;
-import login.SignInController;
-import login.SignUpController;
-import login.SignUpGateway;
+import inputOutputFunctions.SystemInOut;
+import productFunctions.CreateProductController;
+import settingsFunctions.DeleteUserGateway;
+import userFunctions.User;
+import loginFunctions.SignInController;
+import loginFunctions.SignUpController;
+import loginFunctions.SignUpGateway;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.io.*;
 import java.util.Scanner;
-
-import static org.junit.Assert.*;
 
 public class SignUpControllerTest {
     SignInController signin = new SignInController();
