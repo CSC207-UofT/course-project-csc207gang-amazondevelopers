@@ -2,8 +2,9 @@ package loginFunctions;
 import inputOutputFunctions.SystemInOut;
 import optionsPackage.EnglishOptionsPresenter;
 import optionsPackage.UserOptionsController;
+import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
-import userFunctions.UserReadWriter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class SaveUserGateway implements SaveUserGatewayInterface {
         // check if username of the person we want to add exists
         File file = new File("src/Main/user.ser");
         if (!(file.length() == 0)) {
-            UserReadWriter rw = new UserReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
             // TODO: why not see that the username of this user that is logged in in contained inside the user.ser file?
             if (usersSavedDict.containsKey(username)) {

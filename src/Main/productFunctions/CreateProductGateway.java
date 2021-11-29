@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import userFunctions.UserReadWriter;
+
+import serializationFunctions.DictionaryReadWriter;
 
 public class CreateProductGateway implements CreateProductGatewayInterface {
 
@@ -22,12 +23,12 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
 
         File file = new File("src/Main/product.ser");
         if (file.length() == 0){
-            UserReadWriter rw = new UserReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, List<String>> emptyHashMap = new HashMap<>();
             rw.saveToFile("src/Main/product.ser", emptyHashMap);
         }
 
-        ProductReadWriter rw = new ProductReadWriter();
+        DictionaryReadWriter rw = new DictionaryReadWriter();
 
         HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main/product.ser");
         // {tag:[ID]}
@@ -47,7 +48,7 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
         File file2 = new File("src/Main/IdToProduct.ser");
         // if no hashmap exists yet
         if (file2.length() == 0){
-            UserReadWriter readWriter = new UserReadWriter();
+            DictionaryReadWriter readWriter = new DictionaryReadWriter();
             HashMap<String, List<String>> emptyHashMap = new HashMap<>();
             readWriter.saveToFile("src/Main/IdToProduct.ser", emptyHashMap);
         }

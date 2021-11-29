@@ -1,7 +1,7 @@
 package userFunctions;
 
 import productFunctions.Product;
-import productFunctions.ProductReadWriter;
+import serializationFunctions.DictionaryReadWriter;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class SaveProductGateway implements SaveProductGatewayInterface{
      */
     public void save(String productID, Product product) throws IOException, ClassNotFoundException {
         // save the changed, new Product.
-        ProductReadWriter rw = new ProductReadWriter();
+        DictionaryReadWriter rw = new DictionaryReadWriter();
         File file = new File("src/Main/IdToProduct.ser");
         if (file.length() == 0){
 

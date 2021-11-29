@@ -1,5 +1,7 @@
 package productFunctions;
 import inputOutputFunctions.SystemInOut;
+import serializationFunctions.DictionaryReadWriter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,7 +23,7 @@ public class GetProductGateway implements GetProductGatewayInterface{
      */
 
     public Product getProduct(String productId) throws IOException, ClassNotFoundException {
-        ProductReadWriter rw = new ProductReadWriter();
+        DictionaryReadWriter rw = new DictionaryReadWriter();
         HashMap<String, Object> idToProductHashMap = rw.readFromFile("src/Main/IdToProduct.ser");
         return (Product) idToProductHashMap.get(productId);
     }
@@ -40,7 +42,7 @@ public class GetProductGateway implements GetProductGatewayInterface{
             return false;
         }
         else{
-            ProductReadWriter rw = new ProductReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> idToProductHashMap = rw.readFromFile("src/Main/IdToProduct.ser");
             return idToProductHashMap.containsKey(productId);
         }
@@ -58,7 +60,7 @@ public class GetProductGateway implements GetProductGatewayInterface{
             return new HashMap<>();
         }
         else {
-            ProductReadWriter rw = new ProductReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             return rw.readFromFile("src/Main/IdToProduct.ser");
         }
 

@@ -1,6 +1,6 @@
 package settingsFunctions;
 import productFunctions.Product;
-import productFunctions.ProductReadWriter;
+import serializationFunctions.DictionaryReadWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class DeleteProductsGateway implements DeleteProductGatewayInterface {
         File file = new File("src/Main/IdToProduct.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.
-            ProductReadWriter rw = new ProductReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> productSavedHash = rw.readFromFile("src/Main/IdToProduct.ser");
             HashMap<String, Object> tagToIDListHash = rw.readFromFile("src/Main/Product.ser");
             for (String id: listIds){

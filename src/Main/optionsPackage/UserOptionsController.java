@@ -2,10 +2,10 @@ package optionsPackage;
 import browseFunctions.BrowseController;
 import inputOutputFunctions.InOut;
 import productFunctions.CreateProductController;
+import serializationFunctions.DictionaryReadWriter;
 import settingsFunctions.SettingsController;
 import userFunctions.SaveUserChangesGateways;
 import userFunctions.User;
-import userFunctions.UserReadWriter;
 import followFunctions.FollowController;
 import loginFunctions.WelcomePageController;
 import java.io.IOException;
@@ -49,7 +49,7 @@ public class UserOptionsController{
 
                 // save the cart of the user
                 String username = user.getUsername();
-                UserReadWriter rw = new UserReadWriter();
+                DictionaryReadWriter rw = new DictionaryReadWriter();
                 SaveUserChangesGateways saveUserChangesGateways = new SaveUserChangesGateways();
                 saveUserChangesGateways.save(username, user);
 

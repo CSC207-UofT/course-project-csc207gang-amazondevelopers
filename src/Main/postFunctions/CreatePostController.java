@@ -22,7 +22,7 @@ public class CreatePostController {
         Post new_post = new Post(product,user);
         new_post.set(0);
         memento_list.add(new_post.saveToMemento());
-        PostControllerPresenter pcp = new PostControllerPresenter();
+        EnglishPostPresenter pcp = new EnglishPostPresenter();
         boolean is_post_complete = false;
         while (is_post_complete == false){
             if (new_post.getState() == 0) {

@@ -1,25 +1,25 @@
-package productFunctions;
+package serializationFunctions;
 import userFunctions.ReadWriter;
 import java.io.*;
 import java.util.HashMap;
 
-public class ProductReadWriter implements ReadWriter {
+public class DictionaryReadWriter implements userFunctions.ReadWriter {
     /**
      * Writes the users to file at filePath.
      *
      * @param filePath the file to write the records to
-     * @param productDict    stores the list of users to be serialized
+     * @param inputDict    stores the list of users to be serialized
      * @throws IOException
      */
     @Override
-    public void saveToFile(String filePath, Object productDict) throws IOException {
+    public void saveToFile(String filePath, Object inputDict) throws IOException {
 
         OutputStream file = new FileOutputStream(filePath);
         OutputStream buffer = new BufferedOutputStream(file);
         ObjectOutput output = new ObjectOutputStream(buffer);
 
         // serialize the Map
-        output.writeObject(productDict);
+        output.writeObject(inputDict);
         output.close();
     }
 

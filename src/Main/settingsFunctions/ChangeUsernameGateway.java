@@ -2,8 +2,9 @@ package settingsFunctions;
 import inputOutputFunctions.SystemInOut;
 import optionsPackage.EnglishOptionsPresenter;
 import optionsPackage.UserOptionsController;
+import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
-import userFunctions.UserReadWriter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class ChangeUsernameGateway {
         File file = new File("src/Main/user.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.
-            UserReadWriter rw = new UserReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
             if (usersSavedDict.containsKey(user.getUsername())) {
                 // remove previous username

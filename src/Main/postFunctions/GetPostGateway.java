@@ -1,5 +1,7 @@
 package postFunctions;
 import inputOutputFunctions.SystemInOut;
+import serializationFunctions.DictionaryReadWriter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,7 +29,7 @@ public class GetPostGateway {
             // go back to options
             return null;
         }
-        PostReadWriter rw = new PostReadWriter();
+        DictionaryReadWriter rw = new DictionaryReadWriter();
         HashMap<String, Object> idToPostDict = rw.readFromFile("src/Main/IdToPost.ser");
         if (idToPostDict.get(productId) != null){
             return (Post) idToPostDict.get(productId);

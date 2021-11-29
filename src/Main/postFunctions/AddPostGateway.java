@@ -1,4 +1,5 @@
 package postFunctions;
+import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
 import userFunctions.UserPostUseCase;
 import java.io.File;
@@ -18,7 +19,7 @@ public class AddPostGateway implements AddPostGatewayInterface{
     public void addPost(Post post, User user) throws IOException, ClassNotFoundException {
         File file = new File("src/Main/user.ser");
         if (!(file.length() == 0)) {
-            PostReadWriter rw = new PostReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
             ((User) usersSavedDict.get(user.getUsername())).addToPostList(post);
             rw.saveToFile("src/Main/user.ser",usersSavedDict);
@@ -35,7 +36,7 @@ public class AddPostGateway implements AddPostGatewayInterface{
     public void addFeed(Post post, User user) throws IOException,ClassNotFoundException{
         File file = new File("src/Main/user.ser");
         if (!(file.length() == 0)) {
-            PostReadWriter rw = new PostReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             UserPostUseCase upc = new UserPostUseCase(user);
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
             ((User) usersSavedDict.get(user.getUsername())).addToFeed(post);

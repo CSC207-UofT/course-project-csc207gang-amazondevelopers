@@ -1,6 +1,6 @@
 package postFunctions;
 import inputOutputFunctions.SystemInOut;
-public class PostControllerPresenter {
+public class EnglishPostPresenter implements PostPresenterInterface {
     SystemInOut output = new SystemInOut();
     public void presentCaption(){
         output.sendOutput("What is the caption of your post?");

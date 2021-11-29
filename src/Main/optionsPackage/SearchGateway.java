@@ -1,6 +1,6 @@
 package optionsPackage;
-import productFunctions.ProductReadWriter;
-import userFunctions.UserReadWriter;
+import serializationFunctions.DictionaryReadWriter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,11 +27,11 @@ public class SearchGateway {
 
         File file = new File("src/Main/product.ser");
         if (file.length() == 0){
-            UserReadWriter rw = new UserReadWriter();
+            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> emptyHashMap = new HashMap<>();
             rw.saveToFile("src/Main/product.ser", emptyHashMap);
         }
-        ProductReadWriter rw = new ProductReadWriter();
+        DictionaryReadWriter rw = new DictionaryReadWriter();
         HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/product.ser");
 
         if (productSavedDict.containsKey(tag)){
