@@ -1,4 +1,4 @@
-import InputAndOutput.InOut;
+import inputOutputFunctions.InOut;
 import java.io.IOException;
 /**
  * A controller class that creates a new user, and adds this user to the list of all users.

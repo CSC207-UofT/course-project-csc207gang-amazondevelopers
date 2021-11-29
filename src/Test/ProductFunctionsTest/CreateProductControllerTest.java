@@ -1,21 +1,17 @@
 package ProductFunctionsTest;
 
-import InputAndOutput.SystemInOutTest;
-import Settings.DeleteUserGateway;
-import login.SignUpGateway;
-import InputAndOutput.SystemInOut;
-import PostFunctions.Post;
-import ProductFunctions.CreateProductController;
-import ProductFunctions.Product;
-import Settings.DeleteProductsGateway;
-import Settings.ProductDeletionUseCase;
-import UserFunctions.User;
+import inputOutputFunctions.SystemInOutTest;
+import settingsFunctions.DeleteUserGateway;
+import loginFunctions.SignUpGateway;
+import postFunctions.Post;
+import productFunctions.CreateProductController;
+import productFunctions.Product;
+import userFunctions.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.Scanner;
 
 import static org.junit.Assert.*;
 

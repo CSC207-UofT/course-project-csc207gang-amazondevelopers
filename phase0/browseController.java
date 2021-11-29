@@ -1,4 +1,4 @@
-import InputAndOutput.InOut;
+import inputOutputFunctions.InOut;
 import java.util.List;
 
 public class browseController{

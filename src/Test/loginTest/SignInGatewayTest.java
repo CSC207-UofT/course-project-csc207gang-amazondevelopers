@@ -1,9 +1,9 @@
 package loginTest;
 
-import Settings.DeleteUserGateway;
-import UserFunctions.User;
-import login.GetUserGateway;
-import login.SignUpGateway;
+import settingsFunctions.DeleteUserGateway;
+import userFunctions.User;
+import loginFunctions.GetUserGateway;
+import loginFunctions.SignUpGateway;
 import org.junit.Test;
 
 import java.io.IOException;
