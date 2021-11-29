@@ -3,7 +3,11 @@ package login;
 import InputAndOutput.SystemInOut;
 import UserFunctions.User;
 
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class PasswordPresenter {

@@ -18,7 +18,7 @@ public class SignInController {
         inOut.sendOutput("What is your username? (please do not leave this field empty)");
         String username = inOut.getInput();
         while (username.equals("")){
-            inOut.sendOutput("Invalid Username, please reenter your username.");
+            inOut.sendOutput("Invalid Username, please re-enter your username.");
             this.getUsername(inOut);
         }
 

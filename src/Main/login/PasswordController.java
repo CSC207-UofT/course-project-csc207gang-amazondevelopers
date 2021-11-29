@@ -5,7 +5,6 @@ import UserFunctions.User;
 import java.io.*;
 import java.util.Base64;
 
-
 public class PasswordController {
 
     Base64.Encoder encrypted = Base64.getEncoder();
