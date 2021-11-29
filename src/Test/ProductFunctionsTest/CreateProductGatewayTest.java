@@ -1,8 +1,8 @@
 package ProductFunctionsTest;
 
-import ProductFunctions.CreateProductGateway;
-import ProductFunctions.GetProductGateway;
-import ProductFunctions.Product;
+import productFunctions.CreateProductGateway;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
 import org.junit.Test;
 
 import java.io.IOException;

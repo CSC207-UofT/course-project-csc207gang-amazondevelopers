@@ -1,10 +1,10 @@
 package OptionsPackageTest;
 
-import OptionsPackage.SearchGateway;
-import ProductFunctions.CreateProductGateway;
-import ProductFunctions.GetProductGateway;
-import ProductFunctions.Product;
-import Settings.DeleteProductsGateway;
+import optionsPackage.SearchGateway;
+import productFunctions.CreateProductGateway;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
+import settingsFunctions.DeleteProductsGateway;
 import org.junit.Test;
 
 import java.io.IOException;

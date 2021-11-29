@@ -1,15 +1,15 @@
 package UserFunctionsTest;
 
-import InputAndOutput.SystemInOut;
-import ProductFunctions.*;
-import Settings.DeleteProductsGateway;
-import Settings.DeleteUserGateway;
-import UserFunctions.CartManager;
-import UserFunctions.SaveProductGateway;
-import UserFunctions.User;
-import login.GetUserGateway;
-import login.SaveUserGateway;
-import login.SignUpGateway;
+import inputOutputFunctions.SystemInOut;
+import productFunctions.*;
+import settingsFunctions.DeleteProductsGateway;
+import settingsFunctions.DeleteUserGateway;
+import userFunctions.CartManager;
+import userFunctions.SaveProductGateway;
+import userFunctions.User;
+import loginFunctions.GetUserGateway;
+import loginFunctions.SaveUserGateway;
+import loginFunctions.SignUpGateway;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

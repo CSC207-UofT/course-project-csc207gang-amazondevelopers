@@ -1,16 +1,16 @@
 package PostFunctionsTest;
-import ProductFunctions.Product;
-import Settings.DeleteUserGateway;
+import productFunctions.Product;
+import settingsFunctions.DeleteUserGateway;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import PostFunctions.Post;
-import PostFunctions.AddPostGateway;
+import postFunctions.Post;
+import postFunctions.AddPostGateway;
 import java.io.IOException;
-import UserFunctions.User;
-import login.GetUserGateway;
-import login.SignUpGateway;
-import InputAndOutput.SystemInOut;
+import userFunctions.User;
+import loginFunctions.GetUserGateway;
+import loginFunctions.SignUpGateway;
+import inputOutputFunctions.SystemInOut;
 
 import static org.junit.Assert.*;
 public class AddPostGatewayTest {

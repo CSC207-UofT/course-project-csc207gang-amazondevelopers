@@ -1,5 +1,5 @@
-import InputAndOutput.SystemInOut;
-import login.WelcomePageController;
+import inputOutputFunctions.SystemInOut;
+import loginFunctions.WelcomePageController;
 
 import java.io.IOException;
 

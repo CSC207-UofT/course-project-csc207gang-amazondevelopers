@@ -1,4 +1,4 @@
-import InputAndOutput.SystemInOut;
+import inputOutputFunctions.SystemInOut;
 import java.io.IOException;
 
 

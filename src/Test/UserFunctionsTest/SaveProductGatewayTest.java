@@ -1,20 +1,12 @@
 package UserFunctionsTest;
 
-import OptionsPackage.SearchGateway;
-import ProductFunctions.CreateProductGateway;
-import ProductFunctions.GetProductGateway;
-import ProductFunctions.Product;
-import Settings.DeleteProductsGateway;
-import Settings.DeleteUserGateway;
-import UserFunctions.SaveProductGateway;
-import UserFunctions.User;
-import login.GetUserGateway;
-import login.SignUpGateway;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
+import settingsFunctions.DeleteProductsGateway;
+import userFunctions.SaveProductGateway;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 

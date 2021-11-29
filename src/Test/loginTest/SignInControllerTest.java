@@ -1,20 +1,15 @@
 package loginTest;
 
-import InputAndOutput.SystemInOut;
-import InputAndOutput.SystemInOutTest;
-import OptionsPackage.UserOptionsController;
-import ProductFunctions.CreateProductController;
-import ProductFunctionsTest.CreateProductControllerTest;
-import Settings.DeleteUserGateway;
-import UserFunctions.User;
-import login.SignInController;
-import login.SignUpGateway;
-import org.junit.After;
-import org.junit.Before;
+import inputOutputFunctions.SystemInOutTest;
+import optionsPackage.UserOptionsController;
+import productFunctions.CreateProductController;
+import settingsFunctions.DeleteUserGateway;
+import userFunctions.User;
+import loginFunctions.SignInController;
+import loginFunctions.SignUpGateway;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
