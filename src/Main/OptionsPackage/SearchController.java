@@ -20,7 +20,7 @@ public class SearchController {
      * choose another option.
      *
      */
-    public void allowSearch(SystemInOut input) throws Exception {
+    public void allowSearch(InOut input) throws Exception {
         List<String> listProductIds = getProductID(input);
         if (listProductIds.size() != 0){
             BuyController buyController = new BuyController();
@@ -28,12 +28,8 @@ public class SearchController {
         }
         // list of ids is empty, send user back to choose another option
         else{
-            // TODO: tell user that there are no products matching the tag and let them search again
             EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
             engPresenter.noMatchingProductsPresent();
-
-            UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            userOptionsController.getOption(input, engPresenter);
         }
     }
 

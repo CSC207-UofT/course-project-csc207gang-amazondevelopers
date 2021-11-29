@@ -1,6 +1,7 @@
 package loginTest;
 
 import InputAndOutput.SystemInOut;
+import InputAndOutput.SystemInOutTest;
 import OptionsPackage.UserOptionsController;
 import ProductFunctions.CreateProductController;
 import ProductFunctionsTest.CreateProductControllerTest;
@@ -66,27 +67,27 @@ public class SignInControllerTest {
     }
 
 
-    private static class SystemInOutTest extends SystemInOut {
-
-        private final Scanner reader;
-        /**
-         *
-         * @param fileName
-         * @throws FileNotFoundException
-         */
-        public SystemInOutTest(String fileName) throws FileNotFoundException {
-            File fileToRead = new File(fileName);
-            this.reader = new Scanner(fileToRead);
-        }
-
-        @Override
-        public String getInput() throws IOException {
-            if (reader.hasNextLine()) {
-                return this.reader.nextLine();
-            }
-            else{
-                return "";
-            }
-        }
-    }
+//    private static class SystemInOutTest extends SystemInOut {
+//
+//        private final Scanner reader;
+//        /**
+//         *
+//         * @param fileName
+//         * @throws FileNotFoundException
+//         */
+//        public SystemInOutTest(String fileName) throws FileNotFoundException {
+//            File fileToRead = new File(fileName);
+//            this.reader = new Scanner(fileToRead);
+//        }
+//
+//        @Override
+//        public String getInput() throws IOException {
+//            if (reader.hasNextLine()) {
+//                return this.reader.nextLine();
+//            }
+//            else{
+//                return "";
+//            }
+//        }
+//    }
 }

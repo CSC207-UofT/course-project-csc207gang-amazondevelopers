@@ -23,8 +23,8 @@ public class SignUpController {
             present.failedSignUp();
             this.getNewUsername();
         }
-        SignUpGatewayInterface signUpgateway = new SignUpGateway();
-        SignUpUseCase signUpUseCase = new SignUpUseCase(signUpgateway);
+        SignUpGatewayInterface signUpGateway = new SignUpGateway();
+        SignUpUseCase signUpUseCase = new SignUpUseCase(signUpGateway);
         signUpUseCase.allowSignUp(newUsername);
     }
 

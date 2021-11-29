@@ -1,4 +1,5 @@
 package login;
+import InputAndOutput.InOut;
 import InputAndOutput.SystemInOut;
 import OptionsPackage.EnglishOptionsPresenter;
 import OptionsPackage.UserOptionsController;
@@ -16,7 +17,7 @@ public class WelcomePageController {
      * Use case class that decides which classes to call, given the input from the user. Then, calls the methods
      * needed to perform the respective functions.
      */
-    public void userLoginDecision(SystemInOut input) throws IOException {
+    public void userLoginDecision(InOut input) throws IOException {
         WelcomePagePresenter presenter = new WelcomePagePresenter();
         presenter.decision(input);
         String userDecision = input.getInput();
@@ -25,7 +26,7 @@ public class WelcomePageController {
                 if (userDecision.equals("1")) {
                     // sign in
                     SignInController signInCont = new SignInController();
-                    String username = signInCont.getUsername();
+                    String username = signInCont.getUsername(input);
                     // the user is directed to option page
                     GetUserGateway signIn = new GetUserGateway();
                     User signedInUser = signIn.getUser(username);
@@ -48,7 +49,7 @@ public class WelcomePageController {
                     input.sendOutput("Try again");
                     this.userLoginDecision(input);
                 }
-            } catch (Exception exception) {
+            } catch (ClassNotFoundException exception) {
                 exception.printStackTrace();
             }
         }

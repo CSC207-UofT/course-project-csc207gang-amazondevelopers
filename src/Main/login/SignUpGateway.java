@@ -37,6 +37,7 @@ public class SignUpGateway implements SignUpGatewayInterface {
                 usersSavedDict.put(username, user);
                 rw.saveToFile("src/Main/user.ser", usersSavedDict);
             } else { // the user.ser contains
+                // TODO: allow user to exit out of creating an account
                 input.sendOutput("This username is taken, please enter another one!");
                 SignUpController signUpController = new SignUpController();
                 signUpController.getNewUsername();

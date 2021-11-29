@@ -11,7 +11,7 @@ The CRC model contains 17 classes adhering to the SOLID principles and clean arc
 identification of 4 entity classes (Master, User, Product, Post), 4 use cases (masterManager, userManager, postManager, 
 productManger), 8 controllers (browseController, cartController, createUserController, createPostController, 
 loginOptionsController, searchController, signInController, userOptionsController) and a command line interface 
-(SystemInOutTest). The CRC model shows that all of these follow the dependency rule with data flow from command line 
+(SystemInOut). The CRC model shows that all of these follow the dependency rule with data flow from command line 
 interface to controllers to use cases to the entity.
 
 Our walk-through explains the details of using the program and explains the usage of the program with the support of 
