@@ -29,10 +29,9 @@ public class GetUserGateway implements  SignInGatewayInterface {
         }
         // access the serialized file for this user.
         DictionaryReadWriter rw = new DictionaryReadWriter();
-        PasswordPresenter passwordPresenter = new PasswordPresenter();
+
         HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
         if (usersSavedDict.containsKey(username)){
-            passwordPresenter.promptPasswordSignIn((User)usersSavedDict.get(username));
             return (User)usersSavedDict.get(username);
         }
         // if the user does not exist, return a user with an empty username, which the empty username is unaccepted
