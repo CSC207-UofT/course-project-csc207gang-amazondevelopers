@@ -45,7 +45,7 @@ public class SignInControllerTest {
 
         // Skip the header in the file
         testInOut.getInput();
-        String username = signInController.getUsername();
+        String username = signInController.getUsername(testInOut);
         assertEquals(username, "TestSignInControllerUser");
     }
 
@@ -57,7 +57,7 @@ public class SignInControllerTest {
         // Skip the header in the file
         testInOut.getInput();
 
-        String username = signInController.getUsername();
+        String username = signInController.getUsername(testInOut);
         assertEquals(username, "TestSignInControllerUser");
     }
 
