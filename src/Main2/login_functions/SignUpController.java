@@ -1,8 +1,13 @@
+package login_functions;
+
+import userFunctions.User;
+
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -20,14 +25,16 @@ public class SignUpController implements ActionListener {
     JLabel userIDLabel = new JLabel("userID: ");
     JLabel userPasswordLabel = new JLabel("password: ");
 
+    GetIDandPasswords getIDandPasswords = new GetIDandPasswords();
+    HashMap<String, Object> loginInfo = getIDandPasswords.getUsernamePasswordHash();
 
-    HashMap<String, String> logininfo = new HashMap<String, String>();
+
+
     /**
      * Constructor is used to set the size of labels and buttons on the page
      */
-    public SignUpController(HashMap<String, String> loginInfoOriginal) {
+    public SignUpController() throws IOException, ClassNotFoundException {
 
-        logininfo = loginInfoOriginal;
 
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
@@ -71,7 +78,14 @@ public class SignUpController implements ActionListener {
         SignInPresenter presenter = new SignInPresenter();
         if(e.getSource()==backButton) {
             frame.dispose();
-            WelcomePageController welcomePageController = new WelcomePageController(logininfo);
+            try {
+                WelcomePageController welcomePageController = new WelcomePageController();
+                //TODO: edit try catch
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
         if(e.getSource()==resetButton) {
             userIDField.setText("");
@@ -81,22 +95,36 @@ public class SignUpController implements ActionListener {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
 
-            if(logininfo.containsKey(userID)) {
+            if(loginInfo.containsKey(userID)) {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("This username is taken!");
             }
-            if(userID.equals("")) {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Please enter a username!");
-            }
-            if(password.equals("")) {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Please enter a password!");
-                // TODO for the else statement, if the username is unique and password given, add this to
-                // the user.ser file and go back to the WelcomePageController!!!
-//            else {
-//                frame.dispose();
-//                WelcomePageController welcomePageController = new WelcomePageController(logininfo);
+            else {
+                SetIDandPasswords setNewUser = new SetIDandPasswords();
+
+                // Put the new user into the hashmap
+                try {
+                    setNewUser.setUsernamePasswordHash(userID, password);
+                    SaveUserGateway saveUser = new SaveUserGateway();
+                    // save the new user
+                    //TODO: check is it's ok to send user as a parameter in controller
+                    saveUser.saveUser(userID, new User(userID));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+                frame.dispose();
+                // Go back to welcome page
+                try {
+                    messageLabel.setForeground(Color.green);
+                    messageLabel.setText("Success!");
+                    WelcomePageController welcomePageController = new WelcomePageController();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
 
         }

@@ -1,7 +1,10 @@
+package login_functions;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -16,14 +19,14 @@ public class WelcomePageController implements ActionListener {
     JButton quit = new JButton("Quit");
     JLabel messageLabel = new JLabel(welcomePagePresenter.welcomeMessage());
 
-    HashMap<String, String> logininfo = new HashMap<String, String>();
+    GetIDandPasswords login = new GetIDandPasswords();
+    HashMap<String, Object> logininfo = login.getUsernamePasswordHash();
 
     /**
      * Constructor is used to set the size of labels and buttons on the page
      */
-    public WelcomePageController(HashMap<String, String> loginInfoOriginal) {
+    public WelcomePageController() throws IOException, ClassNotFoundException {
 
-        logininfo = loginInfoOriginal;
 
         messageLabel.setBounds(70, 100, 250, 35);
         messageLabel.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -58,11 +61,23 @@ public class WelcomePageController implements ActionListener {
         }
         if (e.getSource()==signinButton) {
             frame.dispose();
-            SignInController signInController = new SignInController( logininfo);
+            try {
+                SignInController signInController = new SignInController();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
         if (e.getSource()==signupButton) {
             frame.dispose();
-            SignUpController signUpController = new SignUpController(logininfo);
+            try {
+                SignUpController signUpController = new SignUpController();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
 
     }
