@@ -22,11 +22,11 @@ public class GetUserGateway implements SignInGatewayInterface {
      */
     public User getUser(String username) throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
-        File file = new File("src/Main/user.ser");
+        File file = new File("src/Main2/user.ser");
         // access the serialized file for this user.
         DictionaryReadWriter rw = new DictionaryReadWriter();
 
-        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
+        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main2/user.ser");
         if (usersSavedDict.containsKey(username)){
             return (User)usersSavedDict.get(username);
         }
@@ -36,4 +36,3 @@ public class GetUserGateway implements SignInGatewayInterface {
         return new User("");
     }
 }
-//

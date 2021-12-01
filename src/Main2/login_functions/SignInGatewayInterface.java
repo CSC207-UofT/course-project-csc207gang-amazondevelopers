@@ -17,4 +17,3 @@ public interface SignInGatewayInterface {
      */
     User getUser(String username) throws IOException, ClassNotFoundException;
 }
-//
