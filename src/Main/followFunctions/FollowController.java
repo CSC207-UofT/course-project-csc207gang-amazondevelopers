@@ -39,6 +39,10 @@ public class FollowController {
         // The username of the user that this user wants to follow
         String userInput = input.getInput();
         if (!userInput.equals("*")) {
+//            UserOptionsController userOptions = new UserOptionsController(user);
+//            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+//            userOptions.getOption(input, engPresenter);
+
             SignInGatewayInterface getUserGateway = new GetUserGateway();
             UserFollowingUseCase userFollowingUseCase = new UserFollowingUseCase(this.user, getUserGateway);
             User userFollowing = userFollowingUseCase.getUser(userInput);

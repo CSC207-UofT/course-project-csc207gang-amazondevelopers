@@ -35,9 +35,13 @@ public class BrowseController {
         }
         // user's feed is empty
         else{
-            UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-            userOptionsController.getOption(inOut, engPresenter);
+            // TODO: instead of calling userOptions print out an error message
+
+            //  dont need to call user options since as soon as this method ends it goes back to user options anyways
+
+            //            UserOptionsController userOptionsController = new UserOptionsController(this.user);
+//            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+//            userOptionsController.getOption(inOut, engPresenter);
         }
     }
 }
