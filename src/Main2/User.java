@@ -1,6 +1,3 @@
-package userFunctions;
-import postFunctions.Post;
-import productFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -106,4 +103,3 @@ public class User implements Serializable {
     }
     public void addToFeed(Post post){this.feed.add(post);}
 }
-

@@ -1,11 +1,5 @@
-package postFunctions;
-import mementoFunctions.Originator;
-import productFunctions.Product;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import userFunctions.User;
-
 
 /**
  * <likes> is the number of like for the post
@@ -17,7 +11,7 @@ import userFunctions.User;
  *
  */
 
-public class Post extends Originator implements Serializable {
+public class Post {
 
     private int likes;
     private Product product;
@@ -55,9 +49,6 @@ public class Post extends Originator implements Serializable {
         this.comments = new ArrayList<String>();
     }
 
-    public Post() {
-
-    }
 
     /**
      * getters and setters for attributes
