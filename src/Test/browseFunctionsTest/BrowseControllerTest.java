@@ -79,9 +79,25 @@ public class BrowseControllerTest {
         browseController.presentFeed(testInOut);
 
         Product bought = getProductGateway.getProduct("TEST");
-        User user = getUserGateway.getUser("TestSearchControllerUser");
+        User user = getUserGateway.getUser("TestBrowse");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());
     }
+
+    @Test
+    public void presentFeedEmptyTest() throws Exception {
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/optionsPackageTest/optionsTestInputs/SearchControllerBasicTestInputs");
+        //skip the header of the file
+        testInOut.getInput();
+
+        //search for the product, then buy it
+        browseController.presentFeed(testInOut);
+
+        Product bought = getProductGateway.getProduct("TEST");
+        User user = getUserGateway.getUser("TestBrowse");
+        assertEquals(0, bought.getQuantity());
+        assertEquals(0, user.getShoppingCart().size());
+    }
+
 
 }
