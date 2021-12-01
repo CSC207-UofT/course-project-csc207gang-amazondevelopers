@@ -98,8 +98,9 @@ public class SignInController implements ActionListener {
                     messageLabel.setText(presenter.message3());
                     frame.dispose();
                     // Get the user
-                    GetUserGateway getUserGateway = new GetUserGateway();
+
                     try {
+                        GetUserGateway getUserGateway = new GetUserGateway();
                         User oldUser = getUserGateway.getUser(userID);
                         // give them their options
                         OptionsController optionsController = new OptionsController(oldUser);
@@ -124,4 +125,3 @@ public class SignInController implements ActionListener {
 
     }
 }
-//
