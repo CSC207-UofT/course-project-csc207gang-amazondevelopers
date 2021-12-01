@@ -1,4 +1,5 @@
 package loginFunctions;
+import inputOutputFunctions.InOut;
 import inputOutputFunctions.SystemInOut;
 import java.io.IOException;
 
@@ -11,8 +12,7 @@ public class SignUpController {
      * @return String representing the username inputted by the user
      * @throws IOException error occured during reading a file, when there is an input / output error
      */
-    public void getNewUsername() throws IOException, ClassNotFoundException {
-        SystemInOut inOut = new SystemInOut();
+    public void getNewUsername(InOut inOut) throws IOException, ClassNotFoundException {
         // prompt user to sign up
         SignUpPresenter present = new SignUpPresenter();
         present.presentSignUp();
@@ -20,7 +20,7 @@ public class SignUpController {
         String newUsername = inOut.getInput();
         if (newUsername.strip().equals("") | newUsername.equals("*")) {
             present.failedSignUp();
-            this.getNewUsername();
+            this.getNewUsername(inOut);
         }
         SignUpGatewayInterface signUpGateway = new SignUpGateway();
         SignUpUseCase signUpUseCase = new SignUpUseCase(signUpGateway);

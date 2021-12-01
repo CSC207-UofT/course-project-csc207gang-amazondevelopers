@@ -1,4 +1,5 @@
 package browseFunctions;
+import inputOutputFunctions.InOut;
 import inputOutputFunctions.SystemInOut;
 import optionsPackage.BuyController;
 import optionsPackage.EnglishOptionsPresenter;
@@ -23,8 +24,7 @@ public class BrowseController {
      * empty, allows user to buy from their feed. If feed is empty, return user back to choose another option.
      *
      */
-    public void presentFeed() throws Exception {
-        SystemInOut inOut = new SystemInOut();
+    public void presentFeed(InOut inOut) throws Exception {
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         List<Post> userFeed = browseUseCase.getFeed();
         List<String> feedIds = browseUseCase.getlistIds(userFeed);
@@ -35,13 +35,10 @@ public class BrowseController {
         }
         // user's feed is empty
         else{
-            // TODO: instead of calling userOptions print out an error message
-
-            //  dont need to call user options since as soon as this method ends it goes back to user options anyways
-
-            //            UserOptionsController userOptionsController = new UserOptionsController(this.user);
-//            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-//            userOptionsController.getOption(inOut, engPresenter);
+            // TODO: print out an error message
+            UserOptionsController userOptionsController = new UserOptionsController(this.user);
+            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+            userOptionsController.getOption(inOut, engPresenter);
         }
     }
 }
