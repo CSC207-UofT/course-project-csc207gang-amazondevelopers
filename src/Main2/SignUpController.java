@@ -85,11 +85,18 @@ public class SignUpController implements ActionListener {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("This username is taken!");
             }
-            else {
-                IDandPasswords iDandPasswords = new IDandPasswords();
-                iDandPasswords.add(userID, password);
-                frame.dispose();
-                WelcomePageController welcomePageController = new WelcomePageController(logininfo);
+            if(userID.equals("")) {
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("Please enter a username!");
+            }
+            if(password.equals("")) {
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("Please enter a password!");
+                // TODO for the else statement, if the username is unique and password given, add this to
+                // the user.ser file and go back to the WelcomePageController!!!
+//            else {
+//                frame.dispose();
+//                WelcomePageController welcomePageController = new WelcomePageController(logininfo);
             }
 
         }
