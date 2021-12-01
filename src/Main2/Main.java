@@ -1,8 +1,12 @@
-public class Main {
-    public static void main(String[] args) {
-        IDandPasswords iDandPasswords = new IDandPasswords();
+import login_functions.GetIDandPasswords;
+import login_functions.WelcomePageController;
 
-        WelcomePageController welcomePageController = new WelcomePageController(iDandPasswords.getLoginInfo());
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        WelcomePageController welcomePageController = new WelcomePageController();
+        
 
     }
 }

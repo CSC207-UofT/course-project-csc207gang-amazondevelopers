@@ -1,3 +1,5 @@
+package login_functions;
+
 public class WelcomePagePresenter {
     /**
      * Presents message to user to help instruct them on how to use the program

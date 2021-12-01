@@ -1,7 +1,9 @@
-package loginFunctions;
+package login_functions;
 import inputOutputFunctions.SystemInOut;
+import loginFunctions.SignInGatewayInterface;
 import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.util.HashMap;
  *
  */
 
-public class GetUserGateway implements  SignInGatewayInterface {
+public class GetUserGateway implements SignInGatewayInterface {
 
     /**
      * Return a user, either a new one with the given username, or an old user, that was previously saved in our system
@@ -19,14 +21,8 @@ public class GetUserGateway implements  SignInGatewayInterface {
      * @return A newly created or old user
      */
     public User getUser(String username) throws IOException, ClassNotFoundException {
-        // TODO: fix coupling
         SystemInOut inOut = new SystemInOut();
         File file = new File("src/Main/user.ser");
-        if (file.length() == 0){
-            inOut.sendOutput("No user exists yet, please sign up. You are being redirected to the welcome page.");
-            WelcomePageController welcome = new WelcomePageController();
-            welcome.userLoginDecision(inOut);
-        }
         // access the serialized file for this user.
         DictionaryReadWriter rw = new DictionaryReadWriter();
 

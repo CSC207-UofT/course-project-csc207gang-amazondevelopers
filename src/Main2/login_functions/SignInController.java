@@ -1,8 +1,13 @@
+package login_functions;
+
+import userFunctions.User;
+
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -21,13 +26,13 @@ public class SignInController implements ActionListener {
     JLabel userPasswordLabel = new JLabel("password: ");
 
 
-    HashMap<String, String> logininfo = new HashMap<String, String>();
+    GetIDandPasswords login = new GetIDandPasswords();
+    HashMap<String, Object> logininfo = login.getUsernamePasswordHash();
     /**
      * Constructor is used to set the size of labels and buttons on the page
      */
-    public SignInController(HashMap<String, String> loginInfoOriginal) {
+    public SignInController() throws IOException, ClassNotFoundException {
 
-        logininfo = loginInfoOriginal;
 
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
@@ -71,7 +76,13 @@ public class SignInController implements ActionListener {
         SignInPresenter presenter = new SignInPresenter();
         if(e.getSource()==backButton) {
             frame.dispose();
-            WelcomePageController welcomePageController = new WelcomePageController(logininfo);
+            try {
+                WelcomePageController welcomePageController = new WelcomePageController();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
         if(e.getSource()==resetButton) {
             userIDField.setText("");
@@ -86,7 +97,18 @@ public class SignInController implements ActionListener {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText(presenter.message3());
                     frame.dispose();
-                    OptionsController welcomePage = new OptionsController();
+                    // Get the user
+                    GetUserGateway getUserGateway = new GetUserGateway();
+                    try {
+                        User oldUser = getUserGateway.getUser(userID);
+                        // give them their options
+                        OptionsController optionsController = new OptionsController(oldUser);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (ClassNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
                 }
                 else {
                     messageLabel.setForeground(Color.red);
