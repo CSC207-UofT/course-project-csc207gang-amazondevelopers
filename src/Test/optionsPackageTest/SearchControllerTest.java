@@ -1,6 +1,7 @@
-package OptionsPackageTest;
+package optionsPackageTest;
 //
 import inputOutputFunctions.SystemInOut;
+import inputOutputFunctions.SystemInOutTest;
 import productFunctions.*;
 import settingsFunctions.DeleteProductsGateway;
 import settingsFunctions.DeleteUserGateway;
@@ -109,31 +110,5 @@ public class SearchControllerTest{
         user = getUserGateway.getUser("TestSearchControllerUser");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());
-    }
-
-
-    private static class SystemInOutTest extends SystemInOut {
-
-        private final Scanner reader;
-
-        /**
-         *
-         * @param fileName
-         * @throws FileNotFoundException
-         */
-        public SystemInOutTest(String fileName) throws FileNotFoundException {
-            File fileToRead = new File(fileName);
-            this.reader = new Scanner(fileToRead);
-        }
-
-        @Override
-        public String getInput() throws IOException {
-            if (reader.hasNextLine()) {
-                return this.reader.nextLine();
-            }
-            else{
-                return "";
-            }
-        }
     }
 }

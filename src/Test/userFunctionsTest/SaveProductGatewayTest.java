@@ -1,4 +1,4 @@
-package UserFunctionsTest;
+package userFunctionsTest;
 
 import productFunctions.GetProductGateway;
 import productFunctions.Product;

@@ -1,4 +1,4 @@
-package OptionsPackageTest;
+package optionsPackageTest;
 
 public class BrowseControllerTest {
 }

@@ -1,4 +1,4 @@
-package UserFunctionsTest;
+package userFunctionsTest;
 
 public class ReadWriterTest {
 }

@@ -1,30 +1,30 @@
-package loginTest;
+package userFunctionsTest;
 
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;
 import loginFunctions.GetUserGateway;
-import loginFunctions.SignUpGateway;
+import userFunctions.SaveUserChangesGateways;
 import org.junit.Test;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-public class SignInGatewayTest {
-
+public class SaveUserChangesGatewaysTest {
+    SaveUserChangesGateways saveUserChangesGateways = new SaveUserChangesGateways();
     GetUserGateway getUserGateway = new GetUserGateway();
-    SignUpGateway signUpGateway = new SignUpGateway();
     DeleteUserGateway deleteUserGateway = new DeleteUserGateway();
 
     @Test
-    public void getUserBasicTest() throws IOException, ClassNotFoundException {
+    public void setSaveUserChangesGatewaysTest() throws IOException, ClassNotFoundException {
         User newUser = new User("albert");
-        signUpGateway.allowSignUp(newUser.getUsername(), newUser);
+        String username = newUser.getUsername();
+        saveUserChangesGateways.save(username, newUser);
 
         User expectedUser = getUserGateway.getUser("albert");
         assertEquals(newUser.getUsername(), expectedUser.getUsername());
         deleteUserGateway.deleteUser("albert");
 
     }
-
 }
+

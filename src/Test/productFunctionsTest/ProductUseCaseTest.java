@@ -1,4 +1,4 @@
-package ProductFunctionsTest;
+package productFunctionsTest;
 
 import productFunctions.CreateProductGateway;
 import productFunctions.GetProductGateway;
@@ -36,7 +36,7 @@ public class ProductUseCaseTest {
 
         assertEquals("shoe", actualProduct.getName());
         assertEquals("1", actualProduct.getId());
-        assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+        assertEquals(5, actualProduct.getPrice(), 0.0);
         assertEquals("shoes", actualProduct.getCategory());
         assertEquals(1, actualProduct.getQuantity());
         assertEquals("2", actualProduct.getSizes());
@@ -48,7 +48,7 @@ public class ProductUseCaseTest {
 
         assertEquals("shoe", actualProduct.getName());
         assertEquals("1", actualProduct.getId());
-        assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+        assertEquals(5, actualProduct.getPrice(), 0.0);
         assertEquals("shoes", actualProduct.getCategory());
         assertEquals(1, actualProduct.getQuantity());
         assertNull(actualProduct.getSizes());

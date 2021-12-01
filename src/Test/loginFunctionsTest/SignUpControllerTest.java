@@ -1,4 +1,4 @@
-package loginTest;
+package loginFunctionsTest;
 
 import inputOutputFunctions.SystemInOut;
 import productFunctions.CreateProductController;
@@ -68,31 +68,5 @@ public class SignUpControllerTest {
 //        assertEquals(newUsername, "getUsernameUsernameTakenTest");
 //        // tests if a user that does not exist will be allowed to sign up
 //    }
-
-
-    private static class SystemInOutTest extends SystemInOut {
-
-        private final Scanner reader;
-
-        /**
-         *
-         * @param fileName
-         * @throws FileNotFoundException
-         */
-        public SystemInOutTest(String fileName) throws FileNotFoundException {
-            File fileToRead = new File(fileName);
-            this.reader = new Scanner(fileToRead);
-        }
-
-        @Override
-        public String getInput() throws IOException {
-            if (reader.hasNextLine()) {
-                return this.reader.nextLine();
-            }
-            else{
-                return "";
-            }
-        }
-    }
 
 }

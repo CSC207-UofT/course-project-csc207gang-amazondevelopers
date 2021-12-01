@@ -1,4 +1,4 @@
-package ProductFunctionsTest;
+package productFunctionsTest;
 
 import productFunctions.CreateProductGateway;
 import productFunctions.GetProductGateway;
@@ -17,7 +17,7 @@ public class CreateProductGatewayTest {
 
 
      @Test
-     void addProductToRepoNewProductBasicTest() throws IOException, ClassNotFoundException {
+     public void addProductToRepoNewProductBasicTest() throws IOException, ClassNotFoundException {
 
          Product expectedProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
          createProductGateway.addProductToRepo(expectedProduct, "!", "shoes");
@@ -44,7 +44,7 @@ public class CreateProductGatewayTest {
 
          assertSame("shoe", actualProduct.getName());
          assertSame("1", actualProduct.getId());
-         assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+         assertEquals(5, actualProduct.getPrice(), 0.0);
          assertSame("shoes", actualProduct.getCategory());
          assertEquals(1, actualProduct.getQuantity());
          assertSame("2", actualProduct.getSizes());

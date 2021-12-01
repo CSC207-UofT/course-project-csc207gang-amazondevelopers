@@ -1,4 +1,4 @@
-package loginTest;
+package loginFunctionsTest;
 
 
 import static org.junit.Assert.assertEquals;

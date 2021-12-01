@@ -1,4 +1,4 @@
-package UserFunctionsTest;
+package userFunctionsTest;
 
 import inputOutputFunctions.SystemInOut;
 import productFunctions.*;
@@ -33,7 +33,7 @@ public class CartManagerTest {
     SignUpGateway signUpGateway = new SignUpGateway();
 
     User testUser = new User("TestCartManager");
-    Product testProduct = new Product("shoe", "TEST", 5.0, "shoes", "2",2);;
+    Product testProduct = new Product("shoe", "TEST", 5.0, "shoes", "2",2);
 
     GetProductGateway getProductGateway = new GetProductGateway();
     ProductUseCase productUseCaseCreate = new ProductUseCase(createProductGateway);

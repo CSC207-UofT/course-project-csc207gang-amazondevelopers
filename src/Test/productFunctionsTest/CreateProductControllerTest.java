@@ -1,4 +1,4 @@
-package ProductFunctionsTest;
+package productFunctionsTest;
 
 import inputOutputFunctions.SystemInOutTest;
 import settingsFunctions.DeleteUserGateway;

@@ -39,9 +39,9 @@ public class FollowController {
         // The username of the user that this user wants to follow
         String userInput = input.getInput();
         if (userInput.equals("*")){
-            UserOptionsController UOC = new UserOptionsController(user);
+            UserOptionsController userOptions = new UserOptionsController(user);
             EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-            UOC.getOption(input, engPresenter);
+            userOptions.getOption(input, engPresenter);
         }
 
         SignInGatewayInterface getUserGateway = new GetUserGateway();
