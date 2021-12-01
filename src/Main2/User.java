@@ -103,4 +103,3 @@ public class User implements Serializable {
     }
     public void addToFeed(Post post){this.feed.add(post);}
 }
-//
