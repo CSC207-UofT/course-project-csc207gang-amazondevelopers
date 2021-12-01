@@ -49,7 +49,6 @@ public class UserOptionsController{
 
                 // save the cart of the user
                 String username = user.getUsername();
-                DictionaryReadWriter rw = new DictionaryReadWriter();
                 SaveUserChangesGateways saveUserChangesGateways = new SaveUserChangesGateways();
                 saveUserChangesGateways.save(username, user);
 

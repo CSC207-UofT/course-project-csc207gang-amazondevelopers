@@ -1,4 +1,4 @@
-package PostFunctionsTest;
+package postFunctionsTest;
 import productFunctions.Product;
 import settingsFunctions.DeleteUserGateway;
 import org.junit.After;
@@ -31,7 +31,7 @@ public class AddPostGatewayTest {
         apg.addPost(expectedPost,newUser);
         GetUserGateway getUser = new GetUserGateway();
         newUser = getUser.getUser("TestPost");
-        Post newpost = (Post) newUser.getListPosts().get(0);
+        Post newpost = newUser.getListPosts().get(0);
         assertEquals(newpost.getCaption() , expectedPost.getCaption());
         assertEquals(newpost.getCanComment() , expectedPost.getCanComment());
 
@@ -44,7 +44,7 @@ public class AddPostGatewayTest {
         apg.addFeed(expectedPost,newUser);
         GetUserGateway getUser = new GetUserGateway();
         newUser = getUser.getUser("TestPost");
-        Post newpost = (Post) newUser.getFeed().get(0);
+        Post newpost = newUser.getFeed().get(0);
         assertEquals(newpost.getCaption() , expectedPost.getCaption());
         assertEquals(newpost.getCanComment() , expectedPost.getCanComment());
 

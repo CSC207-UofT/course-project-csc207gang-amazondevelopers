@@ -1,4 +1,4 @@
-package loginTest;
+package loginFunctionsTest;
 
 import inputOutputFunctions.SystemInOutTest;
 import optionsPackage.UserOptionsController;

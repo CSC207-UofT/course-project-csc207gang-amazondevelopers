@@ -1,4 +1,4 @@
-package loginTest;
+package loginFunctionsTest;
 
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;

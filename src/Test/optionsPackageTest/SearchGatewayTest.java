@@ -1,4 +1,4 @@
-package OptionsPackageTest;
+package optionsPackageTest;
 
 import optionsPackage.SearchGateway;
 import productFunctions.CreateProductGateway;

@@ -10,7 +10,7 @@ import java.util.HashMap;
  * Gets the product by their ID< and returns that product
  */
 
-public class GetProductGateway implements GetProductGatewayInterface{
+public class GetProductGateway implements GetProductGatewayInterface {
 
     SystemInOut input = new SystemInOut();
 

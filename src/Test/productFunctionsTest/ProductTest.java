@@ -1,4 +1,4 @@
-package ProductFunctionsTest;
+package productFunctionsTest;
 
 import productFunctions.Product;
 import org.junit.Test;
@@ -12,7 +12,7 @@ public class ProductTest {
 
          assertEquals("shoes", actualProduct.getName());
          assertEquals("1", actualProduct.getId());
-         assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+         assertEquals(5, actualProduct.getPrice(), 0.0);
          assertEquals("shoes", actualProduct.getCategory());
          assertEquals("2", actualProduct.getSizes());
          assertEquals(1, actualProduct.getQuantity());
@@ -23,7 +23,7 @@ public class ProductTest {
          Product actualProduct = new Product("shoe", "1", 5.0, "shoes",1);
          assertEquals("shoe", actualProduct.getName());
          assertEquals("1", actualProduct.getId());
-         assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+         assertEquals(5, actualProduct.getPrice(), 0.0);
          assertEquals("shoes", actualProduct.getCategory());
          assertEquals(1, actualProduct.getQuantity());
          assertNull(actualProduct.getSizes());
@@ -66,7 +66,7 @@ public class ProductTest {
 
          assertEquals("pants", actualProduct.getName());
          assertEquals("1", actualProduct.getId());
-         assertEquals(5, (double) actualProduct.getPrice(), 0.0);
+         assertEquals(5, actualProduct.getPrice(), 0.0);
          assertEquals("shoes", actualProduct.getCategory());
          assertEquals(1, actualProduct.getQuantity());
          assertEquals("2", actualProduct.getSizes());
