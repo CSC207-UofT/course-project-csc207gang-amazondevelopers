@@ -7,3 +7,4 @@ public class SignUpPresenter {
      */
     public String message(){return "Sign up for Bazaar!";}
 }
+//
