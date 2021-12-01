@@ -37,12 +37,13 @@ public class WelcomePageController {
 
                 } else if (userDecision.equals("2")) {
                     SignUpController signUpController = new SignUpController();
-                    signUpController.getNewUsername();
+                    signUpController.getNewUsername(input);
                     // recurse back to login page after sign up to then sign in
                     this.userLoginDecision(input);
 
                 } else if (userDecision.equals("3")) {
-                    System.exit(0);
+                    // need to keep this as an empty return statement, otherwise most tests can't run
+                    return;
                 }
                 else {
                     input.sendOutput("Try again");

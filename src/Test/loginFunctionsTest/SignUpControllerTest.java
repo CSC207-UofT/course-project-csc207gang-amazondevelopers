@@ -1,7 +1,9 @@
 package loginFunctionsTest;
 
 import inputOutputFunctions.SystemInOut;
+import inputOutputFunctions.SystemInOutTest;
 import productFunctions.CreateProductController;
+import serializationFunctions.DictionaryReadWriter;
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;
 import loginFunctions.SignInController;
@@ -9,8 +11,11 @@ import loginFunctions.SignUpController;
 import loginFunctions.SignUpGateway;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class SignUpControllerTest {
@@ -36,37 +41,46 @@ public class SignUpControllerTest {
         deleteUserGateway.deleteUser("TestSignUpControllerUser");
     }
 
-//    @Test
-//    public void getNewUsernameValidUsername() throws Exception {
-//        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/ SignUpControllerValidUsernameTestInputs");
-//        //skip the header of the file
-//        testInOut.getInput();
-//
-//        String newUsername = signup.getNewUsername(testInOut);
-//        assertEquals(newUsername, "TestSignUpController");
-//        // tests if a user that does not exist will be allowed to sign up
-//    }
-//
-//    @Test
-//    public void getNewUsernameInvalidUsername() throws Exception {
-//        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/SignUpControllerInvalidUsernameTestInputs");
-//        //skip the header of the file
-//        testInOut.getInput();
-//
-//        String newUsername = signup.getNewUsername();
-//        assertEquals(newUsername, "TestSignUpController");
-//        // tests if a user that does not exist will be allowed to sign up
-//    }
+    @Test
+    public void getNewUsernameValidUsername() throws Exception {
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/ SignUpControllerValidUsernameTestInputs");
+        //skip the header of the file
+        testInOut.getInput();
 
-//    @Test
-//    public void getNewUsernameUsernameTakenTest() throws Exception {
-//        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductTestInputs");
-//        //skip the header of the file
-//        testInOut.getInput();
-//
-//        String newUsername = signup.getNewUsername(testInOut);
-//        assertEquals(newUsername, "getUsernameUsernameTakenTest");
-//        // tests if a user that does not exist will be allowed to sign up
-//    }
+        signup.getNewUsername(testInOut);
+
+        DictionaryReadWriter rw = new DictionaryReadWriter();
+        HashMap<String, Object> userMap = rw.readFromFile("src/Main/user.ser");
+        assertTrue(userMap.containsKey("TestSignUpController"));
+    }
+
+    @Test
+    public void getNewUsernameInvalidUsername() throws Exception {
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/SignUpControllerInvalidUsernameTestInputs");
+        //skip the header of the file
+        testInOut.getInput();
+
+        signup.getNewUsername(testInOut);
+
+        DictionaryReadWriter rw = new DictionaryReadWriter();
+        HashMap<String, Object> userMap = rw.readFromFile("src/Main/user.ser");
+        assertFalse(userMap.containsKey("*"));
+        assertFalse(userMap.containsKey(""));
+        // tests if a user that does not exist will be allowed to sign up
+    }
+
+    @Test
+    public void getNewUsernameUsernameTakenTest() throws Exception {
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductTestInputs");
+        //skip the header of the file
+        testInOut.getInput();
+
+        signup.getNewUsername(testInOut);
+
+        DictionaryReadWriter rw = new DictionaryReadWriter();
+        HashMap<String, Object> userMap = rw.readFromFile("src/Main/user.ser");
+        assertTrue(userMap.containsKey("TestSignUpController"));
+        // tests if a user that does not exist will be allowed to sign up
+    }
 
 }

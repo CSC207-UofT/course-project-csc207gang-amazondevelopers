@@ -72,7 +72,7 @@ public class UserOptionsController{
             else if(userDecision.equals("4")){
                 // this user wants to browse posts of the users it is following
                 BrowseController browseController = new BrowseController(user);
-                browseController.presentFeed();
+                browseController.presentFeed(input);
             }
             //setting
             else if (userDecision.equals("5")){

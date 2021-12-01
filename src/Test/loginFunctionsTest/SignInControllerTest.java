@@ -38,7 +38,6 @@ public class SignInControllerTest {
 ////        deleteUserGateway.deleteUser("TestSignInControllerUser");
 //    }
 
-    //TODO: finish making mock user inputs
     @Test
     public void getUsernameValidUsernameTest() throws IOException, ClassNotFoundException {
         SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/SignInControllerValidUsernameTestInputs");
