@@ -40,7 +40,7 @@ public class SignInControllerTest {
 
     //TODO: finish making mock user inputs
     @Test
-    public void getUsernameValidUsernameTest() throws IOException {
+    public void getUsernameValidUsernameTest() throws IOException, ClassNotFoundException {
         SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/SignInControllerValidUsernameTestInputs");
 
         // Skip the header in the file
@@ -51,7 +51,7 @@ public class SignInControllerTest {
 
 
     @Test
-    public void getUsernameInvalidUsernameTest() throws IOException {
+    public void getUsernameInvalidUsernameTest() throws IOException, ClassNotFoundException {
         SystemInOutTest testInOut = new SystemInOutTest("src/Test/loginTest/SignInControllerInvalidUsernameTestInputs");
 
         // Skip the header in the file
