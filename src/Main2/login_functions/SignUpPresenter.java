@@ -1,3 +1,5 @@
+package login_functions;
+
 public class SignUpPresenter {
     /**
      * A presenter to help guide the user
@@ -5,3 +7,4 @@ public class SignUpPresenter {
      */
     public String message(){return "Sign up for Bazaar!";}
 }
+//

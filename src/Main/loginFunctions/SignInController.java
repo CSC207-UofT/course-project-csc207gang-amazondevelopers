@@ -27,7 +27,7 @@ public class SignInController {
         }
         // access the serialized file for this user.
         DictionaryReadWriter rw = new DictionaryReadWriter();
-        
+        // TODO: shouldnt be reading -> this is function of gateway
         HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
         PasswordPresenter passwordPresenter = new PasswordPresenter();
         passwordPresenter.promptPasswordSignIn((User)usersSavedDict.get(username));

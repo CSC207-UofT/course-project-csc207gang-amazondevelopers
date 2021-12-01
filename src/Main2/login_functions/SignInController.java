@@ -1,33 +1,38 @@
+package login_functions;
+
+import userFunctions.User;
+
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * Take user input for signup credentials to sign user up.
+ * Take user input for signin credentials to sign user in.
  */
-public class SignUpController implements ActionListener {
-    SignUpPresenter signUpPresenter = new SignUpPresenter();
+public class SignInController implements ActionListener {
+    SignInPresenter signInPresenter = new SignInPresenter();
     JFrame frame = new JFrame();
-    JButton signUpButton = new JButton("Sign Up");
+    JButton loginButton = new JButton("Login");
     JButton resetButton = new JButton("Reset");
     JButton backButton = new JButton("Back");
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
-    JLabel messageLabel = new JLabel(signUpPresenter.message());
+    JLabel messageLabel = new JLabel(signInPresenter.message());
     JLabel userIDLabel = new JLabel("userID: ");
     JLabel userPasswordLabel = new JLabel("password: ");
 
 
-    HashMap<String, String> logininfo = new HashMap<String, String>();
+    GetIDandPasswords login = new GetIDandPasswords();
+    HashMap<String, Object> logininfo = login.getUsernamePasswordHash();
     /**
      * Constructor is used to set the size of labels and buttons on the page
      */
-    public SignUpController(HashMap<String, String> loginInfoOriginal) {
+    public SignInController() throws IOException, ClassNotFoundException {
 
-        logininfo = loginInfoOriginal;
 
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
@@ -38,8 +43,8 @@ public class SignUpController implements ActionListener {
         userIDField.setBounds(125, 150, 200, 25);
         userPasswordField.setBounds(125, 200, 200, 25);
 
-        signUpButton.setBounds(45, 250, 100, 25);
-        signUpButton.addActionListener(this);
+        loginButton.setBounds(45, 250, 100, 25);
+        loginButton.addActionListener(this);
 
         resetButton.setBounds(145, 250, 100, 25);
         resetButton.addActionListener(this);
@@ -52,7 +57,7 @@ public class SignUpController implements ActionListener {
         frame.add(userPasswordLabel);
         frame.add(userIDField);
         frame.add(userPasswordField);
-        frame.add(signUpButton);
+        frame.add(loginButton);
         frame.add(resetButton);
         frame.add(backButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,35 +76,52 @@ public class SignUpController implements ActionListener {
         SignInPresenter presenter = new SignInPresenter();
         if(e.getSource()==backButton) {
             frame.dispose();
-            WelcomePageController welcomePageController = new WelcomePageController(logininfo);
+            try {
+                WelcomePageController welcomePageController = new WelcomePageController();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
         if(e.getSource()==resetButton) {
             userIDField.setText("");
             userPasswordField.setText("");
         }
-        if(e.getSource()== signUpButton) {
+        if(e.getSource()==loginButton) {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
 
             if(logininfo.containsKey(userID)) {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("This username is taken!");
+                if(logininfo.get(userID).equals(password)) {
+                    messageLabel.setForeground(Color.green);
+                    messageLabel.setText(presenter.message3());
+                    frame.dispose();
+                    // Get the user
+                    GetUserGateway getUserGateway = new GetUserGateway();
+                    try {
+                        User oldUser = getUserGateway.getUser(userID);
+                        // give them their options
+                        OptionsController optionsController = new OptionsController(oldUser);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (ClassNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+                else {
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(presenter.message4());
+                }
             }
-            if(userID.equals("")) {
+            else {
                 messageLabel.setForeground(Color.red);
-                messageLabel.setText("Please enter a username!");
-            }
-            if(password.equals("")) {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Please enter a password!");
-                // TODO for the else statement, if the username is unique and password given, add this to
-                // the user.ser file and go back to the WelcomePageController!!!
-//            else {
-//                frame.dispose();
-//                WelcomePageController welcomePageController = new WelcomePageController(logininfo);
+                messageLabel.setText(presenter.message5());
             }
 
         }
 
     }
 }
+//
