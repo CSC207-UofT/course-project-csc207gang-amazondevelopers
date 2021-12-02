@@ -36,19 +36,6 @@ public class AddPostGatewayTest {
         assertEquals(newpost.getCanComment() , expectedPost.getCanComment());
 
     }
-    @Test
-    public void testAddFeed() throws IOException, ClassNotFoundException {
-        Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
-        Post expectedPost = new Post(product, "Shoe post", true, true,newUser);
-        AddPostGateway apg = new AddPostGateway();
-        apg.addFeed(expectedPost,newUser);
-        GetUserGateway getUser = new GetUserGateway();
-        newUser = getUser.getUser("TestPost");
-        Post newpost = newUser.getFeed().get(0);
-        assertEquals(newpost.getCaption() , expectedPost.getCaption());
-        assertEquals(newpost.getCanComment() , expectedPost.getCanComment());
-
-    }
     @After
     public void teardown() throws IOException, ClassNotFoundException {
         DeleteUserGateway deleteUserGateway = new DeleteUserGateway();

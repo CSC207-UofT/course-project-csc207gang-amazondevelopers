@@ -19,7 +19,7 @@ public class CreateProductController {
     public Product createNewProductFromInput(InOut input, User user) throws Exception {
 
         ArrayList<Product.Memento> memento_list = new ArrayList<>();
-        Product new_product = new Product();
+        Product new_product = new Product(user.getUsername());
         new_product.set(0);//Sets the state to the state that asks for the products name
         memento_list.add(new_product.saveToMemento());
         boolean is_product_complete = false;

@@ -41,7 +41,7 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductSizeTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductTestInputs");
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductTestInputs");
 
         // skip the header of the file
         testInOut.getInput();
@@ -62,7 +62,7 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductNoSizeTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductTestNoSizeInputs");
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductTestNoSizeInputs");
 
         // skip the header of the file
         testInOut.getInput();
@@ -82,7 +82,7 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductCantCommentTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductCantCommentTestInputs");
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductCantCommentTestInputs");
 
         // skip the header of the file
         testInOut.getInput();
@@ -102,7 +102,7 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductCantRateTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductCantRateTestInputs");
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductCantRateTestInputs");
 
         // skip the header of the file
         testInOut.getInput();
@@ -122,7 +122,7 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductUndoNameTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductUndoNameTestInputs");
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductUndoNameTestInputs");
 
         // skip the header of the file
         testInOut.getInput();
@@ -137,7 +137,7 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductMultipleUndoTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/ProductFunctionsTest/CreateProductMultipleUndoTestInputs");
+        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductMultipleUndoTestInputs");
 
         // skip the header of the file
         testInOut.getInput();

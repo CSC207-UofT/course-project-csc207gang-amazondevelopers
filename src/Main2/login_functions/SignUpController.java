@@ -75,7 +75,7 @@ public class SignUpController implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        SignInPresenter presenter = new SignInPresenter();
+        SignUpPresenter presenter = new SignUpPresenter();
         if(e.getSource()==backButton) {
             frame.dispose();
             try {
@@ -97,10 +97,12 @@ public class SignUpController implements ActionListener {
 
             if(loginInfo.containsKey(userID)) {
                 messageLabel.setForeground(Color.red);
+
                 messageLabel.setText("This username is taken!");
             } else if(password.equals("")){
                 messageLabel.setForeground(Color.red);
-                messageLabel.setText("Please input your password");
+             
+                messageLabel.setText(presenter.message2());
             }
             else {
                 SetIDandPasswords setNewUser = new SetIDandPasswords();

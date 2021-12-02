@@ -23,8 +23,6 @@ public class Post {
     private boolean canRate = false;
     private User user;
 
-
-
     /**
      * The post
      * @param product the product being advertised in the post

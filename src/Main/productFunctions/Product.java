@@ -1,6 +1,8 @@
 package productFunctions;
 import java.io.Serializable;
 import mementoFunctions.Originator;
+import userFunctions.User;
+
 public class Product extends Originator implements Serializable{
     private String name = "";
     private String id = "";
@@ -8,12 +10,13 @@ public class Product extends Originator implements Serializable{
     private String category = "";
     private String sizes = "";
     private int quantity = 0;
+    private String username;
 
     /**
      * Empty Initializer for use in CreateProductGateway
      */
-    public Product() {
-
+    public Product(String user) {
+        this.username = user;
     }
 
     /**
@@ -122,4 +125,6 @@ public class Product extends Originator implements Serializable{
     public void setQuantity(int pquantity) {
         this.quantity = Math.max(pquantity, 0);
     }
+
+    public String getUsername() {return this.username;}
 }
