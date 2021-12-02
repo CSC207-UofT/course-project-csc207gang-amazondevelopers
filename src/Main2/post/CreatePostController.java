@@ -6,7 +6,7 @@ import postFunctions.AddPostGatewayInterface;
 import postFunctions.EnglishPostPresenter;
 import postFunctions.Post;
 import postFunctions.PostManager;
-import product.Product;
+import productFunctions.Product;
 import userFunctions.User;
 
 import java.util.ArrayList;

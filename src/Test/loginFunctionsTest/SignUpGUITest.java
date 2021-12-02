@@ -1,7 +1,7 @@
 package loginFunctionsTest;
 
 import inputOutputFunctions.SystemInOutTest;
-import product.CreateProductController;
+import productFunctions.CreateProductController;
 import serializationFunctions.DictionaryReadWriter;
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;

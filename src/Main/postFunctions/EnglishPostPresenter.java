@@ -1,5 +1,6 @@
 package postFunctions;
 import inputOutputFunctions.SystemInOut;
+
 public class EnglishPostPresenter implements PostPresenterInterface {
     SystemInOut output = new SystemInOut();
     public void presentCaption(){

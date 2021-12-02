@@ -1,7 +1,7 @@
 package optionsPackageTest;
 //
 import inputOutputFunctions.SystemInOutTest;
-import product.CreateProductGateway;
+import productFunctions.CreateProductGateway;
 import settingsFunctions.DeleteProductsGateway;
 import settingsFunctions.DeleteUserGateway;
 import loginFunctions.GetUserGateway;
@@ -23,11 +23,11 @@ public class SearchControllerTest{
 
     User testUser = new User("TestSearchControllerUser");
     SearchController searchController = new SearchController(testUser);
-    product.Product testProduct = new product.Product("shoes", "TEST", 5.0, "shoes", "2",1);;
+    productFunctions.Product testProduct = new productFunctions.Product("shoes", "TEST", 5.0, "shoes", "2",1);;
 
-    product.CreateProductGateway createProductGateway = new CreateProductGateway();
-    product.GetProductGateway getProductGateway = new product.GetProductGateway();
-    product.ProductUseCase productUseCaseCreate = new product.ProductUseCase(createProductGateway);
+    productFunctions.CreateProductGateway createProductGateway = new CreateProductGateway();
+    productFunctions.GetProductGateway getProductGateway = new productFunctions.GetProductGateway();
+    productFunctions.ProductUseCase productUseCaseCreate = new productFunctions.ProductUseCase(createProductGateway);
     GetUserGateway getUserGateway = new GetUserGateway();
 
     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
@@ -63,7 +63,7 @@ public class SearchControllerTest{
         //search for the product, then buy it
         searchController.allowSearch(testInOut);
 
-        product.Product bought = getProductGateway.getProduct("TEST");
+        productFunctions.Product bought = getProductGateway.getProduct("TEST");
         User user = getUserGateway.getUser("TestSearchControllerUser");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());

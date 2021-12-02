@@ -1,10 +1,7 @@
 package optionsPackage;
 import browseFunctions.BrowseController;
 import inputOutputFunctions.InOut;
-import options.EnglishOptionsPresenter;
-import options.OptionsPresenterInterface;
-import options.SearchController;
-import product.CreateProductController;
+import productFunctions.CreateProductController;
 import settingsFunctions.SettingsController;
 import userFunctions.SaveUserChangesGateways;
 import userFunctions.User;
@@ -33,7 +30,7 @@ public class UserOptionsController{
         presenter.userOptionsMain();
         String userDecision = input.getInput();
         this.userInput(input, userDecision);
-        options.EnglishOptionsPresenter engPresenter = new options.EnglishOptionsPresenter();
+        EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
         this.getOption(input, engPresenter);
     }
 
@@ -46,7 +43,7 @@ public class UserOptionsController{
             // search and buy
             if(userDecision.equals("1")) {
                 // redirects to searchController and returns relevant search info
-                options.SearchController searchController = new SearchController(user);
+                SearchController searchController = new SearchController(user);
                 searchController.allowSearch(input);
 
                 // save the cart of the user
@@ -95,7 +92,7 @@ public class UserOptionsController{
             }
             // TODO: make exception more specific
         } catch (Exception e) {
-            options.EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
+            EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
             presenter.genericException();
         }
     }

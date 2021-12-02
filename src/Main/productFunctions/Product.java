@@ -1,7 +1,6 @@
 package productFunctions;
 import java.io.Serializable;
 import mementoFunctions.Originator;
-import userFunctions.User;
 
 public class Product extends Originator implements Serializable{
     private String name = "";

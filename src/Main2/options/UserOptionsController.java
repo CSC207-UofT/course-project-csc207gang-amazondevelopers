@@ -4,7 +4,7 @@ import browseFunctions.BrowseController;
 import followFunctions.FollowController;
 import inputOutputFunctions.InOut;
 import loginFunctions.WelcomePageController;
-import product.CreateProductController;
+import productFunctions.CreateProductController;
 import settingsFunctions.SettingsController;
 import userFunctions.SaveUserChangesGateways;
 import userFunctions.User;

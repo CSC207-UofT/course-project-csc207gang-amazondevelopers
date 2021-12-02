@@ -1,5 +1,5 @@
 package settingsFunctions;
-import product.Product;
+import productFunctions.Product;
 import serializationFunctions.DictionaryReadWriter;
 import java.io.File;
 import java.io.IOException;

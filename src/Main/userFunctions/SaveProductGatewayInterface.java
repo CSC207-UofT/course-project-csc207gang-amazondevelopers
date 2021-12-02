@@ -1,5 +1,5 @@
 package userFunctions;
-import product.Product;
+import productFunctions.Product;
 import java.io.IOException;
 
 /**

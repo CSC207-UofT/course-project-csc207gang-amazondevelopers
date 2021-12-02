@@ -3,7 +3,7 @@ package post;
 import loginFunctions.GetUserGateway;
 import postFunctions.AddPostGatewayInterface;
 import postFunctions.Post;
-import product.Product;
+import productFunctions.Product;
 import userFunctions.User;
 
 import java.io.IOException;

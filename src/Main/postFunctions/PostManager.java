@@ -1,5 +1,5 @@
 package postFunctions;
-import product.Product;
+import productFunctions.Product;
 import userFunctions.User;
 import java.io.IOException;
 

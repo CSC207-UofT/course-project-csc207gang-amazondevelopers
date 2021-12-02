@@ -1,7 +1,7 @@
 package post;
 
 import mementoFunctions.Originator;
-import product.Product;
+import productFunctions.Product;
 import userFunctions.User;
 
 import java.io.Serializable;

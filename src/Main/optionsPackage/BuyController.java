@@ -4,11 +4,8 @@ import browseFunctions.GetUserDictGatewayInterface;
 import browseFunctions.SaveUserDictGateway;
 import browseFunctions.SaveUserDictGatewayInterface;
 import inputOutputFunctions.InOut;
-import options.EnglishOptionsPresenter;
-import options.SearchController;
-import options.UserOptionsController;
-import product.GetProductGateway;
-import product.Product;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
 import userFunctions.CartManager;
 import userFunctions.SaveProductGatewayInterface;
 import userFunctions.User;
@@ -71,8 +68,8 @@ public class BuyController {
                             cartUseCaseSaveUser.emptyCart(user);
                             presenter.cartIsEmptyPresent();
                         }else{
-                            options.UserOptionsController options = new UserOptionsController(user);
-                            options.EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                            UserOptionsController options = new UserOptionsController(user);
+                            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
                             options.getOption(input, engPresenter);
 
                         }
@@ -83,7 +80,7 @@ public class BuyController {
                         this.allowBuy(input, user,listIds);
                     }
             } else if (decisionToBuy.equals("*")) {
-                options.SearchController SC = new SearchController(user);
+                SearchController SC = new SearchController(user);
                 SC.allowSearch(input);
             }
             else if (decisionToBuy.equals("R")) {
