@@ -1,5 +1,6 @@
 package login_functions;
 
+import product.ProductGUI;
 import userFunctions.User;
 
 import javax.swing.*;
