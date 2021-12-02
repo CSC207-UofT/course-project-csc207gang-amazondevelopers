@@ -1,10 +1,7 @@
 package browseFunctions;
 import inputOutputFunctions.SystemInOut;
 import optionsPackage.BuyController;
-import optionsPackage.EnglishOptionsPresenter;
-import optionsPackage.UserOptionsController;
 import postFunctions.Post;
-import productFunctions.Product;
 import userFunctions.User;
 
 import java.util.HashMap;
@@ -30,7 +27,7 @@ public class BrowseController {
         SystemInOut inOut = new SystemInOut();
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
-        EnglishSinglePostPresenter postPresenter = new EnglishSinglePostPresenter();
+        EnglishBrowsePresenter postPresenter = new EnglishBrowsePresenter();
         HashMap users = getUserDictGateway.getUserDict();
         List<String> following = user.getListFollowing();
         List<Post> userFeed = browseUseCase.generateFeed(users,following);
@@ -39,6 +36,7 @@ public class BrowseController {
             postPresenter.presentSinglePost(post);
         }
         if (userFeed.size() != 0){
+            postPresenter.presentProduct();
            BuyController buyController = new BuyController();
            buyController.allowBuy(inOut, this.user, feedIds);
         }

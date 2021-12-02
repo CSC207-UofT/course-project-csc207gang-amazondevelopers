@@ -43,8 +43,7 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
    public void optionToBuyPresent(){
         SystemInOut input = new SystemInOut();
        input.sendOutput("Would you like to add one of the items to your cart?" +
-               "enter the number of your choice\n 1.Yes\n 2.No take me back to Search\n " +
-               "Type 'R' to choose another option from the menu.");
+               "enter the number of your choice\n 1.Yes\n *. Take me back to main menu");
    }
 
     /**

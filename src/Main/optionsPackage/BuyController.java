@@ -73,14 +73,12 @@ public class BuyController {
                         presenter.incorrectIndexPresent();
                         this.allowBuy(input, user,listIds);
                     }
-            } else if (decisionToBuy.equals("2")) {
+            } else if (decisionToBuy.equals("*")) {
                 SearchController SC = new SearchController(user);
                 SC.allowSearch(input);
             }
             else if (decisionToBuy.equals("R")) {
-                UserOptionsController userOptionsController = new UserOptionsController(user);
-                EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-                userOptionsController.getOption(input, engPresenter);
+                throw new Exception(); //
             } else {
                 presenter.invalidInput();
                 this.allowBuy(input, user, listIds);
