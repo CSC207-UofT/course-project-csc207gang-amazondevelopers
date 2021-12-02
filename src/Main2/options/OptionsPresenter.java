@@ -1,4 +1,4 @@
-package login_functions;
+package options;
 
 public class OptionsPresenter {
 
@@ -7,7 +7,7 @@ public class OptionsPresenter {
      * @ Returns a message to user asking them what they want to do (instructions)
      */
     public String message1(){
-        return "What do you want to do? Select an Option:";
+        return "What do you want to do?";
     }
 
     /**
@@ -29,7 +29,7 @@ public class OptionsPresenter {
      * @return String of browse
      */
     public String message4(){
-        return "Settings";
+        return "Browse";
     }
     /**
      * Find sellers option
@@ -43,13 +43,13 @@ public class OptionsPresenter {
      * @return String of making post
      */
     public String message6(){
-        return "Settings";
+        return "Make a Post";
     }
     /**
      * Searching option
      * @return String of search
      */
     public String message7(){
-        return "Settings";
+        return "Search";
     }
 }

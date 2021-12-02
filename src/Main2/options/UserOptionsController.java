@@ -1,15 +1,13 @@
-package optionsPackage;
+package options;
+
 import browseFunctions.BrowseController;
+import followFunctions.FollowController;
 import inputOutputFunctions.InOut;
-import options.EnglishOptionsPresenter;
-import options.OptionsPresenterInterface;
-import options.SearchController;
+import loginFunctions.WelcomePageController;
 import product.CreateProductController;
 import settingsFunctions.SettingsController;
 import userFunctions.SaveUserChangesGateways;
 import userFunctions.User;
-import followFunctions.FollowController;
-import loginFunctions.WelcomePageController;
 import java.io.IOException;
 
 /**
@@ -89,7 +87,7 @@ public class UserOptionsController{
             }
 
             else{
-                options.UserOptionsController userOptionsController = new options.UserOptionsController(user);
+                UserOptionsController userOptionsController = new UserOptionsController(user);
                 options.EnglishOptionsPresenter engPresenter = new options.EnglishOptionsPresenter();
                 userOptionsController.getOption(input, engPresenter);
             }

@@ -1,9 +1,8 @@
-package optionsPackage;
+package options;
+
 import inputOutputFunctions.InOut;
-import options.BuyController;
-import options.EnglishOptionsPresenter;
-import options.SearchGateway;
 import userFunctions.User;
+
 import java.util.List;
 
 /**

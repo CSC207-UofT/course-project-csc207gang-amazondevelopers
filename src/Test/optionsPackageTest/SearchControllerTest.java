@@ -11,7 +11,7 @@ import userFunctions.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import optionsPackage.SearchController;
+import options.SearchController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -63,9 +63,7 @@ public class WelcomePageGUI implements ActionListener {
             frame.dispose();
             try {
                 SignInGUI signInGUI = new SignInGUI();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
@@ -73,9 +71,7 @@ public class WelcomePageGUI implements ActionListener {
             frame.dispose();
             try {
                 SignUpGUI signUpGUI = new SignUpGUI();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }

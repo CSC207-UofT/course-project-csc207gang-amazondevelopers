@@ -22,10 +22,9 @@ public class SignInController {
 
     }
 
-    public static void getUser(String userID) throws IOException, ClassNotFoundException {
+    public static User getUser(String userID) throws IOException, ClassNotFoundException {
         GetUserGateway getUserGateway = new GetUserGateway();
-        User oldUser = getUserGateway.getUser(userID);
-        // give them their options
-        OptionsGUI optionsGUI = new OptionsGUI(oldUser);
+        User user = getUserGateway.getUser(userID);
+        return user;
     }
 }

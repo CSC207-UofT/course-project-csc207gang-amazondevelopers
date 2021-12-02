@@ -1,14 +1,13 @@
 package login_functions;
 
+import options.OptionsGUI;
 import userFunctions.User;
-
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * Take user input for signin credentials to sign user in.
@@ -66,27 +65,25 @@ public class SignInGUI implements ActionListener {
     }
     /**
      *
-     * @param e The action event, helps to maintain the actions performed by the user and the results from their
+     * @param action The action event, helps to maintain the actions performed by the user and the results from their
      *          actions that they perform on the page
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent action) {
         SignInPresenter presenter = new SignInPresenter();
-        if(e.getSource()==backButton) {
+        if(action.getSource()==backButton) {
             frame.dispose();
             try {
                 WelcomePageGUI welcomePageGUI = new WelcomePageGUI();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
-        if(e.getSource()==resetButton) {
+        if(action.getSource()==resetButton) {
             userIDField.setText("");
             userPasswordField.setText("");
         }
-        if(e.getSource()==loginButton) {
+        if(action.getSource()==loginButton) {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
             SignInController signInController = new SignInController();
@@ -96,7 +93,9 @@ public class SignInGUI implements ActionListener {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText(presenter.message3());
                     frame.dispose();
-                    SignInController.getUser(userID);
+                    User user = SignInController.getUser(userID);
+                    // give them their options
+                    OptionsGUI optionsGUI = new OptionsGUI(user);
                 } else {
                     messageLabel.setForeground(Color.red);
                     messageLabel.setText(presenter.message4());
@@ -104,14 +103,9 @@ public class SignInGUI implements ActionListener {
             } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
-
-
         }
-
-            }
-
-
-        }
+    }
+}
 
 
 

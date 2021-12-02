@@ -5,14 +5,14 @@ package product;
  */
 
 public interface ProductPresenterInterface {
-    void getProductNamePresenter();
-    void getProductPricePresenter();
-    void ProductPriceRangePresenter();
-    void getProductCategoryPresenter();
-    void getProductQuantityPresenter();
-    void getProductSizePresenter();
-    void creationSuccessPresenter();
-    void specifyTypePriceProductPresenter();
-    void specifyTypeProductPresenter();
-    void confirmProductCreationPresenter();
+    String getProductNamePresenter();
+    String getProductPricePresenter();
+    String ProductPriceRangePresenter();
+    String getProductCategoryPresenter();
+    String getProductQuantityPresenter();
+    String getProductSizePresenter();
+    String creationSuccessPresenter();
+    String specifyTypePriceProductPresenter();
+    String specifyTypeProductPresenter();
+    String confirmProductCreationPresenter();
 }

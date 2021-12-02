@@ -1,6 +1,6 @@
 package optionsPackageTest;
 
-import optionsPackage.SearchGateway;
+import options.SearchGateway;
 import product.CreateProductGateway;
 import product.GetProductGateway;
 import product.Product;

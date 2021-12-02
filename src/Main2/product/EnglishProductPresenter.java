@@ -7,47 +7,45 @@ import inputOutputFunctions.SystemInOut;
 
 public class EnglishProductPresenter implements ProductPresenterInterface {
 
-    SystemInOut sendOutput = new SystemInOut();
-
-    public void getProductNamePresenter(){
-        sendOutput.sendOutput("What is the name of the product?");
+    public String getProductNamePresenter(){
+        return "What is the name of the product?";
     }
 
-    public void getProductPricePresenter(){
-        sendOutput.sendOutput("What is the price of the product?");
+    public String getProductPricePresenter(){
+        return "What is the price of the product?";
     }
 
-    public void ProductPriceRangePresenter(){
-        sendOutput.sendOutput("Price must be greater than or equal to 0.");
+    public String ProductPriceRangePresenter(){
+        return "Price must be greater than or equal to 0.";
     }
 
-    public void getProductCategoryPresenter(){
-        sendOutput.sendOutput("What is the category of the product?");
+    public String getProductCategoryPresenter(){
+        return "What is the category of the product?";
     }
 
-    public void getProductQuantityPresenter(){
-        sendOutput.sendOutput("What is the quantity of this product? Please enter an integer.");
+    public String getProductQuantityPresenter(){
+        return "What is the quantity of this product? Please enter an integer.";
     }
 
-    public void getProductSizePresenter(){
-        sendOutput.sendOutput("What is the size of this product? Press enter nothing (no characters) if this product does not have a size");
+    public String getProductSizePresenter(){
+        return "What is the size of this product? Press enter nothing (no characters) if this product does not have a size";
     }
 
-    public void creationSuccessPresenter(){
-        sendOutput.sendOutput("Product and Post was created.");
+    public String creationSuccessPresenter(){
+        return "Product and Post was created.";
     }
 
-    public void specifyTypePriceProductPresenter() {
-        sendOutput.sendOutput("Price must be a number.");
+    public String specifyTypePriceProductPresenter() {
+        return "Price must be a number.";
     }
 
-    public void specifyTypeProductPresenter() {
-        sendOutput.sendOutput("Please enter an integer.");
+    public String specifyTypeProductPresenter() {
+        return "Please enter an integer.";
     }
 
-    public void confirmProductCreationPresenter() {
-        sendOutput.sendOutput("Are you happy with this product? Type * for no, " +
-                "or anything else for yes.\n If you say yes, you will be asked to create a post about this product");
+    public String confirmProductCreationPresenter() {
+        return "Are you happy with this product? Type * for no, " +
+                "or anything else for yes.\n If you say yes, you will be asked to create a post about this product";
     }
 
 

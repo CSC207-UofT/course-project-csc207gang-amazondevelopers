@@ -1,9 +1,5 @@
 package login_functions;
 
-import inputOutputFunctions.SystemInOut;
-import loginFunctions.SaveUserGatewayInterface;
-import optionsPackage.EnglishOptionsPresenter;
-import optionsPackage.UserOptionsController;
 import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
 

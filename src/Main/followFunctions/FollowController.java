@@ -1,7 +1,5 @@
 package followFunctions;
 import inputOutputFunctions.SystemInOut;
-import optionsPackage.EnglishOptionsPresenter;
-import optionsPackage.UserOptionsController;
 import userFunctions.User;
 import loginFunctions.GetUserGateway;
 import loginFunctions.SaveUserGateway;
