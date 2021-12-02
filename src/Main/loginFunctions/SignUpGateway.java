@@ -40,7 +40,7 @@ public class SignUpGateway implements SignUpGatewayInterface {
                 // TODO: allow user to exit out of creating an account
                 input.sendOutput("This username is taken, please enter another one!");
                 SignUpController signUpController = new SignUpController();
-                signUpController.getNewUsername();
+                signUpController.getNewUsername(input);
             }
         }
 

@@ -1,4 +1,5 @@
 package browseFunctions;
+import inputOutputFunctions.InOut;
 import inputOutputFunctions.SystemInOut;
 import optionsPackage.BuyController;
 import postFunctions.Post;
@@ -23,8 +24,7 @@ public class BrowseController {
      * empty, allows user to buy from their feed. If feed is empty, return user back to choose another option.
      *
      */
-    public void presentFeed() throws Exception {
-        SystemInOut inOut = new SystemInOut();
+    public void presentFeed(InOut inOut) throws Exception {
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
         EnglishBrowsePresenter postPresenter = new EnglishBrowsePresenter();
