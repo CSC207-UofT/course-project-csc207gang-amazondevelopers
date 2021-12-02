@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Take user input for what they want to do upon seeing the login page.
  */
 
-public class WelcomePageController implements ActionListener {
+public class WelcomePageGUI implements ActionListener {
     WelcomePagePresenter welcomePagePresenter = new WelcomePagePresenter();
     JFrame frame = new JFrame();
     JButton signinButton = new JButton("Signin");
@@ -25,7 +25,7 @@ public class WelcomePageController implements ActionListener {
     /**
      * Constructor is used to set the size of labels and buttons on the page
      */
-    public WelcomePageController() throws IOException, ClassNotFoundException {
+    public WelcomePageGUI() throws IOException, ClassNotFoundException {
 
 
         messageLabel.setBounds(70, 100, 250, 35);
@@ -62,7 +62,7 @@ public class WelcomePageController implements ActionListener {
         if (e.getSource()==signinButton) {
             frame.dispose();
             try {
-                SignInController signInController = new SignInController();
+                SignInGUI signInGUI = new SignInGUI();
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {
@@ -72,7 +72,7 @@ public class WelcomePageController implements ActionListener {
         if (e.getSource()==signupButton) {
             frame.dispose();
             try {
-                SignUpController signUpController = new SignUpController();
+                SignUpGUI signUpGUI = new SignUpGUI();
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {

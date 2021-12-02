@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class OptionsController implements ActionListener {
+public class OptionsGUI implements ActionListener {
     OptionsPresenter optionsPresenter = new OptionsPresenter();
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel(optionsPresenter.message1());
@@ -23,7 +23,7 @@ public class OptionsController implements ActionListener {
      * A constructor for options page which user can use to guide them to one of several options
      * @param user The user who you have accessed
      */
-    OptionsController(User user) {
+    OptionsGUI(User user) {
 
         welcomeLabel.setBounds(125, 10, 200, 35);
         welcomeLabel.setFont(new Font(null, Font.PLAIN, 15));

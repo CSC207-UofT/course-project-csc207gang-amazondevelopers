@@ -18,7 +18,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class SignUpControllerTest {
+public class SignUpGUITest {
     SignInController signin = new SignInController();
     SignUpController signup = new SignUpController();
     SignUpGateway signUpGateway = new SignUpGateway();
