@@ -98,6 +98,9 @@ public class SignUpController implements ActionListener {
             if(loginInfo.containsKey(userID)) {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText("This username is taken!");
+            } else if(password.equals("")){
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("Please input your password");
             }
             else {
                 SetIDandPasswords setNewUser = new SetIDandPasswords();
