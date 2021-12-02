@@ -13,7 +13,7 @@ import java.io.*;
 
 import static org.junit.Assert.*;
 
-public class SignInControllerTest {
+public class SignInGUITest {
     SignInController signInController = new SignInController();
     User user;
     UserOptionsController userOption;

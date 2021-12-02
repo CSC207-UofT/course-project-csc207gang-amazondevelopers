@@ -20,7 +20,7 @@ public class SignInPresenter {
      * @return A string message
      */
     public String message4() {
-        return "Wrong password";
+        return "Wrong password or username";
     }
     /**
      * Presents user message that their username was not found

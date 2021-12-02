@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 import java.io.*;
 import java.util.HashMap;
 
-public class SignUpControllerTest {
+public class SignUpGUITest {
     SignInController signin = new SignInController();
     SignUpController signup = new SignUpController();
     SignUpGateway signUpGateway = new SignUpGateway();
