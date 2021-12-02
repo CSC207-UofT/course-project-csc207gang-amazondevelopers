@@ -2,15 +2,14 @@ package browseFunctions;
 
 import inputOutputFunctions.SystemInOut;
 import serializationFunctions.DictionaryReadWriter;
+
 import java.io.IOException;
 import java.util.HashMap;
 
-public class GetUserDictGateway implements GetUserDictGatewayInterface {
-
-    public HashMap getUserDict() throws IOException, ClassNotFoundException {
+public class SaveUserDictGateway implements SaveUserDictGatewayInterface{
+    public void saveUserDict(HashMap userDict) throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
         DictionaryReadWriter rw = new DictionaryReadWriter();
-        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
-        return usersSavedDict;
+        rw.saveToFile("src/Main/user.ser", userDict);
     }
 }
