@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import postFunctions.AddPostGateway;
 import postFunctions.Post;
-import product.CreateProductGateway;
+import productFunctions.CreateProductGateway;
 import settingsFunctions.DeleteProductsGateway;
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;
@@ -28,12 +28,12 @@ public class BrowseControllerTest {
 
     User testUser1 = new User("TestSignUpControllerUser");
     User testUser2 = new User("follower");
-    product.Product testProduct = new product.Product("shoes", "TEST", 5.0, "shoes", "2",1);
+    productFunctions.Product testProduct = new productFunctions.Product("shoes", "TEST", 5.0, "shoes", "2",1);
     Post post = new Post(testProduct, testUser2);
 
-    product.CreateProductGateway createProductGateway = new CreateProductGateway();
-    product.GetProductGateway getProductGateway = new product.GetProductGateway();
-    product.ProductUseCase productUseCaseCreate = new product.ProductUseCase(createProductGateway);
+    productFunctions.CreateProductGateway createProductGateway = new CreateProductGateway();
+    productFunctions.GetProductGateway getProductGateway = new productFunctions.GetProductGateway();
+    productFunctions.ProductUseCase productUseCaseCreate = new productFunctions.ProductUseCase(createProductGateway);
     GetUserGateway getUserGateway = new GetUserGateway();
     AddPostGateway addPostGateway = new AddPostGateway();
 
@@ -77,7 +77,7 @@ public class BrowseControllerTest {
         //search for the product, then buy it
         browseController.presentFeed(testInOut);
 
-        product.Product bought = getProductGateway.getProduct("TEST");
+        productFunctions.Product bought = getProductGateway.getProduct("TEST");
         User user = getUserGateway.getUser("TestBrowse");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());
@@ -92,7 +92,7 @@ public class BrowseControllerTest {
         //search for the product, then buy it
         browseController.presentFeed(testInOut);
 
-        product.Product bought = getProductGateway.getProduct("TEST");
+        productFunctions.Product bought = getProductGateway.getProduct("TEST");
         User user = getUserGateway.getUser("TestBrowse");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());

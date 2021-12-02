@@ -1,8 +1,5 @@
 package optionsPackage;
 import inputOutputFunctions.InOut;
-import options.BuyController;
-import options.EnglishOptionsPresenter;
-import options.SearchGateway;
 import userFunctions.User;
 import java.util.List;
 
@@ -25,12 +22,12 @@ public class SearchController {
     public void allowSearch(InOut input) throws Exception {
         List<String> listProductIds = getProductID(input);
         if (listProductIds.size() != 0){
-            options.BuyController buyController = new BuyController();
+            BuyController buyController = new BuyController();
             buyController.allowBuy(input, this.user, listProductIds);
         }
         // list of ids is empty, send user back to choose another option
         else{
-            options.EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
             engPresenter.noMatchingProductsPresent();
         }
     }
@@ -42,7 +39,7 @@ public class SearchController {
      *
      */
     private List<String> getProductID(InOut input) throws Exception, ClassNotFoundException {
-        options.SearchGateway searchGateway = new SearchGateway();
+        SearchGateway searchGateway = new SearchGateway();
 
         input.sendOutput("What is a tag word for your product of interest?.");
         String tagOfInterest = input.getInput();

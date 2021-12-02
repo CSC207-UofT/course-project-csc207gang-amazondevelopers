@@ -1,6 +1,5 @@
 package productFunctions;
 import inputOutputFunctions.SystemInOut;
-import product.ProductPresenterInterface;
 
 /**
  * This class implements ways that all the prompts/ways that information is presented to the user in the english language.

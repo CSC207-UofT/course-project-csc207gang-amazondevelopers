@@ -1,7 +1,6 @@
 package postFunctions;
 import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
-import userFunctions.UserPostUseCase;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;

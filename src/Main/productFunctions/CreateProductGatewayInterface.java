@@ -1,6 +1,4 @@
 package productFunctions;
-import product.Product;
-
 import java.io.IOException;
 
 /**

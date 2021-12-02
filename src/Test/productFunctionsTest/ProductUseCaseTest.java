@@ -1,9 +1,9 @@
 package productFunctionsTest;
 
-import product.CreateProductGateway;
-import product.GetProductGateway;
-import product.Product;
-import product.ProductUseCase;
+import productFunctions.CreateProductGateway;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
+import productFunctions.ProductUseCase;
 import settingsFunctions.DeleteProductsGateway;
 import org.junit.After;
 import org.junit.Test;

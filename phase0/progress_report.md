@@ -39,7 +39,7 @@ make accounts, sign in, create posts, add to their cart, etc.
 ###Current group work and goals for phase 0
 Group members contributed equally to brainstorming and writing up specifications, CRC model, walkthrough and skeleton 
 program. For the skeleton program, each group member worked on specific classes by themselves and some worked together 
-on other classes. Albert worked on product, productManager and postManager classes. Yasmin worked on master, 
+on other classes. Albert worked on productFunctions, productManager and postManager classes. Yasmin worked on master, 
 masterManager and searchcontroller classes. Jacqueline worked on createUserController, cartController, main, 
 searchController classes. Diego worked on userOptionsController and browseController. Sam worked on post, 
 postController, and createPostController classes. Finally, Umayrah worked on searchController, User, userManager, 

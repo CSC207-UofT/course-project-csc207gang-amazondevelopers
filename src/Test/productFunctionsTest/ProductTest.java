@@ -1,6 +1,6 @@
 package productFunctionsTest;
 
-import product.Product;
+import productFunctions.Product;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

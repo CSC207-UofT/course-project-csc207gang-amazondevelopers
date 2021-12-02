@@ -1,8 +1,7 @@
 package optionsPackage;
 import inputOutputFunctions.SystemInOut;
-import options.OptionsPresenterInterface;
-import product.GetProductGateway;
-import product.Product;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

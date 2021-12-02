@@ -1,6 +1,6 @@
 package userFunctions;
 
-import product.Product;
+import productFunctions.Product;
 import serializationFunctions.DictionaryReadWriter;
 
 import java.io.File;

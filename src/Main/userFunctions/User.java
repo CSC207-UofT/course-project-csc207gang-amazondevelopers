@@ -1,6 +1,6 @@
 package userFunctions;
 import postFunctions.Post;
-import product.Product;
+import productFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

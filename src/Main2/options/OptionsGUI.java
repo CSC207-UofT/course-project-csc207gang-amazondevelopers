@@ -1,7 +1,6 @@
 package options;
 
 import login_functions.WelcomePageGUI;
-import product.ProductGUI;
 import userFunctions.User;
 import javax.swing.*;
 import java.awt.*;
@@ -78,12 +77,7 @@ public class OptionsGUI implements ActionListener {
             }
         }
         if(e.getSource()==makePost) {
-            ProductGUI productGUI = new ProductGUI(this.user);
-            try {
-                productGUI.createProduct();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            System.exit(0);
         }
         if(e.getSource()==search) {
             System.exit(0);
