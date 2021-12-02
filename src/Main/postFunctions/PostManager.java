@@ -36,13 +36,6 @@ public class PostManager {
     public void savePost(Post newPost, User user) throws IOException, ClassNotFoundException {
         addPostGateway.addPost(newPost, user);
         GetUserGateway getUser = new GetUserGateway();
-        List<String> followersList = user.getListFollowers();
-        String username;
-        for (String s : followersList) {
-            username = s;
-            User follower = getUser.getUser(username);
-            addPostGateway.addFeed(newPost, follower);
-        }
     }
 
     /**

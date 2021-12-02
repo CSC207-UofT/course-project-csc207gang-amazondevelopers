@@ -1,4 +1,8 @@
 package optionsPackage;
+import browseFunctions.GetUserDictGateway;
+import browseFunctions.GetUserDictGatewayInterface;
+import browseFunctions.SaveUserDictGateway;
+import browseFunctions.SaveUserDictGatewayInterface;
 import inputOutputFunctions.InOut;
 import productFunctions.GetProductGateway;
 import productFunctions.Product;
@@ -54,7 +58,9 @@ public class BuyController {
                         if (optionToBuy.equals("1")){
                             // save the product decreased quantity
                             SaveProductGatewayInterface saveProdG = new SaveProductGateway();
-                            CartManager cartUseCaseUpdateProdQ = new CartManager(saveProdG);
+                            SaveUserDictGatewayInterface saveUserDictGateway = new SaveUserDictGateway();
+                            GetUserDictGatewayInterface getUserDictGateway = new GetUserDictGateway();
+                            CartManager cartUseCaseUpdateProdQ = new CartManager(saveProdG, getUserDictGateway,saveUserDictGateway);
                             cartUseCaseUpdateProdQ.updateProductQuantity(user);
                             // save the user with updated cart
                             SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
@@ -73,14 +79,12 @@ public class BuyController {
                         presenter.incorrectIndexPresent();
                         this.allowBuy(input, user,listIds);
                     }
-            } else if (decisionToBuy.equals("2")) {
+            } else if (decisionToBuy.equals("*")) {
                 SearchController SC = new SearchController(user);
                 SC.allowSearch(input);
             }
             else if (decisionToBuy.equals("R")) {
-                UserOptionsController userOptionsController = new UserOptionsController(user);
-                EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-                userOptionsController.getOption(input, engPresenter);
+                throw new Exception(); //
             } else {
                 presenter.invalidInput();
                 this.allowBuy(input, user, listIds);

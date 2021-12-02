@@ -1,5 +1,7 @@
 package userFunctionsTest;
 
+import browseFunctions.GetUserDictGateway;
+import browseFunctions.SaveUserDictGateway;
 import inputOutputFunctions.SystemInOut;
 import productFunctions.*;
 import settingsFunctions.DeleteProductsGateway;
@@ -25,8 +27,10 @@ public class CartManagerTest {
     SaveProductGateway saveProductGateway = new SaveProductGateway();
     SaveUserGateway saveUserGateway = new SaveUserGateway();
     GetUserGateway getUserGateway = new GetUserGateway();
+    GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
+    SaveUserDictGateway saveUserDictGateway = new SaveUserDictGateway();
 
-    CartManager cartManagerProduct = new CartManager(saveProductGateway);
+    CartManager cartManagerProduct = new CartManager(saveProductGateway,getUserDictGateway,saveUserDictGateway);
     CartManager cartManagerUser = new CartManager(saveUserGateway);
 
     DeleteUserGateway deleteUserGateway = new DeleteUserGateway();

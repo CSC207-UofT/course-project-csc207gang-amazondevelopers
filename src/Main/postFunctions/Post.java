@@ -72,6 +72,7 @@ public class Post extends Originator implements Serializable {
         return product.toString();
     }
     public Product getProduct(){return product;}
+    public void setProduct(Product product){this.product = product;}
     public int getLikes() {
         return likes;
     }
