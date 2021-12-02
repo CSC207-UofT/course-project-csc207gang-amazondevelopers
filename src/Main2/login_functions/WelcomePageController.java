@@ -63,9 +63,7 @@ public class WelcomePageController implements ActionListener {
             frame.dispose();
             try {
                 SignInController signInController = new SignInController();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
@@ -73,9 +71,7 @@ public class WelcomePageController implements ActionListener {
             frame.dispose();
             try {
                 SignUpController signUpController = new SignUpController();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
