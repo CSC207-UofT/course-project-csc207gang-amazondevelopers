@@ -10,7 +10,7 @@ etc.
 The CRC model contains 17 classes adhering to the SOLID principles and clean architecture, presented with a clear 
 identification of 4 entity classes (Master, User, Product, Post), 4 use cases (masterManager, userManager, postManager, 
 productManger), 8 controllers (browseController, cartController, createUserController, createPostController, 
-loginOptionsController, searchController, signInController, userOptionsController) and a command line interface 
+loginOptionsController, searchController, signInGUI, userOptionsController) and a command line interface 
 (SystemInOut). The CRC model shows that all of these follow the dependency rule with data flow from command line 
 interface to controllers to use cases to the entity.
 
@@ -43,7 +43,7 @@ on other classes. Albert worked on product, productManager and postManager class
 masterManager and searchcontroller classes. Jacqueline worked on createUserController, cartController, main, 
 searchController classes. Diego worked on userOptionsController and browseController. Sam worked on post, 
 postController, and createPostController classes. Finally, Umayrah worked on searchController, User, userManager, 
-userOptionsController, signInController, and loginOptionsController classes.
+userOptionsController, signInGUI, and loginOptionsController classes.
 
 We plan to implement more features such as connecting to banks for making purchases, chatting with other users, 
 making reviews, liking posts, ability to display images, signing out without losing your profile information. 

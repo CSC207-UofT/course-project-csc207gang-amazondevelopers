@@ -12,4 +12,16 @@ public class SignUpPresenter {
      * @return returns a message to reader to see that username is taken
      */
     public String message2(){return "This username is taken, please enter another one!";}
+
+    /**
+     *
+     * @return a message if the user was made
+     */
+    public String message3(){return "success!";}
+
+    /**
+     *
+     * @return if the password or userID field is empty
+     */
+    public String message4(){return "You should input all required fields!";}
 }
