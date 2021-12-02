@@ -2,7 +2,7 @@ package loginFunctionsTest;
 
 import inputOutputFunctions.SystemInOutTest;
 import optionsPackage.UserOptionsController;
-import productFunctions.CreateProductController;
+import product.CreateProductController;
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;
 import loginFunctions.SignInController;

@@ -1,8 +1,7 @@
 package optionsPackage;
 import browseFunctions.BrowseController;
 import inputOutputFunctions.InOut;
-import productFunctions.CreateProductController;
-import serializationFunctions.DictionaryReadWriter;
+import product.CreateProductController;
 import settingsFunctions.SettingsController;
 import userFunctions.SaveUserChangesGateways;
 import userFunctions.User;

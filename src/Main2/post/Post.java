@@ -1,10 +1,12 @@
-package postFunctions;
+package post;
+
 import mementoFunctions.Originator;
 import product.Product;
+import userFunctions.User;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import userFunctions.User;
 
 
 /**

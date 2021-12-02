@@ -1,19 +1,15 @@
 package optionsPackageTest;
 //
-import inputOutputFunctions.SystemInOut;
 import inputOutputFunctions.SystemInOutTest;
-import productFunctions.*;
+import product.CreateProductGateway;
 import settingsFunctions.DeleteProductsGateway;
 import settingsFunctions.DeleteUserGateway;
 import loginFunctions.GetUserGateway;
 import loginFunctions.SignUpGateway;
 import userFunctions.User;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import optionsPackage.SearchController;
 import org.junit.After;
@@ -27,11 +23,11 @@ public class SearchControllerTest{
 
     User testUser = new User("TestSearchControllerUser");
     SearchController searchController = new SearchController(testUser);
-    Product testProduct = new Product("shoes", "TEST", 5.0, "shoes", "2",1);;
+    product.Product testProduct = new product.Product("shoes", "TEST", 5.0, "shoes", "2",1);;
 
-    CreateProductGateway createProductGateway = new CreateProductGateway();
-    GetProductGateway getProductGateway = new GetProductGateway();
-    ProductUseCase productUseCaseCreate = new ProductUseCase(createProductGateway);
+    product.CreateProductGateway createProductGateway = new CreateProductGateway();
+    product.GetProductGateway getProductGateway = new product.GetProductGateway();
+    product.ProductUseCase productUseCaseCreate = new product.ProductUseCase(createProductGateway);
     GetUserGateway getUserGateway = new GetUserGateway();
 
     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
@@ -67,7 +63,7 @@ public class SearchControllerTest{
         //search for the product, then buy it
         searchController.allowSearch(testInOut);
 
-        Product bought = getProductGateway.getProduct("TEST");
+        product.Product bought = getProductGateway.getProduct("TEST");
         User user = getUserGateway.getUser("TestSearchControllerUser");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());

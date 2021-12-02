@@ -1,13 +1,12 @@
-package productFunctions;
+package product;
+
+import serializationFunctions.DictionaryReadWriter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import product.CreateProductGatewayInterface;
-import product.Product;
-import serializationFunctions.DictionaryReadWriter;
 
 public class CreateProductGateway implements CreateProductGatewayInterface {
 

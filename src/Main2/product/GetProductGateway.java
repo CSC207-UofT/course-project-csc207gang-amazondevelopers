@@ -1,7 +1,5 @@
-package productFunctions;
+package product;
 import inputOutputFunctions.SystemInOut;
-import product.GetProductGatewayInterface;
-import product.Product;
 import serializationFunctions.DictionaryReadWriter;
 
 import java.io.File;

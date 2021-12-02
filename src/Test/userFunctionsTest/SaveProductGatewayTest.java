@@ -1,7 +1,7 @@
 package userFunctionsTest;
 
-import productFunctions.GetProductGateway;
-import productFunctions.Product;
+import product.GetProductGateway;
+import product.Product;
 import settingsFunctions.DeleteProductsGateway;
 import userFunctions.SaveProductGateway;
 import org.junit.Test;

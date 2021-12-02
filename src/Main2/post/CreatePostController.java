@@ -1,8 +1,14 @@
-package postFunctions;
+package post;
 
 import inputOutputFunctions.SystemInOut;
+import postFunctions.AddPostGateway;
+import postFunctions.AddPostGatewayInterface;
+import postFunctions.EnglishPostPresenter;
+import postFunctions.Post;
+import postFunctions.PostManager;
 import product.Product;
 import userFunctions.User;
+
 import java.util.ArrayList;
 
 public class CreatePostController {
@@ -17,12 +23,12 @@ public class CreatePostController {
      * @return A Post that has been created
      * @throws Exception A generic exception to stop the method, and return to user options controller
      */
-    public Post createPost(SystemInOut input,Product product, User user,boolean from_product_creation) throws Exception {
-        ArrayList<Post.Memento> memento_list = new ArrayList<Post.Memento>();
-        Post new_post = new Post(product,user);
+    public postFunctions.Post createPost(SystemInOut input, Product product, User user, boolean from_product_creation) throws Exception {
+        ArrayList<postFunctions.Post.Memento> memento_list = new ArrayList<postFunctions.Post.Memento>();
+        postFunctions.Post new_post = new Post(product,user);
         new_post.set(0);
         memento_list.add(new_post.saveToMemento());
-        EnglishPostPresenter pcp = new EnglishPostPresenter();
+        postFunctions.EnglishPostPresenter pcp = new EnglishPostPresenter();
         boolean is_post_complete = false;
         while (is_post_complete == false){
             if (new_post.getState() == 0) {
@@ -95,7 +101,7 @@ public class CreatePostController {
             }
         }
         AddPostGatewayInterface addPostGateway = new AddPostGateway();
-        PostManager postManager = new PostManager(addPostGateway);
+        postFunctions.PostManager postManager = new PostManager(addPostGateway);
         postManager.savePost(new_post, user);
         return new_post;
     }

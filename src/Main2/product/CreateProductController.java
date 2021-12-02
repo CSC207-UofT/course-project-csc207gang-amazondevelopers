@@ -1,22 +1,17 @@
-package productFunctions;
+package product;
+
 import inputOutputFunctions.InOut;
+import inputOutputFunctions.SystemInOut;
+import postFunctions.CreatePostController;
+import userFunctions.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import inputOutputFunctions.SystemInOut;
-import postFunctions.CreatePostController;
-import product.CreateProductGateway;
-import product.EnglishProductPresenter;
-import product.GetProductGateway;
-import product.Product;
-import product.ProductPresenterInterface;
-import product.ProductUseCase;
-import userFunctions.User;
-
 // TODO FIX CODE SMELL!! Too long method
+
 /**
  * Class to create a specific product and its related post.
  */

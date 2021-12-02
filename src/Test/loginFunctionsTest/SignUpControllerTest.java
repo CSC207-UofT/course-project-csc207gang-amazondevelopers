@@ -1,8 +1,7 @@
 package loginFunctionsTest;
 
-import inputOutputFunctions.SystemInOut;
 import inputOutputFunctions.SystemInOutTest;
-import productFunctions.CreateProductController;
+import product.CreateProductController;
 import serializationFunctions.DictionaryReadWriter;
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;
@@ -16,7 +15,6 @@ import static org.junit.Assert.*;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class SignUpControllerTest {
     SignInController signin = new SignInController();

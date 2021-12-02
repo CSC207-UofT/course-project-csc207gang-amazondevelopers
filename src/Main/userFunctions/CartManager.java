@@ -1,13 +1,11 @@
 package userFunctions;
-import browseFunctions.GetUserDictGateway;
 import browseFunctions.GetUserDictGatewayInterface;
-import browseFunctions.SaveUserDictGateway;
 import browseFunctions.SaveUserDictGatewayInterface;
 import postFunctions.Post;
-import productFunctions.GetProductGateway;
-import productFunctions.GetProductGatewayInterface;
-import productFunctions.Product;
-import productFunctions.ProductUseCase;
+import product.GetProductGateway;
+import product.GetProductGatewayInterface;
+import product.Product;
+import product.ProductUseCase;
 import loginFunctions.SaveUserGatewayInterface;
 import java.io.IOException;
 import java.util.HashMap;

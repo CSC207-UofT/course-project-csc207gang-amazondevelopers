@@ -3,7 +3,7 @@ package userFunctionsTest;
 import browseFunctions.GetUserDictGateway;
 import browseFunctions.SaveUserDictGateway;
 import inputOutputFunctions.SystemInOut;
-import productFunctions.*;
+import product.CreateProductGateway;
 import settingsFunctions.DeleteProductsGateway;
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.CartManager;
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CartManagerTest {
 
-    CreateProductGateway createProductGateway = new CreateProductGateway();
+    product.CreateProductGateway createProductGateway = new CreateProductGateway();
     SaveProductGateway saveProductGateway = new SaveProductGateway();
     SaveUserGateway saveUserGateway = new SaveUserGateway();
     GetUserGateway getUserGateway = new GetUserGateway();
@@ -37,10 +37,10 @@ public class CartManagerTest {
     SignUpGateway signUpGateway = new SignUpGateway();
 
     User testUser = new User("TestCartManager");
-    Product testProduct = new Product("shoe", "TEST", 5.0, "shoes", "2",2);
+    product.Product testProduct = new product.Product("shoe", "TEST", 5.0, "shoes", "2",2);
 
-    GetProductGateway getProductGateway = new GetProductGateway();
-    ProductUseCase productUseCaseCreate = new ProductUseCase(createProductGateway);
+    product.GetProductGateway getProductGateway = new product.GetProductGateway();
+    product.ProductUseCase productUseCaseCreate = new product.ProductUseCase(createProductGateway);
     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
 
     @Before
@@ -67,7 +67,7 @@ public class CartManagerTest {
 
     @Test
     public void addToCartBasicTest() {
-        Product testProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
+        product.Product testProduct = new product.Product("shoe", "1", 5.0, "shoes", "2",1);
 
         cartManagerUser.addToCart(testProduct, testUser);
         assertEquals(1, testUser.getShoppingCart().size());
@@ -76,7 +76,7 @@ public class CartManagerTest {
 
     @Test
     public void addToCartZeroQuantityTest() {
-        Product testProduct = new Product("shoe", "1", 5.0, "shoes", "2",0);
+        product.Product testProduct = new product.Product("shoe", "1", 5.0, "shoes", "2",0);
         cartManagerUser.addToCart(testProduct, testUser);
         assertEquals(0, testUser.getShoppingCart().size());
 
@@ -101,20 +101,20 @@ public class CartManagerTest {
         assertEquals(1, testUser.getShoppingCart().size());
 
         cartManagerProduct.updateProductQuantity(testUser);
-        Product updatedProduct = getProductGateway.getProduct("TEST");
+        product.Product updatedProduct = getProductGateway.getProduct("TEST");
         assertEquals(1, updatedProduct.getQuantity());
     }
 
     @Test
     public void updateProductQuantityZeroTest() throws IOException, ClassNotFoundException {
-        Product testProduct = new Product("shoe", "TEST", 5.0, "shoes", "2",1);
+        product.Product testProduct = new product.Product("shoe", "TEST", 5.0, "shoes", "2",1);
         productUseCaseCreate.saveNewProductToSer(testProduct);
 
         cartManagerUser.addToCart(testProduct, testUser);
         assertEquals(1, testUser.getShoppingCart().size());
 
         cartManagerProduct.updateProductQuantity(testUser);
-        Product updatedProduct = getProductGateway.getProduct("TEST");
+        product.Product updatedProduct = getProductGateway.getProduct("TEST");
         assertEquals(0, updatedProduct.getQuantity());
     }
 

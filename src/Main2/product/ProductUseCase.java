@@ -1,8 +1,4 @@
-package productFunctions;
-import product.CreateProductGatewayInterface;
-import product.GetProductGatewayInterface;
-import product.Product;
-
+package product;
 import java.io.IOException;
 
 public class ProductUseCase {
