@@ -1,5 +1,7 @@
 package productFunctions;
 import inputOutputFunctions.SystemInOut;
+import product.GetProductGatewayInterface;
+import product.Product;
 import serializationFunctions.DictionaryReadWriter;
 
 import java.io.File;
@@ -22,7 +24,7 @@ public class GetProductGateway implements GetProductGatewayInterface {
      * @throws ClassNotFoundException exception when the class is not found
      */
 
-    public Product getProduct(String productId) throws IOException, ClassNotFoundException {
+    public product.Product getProduct(String productId) throws IOException, ClassNotFoundException {
         DictionaryReadWriter rw = new DictionaryReadWriter();
         HashMap<String, Object> idToProductHashMap = rw.readFromFile("src/Main/IdToProduct.ser");
         return (Product) idToProductHashMap.get(productId);

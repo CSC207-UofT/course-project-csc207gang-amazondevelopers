@@ -1,8 +1,10 @@
 package optionsPackage;
 import browseFunctions.BrowseController;
 import inputOutputFunctions.InOut;
-import productFunctions.CreateProductController;
-import serializationFunctions.DictionaryReadWriter;
+import options.EnglishOptionsPresenter;
+import options.OptionsPresenterInterface;
+import options.SearchController;
+import product.CreateProductController;
 import settingsFunctions.SettingsController;
 import userFunctions.SaveUserChangesGateways;
 import userFunctions.User;
@@ -31,7 +33,7 @@ public class UserOptionsController{
         presenter.userOptionsMain();
         String userDecision = input.getInput();
         this.userInput(input, userDecision);
-        EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+        options.EnglishOptionsPresenter engPresenter = new options.EnglishOptionsPresenter();
         this.getOption(input, engPresenter);
     }
 
@@ -44,7 +46,7 @@ public class UserOptionsController{
             // search and buy
             if(userDecision.equals("1")) {
                 // redirects to searchController and returns relevant search info
-                SearchController searchController = new SearchController(user);
+                options.SearchController searchController = new SearchController(user);
                 searchController.allowSearch(input);
 
                 // save the cart of the user
@@ -87,13 +89,13 @@ public class UserOptionsController{
             }
 
             else{
-                UserOptionsController userOptionsController = new UserOptionsController(user);
-                EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                options.UserOptionsController userOptionsController = new options.UserOptionsController(user);
+                options.EnglishOptionsPresenter engPresenter = new options.EnglishOptionsPresenter();
                 userOptionsController.getOption(input, engPresenter);
             }
             // TODO: make exception more specific
         } catch (Exception e) {
-            EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
+            options.EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
             presenter.genericException();
         }
     }

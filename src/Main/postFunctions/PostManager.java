@@ -1,8 +1,8 @@
 package postFunctions;
-import productFunctions.Product;
+import product.Product;
 import userFunctions.User;
 import java.io.IOException;
-import java.util.List;
+
 import loginFunctions.GetUserGateway;
 
 /**

@@ -1,7 +1,7 @@
 package settingsFunctions;
 import inputOutputFunctions.SystemInOut;
-import optionsPackage.EnglishOptionsPresenter;
-import optionsPackage.UserOptionsController;
+import options.EnglishOptionsPresenter;
+import options.UserOptionsController;
 import userFunctions.User;
 import java.io.IOException;
 

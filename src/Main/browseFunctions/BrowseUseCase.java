@@ -1,6 +1,6 @@
 package browseFunctions;
 import postFunctions.Post;
-import productFunctions.Product;
+import product.Product;
 import userFunctions.User;
 import java.util.ArrayList;
 import java.util.HashMap;

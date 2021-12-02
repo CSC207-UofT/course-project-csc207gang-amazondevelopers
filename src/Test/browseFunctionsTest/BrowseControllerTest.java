@@ -10,9 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import postFunctions.AddPostGateway;
-import postFunctions.GetPostGateway;
 import postFunctions.Post;
-import productFunctions.*;
+import product.CreateProductGateway;
 import settingsFunctions.DeleteProductsGateway;
 import settingsFunctions.DeleteUserGateway;
 import userFunctions.User;
@@ -29,12 +28,12 @@ public class BrowseControllerTest {
 
     User testUser1 = new User("TestSignUpControllerUser");
     User testUser2 = new User("follower");
-    Product testProduct = new Product("shoes", "TEST", 5.0, "shoes", "2",1);
+    product.Product testProduct = new product.Product("shoes", "TEST", 5.0, "shoes", "2",1);
     Post post = new Post(testProduct, testUser2);
 
-    CreateProductGateway createProductGateway = new CreateProductGateway();
-    GetProductGateway getProductGateway = new GetProductGateway();
-    ProductUseCase productUseCaseCreate = new ProductUseCase(createProductGateway);
+    product.CreateProductGateway createProductGateway = new CreateProductGateway();
+    product.GetProductGateway getProductGateway = new product.GetProductGateway();
+    product.ProductUseCase productUseCaseCreate = new product.ProductUseCase(createProductGateway);
     GetUserGateway getUserGateway = new GetUserGateway();
     AddPostGateway addPostGateway = new AddPostGateway();
 
@@ -78,7 +77,7 @@ public class BrowseControllerTest {
         //search for the product, then buy it
         browseController.presentFeed(testInOut);
 
-        Product bought = getProductGateway.getProduct("TEST");
+        product.Product bought = getProductGateway.getProduct("TEST");
         User user = getUserGateway.getUser("TestBrowse");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());
@@ -93,7 +92,7 @@ public class BrowseControllerTest {
         //search for the product, then buy it
         browseController.presentFeed(testInOut);
 
-        Product bought = getProductGateway.getProduct("TEST");
+        product.Product bought = getProductGateway.getProduct("TEST");
         User user = getUserGateway.getUser("TestBrowse");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());

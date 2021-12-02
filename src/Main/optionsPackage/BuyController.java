@@ -4,8 +4,11 @@ import browseFunctions.GetUserDictGatewayInterface;
 import browseFunctions.SaveUserDictGateway;
 import browseFunctions.SaveUserDictGatewayInterface;
 import inputOutputFunctions.InOut;
-import productFunctions.GetProductGateway;
-import productFunctions.Product;
+import options.EnglishOptionsPresenter;
+import options.SearchController;
+import options.UserOptionsController;
+import product.GetProductGateway;
+import product.Product;
 import userFunctions.CartManager;
 import userFunctions.SaveProductGatewayInterface;
 import userFunctions.User;
@@ -28,7 +31,7 @@ public class BuyController {
      * @throws ClassNotFoundException thrown if the class is not found.
      */
     public void allowBuy(InOut input, User user, List<String> listIds) throws Exception {
-        EnglishOptionsPresenter presenter = new EnglishOptionsPresenter();
+        options.EnglishOptionsPresenter presenter = new options.EnglishOptionsPresenter();
 
         // loop to keep checking if the user wants to buy something from the list
         presenter.presentList(listIds);
@@ -68,8 +71,8 @@ public class BuyController {
                             cartUseCaseSaveUser.emptyCart(user);
                             presenter.cartIsEmptyPresent();
                         }else{
-                            UserOptionsController options = new UserOptionsController(user);
-                            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                            options.UserOptionsController options = new UserOptionsController(user);
+                            options.EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
                             options.getOption(input, engPresenter);
 
                         }
@@ -80,7 +83,7 @@ public class BuyController {
                         this.allowBuy(input, user,listIds);
                     }
             } else if (decisionToBuy.equals("*")) {
-                SearchController SC = new SearchController(user);
+                options.SearchController SC = new SearchController(user);
                 SC.allowSearch(input);
             }
             else if (decisionToBuy.equals("R")) {

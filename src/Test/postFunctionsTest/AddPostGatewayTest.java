@@ -1,5 +1,5 @@
 package postFunctionsTest;
-import productFunctions.Product;
+import product.Product;
 import settingsFunctions.DeleteUserGateway;
 import org.junit.After;
 import org.junit.Before;

@@ -1,9 +1,9 @@
 package optionsPackageTest;
 
-import optionsPackage.SearchGateway;
-import productFunctions.CreateProductGateway;
-import productFunctions.GetProductGateway;
-import productFunctions.Product;
+import options.SearchGateway;
+import product.CreateProductGateway;
+import product.GetProductGateway;
+import product.Product;
 import settingsFunctions.DeleteProductsGateway;
 import org.junit.Test;
 

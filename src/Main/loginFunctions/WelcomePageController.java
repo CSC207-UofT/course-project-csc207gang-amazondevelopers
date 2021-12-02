@@ -1,7 +1,7 @@
 package loginFunctions;
 import inputOutputFunctions.InOut;
-import optionsPackage.EnglishOptionsPresenter;
-import optionsPackage.UserOptionsController;
+import options.EnglishOptionsPresenter;
+import options.UserOptionsController;
 import userFunctions.User;
 import java.io.IOException;
 

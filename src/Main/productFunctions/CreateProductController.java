@@ -8,6 +8,12 @@ import java.util.Random;
 
 import inputOutputFunctions.SystemInOut;
 import postFunctions.CreatePostController;
+import product.CreateProductGateway;
+import product.EnglishProductPresenter;
+import product.GetProductGateway;
+import product.Product;
+import product.ProductPresenterInterface;
+import product.ProductUseCase;
 import userFunctions.User;
 
 // TODO FIX CODE SMELL!! Too long method
@@ -16,10 +22,10 @@ import userFunctions.User;
  */
 public class CreateProductController {
 
-    public Product createNewProductFromInput(InOut input, User user) throws Exception {
+    public product.Product createNewProductFromInput(InOut input, User user) throws Exception {
 
-        ArrayList<Product.Memento> memento_list = new ArrayList<>();
-        Product new_product = new Product(user.getUsername());
+        ArrayList<product.Product.Memento> memento_list = new ArrayList<>();
+        product.Product new_product = new Product(user.getUsername());
         new_product.set(0);//Sets the state to the state that asks for the products name
         memento_list.add(new_product.saveToMemento());
         boolean is_product_complete = false;
@@ -113,22 +119,22 @@ public class CreateProductController {
             }
         }
 
-        CreateProductGateway productGate = new CreateProductGateway();
+        product.CreateProductGateway productGate = new product.CreateProductGateway();
         String id = generateID();
         new_product.setId(id);
-        ProductUseCase productManager = new ProductUseCase(productGate);
+        product.ProductUseCase productManager = new product.ProductUseCase(productGate);
         CreatePostController cpc = new CreatePostController();
         SystemInOut out = new SystemInOut();
         cpc.createPost(out,new_product,user,true);
-        CreateProductGateway createProductGateway = new CreateProductGateway();
-        ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
+        product.CreateProductGateway createProductGateway = new CreateProductGateway();
+        product.ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
         prodUseCase.saveNewProductToSer(new_product);
         englishProductPresenter.creationSuccessPresenter();
         return new_product;
     }
 
     private String generateID() throws IOException, ClassNotFoundException {
-        GetProductGateway getProductGateway = new GetProductGateway();
+        product.GetProductGateway getProductGateway = new GetProductGateway();
         HashMap<String, Object> hashMap = getProductGateway.getHashMap();
         int hashMapSize = hashMap.size();
         if (hashMapSize == 0) {

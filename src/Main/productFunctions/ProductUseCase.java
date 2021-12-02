@@ -1,10 +1,14 @@
 package productFunctions;
+import product.CreateProductGatewayInterface;
+import product.GetProductGatewayInterface;
+import product.Product;
+
 import java.io.IOException;
 
 public class ProductUseCase {
 
-    CreateProductGatewayInterface createProduct;
-    GetProductGatewayInterface getProduct;
+    product.CreateProductGatewayInterface createProduct;
+    product.GetProductGatewayInterface getProduct;
 
 
     public ProductUseCase(CreateProductGatewayInterface createProduct) {
@@ -26,14 +30,14 @@ public class ProductUseCase {
      */
 
 
-    public Product saveNewProduct(String name, String id, Double price, String category, String size, int quantity)
+    public product.Product saveNewProduct(String name, String id, Double price, String category, String size, int quantity)
             throws IOException, ClassNotFoundException {
-        Product newProduct = new Product(name, id, price, category, size, quantity);
+        product.Product newProduct = new product.Product(name, id, price, category, size, quantity);
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
         return newProduct;
     }
 
-    public void saveNewProductToSer(Product newProduct) throws IOException, ClassNotFoundException {
+    public void saveNewProductToSer(product.Product newProduct) throws IOException, ClassNotFoundException {
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
 
     }
@@ -50,8 +54,8 @@ public class ProductUseCase {
      *
      * @return a newly created product or null.
      */
-    public Product saveNewProduct(String name, String id, Double price, String category, int quantity) throws IOException, ClassNotFoundException {
-        Product newProduct = new Product(name, id, price, category, quantity);
+    public product.Product saveNewProduct(String name, String id, Double price, String category, int quantity) throws IOException, ClassNotFoundException {
+        product.Product newProduct = new product.Product(name, id, price, category, quantity);
         createProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
         return newProduct;
     }
@@ -65,7 +69,7 @@ public class ProductUseCase {
      * @param quantity  Int amount to remove from existing quantity of the product.
      * @return true successfully decreased amount and false otherwise.
      */
-    public boolean decreaseQuantity(Product product, int quantity) {
+    public boolean decreaseQuantity(product.Product product, int quantity) {
         if (quantity >= 0) {
                 int newQuantity = product.getQuantity() - quantity;
                 product.setQuantity(newQuantity);

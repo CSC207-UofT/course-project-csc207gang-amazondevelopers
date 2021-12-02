@@ -1,6 +1,6 @@
 package postFunctions;
 import mementoFunctions.Originator;
-import productFunctions.Product;
+import product.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

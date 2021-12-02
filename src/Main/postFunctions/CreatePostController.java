@@ -1,7 +1,7 @@
 package postFunctions;
 
 import inputOutputFunctions.SystemInOut;
-import productFunctions.Product;
+import product.Product;
 import userFunctions.User;
 import java.util.ArrayList;
 

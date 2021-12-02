@@ -1,7 +1,6 @@
 package browseFunctions;
 import inputOutputFunctions.InOut;
-import inputOutputFunctions.SystemInOut;
-import optionsPackage.BuyController;
+import options.BuyController;
 import postFunctions.Post;
 import userFunctions.User;
 
