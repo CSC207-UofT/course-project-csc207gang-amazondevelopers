@@ -4,7 +4,10 @@ import optionsPackage.BuyController;
 import optionsPackage.EnglishOptionsPresenter;
 import optionsPackage.UserOptionsController;
 import postFunctions.Post;
+import productFunctions.Product;
 import userFunctions.User;
+
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -26,18 +29,18 @@ public class BrowseController {
     public void presentFeed() throws Exception {
         SystemInOut inOut = new SystemInOut();
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
-        List<Post> userFeed = browseUseCase.getFeed();
-        List<String> feedIds = browseUseCase.getlistIds(userFeed);
-        //if the feed of the user is not empty
+        GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
+        EnglishSinglePostPresenter postPresenter = new EnglishSinglePostPresenter();
+        HashMap users = getUserDictGateway.getUserDict();
+        List<String> following = user.getListFollowing();
+        List<Post> userFeed = browseUseCase.generateFeed(users,following);
+        List<String> feedIds = browseUseCase.getlistProductID(userFeed);
+        for (Post post : userFeed){
+            postPresenter.presentSinglePost(post);
+        }
         if (userFeed.size() != 0){
            BuyController buyController = new BuyController();
            buyController.allowBuy(inOut, this.user, feedIds);
-        }
-        // user's feed is empty
-        else{
-            UserOptionsController userOptionsController = new UserOptionsController(this.user);
-            EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-            userOptionsController.getOption(inOut, engPresenter);
         }
     }
 }
