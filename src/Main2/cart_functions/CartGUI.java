@@ -41,6 +41,7 @@ public class CartGUI implements ActionListener {
             for(Product i:user.getShoppingCart()){
                 panel.add(createProductFrame(i));
             }
+            panel.setBounds(85, 85, 250, 250);
             frame.add(panel);
         }
 
