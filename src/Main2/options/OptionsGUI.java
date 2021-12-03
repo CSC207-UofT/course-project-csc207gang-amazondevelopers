@@ -83,7 +83,7 @@ public class OptionsGUI implements ActionListener {
         }
         if(e.getSource()==search) {
             frame.dispose();
-            SearchGUI searchGUI = new SearchGUI();
+            SearchGUI searchGUI = new SearchGUI(this.user);
         }
         if(e.getSource()==findSellers) {
             System.exit(0);
