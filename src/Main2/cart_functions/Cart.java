@@ -144,5 +144,4 @@ public class Cart {
         }
         buyController.allowBuy(inOut, user, cartIDs);
         }
-    }
 }
