@@ -1,4 +1,4 @@
-package browse;
+package browse.SaveUserDictGateway;
 
 import inputOutputFunctions.SystemInOut;
 import serializationFunctions.DictionaryReadWriter;

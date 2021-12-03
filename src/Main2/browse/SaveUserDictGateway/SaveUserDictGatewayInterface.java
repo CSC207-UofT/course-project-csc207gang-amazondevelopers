@@ -1,4 +1,4 @@
-package browse;
+package browse.SaveUserDictGateway;
 
 import java.io.IOException;
 import java.util.HashMap;

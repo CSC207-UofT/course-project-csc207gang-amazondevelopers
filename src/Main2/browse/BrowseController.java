@@ -4,9 +4,10 @@ import browseFunctions.EnglishBrowsePresenter;
 import browseFunctions.GetUserDictGateway;
 import inputOutputFunctions.InOut;
 import options.BuyController;
-import postFunctions.Post;
+import post.Post;
 import userFunctions.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,17 +33,15 @@ public class BrowseController {
         browseFunctions.EnglishBrowsePresenter postPresenter = new EnglishBrowsePresenter();
         HashMap users = getUserDictGateway.getUserDict();
         List<String> following = user.getListFollowing();
-        List<Post> userFeed = browseUseCase.generateFeed(users,following);
+        ArrayList<Post> userFeed = (ArrayList<Post>) browseUseCase.generateFeed(users,following);
         List<String> feedIds = browseUseCase.getlistProductID(userFeed);
         PostMemento postMemento = new PostMemento();
         postMemento.setState(userFeed.get(0));
-        for (Post post : userFeed){
-            postPresenter.presentSinglePost(post);
-        }
+        ArrayList<PostMemento.Memento> mementos = new ArrayList<PostMemento.Memento>();
+        FeedGUI feedGUI = new FeedGUI(postMemento,userFeed,mementos,user,0);
+
         if (userFeed.size() != 0){
-            postPresenter.presentProduct();
-            BuyController buyController = new BuyController();
-            buyController.allowBuy(inOut, this.user, feedIds);
+
         }
     }
 }

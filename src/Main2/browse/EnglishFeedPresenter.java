@@ -1,6 +1,7 @@
 package browse;
 public class EnglishFeedPresenter implements FeedPresenterInterface {
-        @Override
+
+    @Override
         public String presentNext() {
             return "Next";
         }
@@ -28,4 +29,20 @@ public class EnglishFeedPresenter implements FeedPresenterInterface {
     public String presentCaption() {
         return "Caption: ";
     }
+
+    @Override
+    public String presentDescription() {
+        return "Product Description: ";
+    }
+
+    @Override
+    public String presentQuantity() {
+        return "Product Quantity: ";
+    }
+
+    @Override
+    public String presentSize() {
+        return "Product Size: ";
+    }
+
 }

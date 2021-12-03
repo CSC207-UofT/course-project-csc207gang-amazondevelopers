@@ -1,7 +1,7 @@
 package browse;
 
 import mementoFunctions.Originator;
-import postFunctions.Post;
+import post.Post;
 
 import java.util.ArrayList;
 
