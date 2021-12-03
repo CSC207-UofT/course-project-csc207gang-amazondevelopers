@@ -1,22 +1,75 @@
 package post;
-import inputOutputFunctions.SystemInOut;
-import postFunctions.PostPresenterInterface;
 
-public class EnglishPostPresenter implements PostPresenterInterface {
-    SystemInOut output = new SystemInOut();
-    public void presentCaption(){
-        output.sendOutput("What is the caption of your post?");
+public class EnglishPostPresenter implements PostPresenterInterface{
+    /**
+     *
+     * @return A string instructing the user on what to do
+     */
+    public String Welcome(){
+        return "Fill boxes about your product!";
     }
-    public void presentUnableToUndo(){
-        output.sendOutput("Sorry, you cannot undo from here");
+
+    /**
+     *
+     * @return A String asking for products name
+     */
+    public String namePresenter(){
+        return "Name : ";
     }
-    public void presentComments(){
-        output.sendOutput("Would you like your post to have Comments? Input 1 for yes, 2 for no");
+
+    /**
+     *
+     * @return A String asking for products price
+     */
+    public String pricePresenter(){
+        return "Price: ";
     }
-    public void presentRatings(){
-        output.sendOutput("Would you like your post to have Ratings? Input 1 for yes, 2 for no");
+
+    /**
+     *
+     * @return A String asking for product category
+     */
+    public String categoryPresenter(){
+        return "Category: ";
     }
-    public void presentPostConformation(){
-        output.sendOutput("Are you happy with this post? Type * for no, or anything else for yes.");
+
+    /**
+     *
+     * @return A String asking user for the size of the product
+     */
+    public String sizePresenter(){
+        return "Size:";
+    }
+
+    /**
+     *
+     * @return A string asking for quantity of the product
+     */
+    public String quantityPresenter(){
+        return "Quantity: ";
+    }
+
+    /**
+     *
+     * @return A string telling user to go back to previous page
+     */
+    public String backPresenter(){
+        return "Back";
+    }
+
+    /**
+     *
+     * @return A String that indicates to the user to press the button to share
+     */
+    public String sharePresenter(){
+        return "Share!";
+    }
+
+    /**
+     *
+     * @return A String that indicates to the user to describe their product(caption)
+     */
+    public String describePresenter(){
+        return "Description: ";
     }
 }

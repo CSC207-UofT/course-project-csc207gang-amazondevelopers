@@ -1,9 +1,13 @@
 package post;
 
 public interface PostPresenterInterface {
-    void presentCaption();
-    void presentComments();
-    void presentUnableToUndo();
-    void presentRatings();
-    void presentPostConformation();
+    String Welcome();
+    String namePresenter();
+    String pricePresenter();
+    String categoryPresenter();
+    String sizePresenter();
+    String quantityPresenter();
+    String backPresenter();
+    String sharePresenter();
+    String describePresenter();
 }
