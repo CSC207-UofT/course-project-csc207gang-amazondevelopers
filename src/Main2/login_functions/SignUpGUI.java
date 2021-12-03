@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * Take user input for signup credentials to sign user up.
@@ -16,15 +15,14 @@ import java.util.HashMap;
 public class SignUpGUI implements ActionListener {
     SignUpPresenter signUpPresenter = new SignUpPresenter();
     JFrame frame = new JFrame();
-    //TODO Put the bottom texts into presenters
-    JButton signUpButton = new JButton("Sign Up");
-    JButton resetButton = new JButton("Reset");
-    JButton backButton = new JButton("Back");
+    JButton signUpButton = new JButton(signUpPresenter.signUp());
+    JButton resetButton = new JButton(signUpPresenter.reset());
+    JButton backButton = new JButton(signUpPresenter.back());
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
     JLabel messageLabel = new JLabel(signUpPresenter.message());
-    JLabel userIDLabel = new JLabel("userID: ");
-    JLabel userPasswordLabel = new JLabel("password: ");
+    JLabel userIDLabel = new JLabel(signUpPresenter.userID());
+    JLabel userPasswordLabel = new JLabel(signUpPresenter.password());
 
 
     /**
@@ -100,8 +98,14 @@ public class SignUpGUI implements ActionListener {
 
             if (existingUsername) {
                 // taken username
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText(presenter.message2());
+                if (password.equals("")){
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(presenter.message4());
+                }
+                else {
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(presenter.message2());
+                }
 
             }
             // No password

@@ -1,5 +1,6 @@
 package login_functions;
 
+//TODO change name to EnglishSignInPresenter
 public class SignInPresenter {
     /**
      * Presents message to user to put in their username and password

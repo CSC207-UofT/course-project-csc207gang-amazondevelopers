@@ -19,8 +19,6 @@ public class Post {
     private List<String> comments;
     private String description = "";
     private String caption = "";
-    private boolean canComment = false;
-    private boolean canRate = false;
     private User user;
 
     /**
@@ -39,8 +37,6 @@ public class Post {
         this.product = product;
         this.description = product.toString();
         this.caption = caption;
-        this.canRate = canRate;
-        this.canComment = canComment;
         this.user = user;
         //these are first empty arraylists
         this.ratings = new ArrayList<Float>();
@@ -78,18 +74,6 @@ public class Post {
     }
     public void addComment(String comment) {
         this.comments.add(comment);
-    }
-    public boolean getCanRate() {
-        return canRate;
-    }
-    public boolean getCanComment() {
-        return canComment;
-    }
-    public void setCanRate(boolean bool) {
-        this.canRate = bool;
-    }
-    public void setCanComment(boolean bool) {
-        this.canComment = bool;
     }
     public String getProductDescription() {
         return this.description;
