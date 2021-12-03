@@ -38,59 +38,63 @@ public class BuyController {
         presenter.optionToBuyPresent();
         String decisionToBuy = input.getInput();
 
-            if (decisionToBuy.equals("1")) {
+        switch (decisionToBuy) {
+            case "1":
                 // then the user wants to buy
-                    presenter.addToCartPresent();
-                    String itemIndex = input.getInput();
-                    int indexInt = Integer.parseInt(itemIndex);
-                    if (indexInt < listIds.size()) {
-                        GetProductGateway productG = new GetProductGateway();
-                        String itemAtIndex = listIds.get(indexInt);
-                        Product productToAddToCart = productG.getProduct(itemAtIndex);
-                        // add this product to the cart
-                        CartManager cart = new CartManager();
-                        if (!cart.addToCart(productToAddToCart, user)){
-                            presenter.outOfStockPresent();
-                            this.allowBuy(input, user, listIds);
-                        }
-
-                        presenter.buyOrBackPresent();
-                        String optionToBuy = input.getInput();
-
-                        if (optionToBuy.equals("1")){
-                            // save the product decreased quantity
-                            SaveProductGatewayInterface saveProdG = new SaveProductGateway();
-                            SaveUserDictGatewayInterface saveUserDictGateway = new SaveUserDictGateway();
-                            GetUserDictGatewayInterface getUserDictGateway = new GetUserDictGateway();
-                            CartManager cartUseCaseUpdateProdQ = new CartManager(saveProdG, getUserDictGateway,saveUserDictGateway);
-                            cartUseCaseUpdateProdQ.updateProductQuantity(user);
-                            // save the user with updated cart
-                            SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
-                            CartManager cartUseCaseSaveUser = new CartManager(saveUserGateway);
-                            cartUseCaseSaveUser.emptyCart(user);
-                            presenter.cartIsEmptyPresent();
-                        }else{
-                            options.UserOptionsController options = new UserOptionsController(user);
-                            options.EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-                            options.getOption(input, engPresenter);
-
-                        }
-                    } else if (itemIndex.equals("exit")) {
-                        this.allowBuy(input, user,listIds);
-                    } else {
-                        presenter.incorrectIndexPresent();
-                        this.allowBuy(input, user,listIds);
+                presenter.addToCartPresent();
+                String itemIndex = input.getInput();
+                int indexInt = Integer.parseInt(itemIndex);
+                if (indexInt < listIds.size()) {
+                    GetProductGateway productG = new GetProductGateway();
+                    String itemAtIndex = listIds.get(indexInt);
+                    Product productToAddToCart = productG.getProduct(itemAtIndex);
+                    // add this product to the cart
+                    CartManager cart = new CartManager();
+                    if (!cart.addToCart(productToAddToCart, user)) {
+                        presenter.outOfStockPresent();
+                        this.allowBuy(input, user, listIds);
                     }
-            } else if (decisionToBuy.equals("*")) {
-                options.SearchController SC = new SearchController(user);
+
+                    presenter.buyOrBackPresent();
+                    String optionToBuy = input.getInput();
+
+                    if (optionToBuy.equals("1")) {
+                        // save the product decreased quantity
+                        SaveProductGatewayInterface saveProdG = new SaveProductGateway();
+                        SaveUserDictGatewayInterface saveUserDictGateway = new SaveUserDictGateway();
+                        GetUserDictGatewayInterface getUserDictGateway = new GetUserDictGateway();
+                        CartManager cartUseCaseUpdateProdQ = new CartManager(saveProdG, getUserDictGateway, saveUserDictGateway);
+                        cartUseCaseUpdateProdQ.updateProductQuantity(user);
+                        // save the user with updated cart
+                        SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
+                        CartManager cartUseCaseSaveUser = new CartManager(saveUserGateway);
+                        cartUseCaseSaveUser.emptyCart(user);
+                        presenter.cartIsEmptyPresent();
+                    } else {
+                        UserOptionsController options = new UserOptionsController(user);
+                        EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
+                        options.getOption(input, engPresenter);
+
+                    }
+                } else if (itemIndex.equals("exit")) {
+                    this.allowBuy(input, user, listIds);
+                } else {
+                    presenter.incorrectIndexPresent();
+                    this.allowBuy(input, user, listIds);
+                }
+                break;
+            case "*":
+                SearchController SC = new SearchController(user);
                 SC.allowSearch(input);
-            }
-            else if (decisionToBuy.equals("R")) {
+                break;
+            case "R":
                 throw new Exception(); //
-            } else {
+
+            default:
                 presenter.invalidInput();
                 this.allowBuy(input, user, listIds);
-            }
+                break;
+        }
         }
 
 
