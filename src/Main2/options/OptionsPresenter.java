@@ -52,4 +52,10 @@ public class OptionsPresenter {
     public String message7(){
         return "Search";
     }
+
+    /**
+     * Tells user that this leads to their cart
+     * @return A string of cart
+     */
+    public String message8() {return "Cart";}
 }

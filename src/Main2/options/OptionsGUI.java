@@ -18,6 +18,7 @@ public class OptionsGUI implements ActionListener {
     JButton findSellers = new JButton(optionsPresenter.message5());
     JButton makePost = new JButton(optionsPresenter.message6());
     JButton search = new JButton(optionsPresenter.message7());
+    JButton cart = new JButton(optionsPresenter.message8());
     User user;
 
     /**
@@ -26,7 +27,7 @@ public class OptionsGUI implements ActionListener {
      */
     public OptionsGUI(User user) {
 
-        welcomeLabel.setBounds(125, 50, 200, 35);
+        welcomeLabel.setBounds(125, 25, 200, 35);
         welcomeLabel.setFont(new Font(null, Font.PLAIN, 15));
 
         logout.setBounds(100, 300, 200, 35);
@@ -49,11 +50,15 @@ public class OptionsGUI implements ActionListener {
         search.setFont(new Font(null, Font.PLAIN, 15));
         search.addActionListener(this);
 
+        cart.setBounds(100, 50, 200, 35);
+        cart.setFont(new Font(null, Font.PLAIN, 15));
+        cart.addActionListener(this);
+
         frame.add(welcomeLabel); frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420); frame.setLayout(null); frame.setVisible(true);
 
         frame.add(logout); frame.add(browse); frame.add(findSellers); frame.add(makePost);
-        frame.add(search);
+        frame.add(search); frame.add(cart);
 
         this.user = user;
     }
@@ -83,6 +88,9 @@ public class OptionsGUI implements ActionListener {
             System.exit(0);
         }
         if(e.getSource()==browse) {
+            System.exit(0);
+        }
+        if(e.getSource()==cart) {
             System.exit(0);
         }
     }

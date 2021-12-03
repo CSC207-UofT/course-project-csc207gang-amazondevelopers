@@ -68,6 +68,8 @@ public PostGUI(User user) {
     sizeMessage.setFont(new Font(null, Font.PLAIN, 15));
     size.setBounds(125, 300, 200, 25);
 
+
+
     frame.add(welcomeMessage);
     frame.add(nameMessage);
     frame.add(name);
