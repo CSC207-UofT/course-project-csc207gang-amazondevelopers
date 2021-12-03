@@ -28,10 +28,10 @@ public class CartGUI implements ActionListener {
 
         if (user.getShoppingCart().size()==0){
 
-            emptyCartMessage.setBounds(70, 100, 250, 35);
+            emptyCartMessage.setBounds(150, 100, 250, 35);
             emptyCartMessage.setFont(new Font("Serif", Font.PLAIN, 14));
 
-            returnHome.setBounds(145, 150, 100, 25);
+            returnHome.setBounds(60, 150, 300, 25);
             returnHome.addActionListener(this);
 
             frame.add(returnHome);
@@ -45,12 +45,20 @@ public class CartGUI implements ActionListener {
         }
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setSize(420, 420);
         frame.setLayout(null);
         frame.setVisible(true);
 
         this.user = user;
     }
+
+    /**
+     *
+     * Constructor for a small frame of a product that displays product name price and size
+     *
+     * @param product the product we are making a frame for
+     * @return JFrame
+     */
 
     private JFrame createProductFrame(Product product){
         JFrame productFrame = new JFrame();
@@ -69,10 +77,6 @@ public class CartGUI implements ActionListener {
         frame.setSize(250, 100);
         frame.setLayout(null);
         frame.setVisible(true);
-
-
-
-
 
         return productFrame;
     }
