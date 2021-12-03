@@ -100,8 +100,14 @@ public class SignUpGUI implements ActionListener {
 
             if (existingUsername) {
                 // taken username
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText(presenter.message2());
+                if (password.equals("")){
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(presenter.message4());
+                }
+                else {
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(presenter.message2());
+                }
 
             }
             // No password
