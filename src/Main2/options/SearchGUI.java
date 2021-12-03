@@ -1,6 +1,5 @@
 package options;
 
-import post.PostGUI;
 import userFunctions.User;
 
 import javax.swing.*;
@@ -71,7 +70,7 @@ public class SearchGUI implements ActionListener {
         }
 
         if(action.getSource() == search) {
-            SearchController searchController = new SearchController(this.user);
+            // SearchController searchController = new SearchController(this.user);
 
         }
 
