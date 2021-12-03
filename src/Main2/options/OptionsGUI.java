@@ -82,7 +82,8 @@ public class OptionsGUI implements ActionListener {
             PostGUI productGUI = new PostGUI(this.user);
         }
         if(e.getSource()==search) {
-            System.exit(0);
+            frame.dispose();
+            SearchGUI searchGUI = new SearchGUI();
         }
         if(e.getSource()==findSellers) {
             System.exit(0);
