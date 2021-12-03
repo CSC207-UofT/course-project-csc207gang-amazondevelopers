@@ -60,6 +60,8 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    public void addToCart(Product product){this.shoppingCart.add(product);}
+
     // getter for list posts
     public List<Post> getListPosts() {
         return listPosts;

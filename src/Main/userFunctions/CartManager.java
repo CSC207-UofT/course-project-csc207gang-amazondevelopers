@@ -50,7 +50,7 @@ public class CartManager {
     }
 
     /**
-     * Updates the quanitity of the cart when the user buys
+     * Updates the quantity of the cart when the user buys
      * @param user the user whom we want to update their cart
      */
 

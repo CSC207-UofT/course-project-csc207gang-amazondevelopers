@@ -1,5 +1,6 @@
 package options;
 
+import cart_functions.CartGUI;
 import login_functions.WelcomePageGUI;
 import post.PostGUI;
 import userFunctions.User;
@@ -92,7 +93,7 @@ public class OptionsGUI implements ActionListener {
             System.exit(0);
         }
         if(e.getSource()==cart) {
-            System.exit(0);
+            CartGUI cartGUI = new CartGUI(this.user);
         }
     }
 
