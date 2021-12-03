@@ -72,4 +72,10 @@ public class EnglishPostPresenter implements PostPresenterInterface{
     public String describePresenter(){
         return "Description: ";
     }
+
+    /**
+     *
+     * @return A String that indicates to the user that they forgot to fill in a textfield
+     */
+    public String fillInPresenter() {return "please fill everything in!";}
 }

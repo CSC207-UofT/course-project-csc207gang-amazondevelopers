@@ -10,4 +10,5 @@ public interface PostPresenterInterface {
     String backPresenter();
     String sharePresenter();
     String describePresenter();
+    String fillInPresenter();
 }

@@ -16,7 +16,7 @@ public class SignUpGUI implements ActionListener {
     SignUpPresenter signUpPresenter = new SignUpPresenter();
     JFrame frame = new JFrame();
     JButton signUpButton = new JButton(signUpPresenter.signUp());
-    JButton resetButton = new JButton(signUpPresenter.signUp());
+    JButton resetButton = new JButton(signUpPresenter.reset());
     JButton backButton = new JButton(signUpPresenter.back());
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();

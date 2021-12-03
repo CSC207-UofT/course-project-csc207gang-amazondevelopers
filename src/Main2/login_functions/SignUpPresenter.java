@@ -1,5 +1,6 @@
 package login_functions;
 
+//TODO Change name to EnglishSignUpPresenter
 public class SignUpPresenter {
     /**
      * A presenter to help guide the user
