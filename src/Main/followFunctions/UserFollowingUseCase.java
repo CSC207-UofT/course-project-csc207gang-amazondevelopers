@@ -48,7 +48,7 @@ public class UserFollowingUseCase {
         currentFollowing.add(newFollowing);
         // updating list of following of this.user
         this.user.setListFollowing(currentFollowing);
-        List<Post> userFollowerPost = userFollower.getListPosts();
+        List<Post> userFollowerPost = (List<Post>) userFollower.getListPosts();
         List<Post> thisUserCurrentFeed = this.user.getFeed();
         if (userFollowerPost.size() != 0) {
             // updating feed of this.user

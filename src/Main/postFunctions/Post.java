@@ -1,5 +1,4 @@
 package postFunctions;
-import mementoFunctions.Originator;
 import productFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import userFunctions.User;
  *
  */
 
-public class Post extends Originator implements Serializable {
+public class Post implements Serializable {
 
     private int likes;
     private Product product;

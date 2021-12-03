@@ -65,7 +65,7 @@ public class User implements Serializable {
     }
 
     // getter for list posts
-    public Collection<? extends post.Post> getListPosts() {
+    public Collection<? extends Post> getListPosts() {
         return listPosts;
     }
 

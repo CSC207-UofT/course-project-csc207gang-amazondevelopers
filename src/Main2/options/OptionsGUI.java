@@ -1,5 +1,6 @@
 package options;
 
+import browse.BrowseController;
 import cart_functions.CartGUI;
 import login_functions.WelcomePageGUI;
 import post.PostGUI;
@@ -90,7 +91,15 @@ public class OptionsGUI implements ActionListener {
             System.exit(0);
         }
         if(e.getSource()==browse) {
-            System.exit(0);
+            frame.dispose();
+            BrowseController browseController = new BrowseController(this.user);
+            try {
+                browseController.presentFeed();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (ClassNotFoundException classNotFoundException) {
+                classNotFoundException.printStackTrace();
+            }
         }
         if(e.getSource()==cart) {
             CartGUI cartGUI = new CartGUI(this.user);

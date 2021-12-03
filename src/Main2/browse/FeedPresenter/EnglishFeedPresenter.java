@@ -1,4 +1,5 @@
-package browse;
+package browse.FeedPresenter;
+
 public class EnglishFeedPresenter implements FeedPresenterInterface {
 
     @Override

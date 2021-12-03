@@ -17,6 +17,7 @@ public class CreatePostController {
      * @return A Post that has been created
      * @throws Exception A generic exception to stop the method, and return to user options controller
      */
+    /**
     public Post createPost(SystemInOut input,Product product, User user,boolean from_product_creation) throws Exception {
         ArrayList<Post.Memento> memento_list = new ArrayList<Post.Memento>();
         Post new_post = new Post(product,user);
@@ -99,4 +100,5 @@ public class CreatePostController {
         postManager.savePost(new_post, user);
         return new_post;
     }
+}*/
 }

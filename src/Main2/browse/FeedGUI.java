@@ -1,9 +1,9 @@
 package browse;
 
+import browse.FeedPresenter.EnglishFeedPresenter;
 import options.UserOptionsController;
-import post.Post;
 import userFunctions.User;
-
+import postFunctions.Post;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

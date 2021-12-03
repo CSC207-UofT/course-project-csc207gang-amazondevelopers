@@ -4,6 +4,7 @@ import options.BuyController;
 import postFunctions.Post;
 import userFunctions.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class BrowseController {
         HashMap users = getUserDictGateway.getUserDict();
         List<String> following = user.getListFollowing();
         List<Post> userFeed = browseUseCase.generateFeed(users,following);
-        List<String> feedIds = browseUseCase.getlistProductID(userFeed);
+        List<String> feedIds = browseUseCase.getlistProductID((ArrayList<Post>) userFeed);
         for (Post post : userFeed){
             postPresenter.presentSinglePost(post);
         }

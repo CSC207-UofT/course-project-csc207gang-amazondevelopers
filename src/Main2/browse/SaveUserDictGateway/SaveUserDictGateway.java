@@ -10,6 +10,6 @@ public class SaveUserDictGateway implements SaveUserDictGatewayInterface {
     public void saveUserDict(HashMap userDict) throws IOException, ClassNotFoundException {
         SystemInOut inOut = new SystemInOut();
         DictionaryReadWriter rw = new DictionaryReadWriter();
-        rw.saveToFile("src/Main/user.ser", userDict);
+        rw.saveToFile("src/Main2/user.ser", userDict);
     }
 }

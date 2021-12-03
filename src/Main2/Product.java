@@ -1,7 +1,6 @@
 import java.io.Serializable;
-import mementoFunctions.Originator;
 
-public class Product extends Originator implements Serializable{
+public class Product implements Serializable{
     private String name = "";
     private String id = "";
     private Double price = 0.0;

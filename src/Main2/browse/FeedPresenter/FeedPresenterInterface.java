@@ -1,4 +1,4 @@
-package browse;
+package browse.FeedPresenter;
 
 public interface FeedPresenterInterface {
     String presentNext();

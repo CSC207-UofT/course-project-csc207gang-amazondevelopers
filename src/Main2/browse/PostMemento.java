@@ -1,10 +1,5 @@
 package browse;
-
-import mementoFunctions.Originator;
-import post.Post;
-
-import java.util.ArrayList;
-
+import postFunctions.Post;
 /**
  * Entity class to represent a post in the feed of a user, implements the memento design pattern.
  */

@@ -21,7 +21,7 @@ public class BrowseUseCase {
      * with the list of posts.
      * @param userFeed
      */
-    public List<String> getlistProductID(ArrayList<post.Post> userFeed) {
+    public List<String> getlistProductID(ArrayList<Post> userFeed) {
         ArrayList<String> stringProductList = new ArrayList<>();
         for (Post aPost: userFeed){
             Product product = aPost.getProduct();
