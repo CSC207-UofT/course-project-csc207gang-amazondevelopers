@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class SignUpGUI implements ActionListener {
     SignUpPresenter signUpPresenter = new SignUpPresenter();
     JFrame frame = new JFrame();
+    //TODO Put the bottom texts into presenters
     JButton signUpButton = new JButton("Sign Up");
     JButton resetButton = new JButton("Reset");
     JButton backButton = new JButton("Back");
@@ -102,13 +103,11 @@ public class SignUpGUI implements ActionListener {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText(presenter.message2());
 
-
             }
             // No password
             else if (password.equals("") | userID.equals("")) {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText(presenter.message4());
-
 
             } else { // can sign up
                 try {

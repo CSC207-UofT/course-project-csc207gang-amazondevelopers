@@ -1,6 +1,7 @@
 package options;
 
 import login_functions.WelcomePageGUI;
+import post.PostGUI;
 import userFunctions.User;
 import javax.swing.*;
 import java.awt.*;
@@ -25,26 +26,26 @@ public class OptionsGUI implements ActionListener {
      */
     public OptionsGUI(User user) {
 
-        welcomeLabel.setBounds(125, 10, 200, 35);
+        welcomeLabel.setBounds(125, 50, 200, 35);
         welcomeLabel.setFont(new Font(null, Font.PLAIN, 15));
 
         logout.setBounds(100, 300, 200, 35);
         logout.setFont(new Font(null, Font.PLAIN, 15));
         logout.addActionListener(this);
 
-        browse.setBounds(100, 200, 200, 35);
+        browse.setBounds(100, 250, 200, 35);
         browse.setFont(new Font(null, Font.PLAIN, 15));
         browse.addActionListener(this);
 
-        findSellers.setBounds(100, 150, 200, 35);
+        findSellers.setBounds(100, 200, 200, 35);
         findSellers.setFont(new Font(null, Font.PLAIN, 15));
         findSellers.addActionListener(this);
 
-        makePost.setBounds(100, 100, 200, 35);
+        makePost.setBounds(100, 150, 200, 35);
         makePost.setFont(new Font(null, Font.PLAIN, 15));
         makePost.addActionListener(this);
 
-        search.setBounds(100, 50, 200, 35);
+        search.setBounds(100, 100, 200, 35);
         search.setFont(new Font(null, Font.PLAIN, 15));
         search.addActionListener(this);
 
@@ -72,7 +73,8 @@ public class OptionsGUI implements ActionListener {
             }
         }
         if(e.getSource()==makePost) {
-            System.exit(0);
+            frame.dispose();
+            PostGUI productGUI = new PostGUI(this.user);
         }
         if(e.getSource()==search) {
             System.exit(0);
