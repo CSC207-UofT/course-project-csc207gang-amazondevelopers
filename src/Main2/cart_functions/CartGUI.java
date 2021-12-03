@@ -15,7 +15,7 @@ public class CartGUI implements ActionListener {
     CartPresenter presenter = new CartPresenter();
     JFrame frame = new JFrame();
     JButton returnHome = new JButton("Return to Options Menu");
-    JPanel panel = new JPanel();
+    JTable panel = new JTable();
     JLabel emptyCartMessage = new JLabel(presenter.emptyCartMessage());
     User user;
 
