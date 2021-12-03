@@ -34,8 +34,5 @@ public class Originator {
         public Memento(int stateToSave) {
             state = stateToSave;
         }
-        private int getSavedState() {
-            return state;
-        }
     }
 }
