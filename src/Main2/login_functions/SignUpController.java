@@ -7,18 +7,29 @@ import java.util.HashMap;
 
 public class SignUpController {
 
+    /** Checks wether the given userID and password is valid.
+     *
+     * @param userID the ID of the user
+     * @param password the password of the user
+     * @return wether the userID and password is valid
+     */
+    public boolean checkIdAndPass(String userID, String password) {
+        return !(password.equals("") | userID.equals(""));
+    }
+
+
     /**
      *
      * @return hashmap of username to passwords.
      * @throws IOException
      * @throws ClassNotFoundException
      */
-
     private HashMap<String,Object> getIdAndPass() throws IOException, ClassNotFoundException {
         GetIDandPasswords getIDandPasswords = new GetIDandPasswords();
         HashMap<String, Object> loginInfo = getIDandPasswords.getUsernamePasswordHash();
         return loginInfo;
     }
+
 
     /**
      *
@@ -35,6 +46,7 @@ public class SignUpController {
 
     }
 
+
     /**
      * set the user to the hashmap
      * @param userID the ID of the user
@@ -42,7 +54,6 @@ public class SignUpController {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-
     public static void setNewUser(String userID, String password) throws IOException, ClassNotFoundException {
         SetIDandPasswords setNewUser = new SetIDandPasswords();
         SaveUserGateway saveUser = new SaveUserGateway();
