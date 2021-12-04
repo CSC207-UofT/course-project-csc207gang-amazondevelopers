@@ -98,50 +98,42 @@ JButton post = new JButton(productPresenter.sharePresenter());
      */
     public void actionPerformed(ActionEvent action) {
     EnglishPostPresenter productPresenter = new EnglishPostPresenter();
-    double priceValue;
-    int quantityAmount;
-    if(action.getSource()==back){
-        OptionsGUI optionsGUI = new OptionsGUI(user);
-    }
-    if(action.getSource()==post) {
+    PostInformationController postInformationController = new PostInformationController();
         String nameField = name.getText();
         String priceField = price.getText();
         String categoryField = category.getText();
         String quantityField = quantity.getText();
         String descriptionField = description.getText();
         String sizeBox = size.getSelectedItem().toString();
+
+    if(action.getSource()==back){
+        OptionsGUI optionsGUI = new OptionsGUI(user);
+    }
+    if(action.getSource()==post) {
         //check if any fields are empty
-        if (nameField.equals("") | priceField.equals("") | categoryField.equals("") | quantityField.equals("") |
-                descriptionField.equals("") | sizeBox.equals("")) {
+        boolean emptyFields = postInformationController.Empty(nameField, priceField, categoryField, quantityField,
+                descriptionField);
+        boolean isInteger = postInformationController.integerOrNot(quantityField);
+        boolean isDouble = postInformationController.doubleOrNot(priceField);
+        if (emptyFields) {
             welcomeMessage.setForeground(Color.red);
-            welcomeMessage.setText(productPresenter.fillInPresenter());
-        }
-        //check if price and quantity are double and int
+            welcomeMessage.setText(productPresenter.fillInPresenter());}
         else {
-            boolean isDouble = false;
-            boolean isInteger = false;
-            try {
-                quantityAmount = Integer.parseInt(quantityField);
-                isInteger = true;
-            } catch (NumberFormatException numberFormatException) {
-                welcomeMessage.setForeground(Color.red);
-                welcomeMessage.setText(productPresenter.quantityValidityPresenter());
-            }
-            try {
-                priceValue = Double.parseDouble(priceField);
-                isDouble = true;
-            } catch (NumberFormatException numberFormatException) {
-                welcomeMessage.setForeground(Color.red);
-                welcomeMessage.setText(productPresenter.priceValidityPresenter());
-            }
-            if (isDouble && isInteger) {
+        //check if price and quantity are double and int
+        if (!isInteger) {welcomeMessage.setForeground(Color.red);
+            welcomeMessage.setText(productPresenter.quantityValidityPresenter());}
+            if (!isDouble) {welcomeMessage.setForeground(Color.red);
+                welcomeMessage.setText(productPresenter.priceValidityPresenter());}}
+
+            //IF ALL THE FIELDS ARE FILLED IN AND CORRECT (WE CAN ACTUALLY MAKE A POST)
+            if (isDouble && isInteger && !emptyFields) {
                 frame.dispose();
-                SuccesfulProductCreationGUI succesfulProductCreation = new SuccesfulProductCreationGUI(this.user);
+                SuccesfulPostCreationGUI succesfulProductCreation = new SuccesfulPostCreationGUI(this.user);
             }
         }
     }
 
-    }
+
 
 
 

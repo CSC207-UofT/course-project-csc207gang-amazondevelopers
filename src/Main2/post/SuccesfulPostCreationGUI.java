@@ -8,19 +8,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SuccesfulProductCreationGUI implements ActionListener {
+public class SuccesfulPostCreationGUI implements ActionListener {
     User user;
     EnglishPostPresenter presenter = new EnglishPostPresenter();
     JFrame frame = new JFrame();
     JButton back = new JButton(presenter.backToMenu());
     JLabel message = new JLabel(presenter.congrats());
 
-    public SuccesfulProductCreationGUI(User user) {
+    public SuccesfulPostCreationGUI(User user) {
         this.user = user;
         back.setBounds(125, 100, 200, 25);
         back.addActionListener(this);
 
         message.setBounds(125, 50, 300, 25);
+        message.setForeground(Color.green);
         message.setFont(new Font(null, Font.PLAIN, 15));
 
         frame.add(back);
