@@ -45,6 +45,30 @@ public class EnglishPostPresenter implements PostPresenterInterface {
 
     /**
      *
+     * @return A String asking the user for the caption of the post
+     */
+    public String captionPresenter(){
+        return "Caption:";
+    }
+
+    /**
+     *
+     * @return A String asking the user whether other others can leave ratings
+     */
+    public String ratePresenter(){
+        return "Rate:";
+    }
+
+    /**
+     *
+     * @return A String asking the user whether other others can leave comments
+     */
+    public String commentPresenter(){
+        return "Comment:";
+    }
+
+    /**
+     *
      * @return A string asking for quantity of the product
      */
     public String quantityPresenter(){

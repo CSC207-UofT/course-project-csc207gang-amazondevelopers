@@ -1,12 +1,34 @@
 package product;
-
 import productFunctions.GetProductGateway;
-
+import productFunctions.Product;
+import userFunctions.User;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class CreateProductController {
+
+    User user;
+
+    public CreateProductController(User user) {
+        this.user= user;
+    }
+
+    /**
+     * Takes in an arraylist containing all information needed to create a product and returns the created product.
+     * @param information a list of all information needed to create a product
+     * @return returns a Product
+     */
+    public Product createProduct(ArrayList<String> information) throws IOException, ClassNotFoundException {
+        SaveProductGatewayInterface saveProductGateway = new SaveProductGateway();
+        ProductUseCase productUseCase = new ProductUseCase(saveProductGateway);
+        String newId = generateID();
+        Product newProduct = productUseCase.createProduct(information, newId);
+        // saves the product to product.ser file
+        productUseCase.saveNewProductToSer(newProduct);
+        return newProduct;
+    }
 
     /**
      * Generates random id for product that does not yet exist in the .ser file

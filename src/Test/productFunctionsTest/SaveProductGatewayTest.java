@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 
-public class CreateProductGatewayTest {
+public class SaveProductGatewayTest {
      CreateProductGateway createProductGateway = new CreateProductGateway();
      // ProductManager productManager = new ProductManager(createProductGateway);
      GetProductGateway getProductGateway = new GetProductGateway();

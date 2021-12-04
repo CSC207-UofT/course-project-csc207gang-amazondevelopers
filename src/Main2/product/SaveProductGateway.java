@@ -8,7 +8,7 @@ import java.util.List;
 import productFunctions.Product;
 import serializationFunctions.DictionaryReadWriter;
 
-public class CreateProductGateway implements CreateProductGatewayInterface {
+public class SaveProductGateway implements SaveProductGatewayInterface {
 
     /**
      * Add the product given the descriptions to the product.ser and IDtoProduct.ser files
@@ -22,14 +22,13 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
     public void addProductToRepo(Product newProduct, String productId, String tag) throws IOException,
             ClassNotFoundException {
 
+        DictionaryReadWriter rw = new DictionaryReadWriter();
+
         File file = new File("src/Main2/product.ser");
         if (file.length() == 0){
-            DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, List<String>> emptyHashMap = new HashMap<>();
             rw.saveToFile("src/Main2/product.ser", emptyHashMap);
         }
-
-        DictionaryReadWriter rw = new DictionaryReadWriter();
 
         HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main2/product.ser");
         // {tag:[ID]}
@@ -37,27 +36,24 @@ public class CreateProductGateway implements CreateProductGatewayInterface {
             List<String> productIDList = (List<String>) productsSavedDict.get(tag);
             productIDList.add(productId);
             productsSavedDict.put(tag, productIDList);
-            rw.saveToFile("src/Main2/Product.ser", productsSavedDict);
+            rw.saveToFile("src/Main2/product.ser", productsSavedDict);
         }
         else {
             List<String> newList = new ArrayList<>();
             productsSavedDict.put(tag,newList);
-            rw.saveToFile("src/Main2/Product.ser", productsSavedDict);
+            rw.saveToFile("src/Main2/product.ser", productsSavedDict);
         }
 
         // {ID: product}
         File file2 = new File("src/Main2/IdToProduct.ser");
-        // if no hashmap exists yet
         if (file2.length() == 0){
-            DictionaryReadWriter readWriter = new DictionaryReadWriter();
             HashMap<String, List<String>> emptyHashMap = new HashMap<>();
-            readWriter.saveToFile("src/Main2/IdToProduct.ser", emptyHashMap);
+            rw.saveToFile("src/Main2/IdToProduct.ser", emptyHashMap);
         }
 
         HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main2/IdToProduct.ser");
         idToProductDict.put(productId, newProduct);
         rw.saveToFile("src/Main2/IdToProduct.ser", idToProductDict);
+
     }
-
-
 }

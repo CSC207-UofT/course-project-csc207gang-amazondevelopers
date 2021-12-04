@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * Add post to the serialized file.
  */
-public class AddPostGateway {
+public class AddPostGateway implements AddPostGatewayInterface {
 
     /**
      * Adds a post to a users post list in the user.ser file

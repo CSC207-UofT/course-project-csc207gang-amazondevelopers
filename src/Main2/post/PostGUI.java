@@ -1,11 +1,16 @@
 package post;
 
+import login_functions.WelcomePageGUI;
 import options.OptionsGUI;
 import userFunctions.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class PostGUI implements ActionListener { User user;
 EnglishPostPresenter productPresenter = new EnglishPostPresenter();
@@ -15,11 +20,14 @@ JLabel nameMessage = new JLabel(productPresenter.namePresenter());
 JLabel priceMessage = new JLabel(productPresenter.pricePresenter());
 JLabel categoryMessage = new JLabel(productPresenter.categoryPresenter());
 JLabel sizeMessage = new JLabel(productPresenter.sizePresenter());
+JLabel rateMessage = new JLabel(productPresenter.ratePresenter());
+JLabel commentMessage = new JLabel(productPresenter.commentPresenter());
 JLabel quantityMessage = new JLabel(productPresenter.quantityPresenter());
 JLabel descriptionMessage = new JLabel(productPresenter.describePresenter());
 String[] sizes = {"Extra small", "Small", "Medium", "Large", "Extra Large", "N/A"};
+String[] choices = {"Yes", "No"};
 JComboBox size = new JComboBox(sizes);
-
+JComboBox rate = new JComboBox(choices); JComboBox comment = new JComboBox(choices);
 
 JTextField name = new JTextField();
 JTextField price = new JTextField();
@@ -57,18 +65,27 @@ JButton post = new JButton(productPresenter.sharePresenter());
     quantity.setBounds(125, 200, 200, 25);
 
     descriptionMessage.setBounds(30, 250, 75, 25);
-    descriptionMessage.setFont(new Font(null, Font.PLAIN, 12));
+    descriptionMessage.setFont(new Font(null, Font.PLAIN, 13));
     description.setBounds(125, 250, 200, 25);
 
-    back.setBounds(125, 350, 100, 25);
+    back.setBounds(125, 450, 100, 25);
     back.addActionListener(this);
 
-    post.setBounds(225, 350, 100, 25);
+    post.setBounds(225, 450, 100, 25);
     post.addActionListener(this);
 
     sizeMessage.setBounds(50, 300, 75, 25);
     sizeMessage.setFont(new Font(null, Font.PLAIN, 15));
     size.setBounds(125, 300, 200, 25);
+
+    rateMessage.setBounds(50, 350, 75, 25);
+    rateMessage.setFont(new Font(null, Font.PLAIN, 15));
+    rate.setBounds(125, 350, 200, 25);
+
+    commentMessage.setBounds(50, 400, 75, 25);
+    commentMessage.setFont(new Font(null, Font.PLAIN, 15));
+    comment.setBounds(125, 400, 200, 25);
+
 
     frame.add(welcomeMessage);
     frame.add(nameMessage);
@@ -85,11 +102,16 @@ JButton post = new JButton(productPresenter.sharePresenter());
     frame.add(sizeMessage);
     frame.add(back);
     frame.add(post);
+    frame.add(rateMessage);
+    frame.add(commentMessage);
+    frame.add(comment);
+    frame.add(rate);
 
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(500, 500);
+    frame.setSize(500, 550);
     frame.setLayout(null);
     frame.setVisible(true);
+    frame.setResizable(false);
 }
 
     /**
@@ -104,9 +126,12 @@ JButton post = new JButton(productPresenter.sharePresenter());
         String categoryField = category.getText();
         String quantityField = quantity.getText();
         String descriptionField = description.getText();
-        String sizeBox = size.getSelectedItem().toString();
+        String sizeBox = Objects.requireNonNull(size.getSelectedItem()).toString();
+        String rateBox = Objects.requireNonNull(rate.getSelectedItem()).toString();
+        String commentBox = Objects.requireNonNull(comment.getSelectedItem()).toString();
 
     if(action.getSource()==back){
+        frame.dispose();
         OptionsGUI optionsGUI = new OptionsGUI(user);
     }
     if(action.getSource()==post) {
@@ -127,10 +152,17 @@ JButton post = new JButton(productPresenter.sharePresenter());
 
             //IF ALL THE FIELDS ARE FILLED IN AND CORRECT (WE CAN ACTUALLY MAKE A POST)
             if (isDouble && isInteger && !emptyFields) {
-
+                ArrayList<String> information = new ArrayList<>(Arrays. asList(nameField, priceField, categoryField
+                ,quantityField, descriptionField, sizeBox, rateBox, commentBox));
+                CreatePostController createPostController = new CreatePostController(this.user);
+                try {
+                    createPostController.createPost(information);
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
                 frame.dispose();
 
-                SuccesfulPostCreationGUI succesfulProductCreation = new SuccesfulPostCreationGUI(this.user);
+                SuccessfulPostCreationGUI successfulProductCreation = new SuccessfulPostCreationGUI(this.user);
             }
         }
     }
