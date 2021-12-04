@@ -70,7 +70,7 @@ public class EnglishPostPresenter implements PostPresenterInterface{
      * @return A String that indicates to the user to describe their product(caption)
      */
     public String describePresenter(){
-        return "Description: ";
+        return "Description:";
     }
 
     /**
@@ -78,4 +78,24 @@ public class EnglishPostPresenter implements PostPresenterInterface{
      * @return A String that indicates to the user that they forgot to fill in a textfield
      */
     public String fillInPresenter() {return "please fill everything in!";}
+
+    /**
+     *
+     * @return A String indicating to user that the price they set is not valid, they need to redo
+     */
+    public String priceValidityPresenter() {return "price must be number!";}
+
+    /**
+     *
+     * @return A String indicating to user that the quantity they set is not valid, must redo
+     */
+    public String quantityValidityPresenter() {return "quantity must be integer!";}
+
+    /**
+     *
+     * @return A String telling the user that they have successfully made a post
+     */
+    public String congrats() {return "You have successfully shared your post!";}
+
+    public String backToMenu() {return "Return back to options";}
 }

@@ -11,4 +11,8 @@ public interface PostPresenterInterface {
     String sharePresenter();
     String describePresenter();
     String fillInPresenter();
+    String priceValidityPresenter();
+    String quantityValidityPresenter();
+    String congrats();
+    String backToMenu();
 }

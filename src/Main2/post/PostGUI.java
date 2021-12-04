@@ -6,10 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLOutput;
 
-public class PostGUI implements ActionListener {
-    User user;
+public class PostGUI implements ActionListener { User user;
 EnglishPostPresenter productPresenter = new EnglishPostPresenter();
 JFrame frame = new JFrame();
 JLabel welcomeMessage = new JLabel(productPresenter.Welcome());
@@ -32,7 +30,11 @@ JTextField description = new JTextField();
 JButton back = new JButton(productPresenter.backPresenter());
 JButton post = new JButton(productPresenter.sharePresenter());
 
-public PostGUI(User user) {
+    /**
+     * The constructor for the gui where sizes and positions of buttons, labels, texts are set
+     * @param user the user object which is passed on so that posts created can be attributed to them
+     */
+    public PostGUI(User user) {
     this.user = user;
 
     welcomeMessage.setBounds(125, 20, 200, 35);
@@ -54,8 +56,8 @@ public PostGUI(User user) {
     quantityMessage.setFont(new Font(null, Font.PLAIN, 15));
     quantity.setBounds(125, 200, 200, 25);
 
-    descriptionMessage.setBounds(10, 250, 75, 25);
-    descriptionMessage.setFont(new Font(null, Font.PLAIN, 15));
+    descriptionMessage.setBounds(30, 250, 75, 25);
+    descriptionMessage.setFont(new Font(null, Font.PLAIN, 12));
     description.setBounds(125, 250, 200, 25);
 
     back.setBounds(125, 350, 100, 25);
@@ -67,8 +69,6 @@ public PostGUI(User user) {
     sizeMessage.setBounds(50, 300, 75, 25);
     sizeMessage.setFont(new Font(null, Font.PLAIN, 15));
     size.setBounds(125, 300, 200, 25);
-
-
 
     frame.add(welcomeMessage);
     frame.add(nameMessage);
@@ -92,22 +92,52 @@ public PostGUI(User user) {
     frame.setVisible(true);
 }
 
-public void actionPerformed(ActionEvent action) {
+    /**
+     * Moderates the actions of the user and the subsequent results of the user actions
+     * @param action the actions of the user
+     */
+    public void actionPerformed(ActionEvent action) {
     EnglishPostPresenter productPresenter = new EnglishPostPresenter();
+    double priceValue;
+    int quantityAmount;
     if(action.getSource()==back){
         OptionsGUI optionsGUI = new OptionsGUI(user);
     }
-    if(action.getSource()==post){
+    if(action.getSource()==post) {
         String nameField = name.getText();
         String priceField = price.getText();
         String categoryField = category.getText();
         String quantityField = quantity.getText();
         String descriptionField = description.getText();
         String sizeBox = size.getSelectedItem().toString();
-        if(nameField.equals("")|priceField.equals("")|categoryField.equals("")|quantityField.equals("")|
-        descriptionField.equals("")|sizeBox.equals("")){
+        //check if any fields are empty
+        if (nameField.equals("") | priceField.equals("") | categoryField.equals("") | quantityField.equals("") |
+                descriptionField.equals("") | sizeBox.equals("")) {
             welcomeMessage.setForeground(Color.red);
             welcomeMessage.setText(productPresenter.fillInPresenter());
+        }
+        //check if price and quantity are double and int
+        else {
+            boolean isDouble = false;
+            boolean isInteger = false;
+            try {
+                quantityAmount = Integer.parseInt(quantityField);
+                isInteger = true;
+            } catch (NumberFormatException numberFormatException) {
+                welcomeMessage.setForeground(Color.red);
+                welcomeMessage.setText(productPresenter.quantityValidityPresenter());
+            }
+            try {
+                priceValue = Double.parseDouble(priceField);
+                isDouble = true;
+            } catch (NumberFormatException numberFormatException) {
+                welcomeMessage.setForeground(Color.red);
+                welcomeMessage.setText(productPresenter.priceValidityPresenter());
+            }
+            if (isDouble && isInteger) {
+                frame.dispose();
+                SuccesfulProductCreationGUI succesfulProductCreation = new SuccesfulProductCreationGUI(this.user);
+            }
         }
     }
 
