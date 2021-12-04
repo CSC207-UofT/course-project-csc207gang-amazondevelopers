@@ -126,4 +126,6 @@ public class Product extends Originator implements Serializable{
     }
 
     public String getUsername() {return this.username;}
+
+
 }

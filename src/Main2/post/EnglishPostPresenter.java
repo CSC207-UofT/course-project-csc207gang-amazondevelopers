@@ -1,6 +1,8 @@
 package post;
 
-public class EnglishPostPresenter implements PostPresenterInterface{
+import product.PostPresenterInterface;
+
+public class EnglishPostPresenter implements PostPresenterInterface {
     /**
      *
      * @return A string instructing the user on what to do
@@ -83,13 +85,13 @@ public class EnglishPostPresenter implements PostPresenterInterface{
      *
      * @return A String indicating to user that the price they set is not valid, they need to redo
      */
-    public String priceValidityPresenter() {return "price must be number!";}
+    public String priceValidityPresenter() {return "price must be a positive number!";}
 
     /**
      *
      * @return A String indicating to user that the quantity they set is not valid, must redo
      */
-    public String quantityValidityPresenter() {return "quantity must be integer!";}
+    public String quantityValidityPresenter() {return "quantity must be a positive integer!";}
 
     /**
      *

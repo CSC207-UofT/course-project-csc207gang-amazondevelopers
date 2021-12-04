@@ -1,4 +1,4 @@
-package post;
+package product;
 
 public interface PostPresenterInterface {
     String Welcome();
