@@ -10,3 +10,4 @@ public interface SearchPresenterInterface {
     String buyButton();
 
 }
+//
