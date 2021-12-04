@@ -17,7 +17,7 @@ public class PostInformationController {
     /**
      * Checks to see if the price is double or not
      * @param price the price given by the user
-     * @return returns true is the price is a positive double
+     * @return returns true if the price is a positive double
      */
     public boolean doubleOrNot(String price) {
         double priceValue;
@@ -27,6 +27,11 @@ public class PostInformationController {
         return false;
     }
 
+    /**
+     * Checks to see if the quantity is an integer or not
+     * @param quantity the quantity given by the user
+     * @return returns true if the quantity is a positive integer
+     */
     public boolean integerOrNot(String quantity) {
         int quantityValue;
         try {quantityValue = Integer.parseInt(quantity);

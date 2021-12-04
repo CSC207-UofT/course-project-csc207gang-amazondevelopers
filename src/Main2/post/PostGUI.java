@@ -127,7 +127,9 @@ JButton post = new JButton(productPresenter.sharePresenter());
 
             //IF ALL THE FIELDS ARE FILLED IN AND CORRECT (WE CAN ACTUALLY MAKE A POST)
             if (isDouble && isInteger && !emptyFields) {
+
                 frame.dispose();
+
                 SuccesfulPostCreationGUI succesfulProductCreation = new SuccesfulPostCreationGUI(this.user);
             }
         }
