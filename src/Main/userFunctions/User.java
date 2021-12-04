@@ -3,6 +3,7 @@ import postFunctions.Post;
 import productFunctions.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class User implements Serializable {
@@ -64,7 +65,7 @@ public class User implements Serializable {
     }
 
     // getter for list posts
-    public List<Post> getListPosts() {
+    public Collection<? extends Post> getListPosts() {
         return listPosts;
     }
 

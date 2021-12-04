@@ -56,7 +56,6 @@ public class UserOptionsController{
             else if(userDecision.equals("2")){
                 // create the product,
                 CreateProductController productC = new CreateProductController();
-                productC.createNewProductFromInput(input, user);
 
             }
             // follow

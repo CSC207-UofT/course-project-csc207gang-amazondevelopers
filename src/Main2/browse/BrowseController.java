@@ -1,13 +1,14 @@
-package browseFunctions;
-import inputOutputFunctions.InOut;
-import options.BuyController;
-import postFunctions.Post;
+package browse;
+import browseFunctions.BrowseUseCase;
+import browse.FeedPresenter.EnglishFeedPresenter;
+import browse.GetUserDictGateway.GetUserDictGateway;
 import userFunctions.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import postFunctions.Post;
 /**
  * user is the user logged into the program
  */
@@ -24,27 +25,21 @@ public class BrowseController {
      * empty, allows user to buy from their feed. If feed is empty, return user back to choose another option.
      *
      */
-    public void presentFeed(InOut inOut) throws Exception {
+    public void presentFeed() throws IOException, ClassNotFoundException {
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
-        EnglishBrowsePresenter postPresenter = new EnglishBrowsePresenter();
         HashMap users = getUserDictGateway.getUserDict();
         List<String> following = user.getListFollowing();
-        List<Post> userFeed = browseUseCase.generateFeed(users,following);
-        List<String> feedIds = browseUseCase.getlistProductID((ArrayList<Post>) userFeed);
-        for (Post post : userFeed){
-            postPresenter.presentSinglePost(post);
-        }
+        ArrayList<Post> userFeed = (ArrayList<Post>) browseUseCase.generateFeed(users,following);
+        //List<String> feedIds = browseUseCase.getlistProductID(userFeed);
         if (userFeed.size() != 0){
-            postPresenter.presentProduct();
-           BuyController buyController = new BuyController();
-           buyController.allowBuy(inOut, this.user, feedIds);
+            PostMemento postMemento = new PostMemento();
+            postMemento.setState(userFeed.get(0));
+            ArrayList<PostMemento.Memento> mementos = new ArrayList<PostMemento.Memento>();
+            FeedGUI feedGUI = new FeedGUI(postMemento,userFeed,mementos,user,0);
+        }
+        else{
+            EmptyFeedGUI emptyFeedGUI = new EmptyFeedGUI(user);
         }
     }
 }
-
-
-
-
-
-

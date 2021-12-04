@@ -1,7 +1,7 @@
-package browseFunctions;
-import postFunctions.Post;
+package browse;
 import productFunctions.Product;
 import userFunctions.User;
+import postFunctions.Post;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,9 +19,8 @@ public class BrowseUseCase {
     /**
      * Takes in a list of Posts and returns an arraylist of strings representing the ids of the product associated
      * with the list of posts.
-     * @param userFeed
      */
-    public List<String> getlistProductID(ArrayList<Post> userFeed) {
+    public List<String> getlistProductID(List<Post> userFeed) {
         ArrayList<String> stringProductList = new ArrayList<>();
         for (Post aPost: userFeed){
             Product product = aPost.getProduct();

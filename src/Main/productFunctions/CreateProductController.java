@@ -13,7 +13,7 @@ import userFunctions.User;
  * Class to create a specific product and its related post.
  */
 public class CreateProductController {
-
+/**
     public productFunctions.Product createNewProductFromInput(InOut input, User user) throws Exception {
 
         ArrayList<productFunctions.Product.Memento> memento_list = new ArrayList<>();
@@ -146,4 +146,5 @@ public class CreateProductController {
             return id;
         }
     }
+}*/
 }

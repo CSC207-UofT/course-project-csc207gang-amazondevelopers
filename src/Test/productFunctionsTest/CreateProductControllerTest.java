@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 public class CreateProductControllerTest {
 
-    SignUpGateway signUpGateway = new SignUpGateway();
+/**    SignUpGateway signUpGateway = new SignUpGateway();
     // create a new user profile to make products for
     User testUser = new User("TestCreateProductUser");
 

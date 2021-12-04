@@ -19,7 +19,7 @@ public class UserPostUseCase {
      * @param postToAdd Post to add to user's list of posts.
      */
     public void addToPostList(Post postToAdd){
-        List<Post> currentListPosts = this.user.getListPosts();
+        List<Post> currentListPosts = (List<Post>) this.user.getListPosts();
         currentListPosts.add(postToAdd);
         user.setListPosts(currentListPosts);
     }

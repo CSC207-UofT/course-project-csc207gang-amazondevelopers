@@ -93,6 +93,7 @@ public PostGUI(User user) {
 }
 
 public void actionPerformed(ActionEvent action) {
+    EnglishPostPresenter productPresenter = new EnglishPostPresenter();
     if(action.getSource()==back){
         OptionsGUI optionsGUI = new OptionsGUI(user);
     }
@@ -103,6 +104,11 @@ public void actionPerformed(ActionEvent action) {
         String quantityField = quantity.getText();
         String descriptionField = description.getText();
         String sizeBox = size.getSelectedItem().toString();
+        if(nameField.equals("")|priceField.equals("")|categoryField.equals("")|quantityField.equals("")|
+        descriptionField.equals("")|sizeBox.equals("")){
+            welcomeMessage.setForeground(Color.red);
+            welcomeMessage.setText(productPresenter.fillInPresenter());
+        }
     }
 
     }

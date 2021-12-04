@@ -65,7 +65,7 @@ public class CartManager {
             saveProductChangesInterface.save(prod.getId(),prod);
             //updating product in post serilzation in the userDict
             User productUser = userDict.get(prod.getUsername());
-            List postList = productUser.getListPosts();
+            List postList = (List) productUser.getListPosts();
             for (int c = 0; c < postList.size(); c++){
                 Post post = (Post) postList.get(c);
                 if (prod.getId().equals(post.getProduct().getId())){

@@ -1,5 +1,6 @@
 package login_functions;
 
+//TODO change name to EnglishWelcomePagePresenter
 public class WelcomePagePresenter {
     /**
      * Presents message to user to help instruct them on how to use the program
