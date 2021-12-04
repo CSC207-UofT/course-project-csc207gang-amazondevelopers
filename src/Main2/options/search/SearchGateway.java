@@ -1,4 +1,5 @@
-package options;
+package options.search;
+import productFunctions.Product;
 import serializationFunctions.DictionaryReadWriter;
 
 import java.io.File;

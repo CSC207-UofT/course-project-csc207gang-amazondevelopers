@@ -4,6 +4,7 @@ import browseFunctions.BrowseController;
 import followFunctions.FollowController;
 import inputOutputFunctions.InOut;
 import loginFunctions.WelcomePageController;
+import options.search.SearchController;
 import productFunctions.CreateProductController;
 import settingsFunctions.SettingsController;
 import userFunctions.SaveUserChangesGateways;
@@ -44,8 +45,8 @@ public class UserOptionsController{
             // search and buy
             if(userDecision.equals("1")) {
                 // redirects to searchController and returns relevant search info
-                options.SearchController searchController = new SearchController(user);
-                searchController.allowSearch(input);
+                SearchController searchController = new SearchController(user);
+                //searchController.allowSearch(input);
 
                 // save the cart of the user
                 String username = user.getUsername();

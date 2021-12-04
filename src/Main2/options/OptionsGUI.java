@@ -3,6 +3,7 @@ package options;
 import browse.BrowseController;
 import cart_functions.CartGUI;
 import login_functions.WelcomePageGUI;
+import options.search.SearchGUI;
 import post.PostGUI;
 import userFunctions.User;
 import javax.swing.*;

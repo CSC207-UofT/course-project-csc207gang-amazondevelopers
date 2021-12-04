@@ -7,6 +7,7 @@ import browseFunctions.SaveUserDictGatewayInterface;
 import inputOutputFunctions.InOut;
 import loginFunctions.SaveUserGateway;
 import loginFunctions.SaveUserGatewayInterface;
+import options.search.SearchController;
 import productFunctions.GetProductGateway;
 import productFunctions.Product;
 import userFunctions.CartManager;
@@ -82,8 +83,8 @@ public class BuyController {
                         this.allowBuy(input, user,listIds);
                     }
             } else if (decisionToBuy.equals("*")) {
-                options.SearchController SC = new SearchController(user);
-                SC.allowSearch(input);
+                SearchController SC = new SearchController(user);
+//                SC.allowSearch(input);
             }
             else if (decisionToBuy.equals("R")) {
                 throw new Exception(); //
