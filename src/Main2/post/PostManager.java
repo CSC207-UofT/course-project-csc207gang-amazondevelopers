@@ -31,12 +31,11 @@ public class PostManager {
      * @return a newly created post.
      */
     public Post createPost(Product product, String caption, boolean canComment, boolean canRate, User user) {
-        return new Post(product, caption, canComment, canRate,user);
+        return new Post(product, caption, canComment, canRate, user);
     }
 
     public void savePost(Post newPost, User user) throws IOException, ClassNotFoundException {
         addPostGateway.addPost(newPost, user);
-        GetUserGateway getUser = new GetUserGateway();
     }
 
     /**

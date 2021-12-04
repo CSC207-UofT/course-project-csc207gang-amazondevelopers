@@ -111,14 +111,14 @@ public class CreateProductController {
             }
         }
 
-        productFunctions.CreateProductGateway productGate = new productFunctions.CreateProductGateway();
+        productFunctions.SaveProductGateway productGate = new productFunctions.SaveProductGateway();
         String id = generateID();
         new_product.setId(id);
         productFunctions.ProductUseCase productManager = new productFunctions.ProductUseCase(productGate);
         CreatePostController cpc = new CreatePostController();
         SystemInOut out = new SystemInOut();
         cpc.createPost(out,new_product,user,true);
-        productFunctions.CreateProductGateway createProductGateway = new CreateProductGateway();
+        productFunctions.SaveProductGateway createProductGateway = new SaveProductGateway();
         productFunctions.ProductUseCase prodUseCase = new ProductUseCase(createProductGateway);
         prodUseCase.saveNewProductToSer(new_product);
         englishProductPresenter.creationSuccessPresenter();

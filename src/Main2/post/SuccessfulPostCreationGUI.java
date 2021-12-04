@@ -8,14 +8,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SuccesfulPostCreationGUI implements ActionListener {
+public class SuccessfulPostCreationGUI implements ActionListener {
     User user;
     EnglishPostPresenter presenter = new EnglishPostPresenter();
     JFrame frame = new JFrame();
     JButton back = new JButton(presenter.backToMenu());
     JLabel message = new JLabel(presenter.congrats());
 
-    public SuccesfulPostCreationGUI(User user) {
+    public SuccessfulPostCreationGUI(User user) {
         this.user = user;
         back.setBounds(125, 100, 200, 25);
         back.addActionListener(this);
@@ -34,6 +34,7 @@ public class SuccesfulPostCreationGUI implements ActionListener {
     }
     public void actionPerformed(ActionEvent action) {
         if(action.getSource()==back){
+            frame.dispose();
             OptionsGUI optionsGUI = new OptionsGUI(this.user);
         }
     }

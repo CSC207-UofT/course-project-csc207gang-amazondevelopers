@@ -4,9 +4,9 @@ import productFunctions.Product;
 import java.io.IOException;
 
 /**
- * Used by CreateProductGateway to add product to product.ser and IdToProduct.ser
+ * Used by SaveProductGateway to add product to product.ser and IdToProduct.ser
  */
-public interface CreateProductGatewayInterface {
+public interface SaveProductGatewayInterface {
     /**
      *
      * @param newProduct Product object

@@ -11,7 +11,7 @@ public class Product implements Serializable{
     private String username;
 
     /**
-     * Empty Initializer for use in CreateProductGateway
+     * Empty Initializer for use in SaveProductGateway
      */
     public Product(String user) {
         this.username = user;
