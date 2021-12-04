@@ -102,6 +102,7 @@ public class OptionsGUI implements ActionListener {
             }
         }
         if(e.getSource()==cart) {
+            frame.dispose();
             CartGUI cartGUI = new CartGUI(this.user);
         }
     }

@@ -12,7 +12,7 @@ public class SignUpPresenter {
      * A message to the user that the username is taken
      * @return returns a message to reader to see that username is taken
      */
-    public String message2(){return "This username is taken, please enter another one!";}
+    public String message2(){return "<html>This username is taken, <br> please enter another one!</html>";}
 
     /**
      * @return a message if the user was made

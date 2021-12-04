@@ -34,7 +34,7 @@ public class SignUpGUI implements ActionListener {
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 
-        messageLabel.setBounds(125, 100, 250, 35);
+        messageLabel.setBounds(125, 100, 300, 35);
         messageLabel.setFont(new Font("Serif", Font.PLAIN, 15));
 
         userIDField.setBounds(125, 150, 200, 25);
@@ -85,10 +85,12 @@ public class SignUpGUI implements ActionListener {
             userPasswordField.setText("");
         }
         if (e.getSource() == signUpButton) {
+            SignUpController signUpController = new SignUpController();
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
 
-            SignUpController signUpController = new SignUpController();
+            boolean validIDandPass = signUpController.checkIdAndPass(userID, password);
+
             boolean existingUsername = false;
             try {
                 existingUsername = signUpController.containsUsername(userID);
@@ -98,18 +100,19 @@ public class SignUpGUI implements ActionListener {
 
             if (existingUsername) {
                 // taken username
-                if (password.equals("")){
-                    messageLabel.setForeground(Color.red);
+                messageLabel.setForeground(Color.red);
+                if (!validIDandPass){
+                    // messageLabel.setForeground(Color.red);
                     messageLabel.setText(presenter.message4());
                 }
                 else {
-                    messageLabel.setForeground(Color.red);
+                    // messageLabel.setForeground(Color.red);
                     messageLabel.setText(presenter.message2());
                 }
 
             }
             // No password
-            else if (password.equals("") | userID.equals("")) {
+            else if (!validIDandPass) {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText(presenter.message4());
 

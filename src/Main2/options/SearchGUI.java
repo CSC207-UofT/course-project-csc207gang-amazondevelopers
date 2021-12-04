@@ -27,13 +27,13 @@ public class SearchGUI implements ActionListener {
 
         // search bar + search button
         searchLabel.setBounds(50, 50, 200, 35);
-        searchBar.setBounds(125, 5, 200, 35);
-        search.setBounds(125, 50, 200, 35);
+        searchBar.setBounds(125, 50, 200, 35);
+        search.setBounds(125, 100, 200, 35);
         search.setFont(new Font(null, Font.PLAIN, 15));
         search.addActionListener(this);
 
         // button to clear the search bar
-        clear.setBounds(125, 100, 200, 35);
+        clear.setBounds(125, 150, 200, 35);
         clear.setFont(new Font(null, Font.PLAIN, 15));
         clear.addActionListener(this);
 
