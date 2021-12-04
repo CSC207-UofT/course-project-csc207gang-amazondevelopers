@@ -95,7 +95,6 @@ public PostGUI(User user) {
 public void actionPerformed(ActionEvent action) {
     EnglishPostPresenter productPresenter = new EnglishPostPresenter();
     if(action.getSource()==back){
-        frame.dispose();
         OptionsGUI optionsGUI = new OptionsGUI(user);
     }
     if(action.getSource()==post){
