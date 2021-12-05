@@ -26,14 +26,14 @@ public class SearchGateway {
      */
     public ArrayList<String> searchProducts(String tag) throws IOException, ClassNotFoundException {
 
-        File file = new File("src/Main/product.ser");
+        File file = new File("src/Main2/product.ser");
         if (file.length() == 0){
             DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> emptyHashMap = new HashMap<>();
-            rw.saveToFile("src/Main/product.ser", emptyHashMap);
+            rw.saveToFile("src/Main2/product.ser", emptyHashMap);
         }
         DictionaryReadWriter rw = new DictionaryReadWriter();
-        HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main/product.ser");
+        HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main2/product.ser");
 
         if (productSavedDict.containsKey(tag)){
             return (ArrayList<String>) productSavedDict.get(tag);
@@ -41,6 +41,20 @@ public class SearchGateway {
         // an empty list since the tag does not exist
         return new ArrayList<>();
     }
+
+
+    public HashMap<String, Object> searchIDToProductList() throws IOException, ClassNotFoundException {
+
+        File file = new File("src/Main2/IdToProduct.ser");
+        if (file.length() == 0){
+            DictionaryReadWriter rw = new DictionaryReadWriter();
+            HashMap<String, Object> emptyHashMap = new HashMap<>();
+            rw.saveToFile("src/Main2/IdToProduct.ser", emptyHashMap);
+        }
+        DictionaryReadWriter rw = new DictionaryReadWriter();
+        return rw.readFromFile("src/Main2/IdToProduct.ser");
+    }
+
 
     }
 //
