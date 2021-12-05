@@ -90,7 +90,10 @@ public class OptionsGUI implements ActionListener {
             SearchGUI searchGUI = new SearchGUI(this.user);
         }
         if(e.getSource()==findSellers) {
-            FollowGUI followGUI = new FollowGUI(user);
+
+            frame.dispose();
+            FollowGUI followGUI = new FollowGUI(this.user);
+
         }
         if(e.getSource()==browse) {
             frame.dispose();
