@@ -40,6 +40,7 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
         }
         else {
             List<String> newList = new ArrayList<>();
+            newList.add(newProduct.getId());
             productsSavedDict.put(tag,newList);
             rw.saveToFile("src/Main2/product.ser", productsSavedDict);
         }
