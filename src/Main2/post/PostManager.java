@@ -1,25 +1,24 @@
 package post;
+import login_functions.SaveUserGatewayInterface;
 import postFunctions.Post;
 import productFunctions.Product;
 import userFunctions.User;
 import java.io.IOException;
-
-import loginFunctions.GetUserGateway;
 
 /**
  * The use case class to manage and create posts
  */
 public class PostManager {
 
-    AddPostGatewayInterface addPostGateway;
+    SaveUserGatewayInterface saveUserGateway;
 
     /**
      *
-     * @param addPostGateway To adhere to dependency inversion, this is the gateway to save the post to .ser file
+     * @param saveUserGateway To adhere to dependency inversion, this is the gateway to save the post to user.ser file
      */
 
-    public PostManager(AddPostGatewayInterface addPostGateway){
-        this.addPostGateway = addPostGateway;
+    public PostManager(SaveUserGatewayInterface saveUserGateway){
+        this.saveUserGateway = saveUserGateway;
     }
 
     /**
@@ -35,7 +34,9 @@ public class PostManager {
     }
 
     public void savePost(Post newPost, User user) throws IOException, ClassNotFoundException {
-        addPostGateway.addPost(newPost, user);
+        user.addToPostList(newPost);
+        // gateway saves overwrite the old user
+        saveUserGateway.saveUser(user.getUsername(), user);
     }
 
     /**
