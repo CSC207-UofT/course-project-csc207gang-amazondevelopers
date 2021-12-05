@@ -3,7 +3,7 @@ package options.follow_users;
 public class FollowPresenter implements FollowPresenterInterface{
 
     public String followButton(){
-        return "follow!";
+        return "Follow";
     }
 
     public String clearButton(){
@@ -14,8 +14,8 @@ public class FollowPresenter implements FollowPresenterInterface{
         return "Back";
     }
 
-    public String searchInstructions(){
-        return "Please input a tag word for your product of interest";
+    public String followInstructions(){
+        return "Please input a username to follow";
     }
 
     public String inputIndex(){return "Please input the index (first number you see \n before the \")\"" +
@@ -24,4 +24,8 @@ public class FollowPresenter implements FollowPresenterInterface{
     public String putIndex(){return "Index Of Item";}
 
     public String buyButton(){return "Buy Something!";}
+
+    public String presentCantFollow(){return "Can't follow this user";}
+
+    public String presentCanFollow(){return "Followed User Successfully";}
 }

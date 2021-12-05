@@ -1,6 +1,8 @@
 package options.follow_users;
 
+import login_functions.GetUserGateway;
 import options.OptionsGUI;
+import options.UserOptionsController;
 import options.search.ScrollSearchGui;
 import options.search.SearchController;
 import options.search.SearchPresenter;
@@ -15,32 +17,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FollowGUI implements ActionListener {
-    FollowPresenterInterface followPresenterInterface;
+    FollowPresenter followPresenter = new FollowPresenter();
     JFrame frame = new JFrame();
-
-    JLabel followInstructions = new JLabel();
-    JButton follow = new JButton(followPresenterInterface.followButton());
+    JButton followButtonLabel = new JButton(followPresenter.followButton());
     JTextField searchBar = new JTextField();
-
-    JButton clear = new JButton(followPresenterInterface.clearButton());
-    JButton back = new JButton(followPresenterInterface.backButton());
-
-    JLabel messageLabel = new JLabel(searchPresenter.searchInstructions());
+    JButton clear = new JButton(followPresenter.clearButton());
+    JButton back = new JButton(followPresenter.backButton());
+    JLabel followLabel = new JLabel(followPresenter.followInstructions());
+    JLabel messageLabel = new JLabel();
     User user;
 
 
-    public SearchGUI(User user) {
+    public FollowGUI(User user) {
         this.user = user;
 
-        messageLabel.setBounds(70, 100, 250, 35);
-        messageLabel.setFont(new Font("Serif", Font.PLAIN, 14));
+        followLabel.setBounds(70, 100, 250, 35);
+        followLabel.setFont(new Font("Serif", Font.PLAIN, 14));
 
         // search bar + search button
         followButtonLabel.setBounds(50, 50, 200, 35);
         searchBar.setBounds(125, 50, 200, 35);
-        search.setBounds(125, 100, 200, 35);
-        search.setFont(new Font(null, Font.PLAIN, 15));
-        search.addActionListener(this);
+        followButtonLabel.setBounds(125, 100, 200, 35);
+        followButtonLabel.setFont(new Font(null, Font.PLAIN, 15));
+        followButtonLabel.addActionListener(this);
 
         // button to clear the search bar
         clear.setBounds(125, 150, 200, 35);
@@ -51,13 +50,14 @@ public class FollowGUI implements ActionListener {
         back.setBounds(125, 300, 100, 35);
         back.setFont(new Font(null, Font.PLAIN, 15));
         back.addActionListener(this);
+        //Label after clicking follow button
+        messageLabel.setBounds(125);
 
         frame.add(followButtonLabel);
-        frame.add(search);
+        frame.add(followLabel);
         frame.add(searchBar);
         frame.add(clear);
         frame.add(back);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLayout(null);
@@ -79,20 +79,17 @@ public class FollowGUI implements ActionListener {
             searchBar.setText("");
         }
 
-        if(action.getSource() == search) {
-            String tag = searchBar.getText();
-            SearchController searchController = new SearchController(this.user);
-            ArrayList<String> searchList = null;
-            try {
-                searchList = searchController.getProductID(tag);
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+        if(action.getSource() == followButtonLabel) {
+            String username = searchBar.getText();
+            FollowController followController = new FollowController();
+            if(followController.canFollow(username)){
+                messageLabel.setForeground(Color.black);
+                messageLabel.setText(followPresenter.presentCanFollow());
             }
-            frame.dispose();
-            assert searchList != null;
-            ScrollSearchGui scrollSearchGUI = new ScrollSearchGui(user, searchList);
-
-
+            else{
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText(followPresenter.presentCantFollow());
+            }
         }
 
     }
