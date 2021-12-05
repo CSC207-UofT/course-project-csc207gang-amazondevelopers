@@ -3,7 +3,7 @@ package options.buy_functions;
 
 import options.follow_users.UserUseCase;
 import product.GetProductGateway;
-import productFunctions.Product;
+import product.Product;
 import user.User;
 
 import java.io.IOException;
