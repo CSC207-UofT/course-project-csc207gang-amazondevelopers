@@ -7,7 +7,6 @@ public interface FeedPresenterInterface {
     String presentProductName();
     String presentPostedBy();
     String presentCaption();
-    String presentDescription();
     String presentQuantity();
     String presentSize();
 }

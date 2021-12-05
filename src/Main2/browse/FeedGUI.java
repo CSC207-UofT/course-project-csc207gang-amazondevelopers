@@ -9,6 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import userFunctions.CartManager;
+
+/**
+ * Class that presents a post to a user using our JFrame command line interface,
+ *
+ */
 public class FeedGUI implements ActionListener {
     JFrame frame = new JFrame();
     EnglishFeedPresenter feedPresenter = new EnglishFeedPresenter();
@@ -21,17 +27,27 @@ public class FeedGUI implements ActionListener {
     JLabel productDescriptionLabel = new JLabel();
     JLabel productQuantityLabel = new JLabel();
     JLabel productSizeLabel = new JLabel();
+    JLabel indexLabel = new JLabel();
     ArrayList<Post> feed;
     ArrayList<PostMemento.Memento> memento;
     PostMemento postMemento;
     int index;
     User user;
-    public FeedGUI(PostMemento postMemento, ArrayList<Post> feed,ArrayList<PostMemento.Memento> mementos, User user, int Index){
+
+    /**
+     * Represents a constructor for the JFrame of a Post in the Feed
+     * @param postMemento Represents the current post that needs to be displayed
+     * @param feed Represents the total feed of the current user
+     * @param mementos A list of memento objects, in reverse order its the last posts that where displayed
+     * @param user The user viewing posts
+     */
+    public FeedGUI(PostMemento postMemento, ArrayList<Post> feed,ArrayList<PostMemento.Memento> mementos, User user, int index){
         Post post = postMemento.getState();
         this.postMemento = postMemento;
         this.memento = mementos;
         this.feed = feed;
-        this.index = 0;
+        this.index = index;
+        this.user = user;
         posterLabel.setText(feedPresenter.presentPostedBy() + post.getUser().getUsername());
         posterLabel.setBounds(25,25,400,25);
 
@@ -56,6 +72,9 @@ public class FeedGUI implements ActionListener {
         nextButton.setBounds(245, 400, 100, 25);
         nextButton.addActionListener(this);
 
+        indexLabel.setText(index + "/" + feed.size());
+        indexLabel.setBounds(475,250,50,25);
+        frame.add(indexLabel);
         frame.add(productNameLabel);
         frame.add(productDescriptionLabel);
         frame.add(productQuantityLabel);
@@ -71,6 +90,10 @@ public class FeedGUI implements ActionListener {
         frame.setVisible(true);
     }
 
+    /**
+     * Represents different actions when the JButtons are interacted with the user
+     * @param e the Action event performed in
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == nextButton){
@@ -101,9 +124,11 @@ public class FeedGUI implements ActionListener {
             }
         }
         if (e.getSource() == cartButton);
-            //need to implement
+            CartManager cartManager = new CartManager();
+            cartManager.addToCart(postMemento.getState().getProduct(), user);
             frame.setVisible(false);
             frame.dispose();
+            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,postMemento.getState().getProduct().getName());
         }
     }
 }
