@@ -1,7 +1,7 @@
 package browse;
 
 import browse.EmptyFeedPresenter.EnglishEmptyFeedPresenter;
-import userFunctions.User;
+import user.User;
 import options.OptionsGUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;

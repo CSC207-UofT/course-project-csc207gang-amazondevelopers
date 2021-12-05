@@ -4,7 +4,7 @@ package options.buy_functions;
 import options.follow_users.UserUseCase;
 import product.GetProductGateway;
 import productFunctions.Product;
-import userFunctions.User;
+import user.User;
 
 import java.io.IOException;
 import java.security.cert.TrustAnchor;

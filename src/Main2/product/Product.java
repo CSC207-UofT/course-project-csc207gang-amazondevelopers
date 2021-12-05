@@ -1,3 +1,4 @@
+package product;
 import java.io.Serializable;
 
 public class Product implements Serializable{
@@ -19,8 +20,17 @@ public class Product implements Serializable{
     /**
      * Creates a new Product object.
      * The Constructor takes in 4 arguments, the name of the Product. The price
-     * of the Product. The Product category as well as the size of the product.
+     * of the Product. The Product category as well as a list of sizes of the
+     * product or null if there is only one size.
      */
+    public Product(String name, String id, Double price, String category, int quantity) {
+        this.name = name;
+        this.id = id;
+        this.price = price;
+        this.category = category;
+        this.sizes = null;
+        this.quantity = quantity;
+    }
 
     public Product(String name, String id, Double price, String category, String sizes, int quantity) {
         this.name = name;
@@ -35,7 +45,11 @@ public class Product implements Serializable{
      * @return the string representation of the product
      */
     public String toString() {
-        return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock" + ", " + sizes;
+        if (this.sizes == null) {
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
+        } else {
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock" + ", " + sizes;
+        }
     }
 
     // getter for name of product
@@ -93,7 +107,11 @@ public class Product implements Serializable{
 
     // setter for sizes
     public void setSizes(String psize) {
+        if (psize.equals("")) {
+            this.sizes = null;
+        } else {
             this.sizes = psize;
+        }
     }
 
     //getter for quantity
@@ -107,5 +125,7 @@ public class Product implements Serializable{
     }
 
     public String getUsername() {return this.username;}
+
+
 }
 

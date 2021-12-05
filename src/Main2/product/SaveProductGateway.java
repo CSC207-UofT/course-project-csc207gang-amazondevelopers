@@ -1,12 +1,12 @@
 package product;
+import login_functions.DictionaryReadWriter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import productFunctions.Product;
-import serializationFunctions.DictionaryReadWriter;
 
 public class SaveProductGateway implements SaveProductGatewayInterface {
 

@@ -1,14 +1,11 @@
 package options;
 
-import browseFunctions.BrowseController;
-import followFunctions.FollowController;
+import browse.BrowseController;
 import inputOutputFunctions.InOut;
-import loginFunctions.WelcomePageController;
+import options.follow_users.FollowController;
 import options.search.SearchController;
-import productFunctions.CreateProductController;
-import settingsFunctions.SettingsController;
-import userFunctions.SaveUserChangesGateways;
-import userFunctions.User;
+import product.CreateProductController;
+import user.User;
 import java.io.IOException;
 
 /**

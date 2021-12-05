@@ -1,5 +1,5 @@
 package product;
-import productFunctions.Product;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class ProductUseCase {
      * @param quantity  Int amount to remove from existing quantity of the product.
      * @return true successfully decreased amount and false otherwise.
      */
-    public boolean decreaseQuantity(productFunctions.Product product, int quantity) {
+    public boolean decreaseQuantity(Product product, int quantity) {
         if (quantity >= 0) {
             int newQuantity = product.getQuantity() - quantity;
             product.setQuantity(newQuantity);

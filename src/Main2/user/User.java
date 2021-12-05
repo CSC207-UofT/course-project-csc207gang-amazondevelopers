@@ -1,3 +1,8 @@
+package user;
+
+import post.Post;
+import product.Product;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

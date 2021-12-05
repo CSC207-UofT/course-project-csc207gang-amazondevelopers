@@ -1,7 +1,8 @@
 package login_functions;
 
 import options.OptionsGUI;
-import userFunctions.User;
+import user.User;
+
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;

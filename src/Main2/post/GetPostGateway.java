@@ -1,7 +1,5 @@
 package post;
-import inputOutputFunctions.SystemInOut;
-import postFunctions.Post;
-import serializationFunctions.DictionaryReadWriter;
+import login_functions.DictionaryReadWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,7 +17,6 @@ public class GetPostGateway {
      * @throws ClassNotFoundException thrown if the class is not found
      */
     public Post getPost(String productId) throws IOException, ClassNotFoundException {
-        SystemInOut input = new SystemInOut();
         File file = new File("src/Main/IdToPost.ser");
         if (file.length() == 0){
             // go back to options

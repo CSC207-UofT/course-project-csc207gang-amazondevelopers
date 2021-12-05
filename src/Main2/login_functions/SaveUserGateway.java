@@ -1,7 +1,7 @@
 package login_functions;
 
-import serializationFunctions.DictionaryReadWriter;
-import userFunctions.User;
+import user.User;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;

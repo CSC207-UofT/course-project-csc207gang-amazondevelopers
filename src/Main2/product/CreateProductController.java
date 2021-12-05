@@ -1,7 +1,6 @@
 package product;
-import productFunctions.GetProductGateway;
-import productFunctions.Product;
-import userFunctions.User;
+import user.User;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +36,7 @@ public class CreateProductController {
      * @throws ClassNotFoundException if file is empty when trying to get HashMap from ser file
      */
     private String generateID() throws IOException, ClassNotFoundException {
-        productFunctions.GetProductGateway getProductGateway = new GetProductGateway();
+        GetProductGateway getProductGateway = new GetProductGateway();
         HashMap<String, Object> hashMap = getProductGateway.getHashMap();
         int hashMapSize = hashMap.size();
         if (hashMapSize == 0) {

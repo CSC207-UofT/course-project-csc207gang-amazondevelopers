@@ -3,16 +3,17 @@ package browse;
 import browse.FeedPresenter.EnglishFeedPresenter;
 
 import cart_functions.Cart;
+import cart_functions.CartManager;
 import options.UserOptionsController;
 import options.OptionsGUI;
-import userFunctions.User;
-import postFunctions.Post;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import userFunctions.CartManager;
+import post.Post;
+import user.User;
 
 /**
  * Class that presents a post to a user using our JFrame command line interface,

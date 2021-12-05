@@ -1,10 +1,9 @@
 package post;
 import login_functions.SaveUserGateway;
 import login_functions.SaveUserGatewayInterface;
-import postFunctions.Post;
 import product.CreateProductController;
-import productFunctions.Product;
-import userFunctions.User;
+import product.Product;
+import user.User;
 
 import java.io.IOException;
 import java.util.ArrayList;

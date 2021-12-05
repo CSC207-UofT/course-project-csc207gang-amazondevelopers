@@ -1,13 +1,7 @@
 package options.follow_users;
 
-import login_functions.GetUserGateway;
 import options.OptionsGUI;
-import options.UserOptionsController;
-import options.search.ScrollSearchGui;
-import options.search.SearchController;
-import options.search.SearchPresenter;
-import options.search.SearchPresenterInterface;
-import userFunctions.User;
+import user.User;
 
 import javax.swing.*;
 import java.awt.*;

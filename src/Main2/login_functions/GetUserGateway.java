@@ -1,8 +1,6 @@
 package login_functions;
 
-import loginFunctions.SignInGatewayInterface;
-import serializationFunctions.DictionaryReadWriter;
-import userFunctions.User;
+import user.User;
 
 
 import java.io.File;

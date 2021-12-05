@@ -1,8 +1,8 @@
 package browse;
-import browseFunctions.BrowseUseCase;
+import browse.BrowseUseCase;
 import browse.GetUserDictGateway.GetUserDictGateway;
-import postFunctions.Post;
-import userFunctions.User;
+import post.Post;
+import user.User;
 
 import java.io.IOException;
 import java.util.ArrayList;

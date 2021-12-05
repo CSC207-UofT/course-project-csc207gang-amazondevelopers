@@ -6,15 +6,14 @@ import loginFunctions.GetUserGateway;
 import loginFunctions.SignInController;
 import loginFunctions.SignUpController;
 import loginFunctions.SignUpGateway;
+import login_functions.SignInController;
+import login_functions.SignUpController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import postFunctions.AddPostGateway;
-import postFunctions.Post;
-import productFunctions.CreateProductGateway;
-import settingsFunctions.DeleteProductsGateway;
-import settingsFunctions.DeleteUserGateway;
-import userFunctions.User;
+import post.Post;
+import product.Product;
+import user.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,10 +27,10 @@ public class BrowseControllerTest {
 
     User testUser1 = new User("TestSignUpControllerUser");
     User testUser2 = new User("follower");
-    productFunctions.Product testProduct = new productFunctions.Product("shoes", "TEST", 5.0, "shoes", "2",1);
+    Product testProduct = new productFunctions.Product("shoes", "TEST", 5.0, "shoes", "2",1);
     Post post = new Post(testProduct, testUser2);
 
-    productFunctions.CreateProductGateway createProductGateway = new CreateProductGateway();
+    CreateProductGateway createProductGateway = new CreateProductGateway();
     productFunctions.GetProductGateway getProductGateway = new productFunctions.GetProductGateway();
     productFunctions.ProductUseCase productUseCaseCreate = new productFunctions.ProductUseCase(createProductGateway);
     GetUserGateway getUserGateway = new GetUserGateway();
