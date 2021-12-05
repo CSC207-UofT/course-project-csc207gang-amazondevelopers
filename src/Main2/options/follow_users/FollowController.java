@@ -1,8 +1,8 @@
 package options.follow_users;
 
 
-import loginFunctions.GetUserGateway;
-import loginFunctions.SaveUserGateway;
+import login_functions.SaveUserGateway;
+import login_functions.GetUserGateway;
 import userFunctions.User;
 
 import java.io.IOException;

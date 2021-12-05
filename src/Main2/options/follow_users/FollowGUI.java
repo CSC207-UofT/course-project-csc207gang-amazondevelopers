@@ -31,7 +31,7 @@ public class FollowGUI implements ActionListener {
     public FollowGUI(User user) {
         this.user = user;
 
-        followLabel.setBounds(70, 100, 250, 35);
+        followLabel.setBounds(125, 25, 250, 35);
         followLabel.setFont(new Font("Serif", Font.PLAIN, 14));
 
         // search bar + search button
@@ -51,13 +51,14 @@ public class FollowGUI implements ActionListener {
         back.setFont(new Font(null, Font.PLAIN, 15));
         back.addActionListener(this);
         //Label after clicking follow button
-        messageLabel.setBounds(125);
+        messageLabel.setBounds(125,200,300,25);
 
         frame.add(followButtonLabel);
         frame.add(followLabel);
         frame.add(searchBar);
         frame.add(clear);
         frame.add(back);
+        frame.add(messageLabel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLayout(null);
@@ -81,14 +82,20 @@ public class FollowGUI implements ActionListener {
 
         if(action.getSource() == followButtonLabel) {
             String username = searchBar.getText();
-            FollowController followController = new FollowController();
-            if(followController.canFollow(username)){
-                messageLabel.setForeground(Color.black);
-                messageLabel.setText(followPresenter.presentCanFollow());
-            }
-            else{
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText(followPresenter.presentCantFollow());
+            FollowController followController = new FollowController(user);
+            try {
+                if(followController.canFollow(username)){
+                    messageLabel.setForeground(Color.black);
+                    messageLabel.setText(followPresenter.presentCanFollow());
+                }
+                else{
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(followPresenter.presentCantFollow());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
 

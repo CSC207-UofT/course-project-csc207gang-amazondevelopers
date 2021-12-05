@@ -3,6 +3,7 @@ package options;
 import browse.BrowseController;
 import cart_functions.CartGUI;
 import login_functions.WelcomePageGUI;
+import options.follow_users.FollowGUI;
 import options.search.SearchGUI;
 import post.PostGUI;
 import userFunctions.User;
@@ -89,7 +90,8 @@ public class OptionsGUI implements ActionListener {
             SearchGUI searchGUI = new SearchGUI(this.user);
         }
         if(e.getSource()==findSellers) {
-            System.exit(0);
+            frame.dispose();
+            FollowGUI followGUI = new FollowGUI(this.user);
         }
         if(e.getSource()==browse) {
             frame.dispose();
