@@ -1,22 +1,13 @@
 package browse;
 
-import browse.AddedToCartPresenter.AddedToCartPresenter;
 import browse.FeedPresenter.EnglishFeedPresenter;
-import browseFunctions.BrowseUseCase;
-import cart_functions.Cart;
 import options.UserOptionsController;
-import options.search.SearchController;
-import options.search.SearchGateway;
-import productFunctions.GetProductGateway;
-import productFunctions.Product;
 import userFunctions.User;
 import postFunctions.Post;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import userFunctions.CartManager;
 
@@ -36,6 +27,7 @@ public class FeedGUI implements ActionListener {
     JLabel productDescriptionLabel = new JLabel();
     JLabel productQuantityLabel = new JLabel();
     JLabel productSizeLabel = new JLabel();
+    JLabel indexLabel = new JLabel();
     ArrayList<Post> feed;
     ArrayList<PostMemento.Memento> memento;
     PostMemento postMemento;
@@ -48,14 +40,14 @@ public class FeedGUI implements ActionListener {
      * @param feed Represents the total feed of the current user
      * @param mementos A list of memento objects, in reverse order its the last posts that where displayed
      * @param user The user viewing posts
-     * @param Index Index of the current post.
      */
-    public FeedGUI(PostMemento postMemento, ArrayList<Post> feed,ArrayList<PostMemento.Memento> mementos, User user, int Index){
+    public FeedGUI(PostMemento postMemento, ArrayList<Post> feed,ArrayList<PostMemento.Memento> mementos, User user, int index){
         Post post = postMemento.getState();
         this.postMemento = postMemento;
         this.memento = mementos;
         this.feed = feed;
-        this.index = 0;
+        this.index = index;
+        this.user = user;
         posterLabel.setText(feedPresenter.presentPostedBy() + post.getUser().getUsername());
         posterLabel.setBounds(25,25,400,25);
 
@@ -80,6 +72,9 @@ public class FeedGUI implements ActionListener {
         nextButton.setBounds(245, 400, 100, 25);
         nextButton.addActionListener(this);
 
+        indexLabel.setText(index + "/" + feed.size());
+        indexLabel.setBounds(475,250,50,25);
+        frame.add(indexLabel);
         frame.add(productNameLabel);
         frame.add(productDescriptionLabel);
         frame.add(productQuantityLabel);
@@ -97,7 +92,7 @@ public class FeedGUI implements ActionListener {
 
     /**
      * Represents different actions when the JButtons are interacted with the user
-     * @param e
+     * @param e the Action event performed in
      */
     @Override
     public void actionPerformed(ActionEvent e) {
