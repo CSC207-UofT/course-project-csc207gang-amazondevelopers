@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import postFunctions.Post;
 /**
  * user is the user logged into the program
  */
@@ -32,10 +31,7 @@ public class BrowseController {
         ArrayList userFeed = browseUseCase.generateFeed(users,following);
         //List<String> feedIds = browseUseCase.getlistProductID(userFeed);
         if (userFeed.size() != 0){
-            PostMemento postMemento = new PostMemento();
-            postMemento.setState((Post) userFeed.get(0));
-            ArrayList<PostMemento.Memento> mementos = new ArrayList<PostMemento.Memento>();
-            FeedGUI feedGUI = new FeedGUI(postMemento,userFeed,mementos,user,0);
+            FeedGUI feedGUI = new FeedGUI(userFeed,user,0);
         }
         else{
             EmptyFeedGUI emptyFeedGUI = new EmptyFeedGUI(user);
