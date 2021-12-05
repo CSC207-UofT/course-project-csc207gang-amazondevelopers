@@ -19,7 +19,7 @@ public class BrowseUseCase {
     /**
      * Takes in a list of Posts and returns an arraylist of strings representing the ids of the product associated
      * with the list of posts.
-     * @param userFeed
+     * @param userFeed The feed of the User given
      */
     public List<String> getlistProductID(ArrayList<Post> userFeed) {
         ArrayList<String> stringProductList = new ArrayList<>();
@@ -37,10 +37,10 @@ public class BrowseUseCase {
      * @param followers a list of usernames that a specific user follows
      * @return A list of posts
      */
-    public List<Post> generateFeed(HashMap<String,User> users, List<String> followers){
-        List<Post> feed = new ArrayList<>();
-        for (int c = 0; c < followers.size(); c++){
-            User user1 = users.get(followers.get(c));
+    public ArrayList<Post> generateFeed(HashMap<String,User> users, List<String> followers){
+        ArrayList<Post> feed = new ArrayList<>();
+        for (String follower : followers) {
+            User user1 = users.get(follower);
             feed.addAll(user1.getListPosts());
         }
         return feed;

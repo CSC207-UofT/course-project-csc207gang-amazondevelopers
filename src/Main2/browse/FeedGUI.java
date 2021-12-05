@@ -1,14 +1,29 @@
 package browse;
 
+import browse.AddedToCartPresenter.AddedToCartPresenter;
 import browse.FeedPresenter.EnglishFeedPresenter;
+import browseFunctions.BrowseUseCase;
+import cart_functions.Cart;
 import options.UserOptionsController;
+import options.search.SearchController;
+import options.search.SearchGateway;
+import productFunctions.GetProductGateway;
+import productFunctions.Product;
 import userFunctions.User;
 import postFunctions.Post;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import userFunctions.CartManager;
+
+/**
+ * Class that presents a post to a user using our JFrame command line interface,
+ *
+ */
 public class FeedGUI implements ActionListener {
     JFrame frame = new JFrame();
     EnglishFeedPresenter feedPresenter = new EnglishFeedPresenter();
@@ -26,6 +41,15 @@ public class FeedGUI implements ActionListener {
     PostMemento postMemento;
     int index;
     User user;
+
+    /**
+     * Represents a constructor for the JFrame of a Post in the Feed
+     * @param postMemento Represents the current post that needs to be displayed
+     * @param feed Represents the total feed of the current user
+     * @param mementos A list of memento objects, in reverse order its the last posts that where displayed
+     * @param user The user viewing posts
+     * @param Index Index of the current post.
+     */
     public FeedGUI(PostMemento postMemento, ArrayList<Post> feed,ArrayList<PostMemento.Memento> mementos, User user, int Index){
         Post post = postMemento.getState();
         this.postMemento = postMemento;
@@ -71,6 +95,10 @@ public class FeedGUI implements ActionListener {
         frame.setVisible(true);
     }
 
+    /**
+     * Represents different actions when the JButtons are interacted with the user
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == nextButton){
@@ -101,9 +129,11 @@ public class FeedGUI implements ActionListener {
             }
         }
         if (e.getSource() == cartButton);
-            //need to implement
+            CartManager cartManager = new CartManager();
+            cartManager.addToCart(postMemento.getState().getProduct(), user);
             frame.setVisible(false);
             frame.dispose();
+            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,postMemento.getState().getProduct().getName());
         }
     }
 }

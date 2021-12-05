@@ -32,11 +32,6 @@ public class EnglishFeedPresenter implements FeedPresenterInterface {
     }
 
     @Override
-    public String presentDescription() {
-        return "Product Description: ";
-    }
-
-    @Override
     public String presentQuantity() {
         return "Product Quantity: ";
     }

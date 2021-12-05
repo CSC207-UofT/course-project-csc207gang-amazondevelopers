@@ -1,6 +1,5 @@
 package browse;
 import browseFunctions.BrowseUseCase;
-import browse.FeedPresenter.EnglishFeedPresenter;
 import browse.GetUserDictGateway.GetUserDictGateway;
 import userFunctions.User;
 
@@ -30,11 +29,11 @@ public class BrowseController {
         GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
         HashMap users = getUserDictGateway.getUserDict();
         List<String> following = user.getListFollowing();
-        ArrayList<Post> userFeed = (ArrayList<Post>) browseUseCase.generateFeed(users,following);
+        ArrayList userFeed = browseUseCase.generateFeed(users,following);
         //List<String> feedIds = browseUseCase.getlistProductID(userFeed);
         if (userFeed.size() != 0){
             PostMemento postMemento = new PostMemento();
-            postMemento.setState(userFeed.get(0));
+            postMemento.setState((Post) userFeed.get(0));
             ArrayList<PostMemento.Memento> mementos = new ArrayList<PostMemento.Memento>();
             FeedGUI feedGUI = new FeedGUI(postMemento,userFeed,mementos,user,0);
         }
