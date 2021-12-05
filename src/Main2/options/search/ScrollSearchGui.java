@@ -2,7 +2,7 @@ package options.search;
 
 
 import options.buy_functions.BuyController;
-import userFunctions.User;
+import user.User;
 
 import javax.swing.*;
 import java.awt.*;

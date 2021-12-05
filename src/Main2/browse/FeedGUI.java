@@ -3,6 +3,7 @@ package browse;
 import browse.FeedPresenter.EnglishFeedPresenter;
 
 import cart_functions.Cart;
+import cart_functions.CartManager;
 import options.UserOptionsController;
 import options.OptionsGUI;
 

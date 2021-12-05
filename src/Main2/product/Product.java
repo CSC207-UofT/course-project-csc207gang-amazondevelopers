@@ -1,4 +1,4 @@
-package productFunctions;
+package product;
 import java.io.Serializable;
 
 public class Product implements Serializable{

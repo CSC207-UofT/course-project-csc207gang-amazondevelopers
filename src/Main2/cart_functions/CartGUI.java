@@ -1,8 +1,8 @@
 package cart_functions;
 
 import options.OptionsGUI;
-import productFunctions.Product;
-import userFunctions.User;
+import product.Product;
+import user.User;
 
 import javax.swing.*;
 import java.awt.*;
