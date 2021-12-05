@@ -51,7 +51,7 @@ public class CartGUI implements ActionListener {
 
             jScrollPane.setSize(300, 300);
 
-            jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
             jScrollPane.setLayout(null);
             jScrollPane.setVisible(true);
 
@@ -83,21 +83,26 @@ public class CartGUI implements ActionListener {
 
 
         name.setBounds(10, 0, 230, 40);
-
         price.setBounds(120, 50, 110, 40);
 
-        productPanel.add(name);
+        name.setLayout(null);
+        name.setLayout(null);
+        name.setVisible(true);
+        price.setVisible(true);
 
+        productPanel.add(name);
         productPanel.add(price);
 
         if (product.getSizes() != null){
             JLabel size = new JLabel(product.getSizes().toString());
             size.setBounds(10, 50, 110, 40);
+            size.setVisible(true);
             productPanel.add(size);
         }
         else {
             JLabel size = new JLabel("n/a");
             size.setBounds(10, 50, 110, 40);
+            size.setVisible(true);
             productPanel.add(size);
         }
 
