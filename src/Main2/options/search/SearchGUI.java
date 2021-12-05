@@ -78,16 +78,13 @@ public class SearchGUI implements ActionListener {
 
         if(action.getSource() == search) {
             String tag = searchBar.getText();
-            SearchController searchController = new SearchController(this.user);
-            ArrayList<String> searchList = null;
             try {
-                searchList = searchController.getProductID(tag);
+                ScrollSearchGui scrollSearchGUI = new ScrollSearchGui(user, tag);
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
             frame.dispose();
-            assert searchList != null;
-            ScrollSearchGui scrollSearchGUI = new ScrollSearchGui(user, searchList);
+
 
 
         }

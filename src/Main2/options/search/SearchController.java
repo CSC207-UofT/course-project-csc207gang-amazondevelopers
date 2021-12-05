@@ -1,14 +1,10 @@
 package options.search;
 
-import inputOutputFunctions.InOut;
-import options.BuyController;
-import options.EnglishOptionsPresenter;
-import user.User;
+import userFunctions.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * the user of the program

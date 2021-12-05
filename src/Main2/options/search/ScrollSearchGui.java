@@ -1,18 +1,20 @@
 package options.search;
 
 
-import user.User;
+import options.buy_functions.BuyController;
+import userFunctions.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ScrollSearchGui implements ActionListener {
 
     SearchPresenterInterface searchPresenter = new SearchPresenter();
-    JLabel searchIntro = new JLabel(searchPresenter.inputIndex()) ;
+    JLabel searchIntro = new JLabel(searchPresenter.inputIndex());
     JFrame frame = new JFrame();
     JButton back = new JButton(searchPresenter.backButton());
     JButton buy = new JButton(searchPresenter.buyButton());
@@ -21,14 +23,20 @@ public class ScrollSearchGui implements ActionListener {
     JPanel indexPanel = new JPanel();
     JPanel titlePanel = new JPanel();
     JPanel backPanel = new JPanel();
-
+    JLabel messageLabel = new JLabel();
 
 
     User user;
+    SearchController searchController = new SearchController(user);
+    ArrayList<String> searchList;
 
 
-    public ScrollSearchGui(User user, ArrayList<String> searchList) {
+    public ScrollSearchGui(User user, String tag) throws IOException, ClassNotFoundException {
         this.user = user;
+
+        this.searchList = searchController.getProductID(tag);
+        messageLabel.setBounds(125, 125, 130, 130);
+
 
         searchIntro.setBounds(125, 20, 100, 35);
         searchIntro.setFont(new Font(null, Font.PLAIN, 13));
@@ -43,9 +51,8 @@ public class ScrollSearchGui implements ActionListener {
         backPanel.setBounds(400, 400, 100, 100);
 
 
-
         DefaultListModel list = new DefaultListModel();
-        for (String item: searchList){
+        for (String item : searchList) {
             list.addElement(item);
         }
         JList listOfProductDisplay = new JList(list);
@@ -56,7 +63,6 @@ public class ScrollSearchGui implements ActionListener {
         back.addActionListener(this);
         listScroller.setBounds(100, 100, 100, 100);
         scrollPanel.add(listScroller);
-
 
 
         //buy button
@@ -77,7 +83,6 @@ public class ScrollSearchGui implements ActionListener {
         indexPanel.add(buy);
 
 
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(550, 500);
         frame.setLayout(null);
@@ -85,7 +90,7 @@ public class ScrollSearchGui implements ActionListener {
         frame.getContentPane().setLayout(new FlowLayout());
         frame.getContentPane().add(listScroller);
         frame.add(titlePanel);
-
+        frame.add(messageLabel);
 
 
         listScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -96,30 +101,43 @@ public class ScrollSearchGui implements ActionListener {
         frame.add(scrollPanel);
 
 
-
-
     }
 
     /**
      * The action listener that sees what the user is doing and determines the results from this action.
+     *
      * @param action the action of the user
      */
     @Override
     public void actionPerformed(ActionEvent action) {
-        if(action.getSource() == back){
+        if (action.getSource() == back) {
             frame.dispose();
             SearchGUI searchGUI = new SearchGUI(user);
-        }
-        else if (action.getSource() == buy){
+        } else if (action.getSource() == buy) {
             String index = searchBar.getText();
-            frame.dispose();
-            // TODO: add buy controller, given index here
+            int indexInt = Integer.parseInt(index);
+
+            BuyController buyController = new BuyController();
+            boolean allowedBuy = false;
+            try {
+                allowedBuy = buyController.allowBuy(user, searchList, indexInt);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (allowedBuy) {
+                messageLabel.setForeground(Color.green);
+                messageLabel.setText(searchPresenter.canBuy());
+            } else {
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText(searchPresenter.cannotBuy());
+
+                frame.dispose();
+
+            }
+
 
         }
-
-
 
     }
-
 }
 //

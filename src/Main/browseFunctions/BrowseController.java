@@ -1,6 +1,6 @@
 package browseFunctions;
 import inputOutputFunctions.InOut;
-import options.BuyController;
+import options.buy_functions.BuyController;
 import postFunctions.Post;
 import userFunctions.User;
 
@@ -38,7 +38,7 @@ public class BrowseController {
         if (userFeed.size() != 0){
             postPresenter.presentProduct();
            BuyController buyController = new BuyController();
-           buyController.allowBuy(inOut, this.user, feedIds);
+           //buyController.allowBuy(inOut, this.user, feedIds);
         }
     }
 }

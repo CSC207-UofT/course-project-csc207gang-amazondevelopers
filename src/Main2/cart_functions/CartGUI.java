@@ -1,6 +1,5 @@
 package cart_functions;
 
-import login_functions.WelcomePageGUI;
 import options.OptionsGUI;
 import productFunctions.Product;
 import userFunctions.User;
@@ -9,13 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class CartGUI implements ActionListener {
     CartPresenter presenter = new CartPresenter();
     JFrame frame = new JFrame();
     JButton returnHome = new JButton("Return to Options Menu");
-    JTable panel = new JTable();
+    JButton buyButton = new JButton("Buy Cart");
+
     JLabel emptyCartMessage = new JLabel(presenter.emptyCartMessage());
     User user;
 
@@ -25,6 +24,8 @@ public class CartGUI implements ActionListener {
      */
 
     public CartGUI(User user){
+
+        //TODO cannot access getShoppingCart() use user Use case
 
         if (user.getShoppingCart().size()==0){
 
@@ -38,11 +39,26 @@ public class CartGUI implements ActionListener {
             frame.add(emptyCartMessage);
         }
         else{
+            Product prod = user.getShoppingCart().get(0);
+            JScrollPane jScrollPane = new JScrollPane(this.createProductFrame(prod));
+
             for(Product i:user.getShoppingCart()){
-                panel.add(createProductFrame(i));
+                if (!(user.getShoppingCart().indexOf(i) == 0)){
+                    jScrollPane.add(this.createProductFrame(i));
+                }
             }
-            panel.setBounds(85, 85, 250, 250);
-            frame.add(panel);
+
+            jScrollPane.setSize(300, 300);
+
+            jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+            jScrollPane.setLayout(null);
+            jScrollPane.setVisible(true);
+
+            frame.getContentPane().add(jScrollPane);
+
+            buyButton.setBounds(60, 300, 300, 25);
+            buyButton.addActionListener(this);
+
         }
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,25 +77,43 @@ public class CartGUI implements ActionListener {
      * @return JFrame
      */
 
-    private JFrame createProductFrame(Product product){
-        JFrame productFrame = new JFrame();
+    private JPanel createProductFrame(Product product){
+
+        JPanel productPanel = new JPanel();
         JLabel name = new JLabel(product.getName());
-        JLabel size = new JLabel(product.getSizes().toString());
         JLabel price = new JLabel(product.getPrice().toString());
 
+
+
         name.setBounds(10, 0, 230, 40);
-        size.setBounds(10, 50, 110, 40);
         price.setBounds(120, 50, 110, 40);
 
-        frame.add(name);
-        frame.add(size);
-        frame.add(price);
+        name.setLayout(null);
+        name.setLayout(null);
+        name.setVisible(true);
+        price.setVisible(true);
 
-        frame.setSize(250, 100);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        productPanel.add(name);
+        productPanel.add(price);
 
-        return productFrame;
+        if (product.getSizes() != null){
+            JLabel size = new JLabel(product.getSizes().toString());
+            size.setBounds(10, 50, 110, 40);
+            size.setVisible(true);
+            productPanel.add(size);
+        }
+        else {
+            JLabel size = new JLabel("n/a");
+            size.setBounds(10, 50, 110, 40);
+            size.setVisible(true);
+            productPanel.add(size);
+        }
+
+        productPanel.setSize(250, 100);
+        productPanel.setLayout(null);
+        productPanel.setVisible(true);
+
+        return productPanel;
     }
 
     @Override
@@ -87,6 +121,16 @@ public class CartGUI implements ActionListener {
         if(action.getSource()==returnHome) {
             frame.dispose();
             OptionsGUI optionsGUI = new OptionsGUI(this.user);
+        }
+        else if (action.getSource() == buyButton){
+            frame.dispose();
+            Cart cart = new Cart();
+            try {
+                cart.buyCart(user);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

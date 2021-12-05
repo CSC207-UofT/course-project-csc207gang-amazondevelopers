@@ -1,6 +1,9 @@
 package browse;
 
 import browse.FeedPresenter.EnglishFeedPresenter;
+
+import cart_functions.Cart;
+import options.UserOptionsController;
 import options.OptionsGUI;
 
 import javax.swing.*;
@@ -122,6 +125,16 @@ public class FeedGUI implements ActionListener {
                 AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, post.getProduct().getName());
             }
         }
+
+        else if (e.getSource() != cartButton) {
+            Cart cart = new Cart();
+            cart.addToCart(user, postMemento.getState().getProduct());
+            frame.setVisible(false);
+            frame.dispose();
+            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,postMemento.getState().getProduct().getName());
+            }
+        }
+
     }
 }
 
