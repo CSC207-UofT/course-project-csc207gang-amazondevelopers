@@ -21,6 +21,7 @@ public class SaveUserGateway implements SaveUserGatewayInterface {
             DictionaryReadWriter rw = new DictionaryReadWriter();
             HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main2/user.ser");
             usersSavedDict.put(username, userToBeSaved);
+            rw.saveToFile("src/Main2/user.ser", usersSavedDict);
         }
         else{ // file is empty
             DictionaryReadWriter rw = new DictionaryReadWriter();

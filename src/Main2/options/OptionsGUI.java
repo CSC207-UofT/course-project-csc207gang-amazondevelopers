@@ -3,6 +3,7 @@ package options;
 import browse.BrowseController;
 import cart_functions.CartGUI;
 import login_functions.WelcomePageGUI;
+import options.follow_users.FollowGUI;
 import options.search.SearchGUI;
 import post.PostGUI;
 import userFunctions.User;
@@ -89,17 +90,15 @@ public class OptionsGUI implements ActionListener {
             SearchGUI searchGUI = new SearchGUI(this.user);
         }
         if(e.getSource()==findSellers) {
-            System.exit(0);
+            FollowGUI followGUI = new FollowGUI(user);
         }
         if(e.getSource()==browse) {
             frame.dispose();
             BrowseController browseController = new BrowseController(this.user);
             try {
                 browseController.presentFeed();
-            } catch (IOException ioException) {
+            } catch (IOException | ClassNotFoundException ioException) {
                 ioException.printStackTrace();
-            } catch (ClassNotFoundException classNotFoundException) {
-                classNotFoundException.printStackTrace();
             }
         }
         if(e.getSource()==cart) {
