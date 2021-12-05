@@ -1,7 +1,7 @@
 package cart_functions;
 
 import inputOutputFunctions.SystemInOut;
-import options.BuyController;
+import options.buy_functions.BuyController;
 import productFunctions.Product;
 import userFunctions.User;
 
@@ -20,7 +20,7 @@ public class Cart {
         for (Product i:user.getShoppingCart()) {
             cartIDs.add(i.getId());
         }
-        buyController.allowBuy(inOut, user, cartIDs);
+        //buyController.allowBuy(inOut, user, cartIDs);
     }
 
     public void addToCart(User user, Product product){

@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class GetProductGateway implements GetProductGatewayInterface {
 
-    SystemInOut input = new SystemInOut();
+
 
     /**
      * Get eh product from the .ser file

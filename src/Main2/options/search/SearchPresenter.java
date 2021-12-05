@@ -23,5 +23,9 @@ public class SearchPresenter implements SearchPresenterInterface{
     public String putIndex(){return "Index Of Item";}
 
     public String buyButton(){return "Buy Something!";}
+
+    public String cannotBuy(){return "Can't Buy this product!";}
+
+    public String canBuy(){return "Can Buy this product";}
 }
 //

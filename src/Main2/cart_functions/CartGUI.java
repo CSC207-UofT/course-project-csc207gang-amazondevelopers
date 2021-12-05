@@ -1,7 +1,5 @@
 package cart_functions;
 
-import login_functions.WelcomePageGUI;
-import options.BuyController;
 import options.OptionsGUI;
 import productFunctions.Product;
 import userFunctions.User;
@@ -10,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class CartGUI implements ActionListener {
     CartPresenter presenter = new CartPresenter();
