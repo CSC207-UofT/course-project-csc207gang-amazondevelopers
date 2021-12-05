@@ -1,6 +1,7 @@
 package browse;
 
 import browse.FeedPresenter.EnglishFeedPresenter;
+import cart_functions.Cart;
 import options.UserOptionsController;
 import userFunctions.User;
 import postFunctions.Post;
@@ -123,12 +124,13 @@ public class FeedGUI implements ActionListener {
                 FeedGUI feedGUI = new FeedGUI(postMemento,feed,memento,user,index-1);
             }
         }
-        if (e.getSource() == cartButton);
-            CartManager cartManager = new CartManager();
-            cartManager.addToCart(postMemento.getState().getProduct(), user);
+        else if (e.getSource() != cartButton) {
+            Cart cart = new Cart();
+            cart.addToCart(user, postMemento.getState().getProduct());
             frame.setVisible(false);
             frame.dispose();
             AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,postMemento.getState().getProduct().getName());
+            }
         }
     }
 }
