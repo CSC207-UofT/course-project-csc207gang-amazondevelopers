@@ -7,6 +7,7 @@ import productFunctions.Product;
 import userFunctions.User;
 
 import java.io.IOException;
+import java.security.cert.TrustAnchor;
 import java.util.List;
 
 
@@ -21,15 +22,22 @@ public class BuyController {
      * @throws ClassNotFoundException
      */
 
-    public void allowBuy(User user, List<String> listIds, int index) throws IOException, ClassNotFoundException {
+    public boolean allowBuy(User user, List<String> listIds, int index) throws IOException, ClassNotFoundException {
 
-        String productId = listIds.get(index);
-        // get the product at the index
-        GetProductGateway getProductGateway = new GetProductGateway();
-        Product product = getProductGateway.getProduct(productId);
+        if (0 <= index && index < listIds.size()) {
 
-        UserUseCase userUseCase = new UserUseCase(user);
-        userUseCase.userAddToCart(product);
+            String productId = listIds.get(index);
+            // get the product at the index
+            GetProductGateway getProductGateway = new GetProductGateway();
+            Product product = getProductGateway.getProduct(productId);
+
+            UserUseCase userUseCase = new UserUseCase(user);
+            userUseCase.userAddToCart(product);
+
+            return true;
+        }
+
+        return false;
 
     }
 }

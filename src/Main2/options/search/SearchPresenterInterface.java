@@ -8,5 +8,8 @@ public interface SearchPresenterInterface {
     String inputIndex();
     String buyButton();
 
+    String cannotBuy();
+    String canBuy();
+
 }
 //
