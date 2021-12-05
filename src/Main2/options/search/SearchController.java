@@ -8,6 +8,7 @@ import userFunctions.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,25 +21,6 @@ public class SearchController {
         this.user = user;
     }
 
-//    /**
-//     * Allows the user to input a tag for possible categories of items that they might be interested in and
-//     * allow user to buy if the list of tags is not empty. If list of tags is empty, then send the user back to
-//     * choose another option.
-//     *
-//     */
-//    public void allowSearch(InOut input) throws Exception {
-//        List<String> listProductIds = getProductID(input);
-//        if (listProductIds.size() != 0){
-//            options.BuyController buyController = new BuyController();
-//            buyController.allowBuy(input, this.user, listProductIds);
-//        }
-//        // list of ids is empty, send user back to choose another option
-//        else{
-//            options.EnglishOptionsPresenter engPresenter = new EnglishOptionsPresenter();
-//            engPresenter.noMatchingProductsPresent();
-//        }
-//    }
-
     /**
      * Allows the user to input a tag for possible categories of items that they might be interested in,
      * and will receive a list of IDs of those products if the tag exists.
@@ -47,7 +29,25 @@ public class SearchController {
      */
     public ArrayList<String> getProductID(String productTag) throws IOException, ClassNotFoundException {
         SearchGateway searchGateway = new SearchGateway();
-        return searchGateway.searchProducts(productTag);
+        // product ID's we want to make to toString
+        ArrayList<String> productIdList =  searchGateway.searchProducts(productTag);
+        // ID to product Hash
+        HashMap<String, Object> IdToProduct = searchGateway.searchIDToProductList();
+
+        ArrayList<String> productToString = new ArrayList<>();
+        for (String productId : productIdList){
+            int index = productIdList.indexOf(productId);
+            String prodIndex = String.valueOf(index);
+
+            if (IdToProduct.containsKey(productId)){
+                Object product = IdToProduct.get(productId);
+                String toSt = prodIndex +  ") " +product.toString();
+                productToString.add(toSt);
+            }
+
+
+        }
+        return productToString;
 
     }
 }
