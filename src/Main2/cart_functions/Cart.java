@@ -21,7 +21,7 @@ public class Cart {
             cartIDs.add(i.getId());
         }
         buyController.allowBuy(inOut, user, cartIDs);
-        }
+    }
 
     public void addToCart(User user, Product product){
         List<Product> productList = new ArrayList<>();

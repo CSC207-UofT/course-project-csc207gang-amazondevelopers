@@ -1,6 +1,7 @@
 package cart_functions;
 
 import login_functions.WelcomePageGUI;
+import options.BuyController;
 import options.OptionsGUI;
 import productFunctions.Product;
 import userFunctions.User;
@@ -15,6 +16,7 @@ public class CartGUI implements ActionListener {
     CartPresenter presenter = new CartPresenter();
     JFrame frame = new JFrame();
     JButton returnHome = new JButton("Return to Options Menu");
+    JButton buyButton = new JButton("Buy Cart");
 
     JLabel emptyCartMessage = new JLabel(presenter.emptyCartMessage());
     User user;
@@ -56,6 +58,10 @@ public class CartGUI implements ActionListener {
             jScrollPane.setVisible(true);
 
             frame.getContentPane().add(jScrollPane);
+
+            buyButton.setBounds(60, 300, 300, 25);
+            buyButton.addActionListener(this);
+
         }
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,6 +124,16 @@ public class CartGUI implements ActionListener {
         if(action.getSource()==returnHome) {
             frame.dispose();
             OptionsGUI optionsGUI = new OptionsGUI(this.user);
+        }
+        else if (action.getSource() == buyButton){
+            frame.dispose();
+            Cart cart = new Cart();
+            try {
+                cart.buyCart(user);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
