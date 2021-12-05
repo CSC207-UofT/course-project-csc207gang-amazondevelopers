@@ -126,12 +126,12 @@ public class FeedGUI implements ActionListener {
             }
         }
 
-        else if (e.getSource() != cartButton) {
+        else if (e.getSource() == cartButton) {
             Cart cart = new Cart();
-            cart.addToCart(user, postMemento.getState().getProduct());
+            cart.addToCart(user, post.getProduct());
             frame.setVisible(false);
             frame.dispose();
-            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,postMemento.getState().getProduct().getName());
+            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,post.getProduct().getName());
             }
         }
 
