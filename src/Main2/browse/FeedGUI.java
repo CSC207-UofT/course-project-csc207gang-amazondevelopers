@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import post.Post;
 import user.User;
-import userFunctions.CartManager;
 
 /**
  * Class that presents a post to a user using our JFrame command line interface,

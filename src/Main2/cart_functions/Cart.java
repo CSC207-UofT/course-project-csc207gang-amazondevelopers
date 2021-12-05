@@ -2,9 +2,8 @@ package cart_functions;
 
 import inputOutputFunctions.SystemInOut;
 import options.buy_functions.BuyController;
-import productFunctions.Product;
+import product.Product;
 import user.User;
-import userFunctions.User;
 
 import java.util.*;
 import java.util.stream.Collectors;
