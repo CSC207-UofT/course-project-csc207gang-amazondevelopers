@@ -26,6 +26,8 @@ public class CartGUI implements ActionListener {
 
     public CartGUI(User user){
 
+        //TODO cannot access getShoppingCart() use user Use case
+
         if (user.getShoppingCart().size()==0){
 
             emptyCartMessage.setBounds(150, 100, 250, 35);

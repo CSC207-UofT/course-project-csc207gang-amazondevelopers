@@ -6,6 +6,9 @@ import productFunctions.Product;
 import userFunctions.User;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.List;
 
 public class Cart {
 
@@ -144,4 +147,12 @@ public class Cart {
         }
         buyController.allowBuy(inOut, user, cartIDs);
         }
+
+    public void addToCart(User user, Product product){
+        List<Product> productList = new ArrayList<>();
+        productList.add(product);
+
+        user.setShoppingCart(Stream.concat(user.getShoppingCart().stream(),
+                productList.stream()).collect(Collectors.toList()));
+    }
 }
