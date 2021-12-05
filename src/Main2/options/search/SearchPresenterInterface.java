@@ -6,7 +6,6 @@ public interface SearchPresenterInterface {
     String backButton();
     String searchInstructions();
     String inputIndex();
-    String putIndex();
     String buyButton();
 
 }
