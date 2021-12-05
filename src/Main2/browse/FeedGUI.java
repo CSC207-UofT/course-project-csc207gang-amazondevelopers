@@ -2,13 +2,14 @@ package browse;
 
 import browse.FeedPresenter.EnglishFeedPresenter;
 import options.OptionsGUI;
-import userFunctions.User;
-import postFunctions.Post;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import post.Post;
+import user.User;
 import userFunctions.CartManager;
 
 /**

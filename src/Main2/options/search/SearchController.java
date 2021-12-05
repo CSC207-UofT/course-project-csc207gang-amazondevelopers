@@ -3,8 +3,7 @@ package options.search;
 import inputOutputFunctions.InOut;
 import options.BuyController;
 import options.EnglishOptionsPresenter;
-import productFunctions.Product;
-import userFunctions.User;
+import user.User;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,6 +1,7 @@
 package options.search;
 
-import userFunctions.User;
+
+import user.User;
 
 import javax.swing.*;
 import java.awt.*;

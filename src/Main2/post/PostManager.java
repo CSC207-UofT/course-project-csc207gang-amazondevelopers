@@ -1,8 +1,7 @@
 package post;
 import login_functions.SaveUserGatewayInterface;
-import postFunctions.Post;
-import productFunctions.Product;
-import userFunctions.User;
+import user.User;
+
 import java.io.IOException;
 
 /**
@@ -29,7 +28,7 @@ public class PostManager {
      *
      * @return a newly created post.
      */
-    public Post createPost(Product product, String caption, boolean canComment, boolean canRate, User user) {
+    public Post createPost(productFunctions.Product product, String caption, boolean canComment, boolean canRate, User user) {
         return new Post(product, caption, canComment, canRate, user);
     }
 

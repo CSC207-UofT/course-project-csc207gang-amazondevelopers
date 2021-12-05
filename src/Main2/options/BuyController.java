@@ -1,19 +1,15 @@
 package options;
 
-import browseFunctions.GetUserDictGateway;
-import browseFunctions.GetUserDictGatewayInterface;
-import browseFunctions.SaveUserDictGateway;
-import browseFunctions.SaveUserDictGatewayInterface;
-import inputOutputFunctions.InOut;
-import loginFunctions.SaveUserGateway;
-import loginFunctions.SaveUserGatewayInterface;
+
+import browse.GetUserDictGateway.GetUserDictGatewayInterface;
+import browse.SaveUserDictGateway.SaveUserDictGatewayInterface;
+import login_functions.SaveUserGatewayInterface;
 import options.search.SearchController;
-import productFunctions.GetProductGateway;
-import productFunctions.Product;
-import userFunctions.CartManager;
-import userFunctions.SaveProductGateway;
-import userFunctions.SaveProductGatewayInterface;
-import userFunctions.User;
+import product.GetProductGateway;
+import product.Product;
+import product.SaveProductGatewayInterface;
+import user.User;
+
 
 import java.io.IOException;
 import java.util.List;

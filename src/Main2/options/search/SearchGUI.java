@@ -1,8 +1,7 @@
 package options.search;
 
 import options.OptionsGUI;
-import productFunctions.Product;
-import userFunctions.User;
+import user.User;
 
 import javax.swing.*;
 import java.awt.*;

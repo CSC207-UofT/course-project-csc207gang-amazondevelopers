@@ -2,7 +2,7 @@ package post;
 
 import login_functions.WelcomePageGUI;
 import options.OptionsGUI;
-import userFunctions.User;
+import user.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

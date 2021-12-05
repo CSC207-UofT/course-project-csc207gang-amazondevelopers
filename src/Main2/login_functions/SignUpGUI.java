@@ -1,6 +1,5 @@
 package login_functions;
 
-import userFunctions.User;
 
 import javax.swing.*;
 import javax.swing.JLabel;

@@ -1,6 +1,6 @@
 package login_functions;
 
-import userFunctions.User;
+import user.User;
 
 import java.io.IOException;
 import java.util.HashMap;

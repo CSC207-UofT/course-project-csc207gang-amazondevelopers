@@ -3,7 +3,7 @@ package browse;
 import browse.AddedToCartPresenter.EnglishAddedPresenter;
 import browse.EmptyFeedPresenter.EnglishEmptyFeedPresenter;
 import options.OptionsGUI;
-import userFunctions.User;
+import user.User;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

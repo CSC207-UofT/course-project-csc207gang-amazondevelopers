@@ -1,6 +1,7 @@
 package browse.GetUserDictGateway;
 
-import serializationFunctions.DictionaryReadWriter;
+import login_functions.DictionaryReadWriter;
+
 import java.io.IOException;
 import java.util.HashMap;
 

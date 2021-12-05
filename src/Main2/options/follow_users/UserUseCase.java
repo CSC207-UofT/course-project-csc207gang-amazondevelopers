@@ -1,6 +1,6 @@
 package options.follow_users;
 
-import userFunctions.User;
+import user.User;
 
 import java.util.List;
 
