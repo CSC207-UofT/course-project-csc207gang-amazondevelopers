@@ -4,6 +4,7 @@ import browse.FeedPresenter.EnglishFeedPresenter;
 
 import cart_functions.Cart;
 import cart_functions.CartManager;
+import options.UserOptionsController;
 import options.OptionsGUI;
 
 import javax.swing.*;
@@ -135,4 +136,5 @@ public class FeedGUI implements ActionListener {
         }
 
     }
+
 

@@ -12,10 +12,11 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
 
     /**
      * Add the product given the descriptions to the product.ser and IDtoProduct.ser files
+     *
      * @param newProduct the new product string
-     * @param productId the ID of the product
-     * @param tag the category of the product
-     * @throws IOException error occured during reading a file, when there is an input / output error
+     * @param productId  the ID of the product
+     * @param tag        the category of the product
+     * @throws IOException            error occured during reading a file, when there is an input / output error
      * @throws ClassNotFoundException throws if the class is not found
      */
 
@@ -25,8 +26,11 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
         DictionaryReadWriter rw = new DictionaryReadWriter();
 
         File file = new File("src/Main2/product.ser");
-        if (file.length() == 0){
+        if (file.length() == 0) {
             HashMap<String, List<String>> emptyHashMap = new HashMap<>();
+            ArrayList<String> list = new ArrayList<>();
+            list.add(productId);
+            emptyHashMap.put(tag, list);
             rw.saveToFile("src/Main2/product.ser", emptyHashMap);
         }
 
@@ -37,17 +41,16 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
             productIDList.add(productId);
             productsSavedDict.put(tag, productIDList);
             rw.saveToFile("src/Main2/product.ser", productsSavedDict);
-        }
-        else {
+        } else {
             List<String> newList = new ArrayList<>();
             newList.add(newProduct.getId());
-            productsSavedDict.put(tag,newList);
+            productsSavedDict.put(tag, newList);
             rw.saveToFile("src/Main2/product.ser", productsSavedDict);
         }
 
         // {ID: product}
         File file2 = new File("src/Main2/IdToProduct.ser");
-        if (file2.length() == 0){
+        if (file2.length() == 0) {
             HashMap<String, List<String>> emptyHashMap = new HashMap<>();
             rw.saveToFile("src/Main2/IdToProduct.ser", emptyHashMap);
         }
@@ -56,5 +59,22 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
         idToProductDict.put(productId, newProduct);
         rw.saveToFile("src/Main2/IdToProduct.ser", idToProductDict);
 
+    }
+
+    public void saveChangedProduct(Product product, String tag) throws IOException,
+            ClassNotFoundException {
+
+        DictionaryReadWriter rw = new DictionaryReadWriter();
+        File file = new File("src/Main2/IdToproduct.ser");
+        if (!(file.length() == 0)) {
+            HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main2/Idproduct.ser");
+            // {tag:[ID]}
+            if (productsSavedDict.containsKey(tag)) {
+                productsSavedDict.put(tag, product);
+                rw.saveToFile("src/Main2/IdToproduct.ser", productsSavedDict);
+
+
+            }
+        }
     }
 }

@@ -26,6 +26,6 @@ public class SearchPresenter implements SearchPresenterInterface{
 
     public String cannotBuy(){return "Can't Buy this product!";}
 
-    public String canBuy(){return "Can Buy this product";}
+    public String canBuy(){return "Product was added to your cart";}
 }
 //

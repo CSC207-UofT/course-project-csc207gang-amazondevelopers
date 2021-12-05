@@ -7,16 +7,16 @@ import java.util.List;
 
 public class UserUseCase {
     User user;
-    public UserUseCase(User user){
+
+    public UserUseCase(User user) {
         this.user = user;
 
     }
 
     /**
-     *
      * @param usernameToFollow the username of the person you want to follow
      */
-    public void userAddToFollow(String usernameToFollow){
+    public void userAddToFollow(String usernameToFollow) {
         List<String> listFollowing = user.getListFollowing();
         listFollowing.add(usernameToFollow);
         user.setListFollowing(listFollowing);
@@ -25,14 +25,11 @@ public class UserUseCase {
     }
 
     /**
-     *
      * @param product product to add to cart
      */
-    public void userAddToCart(Product product){
+    public void userAddToCart(Product product) {
         List<Product> cart = user.getShoppingCart();
         cart.add(product);
         user.setShoppingCart(cart);
-
-
     }
 }
