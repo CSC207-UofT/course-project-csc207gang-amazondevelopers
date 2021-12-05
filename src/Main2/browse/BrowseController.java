@@ -1,6 +1,7 @@
 package browse;
 import browseFunctions.BrowseUseCase;
 import browse.GetUserDictGateway.GetUserDictGateway;
+import postFunctions.Post;
 import userFunctions.User;
 
 import java.io.IOException;
@@ -18,23 +19,13 @@ public class BrowseController {
     }
 
     /**
-     *
-     * Get the feed (list of posts that the users that this user follow have posted) of the user. if feed is not
-     * empty, allows user to buy from their feed. If feed is empty, return user back to choose another option.
-     *
+     * Get data from the userDictGateway
      */
-    public void presentFeed() throws IOException, ClassNotFoundException {
+    public ArrayList<Post> getFeed() throws IOException, ClassNotFoundException {
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
         HashMap users = getUserDictGateway.getUserDict();
         List<String> following = user.getListFollowing();
-        ArrayList userFeed = browseUseCase.generateFeed(users,following);
-        //List<String> feedIds = browseUseCase.getlistProductID(userFeed);
-        if (userFeed.size() != 0){
-            FeedGUI feedGUI = new FeedGUI(userFeed,user,0);
-        }
-        else{
-            EmptyFeedGUI emptyFeedGUI = new EmptyFeedGUI(user);
-        }
+        return browseUseCase.generateFeed(users,following);
     }
 }

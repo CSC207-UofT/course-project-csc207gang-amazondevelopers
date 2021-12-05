@@ -1,17 +1,21 @@
 package options;
 
 import browse.BrowseController;
+import browse.EmptyFeedGUI;
+import browse.FeedGUI;
 import cart_functions.CartGUI;
 import login_functions.WelcomePageGUI;
 import options.follow_users.FollowGUI;
 import options.search.SearchGUI;
 import post.PostGUI;
+import postFunctions.Post;
 import userFunctions.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class OptionsGUI implements ActionListener {
     OptionsPresenter optionsPresenter = new OptionsPresenter();
@@ -97,11 +101,20 @@ public class OptionsGUI implements ActionListener {
         }
         if(e.getSource()==browse) {
             frame.dispose();
-            BrowseController browseController = new BrowseController(this.user);
+            BrowseController browseController = new BrowseController(user);
+            ArrayList<Post> feed = null;
             try {
-                browseController.presentFeed();
-            } catch (IOException | ClassNotFoundException ioException) {
+                feed = browseController.getFeed();
+            } catch (IOException ioException) {
                 ioException.printStackTrace();
+            } catch (ClassNotFoundException classNotFoundException) {
+                classNotFoundException.printStackTrace();
+            }
+            if (0 == feed.size()){
+                EmptyFeedGUI emptyFeedGUI = new EmptyFeedGUI(user);
+            }
+            else{
+                FeedGUI feedGUI = new FeedGUI(feed,user,0);
             }
         }
         if(e.getSource()==cart) {
@@ -109,5 +122,4 @@ public class OptionsGUI implements ActionListener {
             CartGUI cartGUI = new CartGUI(this.user);
         }
     }
-
 }
