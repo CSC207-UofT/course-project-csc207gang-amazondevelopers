@@ -4,8 +4,8 @@ package options.buy_functions;
 import login_functions.SaveUserGateway;
 import options.follow_users.UserUseCase;
 import product.GetProductGateway;
+import product.Product;
 import product.SaveProductGateway;
-import productFunctions.Product;
 import user.User;
 
 import java.io.IOException;

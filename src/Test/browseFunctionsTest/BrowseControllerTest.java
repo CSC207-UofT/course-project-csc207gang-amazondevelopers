@@ -1,11 +1,6 @@
 package browseFunctionsTest;
 
-import browseFunctions.BrowseController;
-import inputOutputFunctions.SystemInOutTest;
-import loginFunctions.GetUserGateway;
-import loginFunctions.SignInController;
-import loginFunctions.SignUpController;
-import loginFunctions.SignUpGateway;
+import login_functions.SaveUserGateway;
 import login_functions.SignInController;
 import login_functions.SignUpController;
 import org.junit.After;
@@ -25,9 +20,9 @@ public class BrowseControllerTest {
     SignUpController signup = new SignUpController();
     SignUpGateway signUpGateway = new SignUpGateway();
 
-    User testUser1 = new User("TestSignUpControllerUser");
+    User testUser1 = new User("followed");
     User testUser2 = new User("follower");
-    Product testProduct = new productFunctions.Product("shoes", "TEST", 5.0, "shoes", "2",1);
+    Product testProduct = new Product("shoes", "TEST", 5.0, "shoes", "2",1);
     Post post = new Post(testProduct, testUser2);
 
     CreateProductGateway createProductGateway = new CreateProductGateway();
@@ -42,15 +37,19 @@ public class BrowseControllerTest {
     BrowseController browseController = new BrowseController(testUser1);
 
 
+    SaveUserGateway saveUserGateway = new SaveUserGateway();
+
+
     @Before
     public void setUp() throws IOException, ClassNotFoundException {
         // create two users, and a post
         // if there is a preexisting user TestCreateProductUser, delete it
         deleteUserGateway.deleteUser("follower");
-        deleteUserGateway.deleteUser("TestBrowse");
+        deleteUserGateway.deleteUser("followed");
         // create the new user profile before each test
-        signUpGateway.allowSignUp("TestSignUpControllerUser", testUser1);
-        signUpGateway.allowSignUp("follower", testUser2);
+        saveUserGateway.saveUser("followed", testUser1);
+        saveUserGateway.saveUser("following", testUser2);
+
         createProductGateway.addProductToRepo(testProduct, "TEST", "shoes");
         addPostGateway.addPost(post, testUser2);
 
@@ -91,7 +90,7 @@ public class BrowseControllerTest {
         //search for the product, then buy it
         browseController.presentFeed(testInOut);
 
-        productFunctions.Product bought = getProductGateway.getProduct("TEST");
+        Product bought = getProductGateway.getProduct("TEST");
         User user = getUserGateway.getUser("TestBrowse");
         assertEquals(0, bought.getQuantity());
         assertEquals(0, user.getShoppingCart().size());
