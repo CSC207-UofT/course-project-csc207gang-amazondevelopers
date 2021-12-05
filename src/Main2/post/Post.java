@@ -1,3 +1,8 @@
+package post;
+
+import product.Product;
+import user.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
