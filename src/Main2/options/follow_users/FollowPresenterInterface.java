@@ -1,12 +1,11 @@
-package options.search;
+package options.follow_users;
 
-public interface SearchPresenterInterface {
-    String searchButton();
+public interface FollowPresenterInterface {
+    String followButton();
     String clearButton();
     String backButton();
     String searchInstructions();
     String inputIndex();
+    String putIndex();
     String buyButton();
-
 }
-//
