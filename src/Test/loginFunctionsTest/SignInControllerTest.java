@@ -5,6 +5,8 @@ import login_functions.SignInController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import user.User;
+
 import static org.junit.Assert.*;
 import java.io.IOException;
 
@@ -20,7 +22,7 @@ public class SignInControllerTest {
 
     @After
     public void takeDown(){
-
+        // TODO: remove user from ser file
     }
 
     @Test
@@ -41,7 +43,14 @@ public class SignInControllerTest {
 
     @Test
     public void getUserTest() throws IOException, ClassNotFoundException {
-        // User user = signInController.getUser("SignInTest");
+        User user = signInController.getUser("SignInTest");
+        assertEquals(user.getUsername(),"SignInTest" );
+    }
+
+    @Test
+    public void getUserNoUserTest() throws IOException, ClassNotFoundException {
+        User user = signInController.getUser("SignInTest");
+        assertFalse(user.getUsername().equals("SignInTest" ));
     }
 
 }
