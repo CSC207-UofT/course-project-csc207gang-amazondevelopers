@@ -131,7 +131,7 @@ public class ScrollSearchGui implements ActionListener {
                 messageLabel.setForeground(Color.red);
                 messageLabel.setText(searchPresenter.cannotBuy());
 
-                frame.dispose();
+
 
             }
 
