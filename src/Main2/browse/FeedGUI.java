@@ -1,7 +1,7 @@
 package browse;
 
 import browse.FeedPresenter.EnglishFeedPresenter;
-import options.UserOptionsController;
+import options.OptionsGUI;
 import userFunctions.User;
 import postFunctions.Post;
 import javax.swing.*;
@@ -29,42 +29,37 @@ public class FeedGUI implements ActionListener {
     JLabel productSizeLabel = new JLabel();
     JLabel indexLabel = new JLabel();
     ArrayList<Post> feed;
-    ArrayList<PostMemento.Memento> memento;
-    PostMemento postMemento;
+    Post post;
     int index;
     User user;
 
     /**
      * Represents a constructor for the JFrame of a Post in the Feed
-     * @param postMemento Represents the current post that needs to be displayed
-     * @param feed Represents the total feed of the current user
-     * @param mementos A list of memento objects, in reverse order its the last posts that where displayed
-     * @param user The user viewing posts
+     * @param feed        Represents the total feed of the current user
+     * @param user        The user viewing posts
      */
-    public FeedGUI(PostMemento postMemento, ArrayList<Post> feed,ArrayList<PostMemento.Memento> mementos, User user, int index){
-        Post post = postMemento.getState();
-        this.postMemento = postMemento;
-        this.memento = mementos;
+    public FeedGUI( ArrayList<Post> feed, User user, int index) {
+        this.post = feed.get(index);
         this.feed = feed;
         this.index = index;
         this.user = user;
         posterLabel.setText(feedPresenter.presentPostedBy() + post.getUser().getUsername());
-        posterLabel.setBounds(25,25,400,25);
+        posterLabel.setBounds(25, 25, 400, 25);
 
         captionLabel.setText(feedPresenter.presentCaption() + post.getCaption());
-        captionLabel.setBounds(25,75,400,25);
+        captionLabel.setBounds(25, 75, 400, 25);
 
         productNameLabel.setText(feedPresenter.presentProductName() + post.getProduct().getName());
-        productNameLabel.setBounds(25,125,400,25);
+        productNameLabel.setBounds(25, 125, 400, 25);
 
         productQuantityLabel.setText(feedPresenter.presentQuantity() + post.getProduct().getQuantity());
-        productQuantityLabel.setBounds(25,175,400,25);
+        productQuantityLabel.setBounds(25, 175, 400, 25);
 
         productSizeLabel.setText(feedPresenter.presentSize() + post.getProduct().getSizes());
-        productSizeLabel.setBounds(25,225,400,25);
+        productSizeLabel.setBounds(25, 225, 400, 25);
 
         backButton.setBounds(45, 400, 100, 25);
-        backButton.addActionListener( this);
+        backButton.addActionListener(this);
 
         cartButton.setBounds(145, 400, 100, 25);
         cartButton.addActionListener(this);
@@ -72,8 +67,8 @@ public class FeedGUI implements ActionListener {
         nextButton.setBounds(245, 400, 100, 25);
         nextButton.addActionListener(this);
 
-        indexLabel.setText(index + "/" + feed.size());
-        indexLabel.setBounds(475,250,50,25);
+        indexLabel.setText(index + 1 + "/" + feed.size());
+        indexLabel.setBounds(425, 425, 50, 25);
         frame.add(indexLabel);
         frame.add(productNameLabel);
         frame.add(productDescriptionLabel);
@@ -92,43 +87,40 @@ public class FeedGUI implements ActionListener {
 
     /**
      * Represents different actions when the JButtons are interacted with the user
+     *
      * @param e the Action event performed in
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == nextButton){
-            if (index == feed.size() - 1){
+        if (e.getSource() == nextButton) {
+            if (index == feed.size() - 1) {
                 frame.setVisible(false);
                 frame.dispose();
-                UserOptionsController uoc = new UserOptionsController(user);
-            }
-            else{
-                memento.add(postMemento.saveToMemento());
-                postMemento.setState(feed.get(index+1));
+                OptionsGUI optionsGateway = new OptionsGUI(user);
+            } else {
                 frame.setVisible(false);
                 frame.dispose();
-                FeedGUI feedGUI = new FeedGUI(postMemento,feed,memento,user,index+1);
+                FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
             }
-        if (e.getSource() == backButton){
-            if(index == 0){
+            if (e.getSource() == backButton) {
+                if (this.index == 0) {
+                    frame.setVisible(false);
+                    frame.dispose();
+                    OptionsGUI optionsGUI = new OptionsGUI(user);
+                } else {
+                    frame.setVisible(false);
+                    frame.dispose();
+                    FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
+                }
+            }
+            if (e.getSource() == cartButton) {
+                CartManager cartManager = new CartManager();
+                cartManager.addToCart(post.getProduct(), user);
                 frame.setVisible(false);
                 frame.dispose();
-                UserOptionsController uoc = new UserOptionsController(user);
+                AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, post.getProduct().getName());
             }
-            else{
-                postMemento.restoreFromMemento(memento.get(memento.size()-1));
-                memento.remove(memento.size()-1);
-                frame.setVisible(false);
-                frame.dispose();
-                FeedGUI feedGUI = new FeedGUI(postMemento,feed,memento,user,index-1);
-            }
-        }
-        if (e.getSource() == cartButton);
-            CartManager cartManager = new CartManager();
-            cartManager.addToCart(postMemento.getState().getProduct(), user);
-            frame.setVisible(false);
-            frame.dispose();
-            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,postMemento.getState().getProduct().getName());
         }
     }
 }
+
