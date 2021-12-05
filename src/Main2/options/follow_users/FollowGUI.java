@@ -51,7 +51,9 @@ public class FollowGUI implements ActionListener {
         back.setFont(new Font(null, Font.PLAIN, 15));
         back.addActionListener(this);
         //Label after clicking follow button
-        messageLabel.setBounds(125,200,300,25);
+
+        messageLabel.setBounds(125, 125, 130, 130);
+
 
         frame.add(followButtonLabel);
         frame.add(followLabel);
@@ -63,6 +65,7 @@ public class FollowGUI implements ActionListener {
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.add(messageLabel);
     }
 
     /**

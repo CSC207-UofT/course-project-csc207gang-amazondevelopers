@@ -90,18 +90,18 @@ public class OptionsGUI implements ActionListener {
             SearchGUI searchGUI = new SearchGUI(this.user);
         }
         if(e.getSource()==findSellers) {
+
             frame.dispose();
             FollowGUI followGUI = new FollowGUI(this.user);
+
         }
         if(e.getSource()==browse) {
             frame.dispose();
             BrowseController browseController = new BrowseController(this.user);
             try {
                 browseController.presentFeed();
-            } catch (IOException ioException) {
+            } catch (IOException | ClassNotFoundException ioException) {
                 ioException.printStackTrace();
-            } catch (ClassNotFoundException classNotFoundException) {
-                classNotFoundException.printStackTrace();
             }
         }
         if(e.getSource()==cart) {
