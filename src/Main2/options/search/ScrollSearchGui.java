@@ -1,11 +1,14 @@
 package options.search;
 
+
+import options.buy_functions.BuyController;
 import userFunctions.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ScrollSearchGui implements ActionListener {
@@ -24,10 +27,19 @@ public class ScrollSearchGui implements ActionListener {
 
 
     User user;
+    SearchController searchController = new SearchController(user);
+    ArrayList<String> searchList;
 
 
-    public ScrollSearchGui(User user, ArrayList<String> searchList) {
+
+
+
+
+    public ScrollSearchGui(User user, String tag) throws IOException, ClassNotFoundException {
         this.user = user;
+
+        this.searchList = searchController.getProductID(tag);
+
 
         searchIntro.setBounds(125, 20, 100, 35);
         searchIntro.setFont(new Font(null, Font.PLAIN, 13));
@@ -111,8 +123,15 @@ public class ScrollSearchGui implements ActionListener {
         }
         else if (action.getSource() == buy){
             String index = searchBar.getText();
+            int indexInt = Integer.parseInt(index);
+
+            BuyController buyController = new BuyController();
+            try {
+                buyController.allowBuy(user, searchList, indexInt);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             frame.dispose();
-            // TODO: add buy controller, given index here
 
         }
 
