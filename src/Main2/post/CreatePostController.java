@@ -1,4 +1,6 @@
 package post;
+import login_functions.SaveUserGateway;
+import login_functions.SaveUserGatewayInterface;
 import postFunctions.Post;
 import product.CreateProductController;
 import productFunctions.Product;
@@ -29,8 +31,8 @@ public class CreatePostController {
         CreateProductController createProductController = new CreateProductController(this.user);
         Product product = createProductController.createProduct(information);
 
-        AddPostGatewayInterface addPostGateway = new AddPostGateway();
-        PostManager postManager = new PostManager(addPostGateway);
+        SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
+        PostManager postManager = new PostManager(saveUserGateway);
         // need to get this attributes
         Boolean canComment = Boolean.valueOf(information.get(7));
         Boolean canRate = Boolean.valueOf(information.get(6));

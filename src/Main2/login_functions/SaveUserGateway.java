@@ -2,13 +2,11 @@ package login_functions;
 
 import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class SaveUserGateway {
-
+public class SaveUserGateway implements SaveUserGatewayInterface {
 
     /**
      * Saves a hashmap to user.ser file, with key value pair being username to user
