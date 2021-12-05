@@ -51,7 +51,7 @@ public class FollowGUI implements ActionListener {
         back.setFont(new Font(null, Font.PLAIN, 15));
         back.addActionListener(this);
         //Label after clicking follow button
-        messageLabel.setBounds(125);
+        messageLabel.setBounds(125, 125, 130, 130);
 
         frame.add(followButtonLabel);
         frame.add(followLabel);
@@ -62,6 +62,7 @@ public class FollowGUI implements ActionListener {
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.add(messageLabel);
     }
 
     /**
@@ -81,14 +82,20 @@ public class FollowGUI implements ActionListener {
 
         if(action.getSource() == followButtonLabel) {
             String username = searchBar.getText();
-            FollowController followController = new FollowController();
-            if(followController.canFollow(username)){
-                messageLabel.setForeground(Color.black);
-                messageLabel.setText(followPresenter.presentCanFollow());
-            }
-            else{
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText(followPresenter.presentCantFollow());
+            FollowController followController = new FollowController(user);
+            try {
+                if(followController.canFollow(username)){
+                    messageLabel.setForeground(Color.black);
+                    messageLabel.setText(followPresenter.presentCanFollow());
+                }
+                else{
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(followPresenter.presentCantFollow());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
 

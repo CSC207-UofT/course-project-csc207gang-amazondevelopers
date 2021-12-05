@@ -1,5 +1,5 @@
 package login_functions;
-import inputOutputFunctions.SystemInOut;
+
 import loginFunctions.SignInGatewayInterface;
 import serializationFunctions.DictionaryReadWriter;
 import userFunctions.User;
@@ -21,14 +21,17 @@ public class GetUserGateway implements SignInGatewayInterface {
      * @return A newly created or old user
      */
     public User getUser(String username) throws IOException, ClassNotFoundException {
-        SystemInOut inOut = new SystemInOut();
         File file = new File("src/Main2/user.ser");
         // access the serialized file for this user.
         DictionaryReadWriter rw = new DictionaryReadWriter();
-
-        HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main2/user.ser");
-        if (usersSavedDict.containsKey(username)){
-            return (User)usersSavedDict.get(username);
+        if (!(file.length() == 0)) {
+            HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main2/user.ser");
+            if (usersSavedDict.containsKey(username)) {
+                return (User) usersSavedDict.get(username);
+            }
+            else{
+                System.out.println("hello");
+            }
         }
         // if the user does not exist, return a user with an empty username, which the empty username is unaccepted
         // username anyways

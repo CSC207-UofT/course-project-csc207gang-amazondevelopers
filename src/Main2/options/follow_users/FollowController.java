@@ -1,8 +1,8 @@
 package options.follow_users;
 
 
-import loginFunctions.GetUserGateway;
-import loginFunctions.SaveUserGateway;
+import login_functions.GetUserGateway;
+import login_functions.SaveUserGateway;
 import userFunctions.User;
 
 import java.io.IOException;
@@ -36,6 +36,7 @@ public class FollowController {
         GetUserGateway getUserGateway = new GetUserGateway();
         User userToFollow = getUserGateway.getUser(username);
         // that user you want to follow does not exist
+        //TODO: check if I already follow this user
         if (userToFollow.getUsername().equals("")){
             return false;
         }
