@@ -1,8 +1,8 @@
 package user;
 
 import product.Product;
-import user.User;
 
+import java.util.Collections;
 import java.util.List;
 
 public class UserUseCase {
@@ -31,5 +31,13 @@ public class UserUseCase {
         List<Product> cart = user.getShoppingCart();
         cart.add(product);
         user.setShoppingCart(cart);
+    }
+
+    public List<Product> userShoppingCart() {
+        try {
+            return user.getShoppingCart();
+        }catch (Exception ignored){
+            return Collections.emptyList();
+        }
     }
 }
