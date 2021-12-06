@@ -124,7 +124,7 @@ public class CartGUI implements ActionListener {
         }
         else if (action.getSource() == buyButton){
             frame.dispose();
-            Cart cart = new Cart();
+            CartManager cart = new CartManager();
             try {
                 cart.buyCart(user);
                 

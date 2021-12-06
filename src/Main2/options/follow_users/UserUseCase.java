@@ -32,4 +32,8 @@ public class UserUseCase {
         cart.add(product);
         user.setShoppingCart(cart);
     }
+
+    public List<Product> userShoppingCart(){
+        return user.getShoppingCart();
+    }
 }

@@ -2,7 +2,6 @@ package browse;
 
 import browse.FeedPresenter.EnglishFeedPresenter;
 
-import cart_functions.Cart;
 import cart_functions.CartManager;
 import options.OptionsGUI;
 
@@ -118,7 +117,7 @@ public class FeedGUI implements ActionListener {
             }
             if (e.getSource() == cartButton) {
                 CartManager cartManager = new CartManager();
-                cartManager.addToCart(post.getProduct(), user);
+                cartManager.addToCart(user, post.getProduct());
                 frame.setVisible(false);
                 frame.dispose();
                 AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, post.getProduct().getName());
@@ -126,7 +125,7 @@ public class FeedGUI implements ActionListener {
         }
 
         else if (e.getSource() == cartButton) {
-            Cart cart = new Cart();
+            CartManager cart = new CartManager();
             cart.addToCart(user, post.getProduct());
             frame.setVisible(false);
             frame.dispose();
