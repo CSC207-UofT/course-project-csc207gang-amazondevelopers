@@ -1,6 +1,5 @@
 package cart_functions;
 
-import inputOutputFunctions.SystemInOut;
 import options.buy_functions.BuyController;
 import product.Product;
 import user.User;
@@ -14,7 +13,6 @@ public class Cart {
 
     public void buyCart(User user) throws Exception {
         BuyController buyController = new BuyController();
-        SystemInOut inOut = new SystemInOut();
         List<String> cartIDs = new ArrayList<>();
 
         for (Product i:user.getShoppingCart()) {

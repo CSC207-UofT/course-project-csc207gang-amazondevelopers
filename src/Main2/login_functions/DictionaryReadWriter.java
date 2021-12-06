@@ -1,6 +1,5 @@
 package login_functions;
 
-import userFunctions.ReadWriter;
 
 import java.io.*;
 import java.util.HashMap;

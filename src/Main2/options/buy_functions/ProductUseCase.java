@@ -1,7 +1,7 @@
 package options.buy_functions;
 
-import productFunctions.Product;
 
+import product.Product;
 
 public class ProductUseCase {
 
