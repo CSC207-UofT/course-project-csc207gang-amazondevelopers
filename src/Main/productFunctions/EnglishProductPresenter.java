@@ -47,7 +47,7 @@ public class EnglishProductPresenter implements ProductPresenterInterface {
 
     public void confirmProductCreationPresenter() {
         sendOutput.sendOutput("Are you happy with this product? Type * for no, " +
-                "or anything else for yes.\n If you say yes, you will be asked to create a post about this product");
+                "or anything else for yes.\n If you say yes, you will be asked to create a options.post about this product");
     }
 
 

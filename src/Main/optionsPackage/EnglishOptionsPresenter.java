@@ -37,23 +37,23 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
    }
 
     /**
-     * Present to the user If the user wants to add products to their cart
+     * Present to the user If the user wants to add products to their options.cart
      */
 
    public void optionToBuyPresent(){
         SystemInOut input = new SystemInOut();
-       input.sendOutput("Would you like to add one of the items to your cart?" +
+       input.sendOutput("Would you like to add one of the items to your options.cart?" +
                "enter the number of your choice\n 1.Yes\n *. Take me back to main menu");
    }
 
     /**
-     * Present to the user the index of the prodcuts that they want to add to their cart
+     * Present to the user the index of the prodcuts that they want to add to their options.cart
      */
 
    public void addToCartPresent(){
        SystemInOut input = new SystemInOut();
        input.sendOutput("Please select the index of the item that you want to add to " +
-               "your cart. The index is the " +
+               "your options.cart. The index is the " +
                "integer value for the position of the item on the list, with the first item being at " +
                "the 0th index. Type exit if you would like to go back to your search result.");
    }
@@ -68,21 +68,21 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
    }
 
     /**
-     * The user buys entire cart or continues to search presenter
+     * The user buys entire options.cart or continues to search presenter
      */
 
    public void buyOrBackPresent(){
        SystemInOut input = new SystemInOut();
-       input.sendOutput("would you like to\n1. buy your entire cart\n2.Go back to options");
+       input.sendOutput("would you like to\n1. buy your entire options.cart\n2.Go back to options");
 
    }
 
     /**
-     * of the cart of the user is empty
+     * of the options.cart of the user is empty
      */
    public void cartIsEmptyPresent(){
        SystemInOut input = new SystemInOut();
-       input.sendOutput("your cart is now empty, and you have purchased" +
+       input.sendOutput("your options.cart is now empty, and you have purchased" +
                " the products in it.");
    }
 
@@ -104,12 +104,12 @@ public class EnglishOptionsPresenter implements OptionsPresenterInterface {
    }
 
     /**
-     * the option to search, follow, browse, or logout for the user
+     * the option to search, follow, options.browse, or logout for the user
      */
    public void userOptionsMain(){
        SystemInOut input = new SystemInOut();
        input.sendOutput("What would you like to do? Input a number for " +
-               "your ideal option:\n 1.Search and buy \n 2.Make a post \n 3.Follow another user \n 4.Browse and buy" +
+               "your ideal option:\n 1.Search and buy \n 2.Make a options.post \n 3.Follow another user \n 4.Browse and buy" +
                "\n 5.Settings \n 6.logout ");
    }
 

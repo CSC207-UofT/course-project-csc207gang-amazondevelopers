@@ -14,7 +14,7 @@ public class PostManager {
 
     /**
      *
-     * @param addPostGateway To adhere to dependency inversion, this is the gateway to save the post to .ser file
+     * @param addPostGateway To adhere to dependency inversion, this is the gateway to save the options.post to .ser file
      */
 
     public PostManager(AddPostGatewayInterface addPostGateway){
@@ -27,7 +27,7 @@ public class PostManager {
      * to check if comments and ratings can be added.
      * Returns the Post if created and null otherwise.
      *
-     * @return a newly created post.
+     * @return a newly created options.post.
      */
     public Post createPost(Product product, String caption, boolean canComment, boolean canRate,User user) {
         return new Post(product, caption, canComment, canRate,user);
@@ -39,16 +39,16 @@ public class PostManager {
     }
 
     /**
-     * Takes in a Post and adds 1 to likes, representing 1 extra like to the post.
-     * @param post the post that the user wants to add a like to.
+     * Takes in a Post and adds 1 to likes, representing 1 extra like to the options.post.
+     * @param post the options.post that the user wants to add a like to.
      */
     public void like(Post post) {
         post.addlike(1);
     }
     /**
      * Takes in a Post and adds a float rating from 0 to 5.
-     * @param post the post that the user wants to add a rating to.
-     * @param rating the rating user wants to add to post
+     * @param post the options.post that the user wants to add a rating to.
+     * @param rating the rating user wants to add to options.post
      * @return returns true if was succesfully rated, false otherwise
      */
     public boolean rate(Post post, float rating) {
@@ -61,8 +61,8 @@ public class PostManager {
 
     /**
      * Takes in a Post and adds a String comment.
-     * @param post the post that the user wants to add a comment to.
-     * @param comment the comment user wants to add to post
+     * @param post the options.post that the user wants to add a comment to.
+     * @param comment the comment user wants to add to options.post
      * @return returns true if was succesfully commented, false otherwise
      */
     public boolean comment(Post post, String comment) {
@@ -74,7 +74,7 @@ public class PostManager {
     }
     /**
      * Takes in a Post and sets ability to rate as true or false.
-     * @param post the post that the user wants to change rate settings.
+     * @param post the options.post that the user wants to change rate settings.
      * @param bool true or false for rate settings, can rate or not
      */
     public void changeRateSettings(Post post, boolean bool) {
@@ -84,7 +84,7 @@ public class PostManager {
 
     /**
      * Takes in a Post and sets ability to comment as true or false.
-     * @param post the post that the user wants to change comment settings.
+     * @param post the options.post that the user wants to change comment settings.
      * @param bool true or false for comment settings, can rate or not
      */
     public void changeCommentSettings(Post post, boolean bool) {

@@ -26,7 +26,7 @@ public class OptionsPresenter {
     }
     /**
      * Browse option
-     * @return String of browse
+     * @return String of options.browse
      */
     public String message4(){
         return "Browse";
@@ -39,8 +39,8 @@ public class OptionsPresenter {
         return "Find Sellers";
     }
     /**
-     * Making post option
-     * @return String of making post
+     * Making options.post option
+     * @return String of making options.post
      */
     public String message6(){
         return "Make a Post";
@@ -54,8 +54,8 @@ public class OptionsPresenter {
     }
 
     /**
-     * Tells user that this leads to their cart
-     * @return A string of cart
+     * Tells user that this leads to their options.cart
+     * @return A string of options.cart
      */
     public String message8() {return "Cart";}
 }

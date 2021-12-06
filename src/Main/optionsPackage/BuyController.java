@@ -45,7 +45,7 @@ public class BuyController {
                         GetProductGateway productG = new GetProductGateway();
                         String itemAtIndex = listIds.get(indexInt);
                         Product productToAddToCart = productG.getProduct(itemAtIndex);
-                        // add this product to the cart
+                        // add this product to the options.cart
                         CartManager cart = new CartManager();
                         if (!cart.addToCart(productToAddToCart, user)){
                             presenter.outOfStockPresent();
@@ -62,7 +62,7 @@ public class BuyController {
                             GetUserDictGatewayInterface getUserDictGateway = new GetUserDictGateway();
                             CartManager cartUseCaseUpdateProdQ = new CartManager(saveProdG, getUserDictGateway,saveUserDictGateway);
                             cartUseCaseUpdateProdQ.updateProductQuantity(user);
-                            // save the user with updated cart
+                            // save the user with updated options.cart
                             SaveUserGatewayInterface saveUserGateway = new SaveUserGateway();
                             CartManager cartUseCaseSaveUser = new CartManager(saveUserGateway);
                             cartUseCaseSaveUser.emptyCart(user);

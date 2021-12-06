@@ -7,11 +7,11 @@ import userFunctions.User;
 
 
 /**
- * <likes> is the number of like for the post
- * the product that the post include
+ * <likes> is the number of like for the options.post
+ * the product that the options.post include
  * rating of the the product our of 5 stars
- * comment for the post
- * canCommetn and canRate is decided by the creator of the post
+ * comment for the options.post
+ * canCommetn and canRate is decided by the creator of the options.post
  * the user is the logged in user of the program
  *
  */
@@ -31,9 +31,9 @@ public class Post implements Serializable {
 
 
     /**
-     * The post
-     * @param product the product being advertised in the post
-     * @param user the user that created the post
+     * The options.post
+     * @param product the product being advertised in the options.post
+     * @param user the user that created the options.post
      */
     public Post(Product product, User user){
         this.product = product;
