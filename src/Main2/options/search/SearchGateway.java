@@ -28,18 +28,19 @@ public class SearchGateway {
 
         File file = new File("src/Main2/product.ser");
         if (file.length() == 0){
+            return new ArrayList<>();
+        }
+        else {
             DictionaryReadWriter rw = new DictionaryReadWriter();
-            HashMap<String, Object> emptyHashMap = new HashMap<>();
-            rw.saveToFile("src/Main2/product.ser", emptyHashMap);
-        }
-        DictionaryReadWriter rw = new DictionaryReadWriter();
-        HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main2/product.ser");
+            HashMap<String, Object> productSavedDict = rw.readFromFile("src/Main2/product.ser");
 
-        if (productSavedDict.containsKey(tag)){
-            return (ArrayList<String>) productSavedDict.get(tag);
+            if (productSavedDict.containsKey(tag)) {
+                return (ArrayList<String>) productSavedDict.get(tag);
+            } else {
+                // an empty list since the tag does not exist
+                return new ArrayList<>();
+            }
         }
-        // an empty list since the tag does not exist
-        return new ArrayList<>();
     }
 
 
@@ -47,12 +48,12 @@ public class SearchGateway {
 
         File file = new File("src/Main2/IdToProduct.ser");
         if (file.length() == 0){
-            DictionaryReadWriter rw = new DictionaryReadWriter();
-            HashMap<String, Object> emptyHashMap = new HashMap<>();
-            rw.saveToFile("src/Main2/IdToProduct.ser", emptyHashMap);
+            return new HashMap<>();
         }
-        DictionaryReadWriter rw = new DictionaryReadWriter();
-        return rw.readFromFile("src/Main2/IdToProduct.ser");
+        else {
+            DictionaryReadWriter rw = new DictionaryReadWriter();
+            return rw.readFromFile("src/Main2/IdToProduct.ser");
+        }
     }
 
 
