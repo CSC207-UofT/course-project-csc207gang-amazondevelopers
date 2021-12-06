@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * Get the post from the IdToPost.ser file
+ * Get the options.post from the IdToPost.ser file
  */
 public class GetPostGateway {
 
     /**
-     * Takes in a string id representing a product and return the post associated with it
-     * @param productId the id of the product whose post object we want to return
-     * @return post associated with the String product id
+     * Takes in a string id representing a product and return the options.post associated with it
+     * @param productId the id of the product whose options.post object we want to return
+     * @return options.post associated with the String product id
      * @throws IOException error occured during reading a file, when there is an input / output error
      * @throws ClassNotFoundException thrown if the class is not found
      */

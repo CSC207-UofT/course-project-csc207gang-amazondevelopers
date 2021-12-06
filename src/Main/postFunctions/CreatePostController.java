@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class CreatePostController {
     /**
-     * Method to create a new post from user input. Uses the memento design pattern in the Post class, as it inherites
+     * Method to create a new options.post from user input. Uses the memento design pattern in the Post class, as it inherites
      * the Originator superclass.
      * It also instructs the gateway to add specific posts to the serilized file that stores our data
      * @param input
-     * @param product Product that the post is about
-     * @param user User makng the post
+     * @param product Product that the options.post is about
+     * @param user User makng the options.post
      * @param from_product_creation A flag, that is true only if this method is called in CreatePostController
      * @return A Post that has been created
      * @throws Exception A generic exception to stop the method, and return to user options controller

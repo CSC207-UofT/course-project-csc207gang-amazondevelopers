@@ -1,7 +1,7 @@
 package options.search;
 
 
-import options.buy_functions.BuyController;
+import options.buy.BuyController;
 import user.User;
 
 import javax.swing.*;
@@ -140,4 +140,3 @@ public class ScrollSearchGui implements ActionListener {
 
     }
 }
-//

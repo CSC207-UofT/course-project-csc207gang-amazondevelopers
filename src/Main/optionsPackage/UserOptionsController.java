@@ -46,13 +46,13 @@ public class UserOptionsController{
                 SearchController searchController = new SearchController(user);
                 searchController.allowSearch(input);
 
-                // save the cart of the user
+                // save the options.cart of the user
                 String username = user.getUsername();
                 SaveUserChangesGateways saveUserChangesGateways = new SaveUserChangesGateways();
                 saveUserChangesGateways.save(username, user);
 
             }
-            // make a post
+            // make a options.post
             else if(userDecision.equals("2")){
                 // create the product,
                 CreateProductController productC = new CreateProductController();
@@ -66,9 +66,9 @@ public class UserOptionsController{
                 FollowController followC = new FollowController(user);
                 followC.allowFollow();
             }
-            // browse
+            // options.browse
             else if(userDecision.equals("4")){
-                // this user wants to browse posts of the users it is following
+                // this user wants to options.browse posts of the users it is following
                 BrowseController browseController = new BrowseController(user);
                 browseController.presentFeed(input);
             }

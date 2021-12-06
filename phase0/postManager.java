@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class postManager{
     private productManager productmanager = new productManager();
-    // create a post and the product it is based on, add this post to the postList in the user that created it
+    // create a options.post and the product it is based on, add this options.post to the postList in the user that created it
 
     /**
-     * Creates a post by taking in a tag, a User, a String description, s String productName, a String productId, a float price
+     * Creates a options.post by taking in a tag, a User, a String description, s String productName, a String productId, a float price
      * of the product, a String category, a String size and an int quantity of the product.
      *
      * @param tag
@@ -17,7 +17,7 @@ public class postManager{
      * @param category
      * @param size
      * @param quantity
-     * @return A new created post.
+     * @return A new created options.post.
      */
     public Post createPost (ArrayList<String > tag, User user, String description, String productName, String productId, float price,
                             String category, String size, int quantity){
@@ -32,7 +32,7 @@ public class postManager{
     }
 
     /**
-     * Creates a post by taking in a tag, a User, a String description, s String productName, a String productId, a float price
+     * Creates a options.post by taking in a tag, a User, a String description, s String productName, a String productId, a float price
      * of the product, a String category and an int quantity of the product.
      *
      * @param tag
@@ -43,7 +43,7 @@ public class postManager{
      * @param price
      * @param category
      * @param quantity
-     * @return A new created post.
+     * @return A new created options.post.
      */
 
     public Post createPost (ArrayList<String > tag, User user, String description, String productName, String productId, float price,

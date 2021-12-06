@@ -1,7 +1,7 @@
 package loginFunctionsTest;
 
-import login_functions.SetIDandPasswords;
-import login_functions.SignInController;
+import login.SetIDandPasswords;
+import login.SignInController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class createPostController{
 
     /**
-     * Takes in a User and an object that implements inOut and creates a post for the User.
+     * Takes in a User and an object that implements inOut and creates a options.post for the User.
      *
      *
      * @param inOut an object that implements InOut interface
@@ -52,7 +52,7 @@ public class createPostController{
             ArrayList<String> tags = new ArrayList<>();
 
             for (int counter = 0; counter < tagnumber; counter++){
-                inOut.sendOutput("Input a Tag for the post");
+                inOut.sendOutput("Input a Tag for the options.post");
                 tags.add(inOut.getInput());
             }
             if (sizetf){

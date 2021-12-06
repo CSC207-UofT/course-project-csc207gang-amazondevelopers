@@ -3,7 +3,7 @@ import postFunctions.Post;
 import java.util.List;
 
 /**
- * Class used to add specific posts to a users post list, or feed
+ * Class used to add specific posts to a users options.post list, or feed
  */
 public class UserPostUseCase {
     private User user;

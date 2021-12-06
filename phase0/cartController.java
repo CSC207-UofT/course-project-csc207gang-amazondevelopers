@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * A controller class that adds items to the user's cart upon request.
+ * A controller class that adds items to the user's options.cart upon request.
  */
 public class cartController{
 
     /**
-     * Takes in user input to add desired items to a user's cart from the search option.
+     * Takes in user input to add desired items to a user's options.cart from the search option.
      * @param inOut an instance of the command line
      * @param user the profile of the user who is buying.
      */
@@ -23,11 +23,11 @@ public class cartController{
                 int productIndex = Integer.parseInt(stringIndex);
                 boolean validIndex = false;
                 while(!validIndex){
-                    // try and add the product at the index to the users cart
+                    // try and add the product at the index to the users options.cart
                     userManager userManager = new userManager(user);
                     if (userManager.addToShoppingCartSearches(productIndex, productList)){
                         validIndex = true;
-                        inOut.sendOutput("Successfully added to cart.");
+                        inOut.sendOutput("Successfully added to options.cart.");
                     }
                     else{
                         inOut.sendOutput("Error, please enter a valid index or this product is out of stock.");
@@ -49,7 +49,7 @@ public class cartController{
     }
 
     /**
-     * Takes in user input to add desired items to a user's cart from the user's feed.
+     * Takes in user input to add desired items to a user's options.cart from the user's feed.
      * @param inOut an instance of the command line
      * @param user the profile of the user who is buying.
      */
@@ -62,11 +62,11 @@ public class cartController{
                 int productIndex = Integer.parseInt(stringIndex);
                 boolean validIndex = false;
                 while(!validIndex){
-                    // try and add the product at the index to the users cart
+                    // try and add the product at the index to the users options.cart
                     userManager userManager = new userManager(user);
                     if (userManager.addToShoppingCartFeed(productIndex)){
                         validIndex = true;
-                        inOut.sendOutput("Successfully added to cart.");
+                        inOut.sendOutput("Successfully added to options.cart.");
                     }
                     else{
                         inOut.sendOutput("Error, please enter a valid index.");

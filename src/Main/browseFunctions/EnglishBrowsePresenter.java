@@ -5,7 +5,7 @@ import postFunctions.Post;
 
 public class EnglishBrowsePresenter implements SinglePostPresenterInterface {
     /**
-     * Present A representation of a singular post in english
+     * Present A representation of a singular options.post in english
      */
     public void presentSinglePost(Post post){
         SystemInOut output = new SystemInOut();
@@ -28,6 +28,6 @@ public class EnglishBrowsePresenter implements SinglePostPresenterInterface {
     }
     public void presentProduct(){
         SystemInOut output = new SystemInOut();
-        output.sendOutput("Products from your post:");
+        output.sendOutput("Products from your options.post:");
     }
 }

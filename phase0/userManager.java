@@ -79,11 +79,11 @@ public class userManager{
 
     /**
      * Method that takes an int representing the index of the Product in the User's currentSearches.
-     * Add the product at that index to the user's shopping cart.
-     * Return true if product is successfully added to user's shopping cart and false otherwise.
+     * Add the product at that index to the user's shopping options.cart.
+     * Return true if product is successfully added to user's shopping options.cart and false otherwise.
      *
      * @param index index of the Product in user's currentSearches list.
-     * @return true if product is successfully added to user's shopping cart and false otherwise.
+     * @return true if product is successfully added to user's shopping options.cart and false otherwise.
      */
     public boolean addToShoppingCartSearches(int index, ArrayList<Product> productList){
         // index out of bounds
@@ -102,11 +102,11 @@ public class userManager{
 
     /**
      * Method that takes an int representing the index of the Post in the User's feed.
-     * Add the product in the post at that index to the user's shopping cart.
-     * Return true if product is successfully added to user's shopping cart and false otherwise.
+     * Add the product in the options.post at that index to the user's shopping options.cart.
+     * Return true if product is successfully added to user's shopping options.cart and false otherwise.
      *
-     * @param index index of the post of user's feed.
-     * @return true if product is successfully added to user's shopping cart and false otherwise.
+     * @param index index of the options.post of user's feed.
+     * @return true if product is successfully added to user's shopping options.cart and false otherwise.
      */
     public boolean addToShoppingCartFeed(int index){
         List<Post> currentFeed = this.user.getFeed();
@@ -136,7 +136,7 @@ public class userManager{
 
 
     /**
-     * Empties this user's shopping cart.
+     * Empties this user's shopping options.cart.
      *
      */
     public void emptyShoppingCart(){

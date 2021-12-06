@@ -26,7 +26,7 @@ public class AddPostGatewayTest {
     @Test
     public void testAddPost() throws IOException, ClassNotFoundException {
         Product product = new Product("shoe", "1", 5.0, "shoes", "2",1);
-        Post expectedPost = new Post(product, "Shoe post", true, true,newUser);
+        Post expectedPost = new Post(product, "Shoe options.post", true, true,newUser);
         AddPostGateway apg = new AddPostGateway();
         apg.addPost(expectedPost,newUser);
         GetUserGateway getUser = new GetUserGateway();
