@@ -1,6 +1,6 @@
 package user;
 
-import post.Post;
+import options.post.Post;
 import product.Product;
 
 import java.io.Serializable;

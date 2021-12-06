@@ -5,7 +5,7 @@ public class browseController{
 
     /**
      * Takes in a User and an object that implements inOut and passes the User's
-     * feed to the cart Controller so that User can buy from their feed.
+     * feed to the options.cart Controller so that User can buy from their feed.
      *
      * @param inOut an object that implements InOut interface
      * @param user A User object

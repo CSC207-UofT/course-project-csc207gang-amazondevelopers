@@ -1,6 +1,6 @@
 package options.search;
 
-import login_functions.DictionaryReadWriter;
+import read_writer.DictionaryReadWriter;
 
 import java.io.File;
 import java.io.IOException;

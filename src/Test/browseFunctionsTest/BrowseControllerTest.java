@@ -1,12 +1,12 @@
 package browseFunctionsTest;
 
-import login_functions.SaveUserGateway;
-import login_functions.SignInController;
-import login_functions.SignUpController;
+import login.SaveUserGateway;
+import login.SignInController;
+import login.SignUpController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import post.Post;
+import options.post.Post;
 import product.Product;
 import user.User;
 
@@ -42,7 +42,7 @@ public class BrowseControllerTest {
 
     @Before
     public void setUp() throws IOException, ClassNotFoundException {
-        // create two users, and a post
+        // create two users, and a options.post
         // if there is a preexisting user TestCreateProductUser, delete it
         deleteUserGateway.deleteUser("follower");
         deleteUserGateway.deleteUser("followed");

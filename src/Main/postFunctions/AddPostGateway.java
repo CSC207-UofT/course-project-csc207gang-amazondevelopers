@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * Add post to the serialized file.
+ * Add options.post to the serialized file.
  */
 public class AddPostGateway implements AddPostGatewayInterface{
 
     /**
-     * Adds a post to a users post list in the user.ser file
-     * @param post the post added by the user
-     * @param user the user that added the post
+     * Adds a options.post to a users options.post list in the user.ser file
+     * @param post the options.post added by the user
+     * @param user the user that added the options.post
      */
     public void addPost(Post post, User user) throws IOException, ClassNotFoundException {
         File file = new File("src/Main/user.ser");

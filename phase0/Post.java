@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 public class Post{
-    private Product postTopic; /* The product that the post is about */
+    private Product postTopic; /* The product that the options.post is about */
     private ArrayList<String> tags;/* The tags about the posts */
-    private String description;/* The description or information about a post*/
-    private User poster;/*The user that posts the post*/
+    private String description;/* The description or information about a options.post*/
+    private User poster;/*The user that posts the options.post*/
 
     /**
      * Creates a new Post object.
      * The Constructor takes in 4 arguments, a Product, the tag of the Product, the description of the
-     * product and the user that makes the post.
+     * product and the user that makes the options.post.
      *
      */
     public Post (Product p, ArrayList<String> t, String d, User u){

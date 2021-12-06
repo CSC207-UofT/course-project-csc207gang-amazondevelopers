@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * A use case class that adds items to the user's cart
+ * A use case class that adds items to the user's options.cart
  */
 public class CartManager {
     SaveProductGatewayInterface saveProductChangesInterface;
@@ -35,9 +35,9 @@ public class CartManager {
 
     /**
      *
-     * @param item The product that we want to add to the cart
-     * @param user The user whom we want to add the product to their cart
-     * @return true or false if the product was or was not added to the user's cart
+     * @param item The product that we want to add to the options.cart
+     * @param user The user whom we want to add the product to their options.cart
+     * @return true or false if the product was or was not added to the user's options.cart
      */
 
     public boolean addToCart(Product item, User user){
@@ -50,8 +50,8 @@ public class CartManager {
     }
 
     /**
-     * Updates the quantity of the cart when the user buys
-     * @param user the user whom we want to update their cart
+     * Updates the quantity of the options.cart when the user buys
+     * @param user the user whom we want to update their options.cart
      */
 
     public void updateProductQuantity(User user) throws IOException, ClassNotFoundException {
@@ -63,7 +63,7 @@ public class CartManager {
             prodUseCase.decreaseQuantity(prod, 1);
             // Todo: delete the product with the old information from the file
             saveProductChangesInterface.save(prod.getId(),prod);
-            //updating product in post serilzation in the userDict
+            //updating product in options.post serilzation in the userDict
             User productUser = userDict.get(prod.getUsername());
             List postList = (List) productUser.getListPosts();
             for (int c = 0; c < postList.size(); c++){
@@ -83,7 +83,7 @@ public class CartManager {
 
     /**
      *
-     * @param user The user whom we will empty their cart
+     * @param user The user whom we will empty their options.cart
      * @throws IOException
      * @throws ClassNotFoundException
      */

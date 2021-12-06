@@ -10,7 +10,7 @@ import userFunctions.User;
 
 // TODO FIX CODE SMELL!! Too long method
 /**
- * Class to create a specific product and its related post.
+ * Class to create a specific product and its related options.post.
  */
 public class CreateProductController {
 /**

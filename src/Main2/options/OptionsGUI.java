@@ -1,14 +1,14 @@
 package options;
 
-import browse.BrowseController;
-import browse.EmptyFeedGUI;
-import browse.FeedGUI;
-import cart_functions.CartGUI;
-import login_functions.WelcomePageGUI;
+import login.welcome_page.WelcomePageGUIMaker;
+import options.browse.BrowseController;
+import options.browse.EmptyFeedGUI;
+import options.browse.FeedGUI;
+import options.cart.CartGUI;
 import options.follow_users.FollowGUI;
 import options.search.SearchGUI;
-import post.Post;
-import post.PostGUI;
+import options.post.Post;
+import options.post.PostGUI;
 import user.User;
 import javax.swing.*;
 import java.awt.*;
@@ -80,7 +80,8 @@ public class OptionsGUI implements ActionListener {
         if(e.getSource()==logout) {
             frame.dispose();
             try {
-                WelcomePageGUI welcomePageGUI = new WelcomePageGUI();
+                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
+                welcomePageGUIMaker.createGUI();
             } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }

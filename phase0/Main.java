@@ -9,7 +9,7 @@ public class Main{
 
     public static void main(String[] args) throws IOException {
         SystemInOut inOut = new SystemInOut();
-        // we need to give user the option to either login or signup, then give them the option to browse etc
+        // we need to give user the option to either login or signup, then give them the option to options.browse etc
         loginOptionsController loginOption = new loginOptionsController();
         boolean keepRunning = true;
         while(keepRunning) {
