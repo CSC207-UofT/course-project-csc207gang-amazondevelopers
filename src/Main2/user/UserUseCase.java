@@ -1,7 +1,6 @@
 package user;
 
 import product.Product;
-import user.User;
 
 import java.util.List;
 
@@ -31,5 +30,9 @@ public class UserUseCase {
         List<Product> cart = user.getShoppingCart();
         cart.add(product);
         user.setShoppingCart(cart);
+    }
+
+    public List<Product> userShoppingCart() {
+        return user.getShoppingCart();
     }
 }
