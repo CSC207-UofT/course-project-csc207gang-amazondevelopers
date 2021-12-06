@@ -2,6 +2,7 @@ package options.buy;
 
 
 import options.search.SearchGateway;
+import product.SaveProductGateway;
 import user.UserUseCase;
 import product.GetProductGateway;
 import product.Product;
@@ -47,7 +48,15 @@ public class BuyController {
         Product product = getProductGateway.getProduct(productId);
         ProductUseCase productUseCase = new ProductUseCase();
         //changing product quantity
-        return productUseCase.productBuy(product);
+        if(productUseCase.productBuy(product)){
+            //saves product with updated quantity
+            SaveProductGateway saveProductGateway = new SaveProductGateway();
+            saveProductGateway.saveChangedProduct(product);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 

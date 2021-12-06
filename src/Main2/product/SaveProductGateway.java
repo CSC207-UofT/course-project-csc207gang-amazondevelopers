@@ -65,21 +65,22 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
 
     }
 
-
-    public void saveChangedProduct(Product product, String tag) throws IOException,
+    /**
+     * Saves changes to the specific product, to the IdtoProduct file.
+     * @param product
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void saveChangedProduct(Product product) throws IOException,
             ClassNotFoundException {
 
         DictionaryReadWriter rw = new DictionaryReadWriter();
         File file = new File("src/Main2/IdToproduct.ser");
         if (!(file.length() == 0)) {
             HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main2/Idproduct.ser");
-            // {tag:[ID]}
-            if (productsSavedDict.containsKey(tag)) {
-                productsSavedDict.put(tag, product);
-                rw.saveToFile("src/Main2/IdToproduct.ser", productsSavedDict);
-
-
-            }
+            String productId = product.getId();
+            productsSavedDict.put(productId,product);
+            rw.saveToFile("src/Main2/IdToproduct.ser",productsSavedDict);
         }
     }
 }
