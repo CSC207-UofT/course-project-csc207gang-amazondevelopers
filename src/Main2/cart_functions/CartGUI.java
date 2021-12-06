@@ -1,6 +1,7 @@
 package cart_functions;
 
 import options.OptionsGUI;
+import options.follow_users.UserUseCase;
 import product.Product;
 import user.User;
 
@@ -8,15 +9,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class CartGUI implements ActionListener {
     CartPresenter presenter = new CartPresenter();
     JFrame frame = new JFrame();
-    JButton returnHome = new JButton("Return to Options Menu");
+    JButton returnHome = new JButton("Back");
     JButton buyButton = new JButton("Buy Cart");
+    JButton buy = new JButton("Buy");
+    JTextField searchBar = new JTextField(10);
+    JPanel scrollPanel = new JPanel();
+    JPanel indexPanel = new JPanel();
+    JPanel titlePanel = new JPanel();
+    JPanel backPanel = new JPanel();
+    JLabel messageLabel = new JLabel();
+
 
     JLabel emptyCartMessage = new JLabel(presenter.emptyCartMessage());
     User user;
+    ArrayList<String> cartList;
 
     /**
      * A constructor for cart which user can use to buy items saved in cart
@@ -24,8 +35,6 @@ public class CartGUI implements ActionListener {
      */
 
     public CartGUI(User user){
-
-        //TODO cannot access getShoppingCart() use user Use case
 
         if (user.getShoppingCart().size()==0){
 
@@ -37,6 +46,11 @@ public class CartGUI implements ActionListener {
 
             frame.add(returnHome);
             frame.add(emptyCartMessage);
+
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(420, 420);
+            frame.setLayout(null);
+            frame.setVisible(true);
         }
         else{
             Product prod = user.getShoppingCart().get(0);
@@ -48,25 +62,47 @@ public class CartGUI implements ActionListener {
                 }
             }
 
-            jScrollPane.setSize(300, 300);
+            UserUseCase userUseCase = new UserUseCase(this.user);
 
-            jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-            jScrollPane.setLayout(null);
-            jScrollPane.setVisible(true);
+            DefaultListModel list = new DefaultListModel();
+            for (Product item : userUseCase.userShoppingCart()) {
+                list.addElement(item.getName());
+            }
+            JList listOfProductDisplay = new JList(list);
+            JScrollPane listScroller = new JScrollPane(listOfProductDisplay);
 
-            frame.getContentPane().add(jScrollPane);
+            // back button
+            returnHome.setBounds(100, 400, 50, 35);
+            returnHome.addActionListener(this);
+            listScroller.setBounds(100, 100, 100, 100);
+            scrollPanel.add(listScroller);
 
-            buyButton.setBounds(60, 300, 300, 25);
+            buyButton.setBounds(160, 300, 50, 35);
             buyButton.addActionListener(this);
+
+            indexPanel.add(searchBar);
+            indexPanel.add(buy);
+
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(550, 500);
+            frame.setLayout(null);
+            frame.setVisible(true);
+            frame.getContentPane().setLayout(new FlowLayout());
+            frame.getContentPane().add(listScroller);
+            frame.add(titlePanel);
+            frame.add(messageLabel);
+
+
+            listScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+            listScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+            frame.add(backPanel);
+            frame.add(indexPanel);
+            frame.add(scrollPanel);
+
 
         }
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420, 420);
-        frame.setLayout(null);
-        frame.setVisible(true);
-
-        this.user = user;
     }
 
     /**

@@ -14,6 +14,10 @@ import options.follow_users.UserUseCase;
 
 public class CartManager {
 
+    /**
+     * Buys the users cart
+     * @param user The user who you have accessed
+     */
     public void buyCart(User user) throws Exception {
         List<String> cartIDs = new ArrayList<>();
         UserUseCase userUseCase = new UserUseCase(user);
@@ -26,6 +30,11 @@ public class CartManager {
         }
     }
 
+    /**
+     * Adds product to user's cart
+     * @param user The user who you have accessed
+     * @param product the product to add to the cart
+     */
     public void addToCart(User user, Product product){
         List<Product> productList = new ArrayList<>();
         productList.add(product);
@@ -34,9 +43,19 @@ public class CartManager {
                 productList.stream()).collect(Collectors.toList()));
     }
 
+    /**
+     * updates product quantity
+     * @param product The user who you have accessed
+     */
     public void updateProductQuantity(Product product){
         product.setQuantity(product.getQuantity() - 1);
     }
+
+    /**
+     * Buys an item of the user's choosing
+     * @param user The user who you have accessed
+     * @param product the product to add to the cart
+     */
 
     public void buyItem(User user, Product product) throws IOException, ClassNotFoundException {
         BuyController buyController = new BuyController();
