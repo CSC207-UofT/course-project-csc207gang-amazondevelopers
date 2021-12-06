@@ -53,9 +53,8 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
         // {ID: product}
         File file2 = new File("src/Main2/IdToProduct.ser");
         if (file2.length() == 0) {
-            HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main2/IdToProduct.ser");
+            HashMap<String, Object> idToProductDict = new HashMap<>();
             idToProductDict.put(productId, newProduct);
-
             rw.saveToFile("src/Main2/IdToProduct.ser", idToProductDict);
         }
         else {
