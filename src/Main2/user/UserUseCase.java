@@ -2,6 +2,7 @@ package user;
 
 import product.Product;
 
+import java.util.Collections;
 import java.util.List;
 
 public class UserUseCase {
@@ -33,6 +34,10 @@ public class UserUseCase {
     }
 
     public List<Product> userShoppingCart() {
-        return user.getShoppingCart();
+        try {
+            return user.getShoppingCart();
+        }catch (Exception ignored){
+            return Collections.emptyList();
+        }
     }
 }
