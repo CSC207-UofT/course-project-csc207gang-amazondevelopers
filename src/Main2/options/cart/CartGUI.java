@@ -1,10 +1,9 @@
 package options.cart;
 
 import options.OptionsGUI;
-import options.cart.CartPresenter;
-import user.UserUseCase;
 import product.Product;
 import user.User;
+import user.UserUseCase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +17,6 @@ public class CartGUI implements ActionListener {
     JButton returnHome = new JButton("Back");
     JButton buyButton = new JButton("Buy Cart");
     JButton buy = new JButton("Buy");
-    JTextField searchBar = new JTextField(10);
     JPanel scrollPanel = new JPanel();
     JPanel indexPanel = new JPanel();
     JPanel titlePanel = new JPanel();
@@ -36,8 +34,8 @@ public class CartGUI implements ActionListener {
      */
 
     public CartGUI(User user){
-
-        if (user.getShoppingCart().size()==0){
+        UserUseCase userUseCase = new UserUseCase(user);
+        if (userUseCase.userShoppingCart()==null || userUseCase.userShoppingCart().size()==0){
 
             emptyCartMessage.setBounds(150, 100, 250, 35);
             emptyCartMessage.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -54,16 +52,14 @@ public class CartGUI implements ActionListener {
             frame.setVisible(true);
         }
         else{
-            Product prod = user.getShoppingCart().get(0);
+            Product prod = userUseCase.userShoppingCart().get(0);
             JScrollPane jScrollPane = new JScrollPane(this.createProductFrame(prod));
 
-            for(Product i:user.getShoppingCart()){
+            for(Product i:userUseCase.userShoppingCart()){
                 if (!(user.getShoppingCart().indexOf(i) == 0)){
                     jScrollPane.add(this.createProductFrame(i));
                 }
             }
-
-            UserUseCase userUseCase = new UserUseCase(this.user);
 
             DefaultListModel list = new DefaultListModel();
             for (Product item : userUseCase.userShoppingCart()) {
@@ -73,7 +69,7 @@ public class CartGUI implements ActionListener {
             JScrollPane listScroller = new JScrollPane(listOfProductDisplay);
 
             // back button
-            returnHome.setBounds(100, 400, 50, 35);
+            returnHome.setBounds(100, 300, 50, 35);
             returnHome.addActionListener(this);
             listScroller.setBounds(100, 100, 100, 100);
             scrollPanel.add(listScroller);
@@ -81,8 +77,8 @@ public class CartGUI implements ActionListener {
             buyButton.setBounds(160, 300, 50, 35);
             buyButton.addActionListener(this);
 
-            indexPanel.add(searchBar);
             indexPanel.add(buy);
+            indexPanel.add(returnHome);
 
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(550, 500);
@@ -157,14 +153,14 @@ public class CartGUI implements ActionListener {
     public void actionPerformed(ActionEvent action) {
         if(action.getSource()==returnHome) {
             frame.dispose();
-            OptionsGUI optionsGUI = new OptionsGUI(this.user);
+            OptionsGUI optionsGUI = new OptionsGUI(user);
         }
-        else if (action.getSource() == buyButton){
+        else if (action.getSource()==buyButton){
             frame.dispose();
+            BoughtCart boughtCart = new BoughtCart(user);
             CartManager cart = new CartManager();
             try {
                 cart.buyCart(user);
-                BoughtCart boughtCart = new BoughtCart(user);
             } catch (Exception e) {
                 e.printStackTrace();
             }

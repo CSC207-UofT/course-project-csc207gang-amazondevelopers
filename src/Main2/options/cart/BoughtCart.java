@@ -14,7 +14,7 @@ public class BoughtCart implements ActionListener {
     JFrame frame = new JFrame();
     JButton returnHome = new JButton("Back to Main");
 
-    JLabel boughtCartMessage = new JLabel(presenter.emptyCartMessage());
+    JLabel boughtCartMessage = new JLabel(presenter.boughtCartMessage());
     User user;
 
     public BoughtCart(User user){
