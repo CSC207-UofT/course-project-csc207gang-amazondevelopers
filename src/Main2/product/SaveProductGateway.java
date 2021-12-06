@@ -28,38 +28,44 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
         File file = new File("src/Main2/product.ser");
         if (file.length() == 0) {
             HashMap<String, List<String>> emptyHashMap = new HashMap<>();
-            ArrayList<String> list = new ArrayList<>();
-            list.add(productId);
-            emptyHashMap.put(tag, list);
+            ArrayList<String> productIDList = new ArrayList<>();
+            productIDList.add(productId);
+            emptyHashMap.put(tag, productIDList);
             rw.saveToFile("src/Main2/product.ser", emptyHashMap);
         }
+        else {
 
-        HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main2/product.ser");
-        // {tag:[ID]}
-        if (productsSavedDict.containsKey(tag)) {
-            List<String> productIDList = (List<String>) productsSavedDict.get(tag);
-            productIDList.add(productId);
-            productsSavedDict.put(tag, productIDList);
-            rw.saveToFile("src/Main2/product.ser", productsSavedDict);
-        } else {
-            List<String> newList = new ArrayList<>();
-            newList.add(newProduct.getId());
-            productsSavedDict.put(tag, newList);
-            rw.saveToFile("src/Main2/product.ser", productsSavedDict);
+            HashMap<String, Object> productsSavedDict = rw.readFromFile("src/Main2/product.ser");
+            // {tag:[ID]}
+            if (productsSavedDict.containsKey(tag)) {
+                List<String> productIDList = (List<String>) productsSavedDict.get(tag);
+                productIDList.add(productId);
+                productsSavedDict.put(tag, productIDList);
+                rw.saveToFile("src/Main2/product.ser", productsSavedDict);
+            } else {
+                List<String> newList = new ArrayList<>();
+                newList.add(newProduct.getId());
+                productsSavedDict.put(tag, newList);
+                rw.saveToFile("src/Main2/product.ser", productsSavedDict);
+            }
         }
 
         // {ID: product}
         File file2 = new File("src/Main2/IdToProduct.ser");
         if (file2.length() == 0) {
-            HashMap<String, List<String>> emptyHashMap = new HashMap<>();
-            rw.saveToFile("src/Main2/IdToProduct.ser", emptyHashMap);
+            HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main2/IdToProduct.ser");
+            idToProductDict.put(productId, newProduct);
+
+            rw.saveToFile("src/Main2/IdToProduct.ser", idToProductDict);
+        }
+        else {
+            HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main2/IdToProduct.ser");
+            idToProductDict.put(productId, newProduct);
+            rw.saveToFile("src/Main2/IdToProduct.ser", idToProductDict);
         }
 
-        HashMap<String, Object> idToProductDict = rw.readFromFile("src/Main2/IdToProduct.ser");
-        idToProductDict.put(productId, newProduct);
-        rw.saveToFile("src/Main2/IdToProduct.ser", idToProductDict);
-
     }
+
 
     public void saveChangedProduct(Product product, String tag) throws IOException,
             ClassNotFoundException {

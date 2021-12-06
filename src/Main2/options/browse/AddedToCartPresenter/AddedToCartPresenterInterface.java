@@ -1,5 +1,5 @@
 package options.browse.AddedToCartPresenter;
 
-public interface AddedToCartPresenter {
+public interface AddedToCartPresenterInterface {
     String presentAddedToCart();
 }
