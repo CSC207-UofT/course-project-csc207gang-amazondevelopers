@@ -77,7 +77,7 @@ public class CartGUI implements ActionListener {
             buyButton.setBounds(160, 300, 50, 35);
             buyButton.addActionListener(this);
 
-            indexPanel.add(buy);
+            indexPanel.add(buyButton);
             indexPanel.add(returnHome);
 
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
