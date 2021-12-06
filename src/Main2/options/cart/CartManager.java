@@ -12,16 +12,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * A use case class that adds items to the user's options.cart
+ * A use case class that adds items to the user's options.cart, or allows them to buy
  */
 public class CartManager {
+    /**
+     * Buys all of the items in the users cart.
+     * @param user user that is buying
+     * @throws Exception ignored
+     */
     public void buyCart(User user) throws Exception {
-        List<String> cartIDs = new ArrayList<>();
         UserUseCase userUseCase = new UserUseCase(user);
+        BuyController buyController = new BuyController();
         for (Product i: userUseCase.userShoppingCart()) {
-            cartIDs.add(i.getId());
-            BuyController buyController = new BuyController();
-            buyController.allowBuy(user, cartIDs, cartIDs.indexOf(i.getId()));
+            buyController.buy(i.getId());
         }
         try{
             user.setShoppingCart(Collections.emptyList());
@@ -29,9 +32,14 @@ public class CartManager {
             ;
         }
 
-        //buyController.allowBuy(inOut, user, cartIDs);
+
     }
 
+    /**
+     * adds a specific product to the users cart.
+     * @param user
+     * @param product
+     */
     public void addToCart(User user, Product product){
         List<Product> productList = new ArrayList<>();
         productList.add(product);

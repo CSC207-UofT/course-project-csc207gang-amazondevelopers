@@ -18,7 +18,7 @@ public class BrowseController {
     }
 
     /**
-     * Get data from the userDictGateway
+     *
      */
     public ArrayList<Post> getFeed() throws IOException, ClassNotFoundException {
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
