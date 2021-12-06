@@ -9,4 +9,6 @@ public class CartPresenter {
      * @return A string message
      */
     public String emptyCartMessage(){return "Your cart is empty";}
+
+    public String boughtCArtMessage(){return "You successfully bought your items";}
 }

@@ -163,7 +163,7 @@ public class CartGUI implements ActionListener {
             CartManager cart = new CartManager();
             try {
                 cart.buyCart(user);
-                
+                BoughtCart boughtCart = new BoughtCart(user);
             } catch (Exception e) {
                 e.printStackTrace();
             }
