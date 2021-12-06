@@ -1,16 +1,16 @@
 package login.welcome_page;
 
+import gui.ButtonActionInterface;
 import gui.GUI;
 import gui.GUIFactoryInterface;
 import login.GetIDandPasswordsGateway;
-import login.sign_in.SignInGUIMaker;
-import login.sign_up.SignUpGUIMaker;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Take user input for what they want to do upon seeing the login page.
@@ -22,6 +22,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
     JButton signinButton = new JButton("Signin");
     JButton signupButton = new JButton("Signup");
     JButton quit = new JButton("Quit");
+    static Map<String, ButtonActionInterface> actionMap = new HashMap<>();
 
     /**
      * Constructor for the WelcomePageGUIMaker
@@ -36,33 +37,19 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==quit) {
-            System.exit(0);
-        }
-        if (e.getSource()==signinButton) {
-            frame.dispose();
-            try {
-                SignInGUIMaker signInGUIMaker = new SignInGUIMaker();
-                signInGUIMaker.createGUI();
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
-        }
-        if (e.getSource()==signupButton) {
-            frame.dispose();
-            try {
-                SignUpGUIMaker signUpGUIMaker = new SignUpGUIMaker();
-                signUpGUIMaker.createGUI();
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
-        }
 
+        String buttonText = e.getActionCommand();
+        ButtonActionInterface button = actionMap.get(buttonText);
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
      * Creates the JFame for the WelcomePage.
-     * @return
+     * @return a GUI
      */
     @Override
     public GUI createGUI() throws IOException, ClassNotFoundException {
@@ -93,6 +80,10 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
         frame.setSize(420, 420);
         frame.setLayout(null);
         frame.setVisible(true);
+
+        actionMap.put(quit.getText(), new QuitButton());
+        actionMap.put(signinButton.getText(), new SignInButton());
+        actionMap.put(signupButton.getText(), new SignUpButton());
 
         return new WelcomePageGUI(frame);
     }
