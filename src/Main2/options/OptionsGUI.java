@@ -34,6 +34,7 @@ public class OptionsGUI implements ActionListener {
      * @param user The user who you have accessed
      */
     public OptionsGUI(User user) {
+        this.user = user;
 
         welcomeLabel.setBounds(125, 25, 200, 35);
         welcomeLabel.setFont(new Font(null, Font.PLAIN, 15));
@@ -68,7 +69,6 @@ public class OptionsGUI implements ActionListener {
         frame.add(logout); frame.add(browse); frame.add(findSellers); frame.add(makePost);
         frame.add(search); frame.add(cart);
 
-        this.user = user;
     }
 
     /**

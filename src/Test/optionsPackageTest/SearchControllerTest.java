@@ -3,7 +3,6 @@ package optionsPackageTest;
 import delete_gateways.DeleteProductsGateway;
 import login.GetUserGateway;
 import login.SaveUserGateway;
-import options.buy.ProductUseCase;
 import product.GetProductGateway;
 import product.Product;
 import product.SaveProductGateway;
@@ -62,22 +61,22 @@ public class SearchControllerTest{
     // "shoes", "TEST", 5.0, "shoes", "2",1
     @Test
     public void getProductIDTest() throws IOException, ClassNotFoundException {
-        assertEquals("(0) test (TEST): $5.0, 1 in stock, 2", searchController.getProductID("test").get(0));
+        assertEquals("(0) test (TEST): $5.0, 1 in stock, 2", searchController.getSearchProductStrings("test").get(0));
     }
 
     @Test
     public void getProductIDMultipleTest() throws IOException, ClassNotFoundException {
         saveProductGateway.addProductToRepo(testProduct, "TEST", "test");
 
-        assertEquals(searchController.getProductID("test").size(), 2);
-        ArrayList<String> ids = searchController.getProductID("shoes");
+        assertEquals(searchController.getSearchProductStrings("test").size(), 2);
+        ArrayList<String> ids = searchController.getSearchProductStrings("shoes");
         assertEquals("(0) test (TEST): $5.0, 1 in stock, 2", ids.get(0));
         assertEquals("(1) test (TEST): $5.0, 1 in stock, 2", ids.get(1));
     }
 
     @Test
     public void getProductIDNoProductTest() throws IOException, ClassNotFoundException {
-        assertEquals(0, searchController.getProductID("jadshjasdjsah").size());
+        assertEquals(0, searchController.getSearchProductStrings("jadshjasdjsah").size());
     }
 
 }

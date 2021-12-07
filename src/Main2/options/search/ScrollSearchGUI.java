@@ -27,14 +27,16 @@ public class ScrollSearchGUI implements ActionListener {
 
 
     User user;
+    String tag;
     SearchController searchController = new SearchController(user);
     ArrayList<String> searchList;
 
 
     public ScrollSearchGUI(User user, String tag) throws IOException, ClassNotFoundException {
         this.user = user;
+        this.tag = tag;
 
-        this.searchList = searchController.getProductID(tag);
+        this.searchList = searchController.getSearchProductStrings(tag);
         messageLabel.setBounds(125, 125, 130, 130);
 
 
@@ -120,8 +122,10 @@ public class ScrollSearchGUI implements ActionListener {
             BuyController buyController = new BuyController();
             boolean allowedBuy = false;
             try {
-                allowedBuy = buyController.allowBuy(user, searchList, indexInt);
+                ArrayList<String> productIds = searchController.getProductIDStrings(this.tag);
+                allowedBuy = buyController.allowBuy(user, productIds, indexInt);
             } catch (IOException | ClassNotFoundException e) {
+                // TODO: make exception message more specific
                 e.printStackTrace();
             }
             if (allowedBuy) {

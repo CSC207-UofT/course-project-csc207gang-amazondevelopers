@@ -12,7 +12,6 @@ import java.io.IOException;
 public class SearchGUI implements ActionListener {
     SearchPresenterInterface searchPresenter = new SearchPresenter();
     JFrame frame = new JFrame();
-    // JLabel welcomeLabel = new JLabel(searchPresenter.searchButton());
     JLabel searchLabel = new JLabel(searchPresenter.searchButton());
     JButton search = new JButton(searchPresenter.searchButton());
     JTextField searchBar = new JTextField();

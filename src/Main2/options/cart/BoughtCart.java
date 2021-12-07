@@ -18,6 +18,7 @@ public class BoughtCart implements ActionListener {
     User user;
 
     public BoughtCart(User user){
+        this.user = user;
         boughtCartMessage.setBounds(150, 100, 250, 35);
         boughtCartMessage.setFont(new Font("Serif", Font.PLAIN, 14));
 
