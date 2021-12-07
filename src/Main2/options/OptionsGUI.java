@@ -115,7 +115,13 @@ public class OptionsGUI implements ActionListener {
                 EmptyFeedGUI emptyFeedGUI = new EmptyFeedGUI(user);
             }
             else{
-                FeedGUI feedGUI = new FeedGUI(feed,user,0);
+                try {
+                    FeedGUI feedGUI = new FeedGUI(feed,user,0);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                } catch (ClassNotFoundException classNotFoundException) {
+                    classNotFoundException.printStackTrace();
+                }
             }
         }
         if(e.getSource()==cart) {
