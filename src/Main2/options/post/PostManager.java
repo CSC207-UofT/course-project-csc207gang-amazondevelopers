@@ -29,8 +29,8 @@ public class PostManager {
      *
      * @return a newly created options.post.
      */
-    public Post createPost(Product product, String caption, boolean canComment, boolean canRate, User user) {
-        return new Post(product, caption, canComment, canRate, user);
+    public Post createPost(String productId, String caption, boolean canComment, boolean canRate, User user) {
+        return new Post(productId, caption, canComment, canRate, user);
     }
 
     public void savePost(Post newPost, User user) throws IOException, ClassNotFoundException {

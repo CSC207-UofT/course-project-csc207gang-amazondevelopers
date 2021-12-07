@@ -1,5 +1,4 @@
 package options.post;
-import product.Product;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ import user.User;
 public class Post implements Serializable {
 
     private int likes;
-    private Product product;
+    private String product;//The product ID that the post relates to
     private List<Float> ratings;
     private List<String> comments;
     private String description = "";
@@ -36,13 +35,7 @@ public class Post implements Serializable {
      * @param product the product being advertised in the options.post
      * @param user the user that created the options.post
      */
-    public Post(Product product, User user){
-        this.product = product;
-        this.user = user;
-        this.ratings = new ArrayList<Float>();
-        this.comments = new ArrayList<String>();
-    }
-    public Post(Product product, String caption, boolean canComment, boolean canRate, User user) {
+    public Post(String product, String caption, boolean canComment, boolean canRate, User user) {
         this.likes = 0;
         this.product = product;
         this.description = product.toString();
@@ -71,8 +64,8 @@ public class Post implements Serializable {
     public String getProductToString() {
         return product.toString();
     }
-    public Product getProduct(){return product;}
-    public void setProduct(Product product){this.product = product;}
+    public String getProduct(){return product;}
+    public void setProduct(String product){this.product = product;}
     public int getLikes() {
         return likes;
     }

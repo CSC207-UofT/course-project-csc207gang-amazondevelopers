@@ -8,9 +8,12 @@ import options.OptionsGUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import options.post.Post;
+import product.GetProductGateway;
+import product.Product;
 import user.User;
 
 /**
@@ -34,30 +37,33 @@ public class FeedGUI implements ActionListener {
     Post post;
     int index;
     User user;
+    Product product;
 
     /**
      * Represents a constructor for the JFrame of a Post in the Feed
      * @param feed        Represents the total feed of the current user
      * @param user        The user viewing posts
      */
-    public FeedGUI( ArrayList<Post> feed, User user, int index) {
+    public FeedGUI( ArrayList<Post> feed, User user, int index) throws IOException, ClassNotFoundException {
         this.post = feed.get(index);
         this.feed = feed;
         this.index = index;
         this.user = user;
+        GetProductGateway getProductGateway = new GetProductGateway();
+        this.product = getProductGateway.getProduct(post.getProduct());
         posterLabel.setText(feedPresenter.presentPostedBy() + post.getUser().getUsername());
         posterLabel.setBounds(25, 25, 400, 25);
 
         captionLabel.setText(feedPresenter.presentCaption() + post.getCaption());
         captionLabel.setBounds(25, 75, 400, 25);
 
-        productNameLabel.setText(feedPresenter.presentProductName() + post.getProduct().getName());
+        productNameLabel.setText(feedPresenter.presentProductName() + product.getName());
         productNameLabel.setBounds(25, 125, 400, 25);
 
-        productQuantityLabel.setText(feedPresenter.presentQuantity() + post.getProduct().getQuantity());
+        productQuantityLabel.setText(feedPresenter.presentQuantity() + product.getQuantity());
         productQuantityLabel.setBounds(25, 175, 400, 25);
 
-        productSizeLabel.setText(feedPresenter.presentSize() + post.getProduct().getSizes());
+        productSizeLabel.setText(feedPresenter.presentSize() + product.getSizes());
         productSizeLabel.setBounds(25, 225, 400, 25);
 
         backButton.setBounds(45, 400, 100, 25);
@@ -102,37 +108,40 @@ public class FeedGUI implements ActionListener {
             } else {
                 frame.setVisible(false);
                 frame.dispose();
-                FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
-            }
-            if (e.getSource() == backButton) {
-                if (this.index == 0) {
-                    frame.setVisible(false);
-                    frame.dispose();
-                    OptionsGUI optionsGUI = new OptionsGUI(user);
-                } else {
-                    frame.setVisible(false);
-                    frame.dispose();
-                    FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
+                try {
+                    FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                } catch (ClassNotFoundException classNotFoundException) {
+                    classNotFoundException.printStackTrace();
                 }
             }
-            if (e.getSource() == cartButton) {
-                CartManager cartManager = new CartManager();
-                cartManager.addToCart(user, post.getProduct());
+        }
+        if (e.getSource() == backButton) {
+            if (this.index == 0) {
                 frame.setVisible(false);
                 frame.dispose();
-                AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, post.getProduct().getName());
+                OptionsGUI optionsGUI = new OptionsGUI(user);
+            } else {
+                frame.setVisible(false);
+                frame.dispose();
+                try {
+                    FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                } catch (ClassNotFoundException classNotFoundException) {
+                    classNotFoundException.printStackTrace();
+                }
             }
         }
-
-        else if (e.getSource() == cartButton) {
-            CartManager cart = new CartManager();
-            cart.addToCart(user, post.getProduct());
+        if (e.getSource() == cartButton) {
+            CartManager cartManager = new CartManager();
+            cartManager.addToCart(user, product);
             frame.setVisible(false);
             frame.dispose();
-            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user,post.getProduct().getName());
+            AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, product.getName());
             }
         }
-
     }
 
 
