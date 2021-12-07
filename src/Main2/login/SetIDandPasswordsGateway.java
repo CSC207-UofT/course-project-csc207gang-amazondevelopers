@@ -12,11 +12,9 @@ public class SetIDandPasswordsGateway {
      * Set username and password to the dictionary
      * @param username string username
      * @param password string password
-     * @throws IOException
-     * @throws ClassNotFoundException
      */
 
-    public void setUsernamePasswordHash(String username, String password) throws IOException, ClassNotFoundException {
+    public void setUsernamePasswordHash(String username, String password){
         File file = new File("src/Main2/username_password.ser");
         if (file.length() == 0){
             DictionaryReadWriter rw = new DictionaryReadWriter();

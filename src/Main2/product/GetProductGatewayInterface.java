@@ -12,5 +12,5 @@ public interface GetProductGatewayInterface {
      * @throws IOException reading from empty file
      * @throws ClassNotFoundException reading from an empty file to create a HashMap
      */
-    Object getProduct(String productId) throws IOException, ClassNotFoundException;
+    Object getProduct(String productId);
 }

@@ -2,7 +2,6 @@ package options.browse;
 
 import options.browse.FeedPresenter.EnglishFeedPresenter;
 
-import options.cart.CartController;
 import options.OptionsGUI;
 
 import javax.swing.*;
@@ -15,9 +14,11 @@ import options.post.Post;
 import product.GetProductGateway;
 import product.Product;
 import user.User;
+import user.UserUseCase;
 
 /**
- * Class that presents a options.post to a user using our JFrame command line interface,
+ * Class that presents a options.post to a user using our JFrame command line interface, allowing
+ * a user to view the next post, view the last post or add to cart
  *
  */
 public class FeedGUI implements ActionListener {
@@ -44,7 +45,7 @@ public class FeedGUI implements ActionListener {
      * @param feed        Represents the total feed of the current user
      * @param user        The user viewing posts
      */
-    public FeedGUI( ArrayList<Post> feed, User user, int index) throws IOException, ClassNotFoundException {
+    public FeedGUI( ArrayList<Post> feed, User user, int index){
         this.post = feed.get(index);
         this.feed = feed;
         this.index = index;
@@ -95,7 +96,6 @@ public class FeedGUI implements ActionListener {
 
     /**
      * Represents different actions when the JButtons are interacted with the user
-     *
      * @param e the Action event performed in
      */
     @Override
@@ -108,13 +108,7 @@ public class FeedGUI implements ActionListener {
             } else {
                 frame.setVisible(false);
                 frame.dispose();
-                try {
-                    FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
-                }
+                FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
             }
         }
         if (e.getSource() == backButton) {
@@ -125,18 +119,12 @@ public class FeedGUI implements ActionListener {
             } else {
                 frame.setVisible(false);
                 frame.dispose();
-                try {
-                    FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
-                }
+                FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
             }
         }
         if (e.getSource() == cartButton) {
-            CartController cartManager = new CartController();
-            cartManager.addToCart(user, product);
+            UserUseCase userUseCase = new UserUseCase(user);
+            userUseCase.userAddToCart(product);
             frame.setVisible(false);
             frame.dispose();
             AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, product.getName());

@@ -3,12 +3,12 @@ package login.welcome_page;
 import gui.ButtonActionInterface;
 import gui.GUI;
 import gui.GUIFactoryInterface;
-import login.GetIDandPasswordsGateway;
+import login.welcome_page.WelcomePagePresenter.EnglishWelcomePagePresenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,17 +17,17 @@ import java.util.Map;
  */
 
 public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface {
-
+    EnglishWelcomePagePresenter englishWelcomePagePresenter = new EnglishWelcomePagePresenter();
     JFrame frame = new JFrame();
-    JButton signinButton = new JButton("Signin");
-    JButton signupButton = new JButton("Signup");
-    JButton quit = new JButton("Quit");
+    JButton signinButton = new JButton(englishWelcomePagePresenter.presentSignIn());
+    JButton signupButton = new JButton(englishWelcomePagePresenter.presentSignUp());
+    JButton quit = new JButton(englishWelcomePagePresenter.presentQuit());
     static Map<String, ButtonActionInterface> actionMap = new HashMap<>();
 
     /**
      * Constructor for the WelcomePageGUIMaker
      */
-    public WelcomePageGUIMaker() throws IOException, ClassNotFoundException {
+    public WelcomePageGUIMaker(){
     }
 
     /**
@@ -40,11 +40,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
 
         String buttonText = e.getActionCommand();
         ButtonActionInterface button = actionMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        button.apply();
     }
 
     /**
@@ -52,13 +48,8 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
      * @return a GUI
      */
     @Override
-    public GUI createGUI() throws IOException, ClassNotFoundException {
-
-        WelcomePagePresenter welcomePagePresenter = new WelcomePagePresenter();
-        JLabel messageLabel = new JLabel(welcomePagePresenter.welcomeMessage());
-
-        GetIDandPasswordsGateway login = new GetIDandPasswordsGateway();
-        HashMap<String, Object> logininfo = login.getUsernamePasswordHash();
+    public GUI createGUI() {
+        JLabel messageLabel = new JLabel(englishWelcomePagePresenter.welcomeMessage());
 
         messageLabel.setBounds(70, 100, 250, 35);
         messageLabel.setFont(new Font("Serif", Font.PLAIN, 14));

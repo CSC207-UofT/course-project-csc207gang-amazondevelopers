@@ -4,6 +4,9 @@ import user.User;
 
 import java.io.IOException;
 
+/**
+ * Interface used for Dependency
+ */
 public interface SaveUserGatewayInterface {
-    void saveUser(String username, User userToBeSaved) throws IOException, ClassNotFoundException;
+    void saveUser(String username, User userToBeSaved);
 }

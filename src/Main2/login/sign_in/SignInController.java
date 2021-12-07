@@ -1,32 +1,27 @@
 package login.sign_in;
 
 import login.GetIDandPasswordsGateway;
-import login.GetUserGateway;
-import user.User;
 
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Controller with methods relating to the user signing in to the program
+ */
 public class SignInController {
-
-    private HashMap<String,Object> getIdAndPass() throws IOException, ClassNotFoundException {
+    /**
+     * Retrives our user to password info from a file, and checks if the given username and password match the combination given.
+     * or if the username exists at all
+     * @param userID Username inputed when signing in
+     * @param password Password given when signing in
+     * @return returns true if the userId and password exist and match, false if they dont.
+     */
+    public boolean checkPassMatch(String userID, String password){
         GetIDandPasswordsGateway getIDandPasswordsGateway = new GetIDandPasswordsGateway();
-        HashMap<String, Object> loginInfo = getIDandPasswordsGateway.getUsernamePasswordHash();
-        return loginInfo;
-    }
-
-    public boolean checkPassMatch(String userID, String password) throws IOException, ClassNotFoundException {
-        HashMap<String, Object> IdAndPass = this.getIdAndPass();
+        HashMap<String, Object> IdAndPass = getIDandPasswordsGateway.getUsernamePasswordHash();
         if (IdAndPass.containsKey(userID)){
-            if (IdAndPass.get(userID).equals(password)){
-            return true;}
+            return IdAndPass.get(userID).equals(password);
         }return false;
 
-    }
-
-    public static User getUser(String userID) throws IOException, ClassNotFoundException {
-        GetUserGateway getUserGateway = new GetUserGateway();
-        User user = getUserGateway.getUser(userID);
-        return user;
     }
 }

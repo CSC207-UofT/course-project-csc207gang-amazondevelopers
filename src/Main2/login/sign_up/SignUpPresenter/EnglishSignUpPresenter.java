@@ -1,7 +1,9 @@
-package login.sign_up;
+package login.sign_up.SignUpPresenter;
+
+import login.sign_up.SignUpPresenter.SignUpPresenterInterface;
 
 //TODO Change name to EnglishSignUpPresenter
-public class SignUpPresenter {
+public class EnglishSignUpPresenter implements SignUpPresenterInterface {
     /**
      * A presenter to help guide the user
      * @return returns a message for the reader to see

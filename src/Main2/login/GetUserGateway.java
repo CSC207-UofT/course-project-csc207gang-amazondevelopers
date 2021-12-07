@@ -9,9 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-/**
- *
- */
 
 public class GetUserGateway implements SignInGatewayInterface {
 
@@ -20,7 +17,7 @@ public class GetUserGateway implements SignInGatewayInterface {
      * @param username The username inputted from the user
      * @return A newly created or old user
      */
-    public User getUser(String username) throws IOException, ClassNotFoundException {
+    public User getUser(String username){
         File file = new File("src/Main2/user.ser");
         // access the serialized file for this user.
         DictionaryReadWriter rw = new DictionaryReadWriter();
