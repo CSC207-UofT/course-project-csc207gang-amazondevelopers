@@ -2,7 +2,7 @@ package login.sign_in;
 
 import gui.GUI;
 import gui.GUIFactoryInterface;
-import login.sign_up.SignUpGUI;
+import login.GetUserGateway;
 import login.welcome_page.WelcomePageGUIMaker;
 import options.OptionsGUI;
 import user.User;
@@ -14,24 +14,24 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
- * Take user input for signin credentials to sign user in.
+ * Uses java swing to Take user input for signin credentials to sign user in.
  */
 public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
-    SignInPresenter signInPresenter = new SignInPresenter();
+    EnglishSignInPresenter englishSignInPresenter = new EnglishSignInPresenter();
     JFrame frame = new JFrame();
-    JButton loginButton = new JButton("Login");
-    JButton resetButton = new JButton("Reset");
-    JButton backButton = new JButton("Back");
+    JButton loginButton = new JButton(englishSignInPresenter.presentLogin());
+    JButton resetButton = new JButton(englishSignInPresenter.presentReset());
+    JButton backButton = new JButton(englishSignInPresenter.presentBack());
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
-    JLabel messageLabel = new JLabel(signInPresenter.message());
-    JLabel userIDLabel = new JLabel("userID: ");
-    JLabel userPasswordLabel = new JLabel("password: ");
+    JLabel messageLabel = new JLabel(englishSignInPresenter.presentInputUsername());
+    JLabel userIDLabel = new JLabel(englishSignInPresenter.presentUserID());
+    JLabel userPasswordLabel = new JLabel(englishSignInPresenter.presentPassword());
 
     /**
      * Constructor for the SignInGUIMaker
      */
-    public SignInGUIMaker() throws IOException, ClassNotFoundException {
+    public SignInGUIMaker(){
     }
     /**
      *
@@ -40,7 +40,7 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
      */
     @Override
     public void actionPerformed(ActionEvent action) {
-        SignInPresenter presenter = new SignInPresenter();
+        EnglishSignInPresenter presenter = new EnglishSignInPresenter();
         if(action.getSource()==backButton) {
             frame.dispose();
             try {
@@ -61,15 +61,14 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
             try {
                 boolean matchPass = signInController.checkPassMatch(userID, password);
                 if (matchPass){
-                    messageLabel.setForeground(Color.green);
-                    messageLabel.setText(presenter.message3());
                     frame.dispose();
-                    User user = SignInController.getUser(userID);
+                    GetUserGateway getUserGateway = new GetUserGateway();
+                    User user = getUserGateway.getUser(userID);
                     // give them their options
                     OptionsGUI optionsGUI = new OptionsGUI(user);
                 } else {
                     messageLabel.setForeground(Color.red);
-                    messageLabel.setText(presenter.message4());
+                    messageLabel.setText(presenter.presentWrongPasswordUsername());
                 }
             } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
@@ -82,7 +81,7 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
      */
 
     @Override
-    public GUI createGUI() throws IOException, ClassNotFoundException {
+    public GUI createGUI() {
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 
