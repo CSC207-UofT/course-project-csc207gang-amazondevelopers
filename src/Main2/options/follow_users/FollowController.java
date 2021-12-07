@@ -29,7 +29,7 @@ public class FollowController {
 
     /**
      *
-     * @param username username of ther user that this user wants to follow
+     * @param username username of the user that this user wants to follow
      * @throws IOException
      * @throws ClassNotFoundException
      */

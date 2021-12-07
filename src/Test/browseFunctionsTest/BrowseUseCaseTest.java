@@ -1,13 +1,13 @@
 package browseFunctionsTest;
 
-import browse.BrowseUseCase;
+import options.browse.BrowseUseCase;
+import options.post.Post;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import post.Post;
 import product.Product;
 import user.User;
 

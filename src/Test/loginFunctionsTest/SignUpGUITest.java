@@ -3,7 +3,7 @@ package loginFunctionsTest;
 import inputOutputFunctions.SystemInOutTest;
 import productFunctions.CreateProductController;
 import serializationFunctions.DictionaryReadWriter;
-import settingsFunctions.DeleteUserGateway;
+import delete_gateways.DeleteUserGateway;
 import userFunctions.User;
 import loginFunctions.SignInController;
 import loginFunctions.SignUpController;

@@ -1,6 +1,6 @@
 package userFunctionsTest;
 
-import settingsFunctions.DeleteUserGateway;
+import delete_gateways.DeleteUserGateway;
 import userFunctions.User;
 import loginFunctions.GetUserGateway;
 import userFunctions.SaveUserChangesGateways;

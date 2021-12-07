@@ -1,15 +1,18 @@
 package browseFunctionsTest;
 
-import browse.BrowseController;
-import login_functions.SaveUserGateway;
-import login_functions.SignInController;
-import login_functions.SignUpController;
+import delete_gateways.DeleteProductsGateway;
+import delete_gateways.DeleteUserGateway;
+import login.SaveUserGateway;
+import login.sign_in.SignInController;
+import options.browse.BrowseController;
+import options.post.Post;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import post.Post;
+import product.GetProductGateway;
 import product.Product;
+import product.ProductUseCase;
+import product.SaveProductGateway;
 import user.User;
 
 import java.io.IOException;
@@ -18,8 +21,6 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class BrowseControllerTest {
-    SignInController signin = new SignInController();
-    SignUpController signup = new SignUpController();
 
     User testUser1 = new User("followed");
     User testUser2 = new User("follower");
@@ -27,9 +28,9 @@ public class BrowseControllerTest {
     Product testProduct = new Product("shoes", "TEST", 5.0, "shoes", "2",1);
     Post post = new Post(testProduct, testUser2);
 
-    CreateProductGateway createProductGateway = new CreateProductGateway();
-    productFunctions.GetProductGateway getProductGateway = new productFunctions.GetProductGateway();
-    productFunctions.ProductUseCase productUseCaseCreate = new productFunctions.ProductUseCase(createProductGateway);
+   SaveProductGateway saveProductGateway = new SaveProductGateway();
+   GetProductGateway getProductGateway = new GetProductGateway();
+    ProductUseCase productUseCaseCreate = new ProductUseCase(saveProductGateway);
 
     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
     DeleteUserGateway deleteUserGateway = new DeleteUserGateway();
@@ -52,8 +53,8 @@ public class BrowseControllerTest {
         saveUserGateway.saveUser("following", testUser2);
         saveUserGateway.saveUser("NoFollowing", testUser3);
 
-        createProductGateway.addProductToRepo(testProduct, "TEST", "shoes");
-        addPostGateway.addPost(post, testUser2);
+        saveProductGateway.addProductToRepo(testProduct, "TEST", "shoes");
+        savePostGateway.addPost(post, testUser2);
 
     }
 
@@ -81,6 +82,7 @@ public class BrowseControllerTest {
         ArrayList<Post> feed = browseController2.getFeed();
         assertEquals(0, feed.size());
     }
+
 
 
 

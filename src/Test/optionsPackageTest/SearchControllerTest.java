@@ -3,7 +3,7 @@ package optionsPackageTest;
 import inputOutputFunctions.SystemInOutTest;
 import productFunctions.CreateProductGateway;
 import settingsFunctions.DeleteProductsGateway;
-import settingsFunctions.DeleteUserGateway;
+import delete_gateways.DeleteUserGateway;
 import loginFunctions.GetUserGateway;
 import loginFunctions.SignUpGateway;
 import userFunctions.User;

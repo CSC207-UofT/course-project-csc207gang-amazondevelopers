@@ -1,19 +1,11 @@
 package productFunctionsTest;
 
 import inputOutputFunctions.SystemInOutTest;
-import settingsFunctions.DeleteUserGateway;
 import loginFunctions.SignUpGateway;
 import postFunctions.Post;
 import productFunctions.CreateProductController;
 import productFunctions.Product;
 import userFunctions.User;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.*;
-
-import static org.junit.Assert.*;
 
 
 public class CreateProductControllerTest {

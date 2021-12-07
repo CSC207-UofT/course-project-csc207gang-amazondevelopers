@@ -5,7 +5,7 @@ import browseFunctions.SaveUserDictGateway;
 import inputOutputFunctions.SystemInOut;
 import productFunctions.CreateProductGateway;
 import settingsFunctions.DeleteProductsGateway;
-import settingsFunctions.DeleteUserGateway;
+import delete_gateways.DeleteUserGateway;
 import userFunctions.CartManager;
 import userFunctions.SaveProductGateway;
 import userFunctions.User;
