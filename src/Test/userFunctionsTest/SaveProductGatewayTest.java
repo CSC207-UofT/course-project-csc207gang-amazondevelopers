@@ -1,9 +1,8 @@
 //package userFunctionsTest;
 //
-//import productFunctions.GetProductGateway;
-//import productFunctions.Product;
-//import settingsFunctions.DeleteProductsGateway;
-//import userFunctions.SaveProductGateway;
+//import product.GetProductGateway;
+//import product.Product;
+//import product.SaveProductGateway;
 //import org.junit.Test;
 //
 //import java.io.IOException;

@@ -1,7 +1,6 @@
 package followFunctionsTest;
 import login.SaveUserGateway;
 import options.follow_users.FollowController;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import user.User;

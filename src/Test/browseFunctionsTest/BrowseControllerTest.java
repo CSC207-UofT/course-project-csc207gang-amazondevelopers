@@ -3,7 +3,6 @@ package browseFunctionsTest;
 import delete_gateways.DeleteProductsGateway;
 import delete_gateways.DeleteUserGateway;
 import login.SaveUserGateway;
-import login.sign_in.SignInController;
 import options.browse.BrowseController;
 import options.post.Post;
 import org.junit.After;
