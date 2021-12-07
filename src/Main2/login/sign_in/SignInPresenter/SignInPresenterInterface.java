@@ -1,4 +1,4 @@
-package login.sign_in;
+package login.sign_in.SignInPresenter;
 
 public interface SignInPresenterInterface {
     String presentInputUsername();

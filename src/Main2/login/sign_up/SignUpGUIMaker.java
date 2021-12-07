@@ -3,6 +3,7 @@ package login.sign_up;
 
 import gui.GUI;
 import gui.GUIFactoryInterface;
+import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
 import login.welcome_page.WelcomePageGUIMaker;
 
 import javax.swing.*;
@@ -16,16 +17,16 @@ import java.io.IOException;
  * Take user input for signup credentials to sign user up.
  */
 public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
-    SignUpPresenter signUpPresenter = new SignUpPresenter();
+    EnglishSignUpPresenter englishSignUpPresenter = new EnglishSignUpPresenter();
     JFrame frame = new JFrame();
-    JButton signUpButton = new JButton(signUpPresenter.signUp());
-    JButton resetButton = new JButton(signUpPresenter.reset());
-    JButton backButton = new JButton(signUpPresenter.back());
+    JButton signUpButton = new JButton(englishSignUpPresenter.signUp());
+    JButton resetButton = new JButton(englishSignUpPresenter.reset());
+    JButton backButton = new JButton(englishSignUpPresenter.back());
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
-    JLabel messageLabel = new JLabel(signUpPresenter.message());
-    JLabel userIDLabel = new JLabel(signUpPresenter.userID());
-    JLabel userPasswordLabel = new JLabel(signUpPresenter.password());
+    JLabel messageLabel = new JLabel(englishSignUpPresenter.message());
+    JLabel userIDLabel = new JLabel(englishSignUpPresenter.userID());
+    JLabel userPasswordLabel = new JLabel(englishSignUpPresenter.password());
 
 
     /**
@@ -40,7 +41,7 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        SignUpPresenter presenter = new SignUpPresenter();
+        EnglishSignUpPresenter presenter = new EnglishSignUpPresenter();
         if (e.getSource() == backButton) {
             frame.dispose();
             try {
