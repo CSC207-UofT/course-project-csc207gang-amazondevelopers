@@ -9,6 +9,7 @@ import user.User;
 import user.UserUseCase;
 
 import java.io.IOException;
+import java.util.List;
 
 public class FollowController {
     // search for the user
@@ -30,8 +31,6 @@ public class FollowController {
     /**
      *
      * @param username username of the user that this user wants to follow
-     * @throws IOException
-     * @throws ClassNotFoundException
      */
 
     public boolean canFollow(String username) throws IOException, ClassNotFoundException {
@@ -39,9 +38,15 @@ public class FollowController {
         GetUserGateway getUserGateway = new GetUserGateway();
         User userToFollow = getUserGateway.getUser(username);
         // that user you want to follow does not exist
-        //TODO: check if I already follow this user
         if (userToFollow.getUsername().equals("")){
             return false;
+        }
+        //Already follow user
+        List<String> followingList =  user.getListFollowing();
+        for (String following: followingList){
+            if (username.equals(following)){
+                return false;
+            }
         }
         // the user you want to follow exists
         UserUseCase userUseCase = new UserUseCase(user);
