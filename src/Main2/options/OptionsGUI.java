@@ -79,12 +79,8 @@ public class OptionsGUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==logout) {
             frame.dispose();
-            try {
-                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-                welcomePageGUIMaker.createGUI();
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
+            WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
+            welcomePageGUIMaker.createGUI();
         }
         if(e.getSource()==makePost) {
             frame.dispose();
@@ -104,24 +100,12 @@ public class OptionsGUI implements ActionListener {
             frame.dispose();
             BrowseController browseController = new BrowseController(user);
             ArrayList<Post> feed = null;
-            try {
-                feed = browseController.getFeed();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
+            feed = browseController.getFeed();
             if (0 == feed.size()){
                 EmptyFeedGUI emptyFeedGUI = new EmptyFeedGUI(user);
             }
             else{
-                try {
-                    FeedGUI feedGUI = new FeedGUI(feed,user,0);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
-                }
+                FeedGUI feedGUI = new FeedGUI(feed,user,0);
             }
         }
         if(e.getSource()==cart) {

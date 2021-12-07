@@ -80,22 +80,16 @@ public class FollowGUI implements ActionListener {
         if(action.getSource() == followButtonLabel) {
             String username = searchBar.getText();
             FollowController followController = new FollowController(user);
-            try {
-                if(followController.canFollow(username)){
-                    messageLabel.setForeground(Color.black);
-                    messageLabel.setText(followPresenter.presentCanFollow());
-                }
-                else{
-                    messageLabel.setForeground(Color.red);
-                    messageLabel.setText(followPresenter.presentCantFollow());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            if(followController.canFollow(username)){
+                messageLabel.setForeground(Color.black);
+                messageLabel.setText(followPresenter.presentCanFollow());
+            }
+            else{
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText(followPresenter.presentCantFollow());
+            }
             }
         }
 
     }
 
-}

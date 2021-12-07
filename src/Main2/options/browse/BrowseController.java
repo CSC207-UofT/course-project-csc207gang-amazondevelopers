@@ -20,7 +20,7 @@ public class BrowseController {
     /**
      *
      */
-    public ArrayList<Post> getFeed() throws IOException, ClassNotFoundException {
+    public ArrayList<Post> getFeed(){
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         GetUserDictGateway getUserDictGateway = new GetUserDictGateway();
         HashMap users = getUserDictGateway.getUserDict();

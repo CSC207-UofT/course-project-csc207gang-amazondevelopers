@@ -3,6 +3,7 @@ package login.sign_up;
 
 import gui.GUI;
 import gui.GUIFactoryInterface;
+import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
 import login.welcome_page.WelcomePageGUIMaker;
 
 import javax.swing.*;
@@ -16,22 +17,22 @@ import java.io.IOException;
  * Take user input for signup credentials to sign user up.
  */
 public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
-    SignUpPresenter signUpPresenter = new SignUpPresenter();
+    EnglishSignUpPresenter englishSignUpPresenter = new EnglishSignUpPresenter();
     JFrame frame = new JFrame();
-    JButton signUpButton = new JButton(signUpPresenter.signUp());
-    JButton resetButton = new JButton(signUpPresenter.reset());
-    JButton backButton = new JButton(signUpPresenter.back());
+    JButton signUpButton = new JButton(englishSignUpPresenter.signUp());
+    JButton resetButton = new JButton(englishSignUpPresenter.reset());
+    JButton backButton = new JButton(englishSignUpPresenter.back());
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
-    JLabel messageLabel = new JLabel(signUpPresenter.message());
-    JLabel userIDLabel = new JLabel(signUpPresenter.userID());
-    JLabel userPasswordLabel = new JLabel(signUpPresenter.password());
+    JLabel messageLabel = new JLabel(englishSignUpPresenter.message());
+    JLabel userIDLabel = new JLabel(englishSignUpPresenter.userID());
+    JLabel userPasswordLabel = new JLabel(englishSignUpPresenter.password());
 
 
     /**
      * Constructor is used to set the size of labels and buttons on the page
      */
-    public SignUpGUIMaker() throws IOException, ClassNotFoundException {
+    public SignUpGUIMaker() {
     }
 
     /**
@@ -40,16 +41,12 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        SignUpPresenter presenter = new SignUpPresenter();
+        EnglishSignUpPresenter presenter = new EnglishSignUpPresenter();
         if (e.getSource() == backButton) {
             frame.dispose();
-            try {
-                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-                welcomePageGUIMaker.createGUI();
-                //TODO: edit try catch
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
+            WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
+            welcomePageGUIMaker.createGUI();
+
         }
         if (e.getSource() == resetButton) {
             userIDField.setText("");
@@ -63,11 +60,8 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
             boolean validIDandPass = signUpController.checkIdAndPass(userID, password);
 
             boolean existingUsername = false;
-            try {
-                existingUsername = signUpController.containsUsername(userID);
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
+            existingUsername = signUpController.containsUsername(userID);
+
 
             if (existingUsername) {
                 // taken username
@@ -88,16 +82,12 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
                 messageLabel.setText(presenter.message4());
 
             } else { // can sign up
-                try {
-                    SignUpController.setNewUser(userID, password);
-                    messageLabel.setForeground(Color.green);
-                    messageLabel.setText(presenter.message3());
-                    frame.dispose();
-                    WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-                    welcomePageGUIMaker.createGUI();
-                } catch (IOException | ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                }
+                SignUpController.setNewUser(userID, password);
+                messageLabel.setForeground(Color.green);
+                messageLabel.setText(presenter.message3());
+                frame.dispose();
+                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
+                welcomePageGUIMaker.createGUI();
             }
 
 
@@ -109,7 +99,7 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
      */
 
     @Override
-    public GUI createGUI() throws IOException, ClassNotFoundException {
+    public GUI createGUI(){
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 

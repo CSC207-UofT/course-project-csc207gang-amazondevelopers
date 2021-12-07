@@ -13,10 +13,8 @@ public class SaveUserGateway implements SaveUserGatewayInterface {
      * Saves a hashmap to user.ser file, with key value pair being username to user
      * @param username A string representing the username
      * @param userToBeSaved the user object that matches the username
-     * @throws IOException error occured during reading a file, when there is an input / output error
-     * @throws ClassNotFoundException thrown if the class is not found
      */
-    public void saveUser(String username, User userToBeSaved) throws IOException, ClassNotFoundException {
+    public void saveUser(String username, User userToBeSaved){
         File file = new File("src/Main2/user.ser");
         if (!(file.length() == 0)) {
             DictionaryReadWriter rw = new DictionaryReadWriter();

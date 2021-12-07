@@ -2,6 +2,7 @@ package product;
 import java.io.Serializable;
 
 public class Product implements Serializable{
+    private static final long serialVersionUID = -7950046950879175491L;
     private String name = "";
     private String id = "";
     private Double price = 0.0;

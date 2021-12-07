@@ -9,19 +9,13 @@ import java.util.List;
 
 public class User implements Serializable {
     // instance variables
+    private static final long serialVersionUID = 7132054135933010940L;
     private String username;
     private List<Post> listPosts;
     private List<Product> shoppingCart;
     private List<String> listFollowing; // people we follow
     public String password;
-
-    public void setListFollowers(List<String> listFollowers) {
-        this.listFollowers = listFollowers;
-    }
-
     private List<String> listFollowers; // people that follow me
-    private List<Post> feed;
-    private List<String> productsPosted; // the list of all products that this user has posted.
 
     /**
      * Creates a new User object.
@@ -34,11 +28,10 @@ public class User implements Serializable {
 
     public User(String username){
         this.username = username;
-        this.listPosts = new ArrayList<>();
-        this.shoppingCart = new ArrayList<>();
-        this.listFollowing = new ArrayList<>();
-        this.feed = new ArrayList<>();
-        this.listFollowers = new ArrayList<>();
+        this.listPosts = new ArrayList<Post>();
+        this.shoppingCart = new ArrayList<Product>();
+        this.listFollowing = new ArrayList<String>();
+        this.listFollowers = new ArrayList<String>();
     }
 
     public String getPassword() {return this.password;}
@@ -50,11 +43,6 @@ public class User implements Serializable {
     public List<String> getListFollowers(){
         return listFollowers;
     }
-
-    public List<String> getProductsPosted(){
-        return productsPosted;
-    }
-
     // getter for instance variable username
     public String getUsername() {
         return username;
@@ -95,18 +83,10 @@ public class User implements Serializable {
     public void setListFollowing(List<String> listFollowing) {
         this.listFollowing = listFollowing;
     }
-
-    // getter for instance variable feed
-    public List<Post> getFeed() {
-        return feed;
-    }
-
-    // setter for instance variable feed
-    public void setFeed(List<Post> feed) {
-        this.feed = feed;
-    }
     public void addToPostList(Post post){
         this.listPosts.add(post);
     }
-    public void addToFeed(Post post){this.feed.add(post);}
+    public void setListFollowers(List<String> listFollowers) {
+        this.listFollowers = listFollowers;
+    }
 }
