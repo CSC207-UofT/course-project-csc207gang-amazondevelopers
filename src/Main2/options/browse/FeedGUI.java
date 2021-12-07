@@ -45,7 +45,7 @@ public class FeedGUI implements ActionListener {
      * @param feed        Represents the total feed of the current user
      * @param user        The user viewing posts
      */
-    public FeedGUI( ArrayList<Post> feed, User user, int index) throws IOException, ClassNotFoundException {
+    public FeedGUI( ArrayList<Post> feed, User user, int index){
         this.post = feed.get(index);
         this.feed = feed;
         this.index = index;
@@ -108,11 +108,7 @@ public class FeedGUI implements ActionListener {
             } else {
                 frame.setVisible(false);
                 frame.dispose();
-                try {
-                    FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
-                } catch (IOException | ClassNotFoundException ioException) {
-                    ioException.printStackTrace();
-                }
+                FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
             }
         }
         if (e.getSource() == backButton) {
@@ -123,11 +119,7 @@ public class FeedGUI implements ActionListener {
             } else {
                 frame.setVisible(false);
                 frame.dispose();
-                try {
-                    FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
-                } catch (IOException | ClassNotFoundException ioException) {
-                    ioException.printStackTrace();
-                }
+                FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
             }
         }
         if (e.getSource() == cartButton) {

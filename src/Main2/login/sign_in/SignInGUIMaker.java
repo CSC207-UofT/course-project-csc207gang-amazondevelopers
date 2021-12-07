@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 /**
  * Uses java swing to Take user input for signin credentials to sign user in.
@@ -44,12 +43,8 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
         EnglishSignInPresenter presenter = new EnglishSignInPresenter();
         if(action.getSource()==backButton) {
             frame.dispose();
-            try {
-                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-                welcomePageGUIMaker.createGUI();
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
+            WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
+            welcomePageGUIMaker.createGUI();
         }
         if(action.getSource()==resetButton) {
             userIDField.setText("");
@@ -59,20 +54,16 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
             SignInController signInController = new SignInController();
-            try {
-                boolean matchPass = signInController.checkPassMatch(userID, password);
-                if (matchPass){
-                    frame.dispose();
-                    GetUserGateway getUserGateway = new GetUserGateway();
-                    User user = getUserGateway.getUser(userID);
-                    // give them their options
-                    OptionsGUI optionsGUI = new OptionsGUI(user);
-                } else {
-                    messageLabel.setForeground(Color.red);
-                    messageLabel.setText(presenter.presentWrongPasswordUsername());
-                }
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
+            boolean matchPass = signInController.checkPassMatch(userID, password);
+            if (matchPass){
+                frame.dispose();
+                GetUserGateway getUserGateway = new GetUserGateway();
+                User user = getUserGateway.getUser(userID);
+                // give them their options
+                OptionsGUI optionsGUI = new OptionsGUI(user);
+            } else {
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText(presenter.presentWrongPasswordUsername());
             }
         }
     }

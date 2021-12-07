@@ -1,5 +1,4 @@
 package read_writer;
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -11,10 +10,10 @@ public interface ReadWriter {
      * @param filepath location of ser file
      * @param o object to be serialized
      */
-    void saveToFile(String filepath, Object o) throws IOException;
+    void saveToFile(String filepath, Object o);
 
     /**
      * @param filepath location of ser file
      */
-    HashMap<String, Object> readFromFile(String filepath) throws IOException, ClassNotFoundException;
+    HashMap<String, Object> readFromFile(String filepath);
 }

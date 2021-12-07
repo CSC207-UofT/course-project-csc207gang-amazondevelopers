@@ -29,7 +29,7 @@ public class SignUpController {
      *
      * @return hashmap of username to passwords.
      */
-    private HashMap<String,Object> getIdAndPass() throws IOException, ClassNotFoundException {
+    private HashMap<String,Object> getIdAndPass() {
         GetIDandPasswordsGateway getIDandPasswordsGateway = new GetIDandPasswordsGateway();
         return getIDandPasswordsGateway.getUsernamePasswordHash();
     }
@@ -40,7 +40,7 @@ public class SignUpController {
      * @param userID the ID of the user
      * @return wether the user is in the program
      */
-    public boolean containsUsername(String userID) throws IOException, ClassNotFoundException {
+    public boolean containsUsername(String userID){
         HashMap<String, Object> IdAndPass = this.getIdAndPass();
         return IdAndPass.containsKey(userID);
     }
@@ -51,7 +51,7 @@ public class SignUpController {
      * @param userID the ID of the user
      * @param password the password of the user
      */
-    public static void setNewUser(String userID, String password) throws IOException, ClassNotFoundException {
+    public static void setNewUser(String userID, String password){
         SetIDandPasswordsGateway setNewUser = new SetIDandPasswordsGateway();
         SaveUserGateway saveUser = new SaveUserGateway();
         setNewUser.setUsernamePasswordHash(userID, password);

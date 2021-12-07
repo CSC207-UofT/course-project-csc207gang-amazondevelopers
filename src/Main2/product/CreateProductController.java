@@ -19,7 +19,7 @@ public class CreateProductController {
      * @param information a list of all information needed to create a product
      * @return returns a Product
      */
-    public Product createProduct(ArrayList<String> information) throws IOException, ClassNotFoundException {
+    public Product createProduct(ArrayList<String> information){
         SaveProductGatewayInterface saveProductGateway = new SaveProductGateway();
         ProductUseCase productUseCase = new ProductUseCase(saveProductGateway);
         String newId = generateID();
@@ -35,7 +35,7 @@ public class CreateProductController {
      * @throws IOException if the file is empty
      * @throws ClassNotFoundException if file is empty when trying to get HashMap from ser file
      */
-    private String generateID() throws IOException, ClassNotFoundException {
+    private String generateID(){
         GetProductGateway getProductGateway = new GetProductGateway();
         HashMap<String, Object> hashMap = getProductGateway.getHashMap();
         int hashMapSize = hashMap.size();

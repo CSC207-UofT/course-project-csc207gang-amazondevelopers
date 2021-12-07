@@ -33,7 +33,7 @@ public class FollowController {
      * @param username username of the user that this user wants to follow
      */
 
-    public boolean canFollow(String username) throws IOException, ClassNotFoundException {
+    public boolean canFollow(String username){
 
         GetUserGateway getUserGateway = new GetUserGateway();
         User userToFollow = getUserGateway.getUser(username);

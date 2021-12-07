@@ -16,7 +16,7 @@ public class SignInController {
      * @param password Password given when signing in
      * @return returns true if the userId and password exist and match, false if they dont.
      */
-    public boolean checkPassMatch(String userID, String password) throws IOException, ClassNotFoundException {
+    public boolean checkPassMatch(String userID, String password){
         GetIDandPasswordsGateway getIDandPasswordsGateway = new GetIDandPasswordsGateway();
         HashMap<String, Object> IdAndPass = getIDandPasswordsGateway.getUsernamePasswordHash();
         if (IdAndPass.containsKey(userID)){

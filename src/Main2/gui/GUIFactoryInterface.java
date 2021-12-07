@@ -7,5 +7,5 @@ import java.io.IOException;
  */
 
 public interface GUIFactoryInterface {
-    GUI createGUI() throws IOException, ClassNotFoundException;
+    GUI createGUI();
 }

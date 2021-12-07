@@ -8,5 +8,5 @@ import java.io.IOException;
  * Interface used in Dependency Injection Design pattern for SignInGateway
  */
 public interface SignInGatewayInterface {
-    User getUser(String username) throws IOException, ClassNotFoundException;
+    User getUser(String username);
 }

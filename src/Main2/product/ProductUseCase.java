@@ -1,7 +1,5 @@
 package product;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProductUseCase {
@@ -16,7 +14,7 @@ public class ProductUseCase {
      * Method that takes in a Product and saves it to the product.ser file and the idtoProduct.ser file.
      *
      */
-    public void saveNewProductToSer(Product newProduct) throws IOException, ClassNotFoundException {
+    public void saveNewProductToSer(Product newProduct){
         saveProduct.addProductToRepo(newProduct, newProduct.getId(), newProduct.getCategory());
     }
 

@@ -10,18 +10,19 @@ public class DictionaryReadWriter implements ReadWriter {
      *
      * @param filePath the file to write the records to
      * @param inputDict    stores the list of users to be serialized
-     * @throws IOException
      */
     @Override
-    public void saveToFile(String filePath, Object inputDict) throws IOException {
+    public void saveToFile(String filePath, Object inputDict){
+        try {
+            OutputStream file = new FileOutputStream(filePath);
+            OutputStream buffer = new BufferedOutputStream(file);
+            ObjectOutput output = new ObjectOutputStream(buffer);
 
-        OutputStream file = new FileOutputStream(filePath);
-        OutputStream buffer = new BufferedOutputStream(file);
-        ObjectOutput output = new ObjectOutputStream(buffer);
-
-        // serialize the Map
-        output.writeObject(inputDict);
-        output.close();
+            // serialize the Map
+            output.writeObject(inputDict);
+            output.close();
+        } catch(IOException ignored){
+        }
     }
 
     /**
@@ -29,19 +30,19 @@ public class DictionaryReadWriter implements ReadWriter {
      *
      * @param filePath file where the user list is stored
      * @return Dictionary of the products
-     * @throws IOException
      */
     @Override
-    public HashMap<String, Object> readFromFile(String filePath) throws IOException, ClassNotFoundException {
-
-        InputStream file = new FileInputStream(filePath);
-        InputStream buffer = new BufferedInputStream(file);
-        ObjectInput input = new ObjectInputStream(buffer);
-
-        // serialize the Map
-        Object productDict = input.readObject();
-        input.close();
-        return (HashMap<String, Object>) productDict;
-
+    public HashMap<String, Object> readFromFile(String filePath){
+        try {
+            InputStream file = new FileInputStream(filePath);
+            InputStream buffer = new BufferedInputStream(file);
+            ObjectInput input = new ObjectInputStream(buffer);
+            // serialize the Map
+            HashMap<String, Object> productDict = (HashMap<String, Object>) input.readObject();
+            input.close();
+            return productDict;
+        } catch (IOException | ClassNotFoundException ioException) {
+            return new HashMap<String, Object>();
+        }
     }
 }

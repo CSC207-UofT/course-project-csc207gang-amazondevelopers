@@ -32,7 +32,7 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
     /**
      * Constructor is used to set the size of labels and buttons on the page
      */
-    public SignUpGUIMaker() throws IOException, ClassNotFoundException {
+    public SignUpGUIMaker() {
     }
 
     /**
@@ -44,13 +44,9 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
         EnglishSignUpPresenter presenter = new EnglishSignUpPresenter();
         if (e.getSource() == backButton) {
             frame.dispose();
-            try {
-                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-                welcomePageGUIMaker.createGUI();
-                //TODO: edit try catch
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
+            WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
+            welcomePageGUIMaker.createGUI();
+
         }
         if (e.getSource() == resetButton) {
             userIDField.setText("");
@@ -64,11 +60,8 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
             boolean validIDandPass = signUpController.checkIdAndPass(userID, password);
 
             boolean existingUsername = false;
-            try {
-                existingUsername = signUpController.containsUsername(userID);
-            } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
+            existingUsername = signUpController.containsUsername(userID);
+
 
             if (existingUsername) {
                 // taken username
@@ -89,16 +82,12 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
                 messageLabel.setText(presenter.message4());
 
             } else { // can sign up
-                try {
-                    SignUpController.setNewUser(userID, password);
-                    messageLabel.setForeground(Color.green);
-                    messageLabel.setText(presenter.message3());
-                    frame.dispose();
-                    WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-                    welcomePageGUIMaker.createGUI();
-                } catch (IOException | ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                }
+                SignUpController.setNewUser(userID, password);
+                messageLabel.setForeground(Color.green);
+                messageLabel.setText(presenter.message3());
+                frame.dispose();
+                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
+                welcomePageGUIMaker.createGUI();
             }
 
 
@@ -110,7 +99,7 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
      */
 
     @Override
-    public GUI createGUI() throws IOException, ClassNotFoundException {
+    public GUI createGUI(){
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 

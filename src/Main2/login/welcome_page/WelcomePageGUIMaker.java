@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +27,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
     /**
      * Constructor for the WelcomePageGUIMaker
      */
-    public WelcomePageGUIMaker() throws IOException, ClassNotFoundException {
+    public WelcomePageGUIMaker(){
     }
 
     /**
@@ -41,11 +40,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
 
         String buttonText = e.getActionCommand();
         ButtonActionInterface button = actionMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        button.apply();
     }
 
     /**
@@ -53,7 +48,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
      * @return a GUI
      */
     @Override
-    public GUI createGUI() throws IOException, ClassNotFoundException {
+    public GUI createGUI() {
         JLabel messageLabel = new JLabel(englishWelcomePagePresenter.welcomeMessage());
 
         messageLabel.setBounds(70, 100, 250, 35);
