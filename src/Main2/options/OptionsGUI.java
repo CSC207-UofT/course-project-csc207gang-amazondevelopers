@@ -106,10 +106,10 @@ public class OptionsGUI implements ActionListener {
             ArrayList<Post> feed = null;
             try {
                 feed = browseController.getFeed();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            } catch (ClassNotFoundException classNotFoundException) {
-                classNotFoundException.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
             }
             if (0 == feed.size()){
                 EmptyFeedGUI emptyFeedGUI = new EmptyFeedGUI(user);

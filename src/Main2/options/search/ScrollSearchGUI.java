@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ScrollSearchGui implements ActionListener {
+public class ScrollSearchGUI implements ActionListener {
 
     SearchPresenterInterface searchPresenter = new SearchPresenter();
     JLabel searchIntro = new JLabel(searchPresenter.inputIndex());
@@ -31,7 +31,7 @@ public class ScrollSearchGui implements ActionListener {
     ArrayList<String> searchList;
 
 
-    public ScrollSearchGui(User user, String tag) throws IOException, ClassNotFoundException {
+    public ScrollSearchGUI(User user, String tag) throws IOException, ClassNotFoundException {
         this.user = user;
 
         this.searchList = searchController.getProductID(tag);

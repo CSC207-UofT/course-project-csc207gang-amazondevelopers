@@ -26,7 +26,7 @@ public class BrowseControllerTest {
     User testUser2 = new User("follower");
     User testUser3 = new User("NoFollowing");
     Product testProduct = new Product("shoes", "TEST", 5.0, "shoes", "2",1);
-    Post post = new Post(testProduct, testUser2);
+    Post post = new Post(testProduct.toString(), "test", true, true, testUser1);
 
    SaveProductGateway saveProductGateway = new SaveProductGateway();
    GetProductGateway getProductGateway = new GetProductGateway();
@@ -48,13 +48,21 @@ public class BrowseControllerTest {
         deleteUserGateway.deleteUser("follower");
         deleteUserGateway.deleteUser("followed");
         deleteUserGateway.deleteUser("NoFollowing");
+
         // create the new user profile before each test
+        ArrayList<Post> posts = new ArrayList<>();
+        posts.add(post);
+        testUser1.setListPosts(posts);
+
+        ArrayList<String> followers = new ArrayList<>();
+        followers.add(testUser2.getUsername());
+        testUser1.setListFollowers(followers);
+
         saveUserGateway.saveUser("followed", testUser1);
         saveUserGateway.saveUser("following", testUser2);
         saveUserGateway.saveUser("NoFollowing", testUser3);
 
         saveProductGateway.addProductToRepo(testProduct, "TEST", "shoes");
-        savePostGateway.addPost(post, testUser2);
 
     }
 

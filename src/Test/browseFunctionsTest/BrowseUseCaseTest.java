@@ -53,8 +53,8 @@ public class BrowseUseCaseTest {
         User user1  = new User("followed1");
         User user2  = new User("followed2");
 
-        Product product = new Product("test", "TEST", 5.0, "shirt", 1);
-        Post post = new Post(product, user1);
+        Product product = new Product("test", "TEST", 5.0, "test", 1);
+        Post post = new Post(product.toString(), "test", true, true, user1);
         ArrayList<Post> posts = new ArrayList<>();
         posts.add(post);
         user1.setListPosts(posts);

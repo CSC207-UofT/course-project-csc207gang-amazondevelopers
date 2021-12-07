@@ -1,11 +1,5 @@
 package postFunctionsTest;
-import productFunctions.Product;
-import postFunctions.Post;
-import postFunctions.AddPostGateway;
-import userFunctions.User;
-import loginFunctions.GetUserGateway;
-import loginFunctions.SignUpGateway;
-import inputOutputFunctions.SystemInOut;
+
 
 public class AddPostGatewayTest {
 /**    private User newUser;

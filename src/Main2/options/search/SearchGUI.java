@@ -8,8 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchGUI implements ActionListener {
     SearchPresenterInterface searchPresenter = new SearchPresenter();
@@ -79,7 +77,7 @@ public class SearchGUI implements ActionListener {
         if(action.getSource() == search) {
             String tag = searchBar.getText();
             try {
-                ScrollSearchGui scrollSearchGUI = new ScrollSearchGui(user, tag);
+                ScrollSearchGUI scrollSearchGUI = new ScrollSearchGUI(user, tag);
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }

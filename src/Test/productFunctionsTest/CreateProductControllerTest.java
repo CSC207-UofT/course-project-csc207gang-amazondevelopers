@@ -1,13 +1,5 @@
 package productFunctionsTest;
 
-import inputOutputFunctions.SystemInOutTest;
-import loginFunctions.SignUpGateway;
-import postFunctions.Post;
-import productFunctions.CreateProductController;
-import productFunctions.Product;
-import userFunctions.User;
-
-
 public class CreateProductControllerTest {
 
 /**    SignUpGateway signUpGateway = new SignUpGateway();
