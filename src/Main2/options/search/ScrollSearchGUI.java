@@ -50,7 +50,7 @@ public class ScrollSearchGUI implements ActionListener {
         indexPanel.setBounds(125, 300, 100, 100);
 
         backPanel.add(back);
-        backPanel.setBounds(400, 400, 100, 100);
+        backPanel.setBounds(130, 600, 100, 100);
 
 
         DefaultListModel list = new DefaultListModel();
@@ -61,7 +61,7 @@ public class ScrollSearchGUI implements ActionListener {
         JScrollPane listScroller = new JScrollPane(listOfProductDisplay);
 
         // back button
-        back.setBounds(100, 400, 50, 35);
+        back.setBounds(130, 600, 50, 35);
         back.addActionListener(this);
         listScroller.setBounds(100, 100, 100, 100);
         scrollPanel.add(listScroller);
@@ -83,6 +83,7 @@ public class ScrollSearchGUI implements ActionListener {
 
         indexPanel.add(searchBar);
         indexPanel.add(buy);
+        indexPanel.add(back);
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

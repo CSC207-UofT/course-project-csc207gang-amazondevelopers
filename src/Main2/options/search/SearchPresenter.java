@@ -14,18 +14,16 @@ public class SearchPresenter implements SearchPresenterInterface{
     }
 
     public String searchInstructions(){
-        return "Please input a tag word for your product of interest";
+        return "<html>Please input a tag word for your <br>product of interest.</html>";
     }
 
-    public String inputIndex(){return "Please input the index (first number you see \n before the \")\"" +
-            " of the product that you want buy";}
-
-    public String putIndex(){return "Index Of Item";}
+    public String inputIndex(){return "<html>Please input the index (first number you see before the \")\"" +
+            " <br>of the product that you want buy</html>";}
 
     public String buyButton(){return "Buy Something!";}
 
     public String cannotBuy(){return "Can't Buy this product!";}
 
-    public String canBuy(){return "Product was added to your options.cart";}
+    public String canBuy(){return "Product was added to your cart";}
 }
 //

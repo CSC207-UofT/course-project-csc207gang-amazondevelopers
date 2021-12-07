@@ -18,13 +18,6 @@ public class FollowPresenter implements FollowPresenterInterface{
         return "Please input a username to follow";
     }
 
-    public String inputIndex(){return "Please input the index (first number you see \n before the \")\"" +
-            " of the product that you want buy";}
-
-    public String putIndex(){return "Index Of Item";}
-
-    public String buyButton(){return "Buy Something!";}
-
     public String presentCantFollow(){return "Can't follow this user";}
 
     public String presentCanFollow(){return "Followed User Successfully";}
