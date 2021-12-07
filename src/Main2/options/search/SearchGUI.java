@@ -26,7 +26,7 @@ public class SearchGUI implements ActionListener {
     public SearchGUI(User user) {
         this.user = user;
 
-        messageLabel.setBounds(70, 100, 250, 35);
+        messageLabel.setBounds(125, 10, 250, 35);
         messageLabel.setFont(new Font("Serif", Font.PLAIN, 14));
 
         // search bar + search button
@@ -46,6 +46,7 @@ public class SearchGUI implements ActionListener {
         back.setFont(new Font(null, Font.PLAIN, 15));
         back.addActionListener(this);
 
+        frame.add(messageLabel);
         frame.add(searchLabel);
         frame.add(search);
         frame.add(searchBar);
