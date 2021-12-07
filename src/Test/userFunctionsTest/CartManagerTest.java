@@ -1,17 +1,15 @@
 //package userFunctionsTest;
 //
-//import browseFunctions.GetUserDictGateway;
-//import browseFunctions.SaveUserDictGateway;
-//import inputOutputFunctions.SystemInOut;
-//import productFunctions.CreateProductGateway;
-//import settingsFunctions.DeleteProductsGateway;
-//import delete_gateways.DeleteUserGateway;
-//import userFunctions.CartManager;
-//import userFunctions.SaveProductGateway;
-//import userFunctions.User;
-//import loginFunctions.GetUserGateway;
-//import loginFunctions.SaveUserGateway;
-//import loginFunctions.SignUpGateway;
+import login.GetUserGateway;
+import login.SaveUserGateway;
+import product.GetProductGateway;
+import delete_gateways.DeleteUserGateway;
+import options.cart.CartController;
+import product.SaveProductGateway;
+import user.User;
+import login.GetUserGateway;
+import login.SaveUserGateway;
+
 //import org.junit.After;
 //import org.junit.Before;
 //import org.junit.Test;

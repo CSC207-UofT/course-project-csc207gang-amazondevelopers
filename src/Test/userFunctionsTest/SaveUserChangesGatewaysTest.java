@@ -1,9 +1,9 @@
 //package userFunctionsTest;
 //
 //import delete_gateways.DeleteUserGateway;
-//import userFunctions.User;
-//import loginFunctions.GetUserGateway;
-//import userFunctions.SaveUserChangesGateways;
+//import user.User;
+//import login.GetUserGateway;
+//import login.SaveUserGateway;
 //import org.junit.Test;
 //
 //import java.io.IOException;
