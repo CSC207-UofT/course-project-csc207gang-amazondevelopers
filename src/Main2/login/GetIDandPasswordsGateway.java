@@ -7,10 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-
 public class GetIDandPasswordsGateway {
     /**
-     *
+     *Gateway that returns the dictionary of usernames to passwords.
      * @return the hashmap of ID and passwords
      * @throws IOException thrown if incorrect error
      * @throws ClassNotFoundException thrown if class is not found

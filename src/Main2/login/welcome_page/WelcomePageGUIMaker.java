@@ -3,7 +3,8 @@ package login.welcome_page;
 import gui.ButtonActionInterface;
 import gui.GUI;
 import gui.GUIFactoryInterface;
-import login.GetIDandPasswordsGateway;
+import login.welcome_page.WelcomePagePresenter.EnglishWelcomePagePresenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,11 +18,11 @@ import java.util.Map;
  */
 
 public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface {
-
+    EnglishWelcomePagePresenter englishWelcomePagePresenter = new EnglishWelcomePagePresenter();
     JFrame frame = new JFrame();
-    JButton signinButton = new JButton("Signin");
-    JButton signupButton = new JButton("Signup");
-    JButton quit = new JButton("Quit");
+    JButton signinButton = new JButton(englishWelcomePagePresenter.presentSignIn());
+    JButton signupButton = new JButton(englishWelcomePagePresenter.presentSignUp());
+    JButton quit = new JButton(englishWelcomePagePresenter.presentQuit());
     static Map<String, ButtonActionInterface> actionMap = new HashMap<>();
 
     /**
@@ -53,12 +54,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
      */
     @Override
     public GUI createGUI() throws IOException, ClassNotFoundException {
-
-        WelcomePagePresenter welcomePagePresenter = new WelcomePagePresenter();
-        JLabel messageLabel = new JLabel(welcomePagePresenter.welcomeMessage());
-
-        GetIDandPasswordsGateway login = new GetIDandPasswordsGateway();
-        HashMap<String, Object> logininfo = login.getUsernamePasswordHash();
+        JLabel messageLabel = new JLabel(englishWelcomePagePresenter.welcomeMessage());
 
         messageLabel.setBounds(70, 100, 250, 35);
         messageLabel.setFont(new Font("Serif", Font.PLAIN, 14));

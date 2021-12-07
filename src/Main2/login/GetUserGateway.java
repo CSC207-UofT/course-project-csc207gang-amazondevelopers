@@ -9,9 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-/**
- *
- */
 
 public class GetUserGateway implements SignInGatewayInterface {
 
