@@ -2,7 +2,7 @@ package options.browse;
 
 import options.browse.FeedPresenter.EnglishFeedPresenter;
 
-import options.cart.CartManager;
+import options.cart.CartController;
 import options.OptionsGUI;
 
 import javax.swing.*;
@@ -135,7 +135,7 @@ public class FeedGUI implements ActionListener {
             }
         }
         if (e.getSource() == cartButton) {
-            CartManager cartManager = new CartManager();
+            CartController cartManager = new CartController();
             cartManager.addToCart(user, product);
             frame.setVisible(false);
             frame.dispose();

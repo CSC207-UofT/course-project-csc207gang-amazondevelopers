@@ -11,7 +11,7 @@ import user.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import static org.junit.Assert.*;
 
 public class BuyController {
 
@@ -28,13 +28,17 @@ public class BuyController {
         if (0 <= index && index < listIds.size()) {
 
             String productId = listIds.get(index);
+            System.out.println(productId);
             // get the product at the index
             GetProductGateway getProductGateway = new GetProductGateway();
             Product product = getProductGateway.getProduct(productId);
-            // check product quantity, and add to options.cart
-            UserUseCase userUseCase = new UserUseCase(user);
-            userUseCase.userAddToCart(product);
-            return true;
+
+            // check product quantity, and add to cart
+            if (product.getQuantity() > 0) {
+                UserUseCase userUseCase = new UserUseCase(user);
+                userUseCase.userAddToCart(product);
+                return true;
+            }
         }
         return false;
     }

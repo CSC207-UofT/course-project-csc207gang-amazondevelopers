@@ -34,28 +34,32 @@ public class CartGUI implements ActionListener {
      */
 
     public CartGUI(User user){
+        this.user = user;
         UserUseCase userUseCase = new UserUseCase(user);
-        if (userUseCase.userShoppingCart()==null || userUseCase.userShoppingCart().size()==0){
-
-            emptyCartMessage.setBounds(150, 100, 250, 35);
-            emptyCartMessage.setFont(new Font("Serif", Font.PLAIN, 14));
-
-            returnHome.setBounds(60, 150, 300, 25);
-            returnHome.addActionListener(this);
-
-            frame.add(returnHome);
-            frame.add(emptyCartMessage);
-
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(420, 420);
-            frame.setLayout(null);
-            frame.setVisible(true);
+//        if (userUseCase.userShoppingCart()==null || userUseCase.userShoppingCart().size()==0){
+        // System.out.println(userUseCase.userShoppingCart());
+         if (userUseCase.userShoppingCart().size()==0){
+             EmptyCartGUI emptyCartGUI = new EmptyCartGUI(this.user);
+//
+//            emptyCartMessage.setBounds(150, 100, 250, 35);
+//            emptyCartMessage.setFont(new Font("Serif", Font.PLAIN, 14));
+//
+//            returnHome.setBounds(60, 150, 300, 25);
+//            returnHome.addActionListener(this);
+//
+//            frame.add(returnHome);
+//            frame.add(emptyCartMessage);
+//
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            frame.setSize(420, 420);
+//            frame.setLayout(null);
+//            frame.setVisible(true);
         }
         else{
             Product prod = userUseCase.userShoppingCart().get(0);
             JScrollPane jScrollPane = new JScrollPane(this.createProductFrame(prod));
 
-            for(Product i:userUseCase.userShoppingCart()){
+            for(Product i : userUseCase.userShoppingCart()){
                 if (!(user.getShoppingCart().indexOf(i) == 0)){
                     jScrollPane.add(this.createProductFrame(i));
                 }
@@ -112,6 +116,7 @@ public class CartGUI implements ActionListener {
 
     private JPanel createProductFrame(Product product){
 
+
         JPanel productPanel = new JPanel();
         JLabel name = new JLabel(product.getName());
         JLabel price = new JLabel(product.getPrice().toString());
@@ -158,7 +163,7 @@ public class CartGUI implements ActionListener {
         else if (action.getSource()==buyButton){
             frame.dispose();
             BoughtCart boughtCart = new BoughtCart(user);
-            CartManager cart = new CartManager();
+            CartController cart = new CartController();
             try {
                 cart.buyCart(user);
             } catch (Exception e) {

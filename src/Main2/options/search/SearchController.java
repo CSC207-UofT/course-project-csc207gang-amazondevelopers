@@ -20,24 +20,24 @@ public class SearchController {
     /**
      * Allows the user to input a tag for possible categories of items that they might be interested in,
      * and will receive a list of IDs of those products if the tag exists.
-     * @return A list of strings that are toStrings for posts related to that the category,tag of interest.
      *
+     * @return A list of strings that are toStrings for posts related to that the category,tag of interest.
      */
-    public ArrayList<String> getProductID(String productTag) throws IOException, ClassNotFoundException {
+    public ArrayList<String> getSearchProductStrings(String productTag) throws IOException, ClassNotFoundException {
         SearchGateway searchGateway = new SearchGateway();
         // product ID's we want to make to toString
-        ArrayList<String> productIdList =  searchGateway.searchProducts(productTag);
+        ArrayList<String> productIdList = searchGateway.searchProducts(productTag);
         // ID to product Hash
         HashMap<String, Object> IdToProduct = searchGateway.searchIDToProductList();
 
         ArrayList<String> productToString = new ArrayList<>();
-        for (String productId : productIdList){
+        for (String productId : productIdList) {
             int index = productIdList.indexOf(productId);
             String prodIndex = String.valueOf(index);
 
-            if (IdToProduct.containsKey(productId)){
+            if (IdToProduct.containsKey(productId)) {
                 Object product = IdToProduct.get(productId);
-                String toSt = "(" + prodIndex +  ") " + product.toString();
+                String toSt = "(" + prodIndex + ") " + product.toString();
                 productToString.add(toSt);
             }
 
@@ -45,6 +45,19 @@ public class SearchController {
         }
         return productToString;
 
+    }
+
+    //get a list containing only the ids of the products as strings
+    public ArrayList<String> getProductIDStrings(String productTag) throws IOException, ClassNotFoundException {
+        SearchGateway searchGateway = new SearchGateway();
+        // product ID's we want to make to toString
+        ArrayList<String> productIdList = searchGateway.searchProducts(productTag);
+
+        ArrayList<String> idsToString = new ArrayList<>();
+        for (String productId : productIdList) {
+            idsToString.add(productId);
+        }
+        return idsToString;
     }
 }
 

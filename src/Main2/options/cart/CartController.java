@@ -1,5 +1,6 @@
 package options.cart;
 
+import login.SaveUserGateway;
 import options.buy.BuyController;
 import product.Product;
 import user.User;
@@ -14,7 +15,7 @@ import java.util.stream.Stream;
 /**
  * A use case class that adds items to the user's options.cart, or allows them to buy
  */
-public class CartManager {
+public class CartController {
     /**
      * Buys all of the items in the users cart.
      * @param user user that is buying
@@ -26,14 +27,10 @@ public class CartManager {
         for (Product i: userUseCase.userShoppingCart()) {
             buyController.buy(i.getId());
         }
-        try{
-            user.setShoppingCart(Collections.emptyList());
-            // TODO: make exception more specific
-        }catch (Exception ignored){
-            ;
-        }
-
-
+        ArrayList<Product> emptyCart = new ArrayList<>();
+        user.setShoppingCart(emptyCart);
+        SaveUserGateway saveUserGateway = new SaveUserGateway();
+        saveUserGateway.saveUser(user.getUsername(), user);
     }
 
     /**
@@ -44,9 +41,7 @@ public class CartManager {
     public void addToCart(User user, Product product){
         List<Product> productList = new ArrayList<>();
         productList.add(product);
-
-        user.setShoppingCart(Stream.concat(user.getShoppingCart().stream(),
-                productList.stream()).collect(Collectors.toList()));
+        user.setShoppingCart(productList);
     }
 }
 
