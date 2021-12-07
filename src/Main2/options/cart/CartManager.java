@@ -28,6 +28,7 @@ public class CartManager {
         }
         try{
             user.setShoppingCart(Collections.emptyList());
+            // TODO: make exception more specific
         }catch (Exception ignored){
             ;
         }

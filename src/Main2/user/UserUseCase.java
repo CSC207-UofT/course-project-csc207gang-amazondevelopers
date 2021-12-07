@@ -34,10 +34,6 @@ public class UserUseCase {
     }
 
     public List<Product> userShoppingCart() {
-        try {
             return user.getShoppingCart();
-        }catch (Exception ignored){
-            return Collections.emptyList();
-        }
     }
 }

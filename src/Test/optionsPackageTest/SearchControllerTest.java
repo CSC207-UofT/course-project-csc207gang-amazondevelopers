@@ -1,12 +1,14 @@
 package optionsPackageTest;
-//
-import inputOutputFunctions.SystemInOutTest;
-import productFunctions.CreateProductGateway;
-import settingsFunctions.DeleteProductsGateway;
-import settingsFunctions.DeleteUserGateway;
-import loginFunctions.GetUserGateway;
-import loginFunctions.SignUpGateway;
-import userFunctions.User;
+
+import delete_gateways.DeleteProductsGateway;
+import login.GetUserGateway;
+import login.SaveUserGateway;
+import options.buy.ProductUseCase;
+import product.GetProductGateway;
+import product.Product;
+import product.SaveProductGateway;
+import user.User;
+import delete_gateways.DeleteUserGateway;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,15 +21,14 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SearchControllerTest{
-    SignUpGateway signUpGateway = new SignUpGateway();
 
-    User testUser = new User("TestSearchControllerUser");
+    User testUser = new User("TestSearchController");
+    Product testProduct = new Product("test", "TEST", 5.0, "test", "2",1);;
     SearchController searchController = new SearchController(testUser);
-    productFunctions.Product testProduct = new productFunctions.Product("shoes", "TEST", 5.0, "shoes", "2",1);;
 
-    productFunctions.CreateProductGateway createProductGateway = new CreateProductGateway();
-    productFunctions.GetProductGateway getProductGateway = new productFunctions.GetProductGateway();
-    productFunctions.ProductUseCase productUseCaseCreate = new productFunctions.ProductUseCase(createProductGateway);
+    SaveProductGateway saveProductGateway = new SaveProductGateway();
+    GetProductGateway getProductGateway = new GetProductGateway();
+    SaveUserGateway saveUserGateway = new SaveUserGateway();
     GetUserGateway getUserGateway = new GetUserGateway();
 
     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
@@ -38,11 +39,13 @@ public class SearchControllerTest{
         // TODO: fix the comments in each test so that they make sense for the class that they are in
         // if there is a preexisting user TestSearchControllerUser, delete it
         deleteUserGateway.deleteUser("TestSearchControllerUser");
+        ArrayList<String> ids = new ArrayList<>();
+        ids.add("TEST");
+        deleteProductsGateway.deleteProducts(ids);
         // create the new user profile before each test
-        signUpGateway.allowSignUp("TestSearchControllerUser", testUser);
-
+        saveUserGateway.saveUser("TestSearchController", testUser);
         // save a product to the repo to test with
-        productUseCaseCreate.saveNewProductToSer(testProduct);
+        saveProductGateway.addProductToRepo(testProduct, "TEST", "test");
     }
 
     @After
@@ -54,58 +57,27 @@ public class SearchControllerTest{
         deleteProductsGateway.deleteProducts(ids);
     }
 
+    //  name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
+    //  name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock" + ", " + sizes;
+    // "shoes", "TEST", 5.0, "shoes", "2",1
     @Test
-    public void allowSearchBasicTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/optionsPackageTest/optionsTestInputs/SearchControllerBasicTestInputs");
-        //skip the header of the file
-        testInOut.getInput();
-
-        //search for the product, then buy it
-        //searchController.allowSearch(testInOut);
-
-        productFunctions.Product bought = getProductGateway.getProduct("TEST");
-        User user = getUserGateway.getUser("TestSearchControllerUser");
-        assertEquals(0, bought.getQuantity());
-        assertEquals(0, user.getShoppingCart().size());
+    public void getProductIDTest() throws IOException, ClassNotFoundException {
+        assertEquals("(0) test (TEST): $5.0, 1 in stock, 2", searchController.getProductID("test").get(0));
     }
 
     @Test
-    public void allowSearchNoProductsTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/optionsPackageTest/optionsTestInputs/SearchControllerNoProductsTestInputs");
-        //skip the header of the file
-        testInOut.getInput();
+    public void getProductIDMultipleTest() throws IOException, ClassNotFoundException {
+        saveProductGateway.addProductToRepo(testProduct, "TEST", "test");
 
-        // try searching for the product
-        //searchController.allowSearch(testInOut);
-        // if the next line in the file is the empty string, then we can finish the test
-        assertEquals("", testInOut.getInput());
+        assertEquals(searchController.getProductID("test").size(), 2);
+        ArrayList<String> ids = searchController.getProductID("shoes");
+        assertEquals("(0) test (TEST): $5.0, 1 in stock, 2", ids.get(0));
+        assertEquals("(1) test (TEST): $5.0, 1 in stock, 2", ids.get(1));
     }
 
-//
-//    @Test
-//    public void allowSearchSoldOutTest() throws Exception {
-//        SystemInOutTest testInOut = new SystemInOutTest("src/Test/optionsPackageTest/optionsTestInputs/SearchControllerBasicTestInputs");
-//        //skip the header of the file
-//        testInOut.getInput();
-//
-//        //search for the product, then buy it
-//        searchController.allowSearch(testInOut);
-//
-//        Product bought = getProductGateway.getProduct("TEST");
-//        User user = getUserGateway.getUser("TestSearchControllerUser");
-//        assertEquals(0, bought.getQuantity());
-//        assertEquals(0, user.getShoppingCart().size());
-//
-//
-//        testInOut = new SystemInOutTest("src/Test/optionsPackageTest/optionsTestInputs/SearchControllerSoldOutTestInputs");
-//        //skip the header of the file
-//        testInOut.getInput();
-//        //search for the product again to see if the product information has been updated
-//        searchController.allowSearch(testInOut);
-//
-//        bought = getProductGateway.getProduct("TEST");
-//        user = getUserGateway.getUser("TestSearchControllerUser");
-//        assertEquals(0, bought.getQuantity());
-//        assertEquals(0, user.getShoppingCart().size());
-//    }
+    @Test
+    public void getProductIDNoProductTest() throws IOException, ClassNotFoundException {
+        assertEquals(0, searchController.getProductID("jadshjasdjsah").size());
+    }
+
 }

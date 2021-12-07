@@ -37,7 +37,7 @@ public class SearchController {
 
             if (IdToProduct.containsKey(productId)){
                 Object product = IdToProduct.get(productId);
-                String toSt = prodIndex +  ") " +product.toString();
+                String toSt = "(" + prodIndex +  ") " + product.toString();
                 productToString.add(toSt);
             }
 
