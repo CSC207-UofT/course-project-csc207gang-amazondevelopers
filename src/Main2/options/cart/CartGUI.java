@@ -61,7 +61,7 @@ public class CartGUI implements ActionListener {
                 }
             }
 
-            DefaultListModel list = new DefaultListModel();
+            DefaultListModel<String> list = new DefaultListModel<String>();
             for (Product item : userUseCase.userShoppingCart()) {
                 list.addElement(item.getName());
             }

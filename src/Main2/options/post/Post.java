@@ -17,7 +17,7 @@ import user.User;
  */
 
 public class Post implements Serializable {
-
+    private static final long serialVersionUID = 5117426149464800074L;
     private int likes;
     private String product;//The product ID that the post relates to
     private List<Float> ratings;

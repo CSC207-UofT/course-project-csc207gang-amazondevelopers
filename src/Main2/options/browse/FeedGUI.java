@@ -2,7 +2,6 @@ package options.browse;
 
 import options.browse.FeedPresenter.EnglishFeedPresenter;
 
-import options.cart.CartManager;
 import options.OptionsGUI;
 
 import javax.swing.*;
@@ -15,9 +14,11 @@ import options.post.Post;
 import product.GetProductGateway;
 import product.Product;
 import user.User;
+import user.UserUseCase;
 
 /**
- * Class that presents a options.post to a user using our JFrame command line interface,
+ * Class that presents a options.post to a user using our JFrame command line interface, allowing
+ * a user to view the next post, view the last post or add to cart
  *
  */
 public class FeedGUI implements ActionListener {
@@ -95,7 +96,6 @@ public class FeedGUI implements ActionListener {
 
     /**
      * Represents different actions when the JButtons are interacted with the user
-     *
      * @param e the Action event performed in
      */
     @Override
@@ -110,10 +110,8 @@ public class FeedGUI implements ActionListener {
                 frame.dispose();
                 try {
                     FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
-                } catch (IOException ioException) {
+                } catch (IOException | ClassNotFoundException ioException) {
                     ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
                 }
             }
         }
@@ -127,16 +125,14 @@ public class FeedGUI implements ActionListener {
                 frame.dispose();
                 try {
                     FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
-                } catch (IOException ioException) {
+                } catch (IOException | ClassNotFoundException ioException) {
                     ioException.printStackTrace();
-                } catch (ClassNotFoundException classNotFoundException) {
-                    classNotFoundException.printStackTrace();
                 }
             }
         }
         if (e.getSource() == cartButton) {
-            CartManager cartManager = new CartManager();
-            cartManager.addToCart(user, product);
+            UserUseCase userUseCase = new UserUseCase(user);
+            userUseCase.userAddToCart(product);
             frame.setVisible(false);
             frame.dispose();
             AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, product.getName());
