@@ -2,7 +2,7 @@ package options.browse;
 
 import options.browse.AddedToCartPresenter.EnglishAddedPresenter;
 import options.browse.EmptyFeedPresenter.EnglishEmptyFeedPresenter;
-import options.OptionsGUI;
+import options.OptionsGUIMaker;
 import user.User;
 
 import javax.swing.*;
@@ -35,7 +35,7 @@ public class AddedToCartGUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton){
             frame.dispose();
-            OptionsGUI userOptionsGUI = new OptionsGUI(user);
+            OptionsGUIMaker userOptionsGUIMaker = new OptionsGUIMaker(user);
         }
     }
 }

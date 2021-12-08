@@ -1,11 +1,14 @@
 package login.sign_in;
 
 import gui.ButtonCommandInterface;
+import gui.GUIFactory;
+import gui.GUIFactoryInterface;
 import login.GetUserGateway;
 import login.sign_in.SignInPresenter.EnglishSignInPresenter;
-import options.OptionsGUI;
+import options.OptionsGUIMaker;
 import user.User;
 import java.awt.*;
+import java.io.IOException;
 
 public class LoginCommand implements ButtonCommandInterface {
     SignInGUIMaker signInGUIMaker;
@@ -15,7 +18,7 @@ public class LoginCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() {
+    public void apply() throws IOException, ClassNotFoundException {
         EnglishSignInPresenter presenter = new EnglishSignInPresenter();
         String userID = signInGUIMaker.userIDField.getText();
         String password = String.valueOf(signInGUIMaker.userPasswordField.getPassword());
@@ -26,7 +29,9 @@ public class LoginCommand implements ButtonCommandInterface {
             GetUserGateway getUserGateway = new GetUserGateway();
             User user = getUserGateway.getUser(userID);
             // give them their options
-            OptionsGUI optionsGUI = new OptionsGUI(user);
+            GUIFactory guiFactory = new GUIFactory(this.user);
+            GUIFactoryInterface guiFrame = guiFactory.getFrame("OPTION");
+            guiFrame.createGUI();
         } else {
             signInGUIMaker.messageLabel.setForeground(Color.red);
             signInGUIMaker.messageLabel.setText(presenter.presentWrongPasswordUsername());

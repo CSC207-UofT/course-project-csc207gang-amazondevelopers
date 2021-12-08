@@ -2,27 +2,25 @@ package login.sign_up;
 
 
 import gui.ButtonCommandInterface;
-import gui.GUI;
 import gui.GUIFactoryInterface;
-import login.sign_in.BackCommand;
-import login.sign_in.LoginCommand;
-import gui.GeneralGUIInterface;
+import gui.GeneralGUIMakerInterface;
+import login.sign_in.BackWelcomePageCommand;
 import login.sign_in.ResetCommand;
 import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
-import login.welcome_page.WelcomePageGUIMaker;
 
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Take user input for signup credentials to sign user up.
  */
-public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIInterface {
+public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIMakerInterface {
     EnglishSignUpPresenter englishSignUpPresenter = new EnglishSignUpPresenter();
     JFrame frame = new JFrame();
     JButton signUpButton = new JButton(englishSignUpPresenter.signUp());
@@ -50,7 +48,11 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface, Gene
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        button.apply();
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -58,7 +60,7 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface, Gene
      */
 
     @Override
-    public GUI createGUI(){
+    public void createGUI(){
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 
@@ -90,11 +92,10 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface, Gene
         frame.setLayout(null);
         frame.setVisible(true);
 
-        commandMap.put(backButton.getText(), new BackCommand(this));
+        commandMap.put(backButton.getText(), new BackWelcomePageCommand(this));
         commandMap.put(resetButton.getText(), new ResetCommand(this));
         commandMap.put(signUpButton.getText(), new SignUpCommand(this));
 
-        return new SignUpGUI(frame);
     }
 
     public void disposeFrame(){

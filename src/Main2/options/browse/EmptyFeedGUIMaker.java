@@ -1,19 +1,20 @@
 package options.browse;
 
+import gui.GUIFactoryInterface;
 import options.browse.EmptyFeedPresenter.EnglishEmptyFeedPresenter;
 import user.User;
-import options.OptionsGUI;
+import options.OptionsGUIMaker;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EmptyFeedGUI implements ActionListener {
+public class EmptyFeedGUIMaker implements ActionListener, GUIFactoryInterface {
     EnglishEmptyFeedPresenter feedPresenter = new EnglishEmptyFeedPresenter();
     JFrame frame = new JFrame();
     JButton backButton = new JButton(feedPresenter.presentReturn());
     JLabel emptyLabel = new JLabel(feedPresenter.presentEmpty());
     User user;
-    public EmptyFeedGUI(User user){
+    public EmptyFeedGUIMaker(User user){
         emptyLabel.setBounds(25,25,400,50);
         backButton.setBounds(160, 340, 100, 25);
         backButton.addActionListener(this);
@@ -28,7 +29,12 @@ public class EmptyFeedGUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton){
             frame.dispose();
-            OptionsGUI userOptionsGUI = new OptionsGUI(user);
+            OptionsGUIMaker userOptionsGUIMaker = new OptionsGUIMaker(user);
         }
+    }
+
+    @Override
+    public void createGUI() {
+
     }
 }

@@ -1,13 +1,13 @@
 package options.browse;
 
+import gui.GUIFactoryInterface;
 import options.browse.FeedPresenter.EnglishFeedPresenter;
 
-import options.OptionsGUI;
+import options.OptionsGUIMaker;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import options.post.Post;
@@ -21,7 +21,7 @@ import user.UserUseCase;
  * a user to view the next post, view the last post or add to cart
  *
  */
-public class FeedGUI implements ActionListener {
+public class FeedGUIMaker implements ActionListener, GUIFactoryInterface {
     JFrame frame = new JFrame();
     EnglishFeedPresenter feedPresenter = new EnglishFeedPresenter();
     JButton nextButton = new JButton(feedPresenter.presentNext());
@@ -45,7 +45,7 @@ public class FeedGUI implements ActionListener {
      * @param feed        Represents the total feed of the current user
      * @param user        The user viewing posts
      */
-    public FeedGUI( ArrayList<Post> feed, User user, int index){
+    public FeedGUIMaker(ArrayList<Post> feed, User user, int index){
         this.post = feed.get(index);
         this.feed = feed;
         this.index = index;
@@ -104,22 +104,22 @@ public class FeedGUI implements ActionListener {
             if (index == feed.size() - 1) {
                 frame.setVisible(false);
                 frame.dispose();
-                OptionsGUI optionsGateway = new OptionsGUI(user);
+                OptionsGUIMaker optionsGateway = new OptionsGUIMaker(user);
             } else {
                 frame.setVisible(false);
                 frame.dispose();
-                FeedGUI feedGUI = new FeedGUI(feed, user, index + 1);
+                FeedGUIMaker feedGUIMaker = new FeedGUIMaker(feed, user, index + 1);
             }
         }
         if (e.getSource() == backButton) {
             if (this.index == 0) {
                 frame.setVisible(false);
                 frame.dispose();
-                OptionsGUI optionsGUI = new OptionsGUI(user);
+                OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(user);
             } else {
                 frame.setVisible(false);
                 frame.dispose();
-                FeedGUI feedGUI = new FeedGUI( feed, user, index - 1);
+                FeedGUIMaker feedGUIMaker = new FeedGUIMaker( feed, user, index - 1);
             }
         }
         if (e.getSource() == cartButton) {
@@ -130,6 +130,11 @@ public class FeedGUI implements ActionListener {
             AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, product.getName());
             }
         }
+
+    @Override
+    public void createGUI() {
+
     }
+}
 
 

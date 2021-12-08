@@ -1,7 +1,12 @@
 package options.search;
 
 
+import gui.ButtonCommandInterface;
+import gui.GUIFactoryInterface;
 import options.buy.BuyController;
+import options.commands.BuyCommand;
+import options.commands.OptionsCommand;
+import options.commands.SearchCommand;
 import user.User;
 
 import javax.swing.*;
@@ -10,33 +15,58 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ScrollSearchGUI implements ActionListener {
+public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface {
 
-    SearchPresenterInterface searchPresenter = new SearchPresenter();
-    JLabel searchIntro = new JLabel(searchPresenter.inputIndex());
-    JFrame frame = new JFrame();
-    JButton back = new JButton(searchPresenter.backButton());
-    JButton buy = new JButton(searchPresenter.buyButton());
-    JTextField searchBar = new JTextField(10);
-    JPanel scrollPanel = new JPanel();
-    JPanel indexPanel = new JPanel();
-    JPanel titlePanel = new JPanel();
-    JPanel backPanel = new JPanel();
     JLabel messageLabel = new JLabel();
-
-
     User user;
     String tag;
-    SearchController searchController = new SearchController(user);
-    ArrayList<String> searchList;
+    static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
+    JTextField searchBar = new JTextField(10);
 
 
-    public ScrollSearchGUI(User user, String tag) throws IOException, ClassNotFoundException {
+
+    public ScrollSearchGUIMaker(User user, String tag) throws ClassNotFoundException {
         this.user = user;
         this.tag = tag;
+    }
 
-        this.searchList = searchController.getSearchProductStrings(tag);
+    /**
+     * The action listener that sees what the user is doing and determines the results from this action.
+     *
+     * @param action the action of the user
+     */
+    @Override
+    public void actionPerformed(ActionEvent action) {
+        String buttonText = action.getActionCommand();
+        ButtonCommandInterface button = commandMap.get(buttonText);
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void createGUI() throws IOException, ClassNotFoundException {
+
+        SearchPresenterInterface searchPresenter = new SearchPresenter();
+        JLabel searchIntro = new JLabel(searchPresenter.inputIndex());
+        JFrame frame = new JFrame();
+        JButton back = new JButton(searchPresenter.backButton());
+        JButton buy = new JButton(searchPresenter.buyButton());
+        JPanel scrollPanel = new JPanel();
+        JPanel indexPanel = new JPanel();
+        JPanel titlePanel = new JPanel();
+        JPanel backPanel = new JPanel();
+
+        SearchController searchController = new SearchController(user);
+        ArrayList<String> searchList;
+
+        searchList = searchController.getSearchProductStrings(tag);
+
         messageLabel.setBounds(125, 125, 130, 130);
 
 
@@ -103,45 +133,7 @@ public class ScrollSearchGUI implements ActionListener {
         frame.add(indexPanel);
         frame.add(scrollPanel);
 
-
-    }
-
-    /**
-     * The action listener that sees what the user is doing and determines the results from this action.
-     *
-     * @param action the action of the user
-     */
-    @Override
-    public void actionPerformed(ActionEvent action) {
-        if (action.getSource() == back) {
-            frame.dispose();
-            SearchGUI searchGUI = new SearchGUI(user);
-        } else if (action.getSource() == buy) {
-            String index = searchBar.getText();
-            int indexInt = Integer.parseInt(index);
-
-            BuyController buyController = new BuyController();
-            boolean allowedBuy = false;
-            try {
-                ArrayList<String> productIds = searchController.getProductIDStrings(this.tag);
-                allowedBuy = buyController.allowBuy(user, productIds, indexInt);
-            } catch (IOException | ClassNotFoundException e) {
-                // TODO: make exception message more specific
-                e.printStackTrace();
-            }
-            if (allowedBuy) {
-                messageLabel.setForeground(Color.green);
-                messageLabel.setText(searchPresenter.canBuy());
-            } else {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText(searchPresenter.cannotBuy());
-
-
-
-            }
-
-
-        }
-
+        commandMap.put(back.getText(), new SearchCommand(frame));
+        commandMap.put(buy.getText(), new BuyCommand(this.user, this.tag,this));
     }
 }

@@ -1,6 +1,7 @@
 package options.cart;
 
-import options.OptionsGUI;
+import gui.GUIFactoryInterface;
+import options.OptionsGUIMaker;
 import product.Product;
 import user.User;
 import user.UserUseCase;
@@ -11,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CartGUI implements ActionListener {
+public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
     CartPresenter presenter = new CartPresenter();
     JFrame frame = new JFrame();
     JButton returnHome = new JButton("Back");
@@ -33,13 +34,13 @@ public class CartGUI implements ActionListener {
      * @param user The user who you have accessed
      */
 
-    public CartGUI(User user){
+    public CartGUIMaker(User user){
         this.user = user;
         UserUseCase userUseCase = new UserUseCase(user);
 //        if (userUseCase.userShoppingCart()==null || userUseCase.userShoppingCart().size()==0){
         // System.out.println(userUseCase.userShoppingCart());
          if (userUseCase.userShoppingCart().size()==0){
-             EmptyCartGUI emptyCartGUI = new EmptyCartGUI(this.user);
+             EmptyCartGUIMaker emptyCartGUIMaker = new EmptyCartGUIMaker(this.user);
 //
 //            emptyCartMessage.setBounds(150, 100, 250, 35);
 //            emptyCartMessage.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -158,7 +159,7 @@ public class CartGUI implements ActionListener {
     public void actionPerformed(ActionEvent action) {
         if(action.getSource()==returnHome) {
             frame.dispose();
-            OptionsGUI optionsGUI = new OptionsGUI(user);
+            OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(user);
         }
         else if (action.getSource()==buyButton){
             frame.dispose();
@@ -170,5 +171,10 @@ public class CartGUI implements ActionListener {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void createGUI() {
+
     }
 }

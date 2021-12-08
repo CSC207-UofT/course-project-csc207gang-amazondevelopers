@@ -1,6 +1,6 @@
 package options.cart;
 
-import options.OptionsGUI;
+import options.OptionsGUIMaker;
 import user.User;
 
 import javax.swing.*;
@@ -38,7 +38,7 @@ public class BoughtCart implements ActionListener {
     public void actionPerformed(ActionEvent action) {
         if(action.getSource()==returnHome) {
             frame.dispose();
-            OptionsGUI optionsGUI = new OptionsGUI(this.user);
+            OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(this.user);
         }
     }
 }

@@ -1,16 +1,16 @@
 package login.sign_in;
 
 import gui.ButtonCommandInterface;
-import gui.GeneralGUIInterface;
+import gui.GeneralGUIMakerInterface;
 
 public class ResetCommand implements ButtonCommandInterface {
-    GeneralGUIInterface generalGUIInterface;
+    GeneralGUIMakerInterface generalGUIMakerInterface;
 
-    public ResetCommand(GeneralGUIInterface generalGUIInterface) {
-        this.generalGUIInterface = generalGUIInterface;
+    public ResetCommand(GeneralGUIMakerInterface generalGUIMakerInterface) {
+        this.generalGUIMakerInterface = generalGUIMakerInterface;
     }
 
     public void apply(){
-        generalGUIInterface.resetFields();
+        generalGUIMakerInterface.resetFields();
     }
 }

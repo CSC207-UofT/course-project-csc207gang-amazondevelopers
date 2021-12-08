@@ -1,6 +1,6 @@
 package gui;
 
-public interface GeneralGUIInterface {
+public interface GeneralGUIMakerInterface {
     void disposeFrame();
     void resetFields();
 }

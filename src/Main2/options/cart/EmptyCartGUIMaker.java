@@ -1,8 +1,8 @@
 package options.cart;
 
-import options.OptionsGUI;
+import gui.GUIFactoryInterface;
+import options.OptionsGUIMaker;
 import user.User;
-import user.UserUseCase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class EmptyCartGUI implements ActionListener {
+public class EmptyCartGUIMaker implements ActionListener, GUIFactoryInterface {
     CartPresenter presenter = new CartPresenter();
     JFrame frame = new JFrame();
     JButton returnHome = new JButton("Back");
@@ -27,7 +27,7 @@ public class EmptyCartGUI implements ActionListener {
     ArrayList<String> cartList;
     User user;
 
-    public EmptyCartGUI(User user) {
+    public EmptyCartGUIMaker(User user) {
         this.user = user;
 
             emptyCartMessage.setBounds(150, 100, 250, 35);
@@ -49,7 +49,12 @@ public class EmptyCartGUI implements ActionListener {
     public void actionPerformed(ActionEvent action) {
         if(action.getSource()==returnHome) {
             frame.dispose();
-            OptionsGUI optionsGUI = new OptionsGUI(user);
+            OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(user);
         }
+    }
+
+    @Override
+    public void createGUI() {
+
     }
 }

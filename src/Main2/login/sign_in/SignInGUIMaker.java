@@ -1,9 +1,8 @@
 package login.sign_in;
 
 import gui.ButtonCommandInterface;
-import gui.GUI;
 import gui.GUIFactoryInterface;
-import gui.GeneralGUIInterface;
+import gui.GeneralGUIMakerInterface;
 import login.sign_in.SignInPresenter.EnglishSignInPresenter;
 
 import javax.swing.*;
@@ -11,13 +10,14 @@ import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Uses java swing to Take user input for signin credentials to sign user in.
  */
-public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIInterface {
+public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIMakerInterface {
     EnglishSignInPresenter englishSignInPresenter = new EnglishSignInPresenter();
     JFrame frame = new JFrame();
     JButton loginButton = new JButton(englishSignInPresenter.presentLogin());
@@ -44,7 +44,11 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, Gene
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        button.apply();
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -52,7 +56,7 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, Gene
      */
 
     @Override
-    public GUI createGUI() {
+    public void createGUI() {
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 
@@ -84,35 +88,14 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, Gene
         frame.setLayout(null);
         frame.setVisible(true);
 
-        commandMap.put(backButton.getText(), new BackCommand(this));
+        commandMap.put(backButton.getText(), new BackWelcomePageCommand(this));
         commandMap.put(resetButton.getText(), new ResetCommand(this));
         commandMap.put(loginButton.getText(), new LoginCommand(this));
 
-        return new SignInGUI(frame);
     }
 
     public void disposeFrame(){
         frame.dispose();
-    }
-
-    public void messageLabelForegroundSetter(Object object){
-        messageLabel.setForeground((Color) object);
-    }
-
-    public void messageLabelTextSetter(Object object){
-        messageLabel.setText((String) object);
-    }
-
-    public void userIDFieldTextSetter(Object object){
-        userIDField.setText((String) object);
-    }
-
-    public void userPasswordFieldTextSetter(Object object){
-        userPasswordField.setText((String) object);
-    }
-
-    public void getUserIDField(){
-        userIDField.getText();
     }
 
     public void resetFields(){
