@@ -12,6 +12,7 @@ import options.cart.CartGUIMaker;
 import options.cart.EmptyCartGUIMaker;
 import options.follow_users.FollowGUIMaker;
 import options.post.Post;
+import options.post.SuccessfulPostCreationGUIMaker;
 import options.search.ScrollSearchGUIMaker;
 import options.search.SearchGUIMaker;
 import user.User;
@@ -82,6 +83,9 @@ public class GUIFactory {
         }
         else if (frameType.equalsIgnoreCase("BOUGHTCART")) {
             return new BoughtCartGUIMaker(this.user);
+        }
+        else if (frameType.equalsIgnoreCase("SUCCESSPOST")) {
+            return new SuccessfulPostCreationGUIMaker(this.user);
         }
         // need to change the return type here
         else if (frameType.equalsIgnoreCase("POST")) {

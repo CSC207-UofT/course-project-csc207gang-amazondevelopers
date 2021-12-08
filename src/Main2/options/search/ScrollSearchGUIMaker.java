@@ -133,7 +133,7 @@ public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface
         frame.add(indexPanel);
         frame.add(scrollPanel);
 
-        commandMap.put(back.getText(), new SearchCommand(frame));
+        commandMap.put(back.getText(), new SearchCommand(frame, this.user));
         commandMap.put(buy.getText(), new BuyCommand(this.user, this.tag,this));
     }
 }
