@@ -1,11 +1,9 @@
 package login.welcome_page;
 
-import gui.ButtonActionInterface;
+import gui.ButtonCommandInterface;
 import login.sign_up.SignUpGUIMaker;
 
-import java.io.IOException;
-
-public class SignUpButton implements ButtonActionInterface {
+public class SignUpCommand implements ButtonCommandInterface {
     /**
      * When this button is pressed, it Opens the SignUpGUI interface
      */

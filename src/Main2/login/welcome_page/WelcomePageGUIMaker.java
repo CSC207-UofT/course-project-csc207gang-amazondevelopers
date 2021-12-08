@@ -1,6 +1,6 @@
 package login.welcome_page;
 
-import gui.ButtonActionInterface;
+import gui.ButtonCommandInterface;
 import gui.GUI;
 import gui.GUIFactoryInterface;
 import login.welcome_page.WelcomePagePresenter.EnglishWelcomePagePresenter;
@@ -22,7 +22,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
     JButton signinButton = new JButton(englishWelcomePagePresenter.presentSignIn());
     JButton signupButton = new JButton(englishWelcomePagePresenter.presentSignUp());
     JButton quit = new JButton(englishWelcomePagePresenter.presentQuit());
-    static Map<String, ButtonActionInterface> actionMap = new HashMap<>();
+    static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
     /**
      * Constructor for the WelcomePageGUIMaker
@@ -32,15 +32,15 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
 
     /**
      *
-     * @param e The action event, helps to maintain the actions performed by the user and the results from their
+     * @param action The action event, helps to maintain the actions performed by the user and the results from their
      *          actions that they perform on the page
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-        String buttonText = e.getActionCommand();
-        ButtonActionInterface button = actionMap.get(buttonText);
+    public void actionPerformed(ActionEvent action) {
+        String buttonText = action.getActionCommand();
+        ButtonCommandInterface button = commandMap.get(buttonText);
         button.apply();
+        frame.dispose();
     }
 
     /**
@@ -72,9 +72,9 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
         frame.setLayout(null);
         frame.setVisible(true);
 
-        actionMap.put(quit.getText(), new QuitButton());
-        actionMap.put(signinButton.getText(), new SignInButton());
-        actionMap.put(signupButton.getText(), new SignUpButton());
+        commandMap.put(quit.getText(), new QuitCommand());
+        commandMap.put(signinButton.getText(), new SignInCommand());
+        commandMap.put(signupButton.getText(), new SignUpCommand());
 
         return new WelcomePageGUI(frame);
     }

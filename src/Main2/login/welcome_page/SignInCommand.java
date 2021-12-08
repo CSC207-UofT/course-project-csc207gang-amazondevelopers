@@ -1,11 +1,9 @@
 package login.welcome_page;
 
-import gui.ButtonActionInterface;
+import gui.ButtonCommandInterface;
 import login.sign_in.SignInGUIMaker;
 
-import java.io.IOException;
-
-public class SignInButton implements ButtonActionInterface {
+public class SignInCommand implements ButtonCommandInterface {
     /**
      * When this button is applied, it opens a new SignInGUI()
      */
