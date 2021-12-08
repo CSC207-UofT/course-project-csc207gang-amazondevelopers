@@ -51,7 +51,6 @@ public class SearchGUIMaker implements ActionListener, GUIFactoryInterface, Gene
         SearchPresenterInterface searchPresenter = new SearchPresenter();
         JLabel searchLabel = new JLabel(searchPresenter.searchButton());
         JButton search = new JButton(searchPresenter.searchButton());
-        JTextField searchBar = new JTextField();
 
         JButton clear = new JButton(searchPresenter.clearButton());
         JButton back = new JButton(searchPresenter.backButton());

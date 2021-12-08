@@ -13,8 +13,8 @@ public class FollowCommand implements ButtonCommandInterface {
 
     FollowGUIMaker followGUIMaker;
     User user;
-
     FollowPresenter followPresenter = new FollowPresenter();
+
     public FollowCommand(User user, FollowGUIMaker followGUIMaker) {
         this.user = user;
         this.followGUIMaker = followGUIMaker;
@@ -22,15 +22,15 @@ public class FollowCommand implements ButtonCommandInterface {
 
     @Override
     public void apply() throws IOException, ClassNotFoundException {
-//        String username = followGUIMaker.searchBar.getText();
-//        FollowController followController = new FollowController(user);
-//        if(followController.canFollow(username)){
-//            followGUIMaker.messageLabel.setForeground(Color.black);
-//            followGUIMaker.messageLabel.setText(followPresenter.presentCanFollow());
-//        }
-//        else{
-//            followGUIMaker.messageLabel.setForeground(Color.red);
-//            followGUIMaker.messageLabel.setText(followPresenter.presentCantFollow());
-//        }
+        FollowController followController = new FollowController(this.user);
+        String username = FollowGUIMaker.searchBar.getText();
+        if(followController.canFollow(username)){
+            followGUIMaker.messageLabel.setForeground(Color.black);
+            followGUIMaker.messageLabel.setText(followPresenter.presentCanFollow());
+        }
+        else{
+            followGUIMaker.messageLabel.setForeground(Color.red);
+            followGUIMaker.messageLabel.setText(followPresenter.presentCantFollow());
+        }
     }
 }

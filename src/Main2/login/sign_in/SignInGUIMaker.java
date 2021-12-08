@@ -4,6 +4,7 @@ import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
 import gui.GeneralGUIMakerInterface;
 import login.sign_in.SignInPresenter.EnglishSignInPresenter;
+import user.User;
 
 import javax.swing.*;
 import javax.swing.JLabel;
@@ -90,7 +91,7 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, Gene
 
         commandMap.put(backButton.getText(), new BackWelcomePageCommand(this));
         commandMap.put(resetButton.getText(), new ResetCommand(this));
-        commandMap.put(loginButton.getText(), new LoginCommand(this));
+        commandMap.put(loginButton.getText(), new SignInCommand(this));
 
     }
 

@@ -14,6 +14,7 @@ public class EmptyFeedGUIMaker implements ActionListener, GUIFactoryInterface {
     JButton backButton = new JButton(feedPresenter.presentReturn());
     JLabel emptyLabel = new JLabel(feedPresenter.presentEmpty());
     User user;
+
     public EmptyFeedGUIMaker(User user){
         emptyLabel.setBounds(25,25,400,50);
         backButton.setBounds(160, 340, 100, 25);

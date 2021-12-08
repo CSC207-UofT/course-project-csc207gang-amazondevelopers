@@ -26,9 +26,6 @@ public class GetUserGateway implements SignInGatewayInterface {
             if (usersSavedDict.containsKey(username)) {
                 return (User) usersSavedDict.get(username);
             }
-            else{
-                System.out.println("hello");
-            }
         }
         // if the user does not exist, return a user with an empty username, which the empty username is unaccepted
         // username anyways

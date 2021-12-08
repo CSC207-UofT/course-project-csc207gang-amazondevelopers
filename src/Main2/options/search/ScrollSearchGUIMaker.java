@@ -20,11 +20,11 @@ import java.util.Map;
 
 public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface {
 
-    JLabel messageLabel = new JLabel();
+    public JLabel messageLabel = new JLabel();
     User user;
     String tag;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
-    JTextField searchBar = new JTextField(10);
+    public JTextField searchBar = new JTextField(10);
 
 
 

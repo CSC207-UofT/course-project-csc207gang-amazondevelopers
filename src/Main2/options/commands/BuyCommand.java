@@ -25,25 +25,25 @@ public class BuyCommand implements ButtonCommandInterface {
 
     @Override
     public void apply() throws IOException, ClassNotFoundException {
-//        SearchPresenterInterface searchPresenter = new SearchPresenter();
-//        SearchController searchController = new SearchController(user);
-//        String index = scrollSearchGUIMaker.searchBar.getText();
-//        int indexInt = Integer.parseInt(index);
-//
-//        BuyController buyController = new BuyController();
-//        boolean allowedBuy = false;
-//        try {
-//            ArrayList<String> productIds = searchController.getProductIDStrings(this.tag);
-//            allowedBuy = buyController.allowBuy(user, productIds, indexInt);
-//        } catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        if (allowedBuy) {
-//            scrollSearchGUIMaker.messageLabel.setForeground(Color.green);
-//            scrollSearchGUIMaker.messageLabel.setText(searchPresenter.canBuy());
-//        } else {
-//            scrollSearchGUIMaker.messageLabel.setForeground(Color.red);
-//            scrollSearchGUIMaker.messageLabel.setText(searchPresenter.cannotBuy());
-//        }
+        SearchPresenterInterface searchPresenter = new SearchPresenter();
+        SearchController searchController = new SearchController(user);
+        String index = scrollSearchGUIMaker.searchBar.getText();
+        int indexInt = Integer.parseInt(index);
+
+        BuyController buyController = new BuyController();
+        boolean allowedBuy = false;
+        try {
+            ArrayList<String> productIds = searchController.getProductIDStrings(this.tag);
+            allowedBuy = buyController.allowBuy(user, productIds, indexInt);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (allowedBuy) {
+            scrollSearchGUIMaker.messageLabel.setForeground(Color.green);
+            scrollSearchGUIMaker.messageLabel.setText(searchPresenter.canBuy());
+        } else {
+            scrollSearchGUIMaker.messageLabel.setForeground(Color.red);
+            scrollSearchGUIMaker.messageLabel.setText(searchPresenter.cannotBuy());
+        }
     }
 }

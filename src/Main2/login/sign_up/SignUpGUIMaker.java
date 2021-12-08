@@ -7,6 +7,7 @@ import gui.GeneralGUIMakerInterface;
 import login.sign_in.BackWelcomePageCommand;
 import login.sign_in.ResetCommand;
 import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
+import user.User;
 
 import javax.swing.*;
 import javax.swing.JLabel;

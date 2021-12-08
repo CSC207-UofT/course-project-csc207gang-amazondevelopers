@@ -13,9 +13,6 @@ import java.util.List;
 
 public class FollowController {
     // search for the user
-
-
-
     User user;
 
     /**
@@ -42,14 +39,14 @@ public class FollowController {
             return false;
         }
         //Already follow user
-        List<String> followingList =  user.getListFollowing();
+        UserUseCase userUseCase = new UserUseCase(this.user);
+        List<String> followingList = userUseCase.getFollowingList();
         for (String following: followingList){
             if (username.equals(following)){
                 return false;
             }
         }
         // the user you want to follow exists
-        UserUseCase userUseCase = new UserUseCase(user);
         userUseCase.userAddToFollow(username);
 
         // save the user after adding to their following list

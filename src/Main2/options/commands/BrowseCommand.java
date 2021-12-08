@@ -22,14 +22,14 @@ public class BrowseCommand implements ButtonCommandInterface {
         BrowseController browseController = new BrowseController(user);
         ArrayList<Post> feed = null;
         feed = browseController.getFeed();
-        GUIFactory guiFactory = new GUIFactory();
         if (0 == feed.size()){
+            GUIFactory guiFactory = new GUIFactory(this.user);
             GUIFactoryInterface guiFrame = guiFactory.getFrame("EMPTYFEED");
             guiFrame.createGUI();
         }
         else{
+            GUIFactory guiFactory = new GUIFactory(feed,this.user,0);
             GUIFactoryInterface guiFrame = guiFactory.getFrame("FEED");
-            FeedGUIMaker feedGUIMaker = new FeedGUIMaker(feed,user,0);
             guiFrame.createGUI();
         }
 

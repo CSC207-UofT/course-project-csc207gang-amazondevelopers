@@ -3,6 +3,7 @@ package login.welcome_page;
 import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
 import login.welcome_page.WelcomePagePresenter.EnglishWelcomePagePresenter;
+import user.User;
 
 import javax.swing.*;
 import java.awt.*;

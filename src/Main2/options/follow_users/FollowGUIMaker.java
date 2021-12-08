@@ -21,11 +21,11 @@ import java.util.Map;
 
 public class FollowGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIMakerInterface {
 
+    public static JTextField searchBar = new JTextField();
     User user;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
     JFrame frame = new JFrame();
-    JTextField searchBar = new JTextField();
-    JLabel messageLabel = new JLabel();
+    public JLabel messageLabel = new JLabel();
 
     public FollowGUIMaker(User user) {
         this.user = user;
@@ -44,7 +44,7 @@ public class FollowGUIMaker implements ActionListener, GUIFactoryInterface, Gene
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        }
+    }
 
     @Override
     public void createGUI() {
@@ -87,11 +87,11 @@ public class FollowGUIMaker implements ActionListener, GUIFactoryInterface, Gene
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
-        frame.add(messageLabel);
 
         commandMap.put(back.getText(), new OptionsCommand(frame, this.user));
         commandMap.put(clear.getText(), new ResetCommand(this));
-        commandMap.put(followButtonLabel.getText(), new FollowCommand(this.user,this));
+        commandMap.put(followButtonLabel.getText(), new FollowCommand(this.user, this));
+
     }
 
     @Override

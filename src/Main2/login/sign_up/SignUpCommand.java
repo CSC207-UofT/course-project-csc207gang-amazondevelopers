@@ -3,6 +3,7 @@ package login.sign_up;
 import gui.ButtonCommandInterface;
 import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
 import login.welcome_page.WelcomePageGUIMaker;
+import user.User;
 
 import java.awt.*;
 

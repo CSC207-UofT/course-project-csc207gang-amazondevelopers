@@ -10,10 +10,10 @@ import user.User;
 import java.awt.*;
 import java.io.IOException;
 
-public class LoginCommand implements ButtonCommandInterface {
+public class SignInCommand implements ButtonCommandInterface {
     SignInGUIMaker signInGUIMaker;
 
-    public LoginCommand(SignInGUIMaker signInGUIMaker) {
+    public SignInCommand(SignInGUIMaker signInGUIMaker) {
         this.signInGUIMaker = signInGUIMaker;
     }
 
@@ -29,8 +29,8 @@ public class LoginCommand implements ButtonCommandInterface {
             GetUserGateway getUserGateway = new GetUserGateway();
             User user = getUserGateway.getUser(userID);
             // give them their options
-            GUIFactory guiFactory = new GUIFactory(this.user);
-            GUIFactoryInterface guiFrame = guiFactory.getFrame("OPTION");
+            GUIFactory guiFactory = new GUIFactory(user);
+            GUIFactoryInterface guiFrame = guiFactory.getFrame("OPTIONS");
             guiFrame.createGUI();
         } else {
             signInGUIMaker.messageLabel.setForeground(Color.red);
