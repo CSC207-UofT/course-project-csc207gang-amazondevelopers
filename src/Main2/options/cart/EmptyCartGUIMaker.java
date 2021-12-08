@@ -16,9 +16,20 @@ public class EmptyCartGUIMaker implements ActionListener, GUIFactoryInterface {
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
     User user;
 
+    /**
+     * Initializes empty cart gui
+     *
+     * @param user user logged in
+     */
+
     public EmptyCartGUIMaker(User user) {
         this.user = user;
     }
+
+    /**
+     * interprets the action performed
+     * @param action action performed
+     */
 
     @Override
     public void actionPerformed(ActionEvent action) {

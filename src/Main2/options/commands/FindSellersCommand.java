@@ -8,9 +8,20 @@ import user.User;
 
 public class FindSellersCommand implements ButtonCommandInterface {
     User user;
+
+    /**
+     * class initializer
+     *
+     * @param user user logged in
+     */
+
     public FindSellersCommand(User user) {
         this.user = user;
     }
+
+    /** opens find sellers window
+     *
+     */
 
     @Override
     public void apply(){

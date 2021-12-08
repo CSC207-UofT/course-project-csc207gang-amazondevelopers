@@ -56,6 +56,10 @@ public class FeedGUIMaker implements ActionListener, GUIFactoryInterface {
         button.apply();
     }
 
+    /**
+     * creates gui for feed
+     */
+
     @Override
     public void createGUI() {
 

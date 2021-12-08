@@ -11,9 +11,20 @@ import java.util.ArrayList;
 
 public class BrowseCommand implements ButtonCommandInterface {
     User user;
+
+    /**
+     * class initializer
+     *
+     * @param user user logged in
+     */
+
     public BrowseCommand(User user) {
         this.user = user;
     }
+
+    /** opens user browse window
+     *
+     */
 
     @Override
     public void apply(){

@@ -4,5 +4,10 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public interface GetUserDictGatewayInterface {
-    HashMap<String,Object> getUserDict() throws IOException, ClassNotFoundException;
+
+    /**
+     *Interface for getting User dict
+     */
+
+    HashMap getUserDict() throws IOException, ClassNotFoundException;
 }

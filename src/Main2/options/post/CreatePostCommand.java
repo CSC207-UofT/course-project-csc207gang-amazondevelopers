@@ -14,10 +14,21 @@ public class CreatePostCommand implements ButtonCommandInterface {
     PostGUIMaker postGUIMaker;
     User user;
 
+    /**
+     * Initializer for create post command
+     *
+     * @param postGUIMaker constructor for post gui
+     * @param user user logged in
+     */
+
     public CreatePostCommand(PostGUIMaker postGUIMaker, User user) {
         this.postGUIMaker = postGUIMaker;
         this.user = user;
     }
+
+    /**
+     * creates window for creating a post
+     */
 
     @Override
     public void apply(){

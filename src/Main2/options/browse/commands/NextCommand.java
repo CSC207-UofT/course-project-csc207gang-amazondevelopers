@@ -14,12 +14,27 @@ public class NextCommand implements ButtonCommandInterface {
     User user;
     ArrayList<Post> feed;
     int index;
+
+    /**
+     * Initializer for next command while user is browsing feed
+     *
+     * @param user user logged in
+     * @param frame the frame being operated on
+     * @param feed The user's feed
+     * @param index the
+     */
+
     public NextCommand(User user, JFrame frame, ArrayList<Post> feed, int index) {
         this.user = user;
         this.frame = frame;
         this.feed = feed;
         this.index = index;
     }
+
+    /**
+     * Applies next command feed while user is browsing
+     *
+     */
 
     @Override
     public void apply(){

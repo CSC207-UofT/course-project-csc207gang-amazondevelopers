@@ -17,9 +17,20 @@ public class EmptyFeedGUIMaker implements ActionListener, GUIFactoryInterface {
     User user;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
+    /**
+     * Initializes empty feed gui
+     *
+     * @param user the user currently logged in
+     */
+
     public EmptyFeedGUIMaker(User user){
         this.user = user;
     }
+
+    /**
+     * interprets the action performed
+     * @param action action performed
+     */
 
     @Override
     public void actionPerformed(ActionEvent action) {
@@ -27,6 +38,10 @@ public class EmptyFeedGUIMaker implements ActionListener, GUIFactoryInterface {
         ButtonCommandInterface button = commandMap.get(buttonText);
         button.apply();
     }
+
+    /**
+     * Creates gui for empty feed
+     */
 
     @Override
     public void createGUI() {

@@ -15,12 +15,25 @@ public class BackCommand implements ButtonCommandInterface {
     ArrayList<Post> feed;
     int index;
 
+    /**
+     * Initializer for Back command while user is browsing feed
+     *
+     * @param user user logged in
+     * @param frame the frame being operated on
+     * @param feed The user's feed
+     * @param index the
+     */
+
     public BackCommand(User user, JFrame frame, ArrayList<Post> feed, int index) {
         this.user = user;
         this.frame = frame;
         this.feed = feed;
         this.index = index;
     }
+
+    /**Goes back one item in user browse window
+     *
+     */
 
     @Override
     public void apply(){
