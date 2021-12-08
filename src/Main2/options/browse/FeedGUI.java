@@ -25,7 +25,7 @@ import user.User;
  * a user to view the next post, view the last post or add to cart
  *
  */
-public class FeedGUIMaker implements ActionListener, GUIFactoryInterface {
+public class FeedGUI implements ActionListener, GUIFactoryInterface {
     ArrayList<Post> feed;
     Post post;
     int index;
@@ -39,7 +39,7 @@ public class FeedGUIMaker implements ActionListener, GUIFactoryInterface {
      * @param feed        Represents the total feed of the current user
      * @param user        The user viewing posts
      */
-    public FeedGUIMaker(ArrayList<Post> feed, User user, int index){
+    public FeedGUI(ArrayList<Post> feed, User user, int index){
         this.feed = feed;
         this.index = index;
         this.user = user;
@@ -123,5 +123,6 @@ public class FeedGUIMaker implements ActionListener, GUIFactoryInterface {
         commandMap.put(cartButton.getText(), new AddToCartCommand(product, this.user, frame));
     }
 }
+
 
 
