@@ -16,9 +16,19 @@ public class BoughtCartGUIMaker implements ActionListener, GUIFactoryInterface {
     User user;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
+    /**
+     * initializes bought acrt gui
+     * @param user user logged in
+     */
+
     public BoughtCartGUIMaker(User user){
         this.user = user;
     }
+
+    /**
+     * interprets the action performed
+     * @param action action performed
+     */
 
     @Override
     public void actionPerformed(ActionEvent action) {
@@ -26,6 +36,10 @@ public class BoughtCartGUIMaker implements ActionListener, GUIFactoryInterface {
         ButtonCommandInterface button = commandMap.get(buttonText);
         button.apply();
     }
+
+    /**
+     * Creates bough cart gui
+     */
 
     @Override
     public void createGUI(){

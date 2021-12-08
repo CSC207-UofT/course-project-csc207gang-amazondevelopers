@@ -14,10 +14,21 @@ public class FollowCommand implements ButtonCommandInterface {
     User user;
     FollowPresenter followPresenter = new FollowPresenter();
 
+    /**
+     * class initializer
+     *
+     * @param user user logged in
+     * @param followGUIMaker constructor for following gui
+     */
+
     public FollowCommand(User user, FollowGUIMaker followGUIMaker) {
         this.user = user;
         this.followGUIMaker = followGUIMaker;
     }
+
+    /** opens follows user that was searched
+     *
+     */
 
     @Override
     public void apply() {

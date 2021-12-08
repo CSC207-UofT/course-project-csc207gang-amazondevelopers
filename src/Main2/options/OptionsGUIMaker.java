@@ -39,6 +39,9 @@ public class OptionsGUIMaker implements ActionListener, GUIFactoryInterface, Gen
         frame.dispose();
     }
 
+    /**
+     * Creates options page gui
+     */
     @Override
     public void createGUI() {
         OptionsPresenter optionsPresenter = new OptionsPresenter();

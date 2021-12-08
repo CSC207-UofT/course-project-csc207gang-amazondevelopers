@@ -2,18 +2,24 @@ package options.browse.FeedPresenter;
 
 public class EnglishFeedPresenter implements FeedPresenterInterface {
 
+    /**
+     * Overrides and implements Feed presenter to
+     *
+     * @return Strings for buttons and input lines in browse
+     */
+
     @Override
-        public String presentNext() {
+    public String presentNext() {
             return "Next";
         }
 
-        @Override
-        public String presentBack() {
+    @Override
+    public String presentBack() {
             return "Back";
         }
 
-        @Override
-        public String presentBuy() {
+    @Override
+    public String presentBuy() {
             return "Add to Cart";
         }
 

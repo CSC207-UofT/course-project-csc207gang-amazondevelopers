@@ -21,6 +21,11 @@ public class SuccessfulPostCreationGUIMaker implements ActionListener, GUIFactor
         this.user = user;
     }
 
+    /**
+     * interprets the action performed
+     * @param action action performed
+     */
+
     public void actionPerformed(ActionEvent action) {
         frame.dispose();
         String buttonText = action.getActionCommand();
@@ -28,6 +33,10 @@ public class SuccessfulPostCreationGUIMaker implements ActionListener, GUIFactor
         button.apply();
 
     }
+
+    /**
+     * creates the gui for a successful post message
+     */
 
     @Override
     public void createGUI(){

@@ -13,13 +13,20 @@ import java.util.List;
 public class BrowseController {
     User user;
 
+    /**Initializes browse controller
+     *
+     * @param user the user
+     */
+
     public BrowseController(User user) {
         this.user = user;
     }
 
-    /**
+    /** Gets the feed of the user
      *
+     * @return browse use case
      */
+
     public ArrayList<Post> getFeed(){
         BrowseUseCase browseUseCase = new BrowseUseCase(this.user);
         GetUserDictGateway getUserDictGateway = new GetUserDictGateway();

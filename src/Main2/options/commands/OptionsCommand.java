@@ -10,10 +10,22 @@ import javax.swing.*;
 public class OptionsCommand implements ButtonCommandInterface {
     JFrame frame;
     User user;
+
+    /**
+     * class initializer
+     *
+     * @param user user logged in
+     * @param frame the current frame
+     */
+
     public OptionsCommand(JFrame frame, User user) {
         this.frame = frame;
         this.user = user;
     }
+
+    /**
+     * opens options window
+     */
 
     @Override
     public void apply() {

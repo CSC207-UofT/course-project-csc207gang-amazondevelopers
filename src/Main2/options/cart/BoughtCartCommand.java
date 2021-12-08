@@ -12,10 +12,20 @@ public class BoughtCartCommand implements ButtonCommandInterface {
     JFrame frame;
     User user;
 
+    /**
+     *
+     * @param frame current frame
+     * @param user user logged in
+     */
+
     public BoughtCartCommand(JFrame frame, User user) {
         this.frame = frame;
         this.user = user;
     }
+
+    /**
+     * Buys user cart
+     */
 
     @Override
     public void apply(){

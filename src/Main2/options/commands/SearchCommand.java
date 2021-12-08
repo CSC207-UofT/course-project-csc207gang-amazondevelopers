@@ -11,10 +11,21 @@ public class SearchCommand implements ButtonCommandInterface {
     JFrame frame;
     User user;
 
+    /**
+     * class initializer
+     *
+     * @param frame current frame
+     * @param user user currently logged
+     */
+
     public SearchCommand(JFrame frame, User user) {
         this.frame = frame;
         this.user = user;
     }
+
+    /**
+     * creates search window
+     */
 
     @Override
     public void apply(){

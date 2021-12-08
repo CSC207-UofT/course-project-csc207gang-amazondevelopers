@@ -1,6 +1,13 @@
 package options.browse.FeedPresenter;
 
 public interface FeedPresenterInterface {
+
+    /**
+     * Interface for feed presenter
+     *
+     * @return String
+     */
+
     String presentNext();
     String presentBack();
     String presentBuy();
