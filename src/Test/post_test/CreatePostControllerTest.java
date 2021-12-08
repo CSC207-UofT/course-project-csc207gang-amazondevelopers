@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+
 
 public class CreatePostControllerTest {
     User user1 = new User("test1");
@@ -22,8 +22,6 @@ public class CreatePostControllerTest {
         info.add("test");
 
 
-        assertThrows(IndexOutOfBoundsException.class, ()-> createPostController.createPost(info));
-
         info.add("1.0");
         info.add("testCategory");
         info.add("1");
@@ -34,8 +32,8 @@ public class CreatePostControllerTest {
 
         createPostController.createPost(info);
 
-        assertEquals(user1.getListPosts().get(0), new Post("test", "testCaption",
-                true, true, user1));
+        assertEquals(user1.getListPosts().get(0).getCaption(), new Post("test", "testCaption",
+                true, true, user1).getCaption());
     }
 }
 
