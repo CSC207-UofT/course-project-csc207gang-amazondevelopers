@@ -1,4 +1,4 @@
-package followFunctionsTest;
+package followTest;
 import login.SaveUserGateway;
 import options.follow_users.FollowController;
 import org.junit.Before;

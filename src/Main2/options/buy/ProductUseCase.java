@@ -6,7 +6,7 @@ import product.Product;
 public class ProductUseCase {
 
     /**
-     * buythe product, and reduce its quantity
+     * buy the product, and reduce its quantity
      * @param product the product to be bought
      * @return if the product can be bought
      */

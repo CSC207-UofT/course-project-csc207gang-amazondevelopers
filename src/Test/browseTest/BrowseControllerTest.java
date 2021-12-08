@@ -1,4 +1,4 @@
-package browseFunctionsTest;
+package browseTest;
 
 import delete_gateways.DeleteProductsGateway;
 import delete_gateways.DeleteUserGateway;
@@ -25,12 +25,9 @@ public class BrowseControllerTest {
     User testUser2 = new User("follower");
     User testUser3 = new User("NoFollowing");
     Product testProduct = new Product("shoes", "TEST", 5.0, "shoes", "2",1);
-    Post post = new Post(testProduct.toString(), "test", true, true, testUser1);
+    Post post = new Post(testProduct.getId(), "test", true, true, testUser2);
 
-   SaveProductGateway saveProductGateway = new SaveProductGateway();
-   GetProductGateway getProductGateway = new GetProductGateway();
-    ProductUseCase productUseCaseCreate = new ProductUseCase(saveProductGateway);
-
+    SaveProductGateway saveProductGateway = new SaveProductGateway();
     DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
     DeleteUserGateway deleteUserGateway = new DeleteUserGateway();
 
@@ -44,21 +41,21 @@ public class BrowseControllerTest {
     public void setUp() throws IOException, ClassNotFoundException {
         // create two users, and a post
         // if there is a preexisting user TestCreateProductUser, delete it
-        deleteUserGateway.deleteUser("follower");
         deleteUserGateway.deleteUser("followed");
+        deleteUserGateway.deleteUser("follower");
         deleteUserGateway.deleteUser("NoFollowing");
 
         // create the new user profile before each test
         ArrayList<Post> posts = new ArrayList<>();
         posts.add(post);
-        testUser1.setListPosts(posts);
+        testUser2.setListPosts(posts);
 
         ArrayList<String> followers = new ArrayList<>();
         followers.add(testUser2.getUsername());
-        testUser1.setListFollowers(followers);
+        testUser1.setListFollowing(followers);
 
         saveUserGateway.saveUser("followed", testUser1);
-        saveUserGateway.saveUser("following", testUser2);
+        saveUserGateway.saveUser("follower", testUser2);
         saveUserGateway.saveUser("NoFollowing", testUser3);
 
         saveProductGateway.addProductToRepo(testProduct, "TEST", "shoes");
@@ -80,7 +77,7 @@ public class BrowseControllerTest {
     public void presentFeedBasicTest() throws IOException, ClassNotFoundException {
         ArrayList<Post> feed = browseController.getFeed();
         assertEquals(1, feed.size());
-        assertEquals(feed.get(0).getUser().getUsername(), "followed");
+        assertEquals(feed.get(0).getUser().getUsername(), "follower");
     }
 
     @Test
