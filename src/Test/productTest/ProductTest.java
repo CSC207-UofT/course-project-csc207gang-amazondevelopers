@@ -1,4 +1,4 @@
-package productFunctionsTest;
+package productTest;
 
 import org.junit.Test;
 import product.Product;

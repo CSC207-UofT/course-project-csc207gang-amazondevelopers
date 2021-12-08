@@ -1,8 +1,4 @@
-package postFunctionsTest;
-
-import org.junit.Test;
-
-import java.util.HashMap;
+package postTest;
 
 import static org.junit.Assert.assertTrue;
 

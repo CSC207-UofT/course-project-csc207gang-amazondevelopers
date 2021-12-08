@@ -63,7 +63,7 @@ public class BrowseControllerTest {
     }
 
     @After
-    public void takeDown() throws IOException, ClassNotFoundException {
+    public void takeDown() {
         // delete the test user profile before each test, to delete all the products that were created during the test
         deleteUserGateway.deleteUser("TestSignUpControllerUser");
         deleteUserGateway.deleteUser("follower");
@@ -74,14 +74,14 @@ public class BrowseControllerTest {
     }
 
     @Test
-    public void presentFeedBasicTest() throws IOException, ClassNotFoundException {
+    public void presentFeedBasicTest() {
         ArrayList<Post> feed = browseController.getFeed();
         assertEquals(1, feed.size());
         assertEquals(feed.get(0).getUser().getUsername(), "follower");
     }
 
     @Test
-    public void presentFeedEmptyTest() throws IOException, ClassNotFoundException {
+    public void presentFeedEmptyTest() {
         BrowseController browseController2 = new BrowseController(testUser3);
         ArrayList<Post> feed = browseController2.getFeed();
         assertEquals(0, feed.size());
