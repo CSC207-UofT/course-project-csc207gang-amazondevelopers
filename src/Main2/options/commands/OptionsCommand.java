@@ -6,7 +6,6 @@ import gui.GUIFactoryInterface;
 import user.User;
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class OptionsCommand implements ButtonCommandInterface {
     JFrame frame;
@@ -17,7 +16,7 @@ public class OptionsCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply() {
         frame.dispose();
         GUIFactory guiFactory = new GUIFactory(this.user);
         GUIFactoryInterface guiFrame = guiFactory.getFrame("OPTIONS");

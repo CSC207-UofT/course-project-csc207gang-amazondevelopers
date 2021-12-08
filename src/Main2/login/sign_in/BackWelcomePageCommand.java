@@ -15,7 +15,7 @@ public class BackWelcomePageCommand implements ButtonCommandInterface {
         this.generalGUIMakerInterface = generalGUIMakerInterface;
     }
 
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         generalGUIMakerInterface.disposeFrame();
         GUIFactory guiFactory = new GUIFactory();
         GUIFactoryInterface guiFrame = guiFactory.getFrame("WELCOME");

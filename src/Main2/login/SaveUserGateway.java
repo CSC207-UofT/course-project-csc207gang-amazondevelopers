@@ -4,7 +4,6 @@ import read_writer.DictionaryReadWriter;
 import user.User;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
 public class SaveUserGateway implements SaveUserGatewayInterface {

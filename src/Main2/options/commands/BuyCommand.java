@@ -8,7 +8,6 @@ import options.search.SearchPresenter;
 import options.search.SearchPresenterInterface;
 import user.User;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class BuyCommand implements ButtonCommandInterface {
@@ -24,20 +23,15 @@ public class BuyCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         SearchPresenterInterface searchPresenter = new SearchPresenter();
         SearchController searchController = new SearchController(user);
         String index = scrollSearchGUIMaker.searchBar.getText();
         int indexInt = Integer.parseInt(index);
 
         BuyController buyController = new BuyController();
-        boolean allowedBuy = false;
-        try {
-            ArrayList<String> productIds = searchController.getProductIDStrings(this.tag);
-            allowedBuy = buyController.allowBuy(user, productIds, indexInt);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        ArrayList<String> productIds = searchController.getProductIDStrings(this.tag);
+        boolean allowedBuy = buyController.allowBuy(user, productIds, indexInt);
         if (allowedBuy) {
             scrollSearchGUIMaker.messageLabel.setForeground(Color.green);
             scrollSearchGUIMaker.messageLabel.setText(searchPresenter.canBuy());

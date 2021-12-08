@@ -6,7 +6,6 @@ import gui.GUIFactoryInterface;
 import user.User;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -21,7 +20,7 @@ public class CreatePostCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         EnglishPostPresenter productPresenter = new EnglishPostPresenter();
         PostInformationController postInformationController = new PostInformationController();
         String nameField = postGUIMaker.name.getText();
@@ -53,11 +52,8 @@ public class CreatePostCommand implements ButtonCommandInterface {
             ArrayList<String> information = new ArrayList<>(Arrays. asList(nameField, priceField, categoryField
                     ,quantityField, descriptionField, sizeBox, rateBox, commentBox));
             CreatePostController createPostController = new CreatePostController(this.user);
-            try {
-                createPostController.createPost(information);
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+            createPostController.createPost(information);
+
             postGUIMaker.frame.dispose();
 
             GUIFactory guiFactory = new GUIFactory(this.user);

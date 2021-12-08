@@ -42,15 +42,6 @@ public class EnglishPostPresenter implements PostPresenterInterface {
     public String sizePresenter(){
         return "Size:";
     }
-
-    /**
-     *
-     * @return A String asking the user for the caption of the options.post
-     */
-    public String captionPresenter(){
-        return "Caption:";
-    }
-
     /**
      *
      * @return A String asking the user whether other others can leave ratings

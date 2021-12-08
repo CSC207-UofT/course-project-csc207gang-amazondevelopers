@@ -8,7 +8,6 @@ import user.User;
 import user.UserUseCase;
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class AddToCartCommand implements ButtonCommandInterface {
     Product product;
@@ -21,7 +20,7 @@ public class AddToCartCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         UserUseCase userUseCase = new UserUseCase(user);
         userUseCase.userAddToCart(product);
         frame.setVisible(false);

@@ -1,10 +1,7 @@
 package options.post;
 
 import gui.ButtonCommandInterface;
-import gui.GUIFactory;
 import gui.GUIFactoryInterface;
-import options.OptionsGUIMaker;
-import options.commands.CartCommand;
 import options.commands.OptionsCommand;
 import user.User;
 
@@ -12,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,15 +25,12 @@ public class SuccessfulPostCreationGUIMaker implements ActionListener, GUIFactor
         frame.dispose();
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
+
     }
 
     @Override
-    public void createGUI() throws IOException, ClassNotFoundException {
+    public void createGUI(){
         EnglishPostPresenter presenter = new EnglishPostPresenter();
 
         JButton back = new JButton(presenter.backToMenu());

@@ -7,7 +7,6 @@ import options.search.SearchGUIMaker;
 import user.User;
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class ScrollSearchCommand implements ButtonCommandInterface {
     JFrame frame;
@@ -21,14 +20,10 @@ public class ScrollSearchCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
-        try {
-            GUIFactory guiFactory = new GUIFactory(this.user, searchGUIMaker.searchBar.getText());
-            GUIFactoryInterface guiFrame = guiFactory.getFrame("SCROLLSEARCH");
-            guiFrame.createGUI();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public void apply(){
+        GUIFactory guiFactory = new GUIFactory(this.user, searchGUIMaker.searchBar.getText());
+        GUIFactoryInterface guiFrame = guiFactory.getFrame("SCROLLSEARCH");
+        guiFrame.createGUI();
         frame.dispose();
     }
 }

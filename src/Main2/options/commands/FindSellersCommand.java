@@ -5,7 +5,6 @@ import gui.GUIFactory;
 import gui.GUIFactoryInterface;
 import user.User;
 
-import java.io.IOException;
 
 public class FindSellersCommand implements ButtonCommandInterface {
     User user;
@@ -14,7 +13,7 @@ public class FindSellersCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         GUIFactory guiFactory = new GUIFactory(this.user);
         GUIFactoryInterface guiFrame = guiFactory.getFrame("FOLLOW");
         guiFrame.createGUI();

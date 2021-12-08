@@ -96,7 +96,7 @@ public class PostManager {
     public String postToString(Post post){
         StringBuilder output;
         output = new StringBuilder("Post made by: " + post.getUser().getUsername() + "\n");
-        output.append("Product its about: ").append(post.getProduct().toString()).append("\n");
+        output.append("Product its about: ").append(post.getProduct()).append("\n");
         output.append("Caption: ").append(post.getCaption()).append("\n");
         if (post.getCanComment()){
             output.append("Comments: \n");
