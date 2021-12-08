@@ -11,4 +11,3 @@ public interface PostBuilderInterface {
     void addLikes();
     Post createPost();
 }
-//

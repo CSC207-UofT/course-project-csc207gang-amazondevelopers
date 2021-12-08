@@ -3,9 +3,7 @@ package options.search;
 
 import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
-import options.buy.BuyController;
 import options.commands.BuyCommand;
-import options.commands.OptionsCommand;
 import options.commands.SearchCommand;
 import user.User;
 
@@ -13,7 +11,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,15 +39,12 @@ public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
+
     }
 
     @Override
-    public void createGUI() throws IOException, ClassNotFoundException {
+    public void createGUI(){
 
         SearchPresenterInterface searchPresenter = new SearchPresenter();
         JLabel searchIntro = new JLabel(searchPresenter.inputIndex());

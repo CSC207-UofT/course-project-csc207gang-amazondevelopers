@@ -3,30 +3,27 @@ package options.commands;
 import gui.ButtonCommandInterface;
 import gui.GUIFactory;
 import gui.GUIFactoryInterface;
+import options.search.SearchGUIMaker;
 import user.User;
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class ScrollSearchCommand implements ButtonCommandInterface {
     JFrame frame;
     User user;
-    String tag;
-    public ScrollSearchCommand(JFrame frame, User user, String tag) {
+    SearchGUIMaker searchGUIMaker;
+
+    public ScrollSearchCommand(JFrame frame, User user, SearchGUIMaker searchGUIMaker) {
         this.frame = frame;
         this.user = user;
-        this.tag = tag;
+        this.searchGUIMaker = searchGUIMaker;
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
-        try {
-            GUIFactory guiFactory = new GUIFactory(this.user, this.tag);
-            GUIFactoryInterface guiFrame = guiFactory.getFrame("SCROLLSEARCH");
-            guiFrame.createGUI();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public void apply(){
+        GUIFactory guiFactory = new GUIFactory(this.user, searchGUIMaker.searchBar.getText());
+        GUIFactoryInterface guiFrame = guiFactory.getFrame("SCROLLSEARCH");
+        guiFrame.createGUI();
         frame.dispose();
     }
 }

@@ -7,7 +7,6 @@ import options.follow_users.FollowPresenter;
 import user.User;
 
 import java.awt.*;
-import java.io.IOException;
 
 public class FollowCommand implements ButtonCommandInterface {
 
@@ -21,7 +20,7 @@ public class FollowCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply() {
         FollowController followController = new FollowController(this.user);
         String username = FollowGUIMaker.searchBar.getText();
         if(followController.canFollow(username)){

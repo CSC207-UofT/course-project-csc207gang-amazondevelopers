@@ -4,8 +4,6 @@ import user.UserUseCase;
 import product.GetProductGateway;
 import product.Product;
 import user.User;
-
-import java.io.IOException;
 import java.util.List;
 
 public class BuyController {

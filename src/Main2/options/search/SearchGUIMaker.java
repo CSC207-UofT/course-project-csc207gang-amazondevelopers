@@ -3,9 +3,7 @@ package options.search;
 import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
 import gui.GeneralGUIMakerInterface;
-import login.sign_in.BackWelcomePageCommand;
 import login.sign_in.ResetCommand;
-import options.OptionsGUIMaker;
 import options.commands.OptionsCommand;
 import options.commands.ScrollSearchCommand;
 import user.User;
@@ -14,14 +12,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SearchGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIMakerInterface {
     User user;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
-    JTextField searchBar = new JTextField();
+    public JTextField searchBar = new JTextField();
     JFrame frame = new JFrame();
 
     public SearchGUIMaker(User user) {
@@ -37,12 +34,7 @@ public class SearchGUIMaker implements ActionListener, GUIFactoryInterface, Gene
 
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        button.apply();
     }
 
     @Override
@@ -91,7 +83,7 @@ public class SearchGUIMaker implements ActionListener, GUIFactoryInterface, Gene
 
         commandMap.put(back.getText(), new OptionsCommand(frame, this.user));
         commandMap.put(clear.getText(), new ResetCommand(this));
-        commandMap.put(search.getText(), new ScrollSearchCommand(frame, this.user, searchBar.getText()));
+        commandMap.put(search.getText(), new ScrollSearchCommand(frame, this.user, this));
     }
 
     @Override

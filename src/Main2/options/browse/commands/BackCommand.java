@@ -3,11 +3,10 @@ package options.browse.commands;
 import gui.ButtonCommandInterface;
 import gui.GUIFactory;
 import gui.GUIFactoryInterface;
-import options.OptionsGUIMaker;
 import options.post.Post;
 import user.User;
+
 import javax.swing.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class BackCommand implements ButtonCommandInterface {
@@ -24,7 +23,7 @@ public class BackCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         if (this.index == 0) {
             frame.setVisible(false);
             frame.dispose();

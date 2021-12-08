@@ -8,7 +8,6 @@ import login.GetUserGateway;
 import user.User;
 import user.UserUseCase;
 
-import java.io.IOException;
 import java.util.List;
 
 public class FollowController {

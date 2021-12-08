@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,11 +35,7 @@ public class OptionsGUIMaker implements ActionListener, GUIFactoryInterface, Gen
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
         frame.dispose();
     }
 

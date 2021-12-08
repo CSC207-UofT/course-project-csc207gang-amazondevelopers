@@ -4,7 +4,6 @@ import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
 import options.browse.AddedToCartPresenter.EnglishAddedPresenter;
 import options.browse.EmptyFeedPresenter.EnglishEmptyFeedPresenter;
-import options.OptionsGUIMaker;
 import options.commands.OptionsCommand;
 import user.User;
 
@@ -33,15 +32,11 @@ public class AddedToCartGUIMaker implements ActionListener, GUIFactoryInterface 
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
     }
 
     @Override
-    public void createGUI() throws IOException, ClassNotFoundException {
+    public void createGUI(){
         EnglishEmptyFeedPresenter feedPresenter = new EnglishEmptyFeedPresenter();
         JFrame frame = new JFrame();
         JButton backButton = new JButton(feedPresenter.presentReturn());

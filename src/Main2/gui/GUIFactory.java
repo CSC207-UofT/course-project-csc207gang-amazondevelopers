@@ -12,12 +12,11 @@ import options.cart.CartGUIMaker;
 import options.cart.EmptyCartGUIMaker;
 import options.follow_users.FollowGUIMaker;
 import options.post.Post;
+import options.post.PostGUIMaker;
 import options.post.SuccessfulPostCreationGUIMaker;
 import options.search.ScrollSearchGUIMaker;
 import options.search.SearchGUIMaker;
 import user.User;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class GUIFactory {
@@ -44,7 +43,7 @@ public class GUIFactory {
         this.tagOrName = tagOrName;
     }
 
-    public GUIFactoryInterface getFrame(String frameType) throws IOException, ClassNotFoundException {
+    public GUIFactoryInterface getFrame(String frameType){
         if (frameType.equalsIgnoreCase("WELCOME")) {
             return new WelcomePageGUIMaker();
         }
@@ -89,7 +88,7 @@ public class GUIFactory {
         }
         // need to change the return type here
         else if (frameType.equalsIgnoreCase("POST")) {
-            return new EmptyCartGUIMaker(this.user);
+            return new PostGUIMaker(this.user);
         }
         return null;
     }

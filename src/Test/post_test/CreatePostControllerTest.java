@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
+
 public class CreatePostControllerTest {
     User user1 = new User("test1");
     CreatePostController createPostController = new CreatePostController(user1);
@@ -29,8 +30,8 @@ public class CreatePostControllerTest {
 
         createPostController.createPost(info);
 
-        assertEquals(user1.getListPosts().get(0), new Post("test", "testCaption",
-                true, true, user1));
+        assertEquals(user1.getListPosts().get(0).getCaption(), new Post("test", "testCaption",
+                true, true, user1).getCaption());
     }
 }
 
