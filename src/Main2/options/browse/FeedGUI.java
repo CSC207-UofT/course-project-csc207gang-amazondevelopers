@@ -128,8 +128,8 @@ public class FeedGUI implements ActionListener {
             frame.setVisible(false);
             frame.dispose();
             AddedToCartGUI addedToCartGUI = new AddedToCartGUI(user, product.getName());
-            }
         }
     }
+}
 
 
