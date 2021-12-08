@@ -1,4 +1,4 @@
-package optionsPackageTest;
+package optionsTest;
 
 import delete_gateways.DeleteProductsGateway;
 import login.GetUserGateway;

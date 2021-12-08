@@ -1,4 +1,4 @@
-package loginFunctionsTest;
+package loginTest;
 
 public class CartControllerTest {
 }

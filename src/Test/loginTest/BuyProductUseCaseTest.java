@@ -1,4 +1,4 @@
-package loginFunctionsTest;
+package loginTest;
 
 import options.buy.ProductUseCase;
 import org.junit.Test;

@@ -1,11 +1,4 @@
-package optionsPackageTest;
-
-import options.search.SearchGateway;
-
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
+package optionsTest;
 
 import static org.junit.Assert.assertEquals;
 //

@@ -15,7 +15,7 @@ public class DeleteUserGateway {
      *
      * @return true if user was successfully deleted and false otherwise.
      */
-    public boolean deleteUser(String username) throws IOException, ClassNotFoundException {
+    public boolean deleteUser(String username){
         File file = new File("src/Main2/user.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.

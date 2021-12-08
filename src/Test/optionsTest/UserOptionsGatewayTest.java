@@ -1,4 +1,4 @@
-package optionsPackageTest;
+package optionsTest;
 
 public class UserOptionsGatewayTest {
 }
