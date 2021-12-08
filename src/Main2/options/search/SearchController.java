@@ -23,7 +23,7 @@ public class SearchController {
      *
      * @return A list of strings that are toStrings for posts related to that the category,tag of interest.
      */
-    public ArrayList<String> getSearchProductStrings(String productTag) throws IOException, ClassNotFoundException {
+    public ArrayList<String> getSearchProductStrings(String productTag) {
         SearchGateway searchGateway = new SearchGateway();
         // product ID's we want to make to toString
         ArrayList<String> productIdList = searchGateway.searchProducts(productTag);
