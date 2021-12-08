@@ -24,7 +24,7 @@ public class SearchGateway {
      * @throws IOException error occured during reading a file, when there is an input / output error
      * @throws ClassNotFoundException the exception thrown when the class is not found
      */
-    public ArrayList<String> searchProducts(String tag) throws IOException, ClassNotFoundException {
+    public ArrayList<String> searchProducts(String tag) {
 
         File file = new File("src/Main2/product.ser");
         if (file.length() == 0){
@@ -44,7 +44,7 @@ public class SearchGateway {
     }
 
 
-    public HashMap<String, Object> searchIDToProductList() throws IOException, ClassNotFoundException {
+    public HashMap<String, Object> searchIDToProductList() {
 
         File file = new File("src/Main2/IdToProduct.ser");
         if (file.length() == 0){
