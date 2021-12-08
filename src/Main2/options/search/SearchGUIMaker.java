@@ -21,7 +21,7 @@ import java.util.Map;
 public class SearchGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIMakerInterface {
     User user;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
-    JTextField searchBar = new JTextField();
+    public JTextField searchBar = new JTextField();
     JFrame frame = new JFrame();
 
     public SearchGUIMaker(User user) {
@@ -91,7 +91,7 @@ public class SearchGUIMaker implements ActionListener, GUIFactoryInterface, Gene
 
         commandMap.put(back.getText(), new OptionsCommand(frame, this.user));
         commandMap.put(clear.getText(), new ResetCommand(this));
-        commandMap.put(search.getText(), new ScrollSearchCommand(frame, this.user, searchBar.getText()));
+        commandMap.put(search.getText(), new ScrollSearchCommand(frame, this.user, this));
     }
 
     @Override
