@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CartController {
     /**
-     * Buys all of the items in the users cart.
+     * Buys all the items in the users cart.
      * @param user user that is buying
      */
     public void buyCart(User user){

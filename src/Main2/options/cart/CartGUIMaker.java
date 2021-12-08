@@ -28,12 +28,22 @@ public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
         this.user = user;
     }
 
+    /**
+     * interprets the action performed
+     * @param action action performed
+     */
+
     @Override
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
         button.apply();
     }
+
+    /**
+     * creates cart gui
+     *
+     */
 
     @Override
     public void createGUI(){

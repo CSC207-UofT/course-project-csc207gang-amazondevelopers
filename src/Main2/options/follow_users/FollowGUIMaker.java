@@ -24,6 +24,11 @@ public class FollowGUIMaker implements ActionListener, GUIFactoryInterface, Gene
     JFrame frame = new JFrame();
     public JLabel messageLabel = new JLabel();
 
+    /**
+     * initializer for follow gui constructor
+     * @param user user currently logged in
+     */
+
     public FollowGUIMaker(User user) {
         this.user = user;
     }
@@ -39,6 +44,9 @@ public class FollowGUIMaker implements ActionListener, GUIFactoryInterface, Gene
         button.apply();
     }
 
+    /**
+     * creates follow gui
+     */
     @Override
     public void createGUI() {
         FollowPresenter followPresenter = new FollowPresenter();
@@ -87,11 +95,18 @@ public class FollowGUIMaker implements ActionListener, GUIFactoryInterface, Gene
 
     }
 
+    /**
+     * disposes of current frame
+     */
+
     @Override
     public void disposeFrame() {
         frame.dispose();
     }
 
+    /**
+     * resets fields
+     */
     @Override
     public void resetFields() {
         searchBar.setText("");

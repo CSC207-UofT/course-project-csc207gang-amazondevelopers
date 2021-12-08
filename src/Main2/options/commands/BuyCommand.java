@@ -16,11 +16,21 @@ public class BuyCommand implements ButtonCommandInterface {
     String tag;
     ScrollSearchGUIMaker scrollSearchGUIMaker;
 
+    /**
+     * class initializer
+     *
+     * @param user user logged in
+     */
+
     public BuyCommand(User user,String tag, ScrollSearchGUIMaker scrollSearchGUIMaker) {
         this.user = user;
         this.tag  = tag;
         this.scrollSearchGUIMaker = scrollSearchGUIMaker;
     }
+
+    /**  attempts to buy user cart
+     *
+     */
 
     @Override
     public void apply(){

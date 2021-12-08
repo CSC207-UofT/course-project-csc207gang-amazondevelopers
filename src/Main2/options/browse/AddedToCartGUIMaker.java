@@ -23,10 +23,22 @@ public class AddedToCartGUIMaker implements ActionListener, GUIFactoryInterface 
     User user;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
+    /**
+     * Initializes add to cart gui
+     *
+     * @param user the user logged in
+     * @param productName the name of product being added to cart
+     */
+
     public AddedToCartGUIMaker(User user, String productName){
         addedLabel.setText(productName + addedPresenter.presentAddedToCart());
         this.user = user;
     }
+
+    /**
+     * interprets the action performed
+     * @param action action performed
+     */
 
     @Override
     public void actionPerformed(ActionEvent action) {
@@ -34,6 +46,11 @@ public class AddedToCartGUIMaker implements ActionListener, GUIFactoryInterface 
         ButtonCommandInterface button = commandMap.get(buttonText);
         button.apply();
     }
+
+    /**
+     * Creates GUI for browse
+     *
+     */
 
     @Override
     public void createGUI(){
