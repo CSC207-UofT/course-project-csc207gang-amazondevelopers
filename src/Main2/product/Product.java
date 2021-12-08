@@ -49,7 +49,7 @@ public class Product implements Serializable{
         if (this.sizes == null) {
             return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock";
         } else {
-            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock" + ", " + sizes;
+            return name + " (" + id + ")" + ": $" + price + ", " + quantity + " in stock" + ", size: " + sizes;
         }
     }
 

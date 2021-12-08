@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class EmptyCartGUI implements ActionListener {
     CartPresenter presenter = new CartPresenter();
     JFrame frame = new JFrame();
+    // TODO: presenter?
     JButton returnHome = new JButton("Back");
     JButton buyButton = new JButton("Buy Cart");
     JButton buy = new JButton("Buy");
