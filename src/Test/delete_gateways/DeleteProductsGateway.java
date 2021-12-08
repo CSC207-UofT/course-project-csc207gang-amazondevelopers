@@ -15,7 +15,7 @@ public class DeleteProductsGateway {
      *
      * @return true if all products were successfully deleted and false otherwise.
      */
-    public boolean deleteProducts(List<String> listIds) throws IOException, ClassNotFoundException {
+    public boolean deleteProducts(List<String> listIds){
         File file = new File("src/Main2/IdToProduct.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.

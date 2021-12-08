@@ -21,8 +21,6 @@ public class UserUseCase {
         List<String> listFollowing = user.getListFollowing();
         listFollowing.add(usernameToFollow);
         user.setListFollowing(listFollowing);
-
-
     }
 
     /**

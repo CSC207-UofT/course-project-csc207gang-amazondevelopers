@@ -35,9 +35,11 @@ public class CreatePostController {
         // need to get this attributes
         Boolean canComment = Boolean.valueOf(information.get(7));
         Boolean canRate = Boolean.valueOf(information.get(6));
-        Post newPost = postManager.createPost(product.getId(), information.get(4), canComment, canRate, this.user);
+        Post newPost = postManager.createPostWithRateComment(product.getId(), information.get(4), canComment, canRate, this.user);
         // add options.post to user's list of posts
         postManager.savePost(newPost, this.user);
     }
 }
 
+
+//

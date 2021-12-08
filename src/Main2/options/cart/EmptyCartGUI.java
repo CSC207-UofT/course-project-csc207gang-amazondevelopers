@@ -2,7 +2,6 @@ package options.cart;
 
 import options.OptionsGUI;
 import user.User;
-import user.UserUseCase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,13 +14,6 @@ public class EmptyCartGUI implements ActionListener {
     JFrame frame = new JFrame();
     // TODO: presenter?
     JButton returnHome = new JButton("Back");
-    JButton buyButton = new JButton("Buy Cart");
-    JButton buy = new JButton("Buy");
-    JPanel scrollPanel = new JPanel();
-    JPanel indexPanel = new JPanel();
-    JPanel titlePanel = new JPanel();
-    JPanel backPanel = new JPanel();
-    JLabel messageLabel = new JLabel();
 
 
     JLabel emptyCartMessage = new JLabel(presenter.emptyCartMessage());
