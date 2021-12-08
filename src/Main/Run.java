@@ -1,14 +1,10 @@
-import inputOutputFunctions.SystemInOut;
-import loginFunctions.WelcomePageController;
-
-import java.io.IOException;
+import gui.GUIFactory;
+import gui.GUIFactoryInterface;
 
 public class Run {
-
-    public static void main(String[] args) throws IOException {
-        WelcomePageController welcomePageController = new WelcomePageController();
-        SystemInOut inOut = new SystemInOut();
-        welcomePageController.userLoginDecision(inOut);
-
-        }
+    public static void main(String[] args){
+        GUIFactory guiFactory = new GUIFactory();
+        GUIFactoryInterface guiFrame = guiFactory.getFrame("WELCOME");
+        guiFrame.createGUI();
     }
+}
