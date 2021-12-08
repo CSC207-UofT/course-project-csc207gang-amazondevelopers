@@ -1,9 +1,6 @@
 package options.post;
 import login.SaveUserGatewayInterface;
-import product.Product;
 import user.User;
-
-import java.io.IOException;
 
 /**
  * The use case class to manage and create posts
@@ -21,19 +18,22 @@ public class PostManager {
         this.saveUserGateway = saveUserGateway;
     }
 
+
     /**
-     * Create a new Post object.
-     * This method takes in a Product object for product, a String for the caption, and two booleans
-     * to check if comments and ratings can be added.
-     * Returns the Post if created and null otherwise.
-     *
-     * @return a newly created options.post.
+     * Implement post creation with builder
+     * @param productId the ID of the product
+     * @param caption the caption of the post
+     * @param canComment is other users can comment or not
+     * @param canRate if other users can rate or not
+     * @param user the user who posted the product
+     * @return a Post entity
      */
-    public Post createPost(String productId, String caption, boolean canComment, boolean canRate, User user) {
-        return new Post(productId, caption, canComment, canRate, user);
+    public Post createPostWithRateComment(String productId, String caption, boolean canComment, boolean canRate, User user){
+        PostDirector postDirector = new PostDirector();
+        return postDirector.setup(productId, caption, canComment, canRate, user);
     }
 
-    public void savePost(Post newPost, User user) throws IOException, ClassNotFoundException {
+    public void savePost(Post newPost, User user){
         user.addToPostList(newPost);
         // gateway saves overwrite the old user
         saveUserGateway.saveUser(user.getUsername(), user);
@@ -117,3 +117,4 @@ public class PostManager {
 
 
 }
+//
