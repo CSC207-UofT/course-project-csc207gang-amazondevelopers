@@ -124,8 +124,9 @@ public class Product implements Serializable{
     public void setQuantity(int pquantity) {
         this.quantity = Math.max(pquantity, 0);
     }
-
+    //getter for username
     public String getUsername() {return this.username;}
+
 
 
 }
