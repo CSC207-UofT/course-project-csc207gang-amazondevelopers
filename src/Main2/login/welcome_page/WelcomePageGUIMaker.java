@@ -1,14 +1,15 @@
 package login.welcome_page;
 
-import gui.ButtonActionInterface;
-import gui.GUI;
+import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
 import login.welcome_page.WelcomePagePresenter.EnglishWelcomePagePresenter;
+import user.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
     JButton signinButton = new JButton(englishWelcomePagePresenter.presentSignIn());
     JButton signupButton = new JButton(englishWelcomePagePresenter.presentSignUp());
     JButton quit = new JButton(englishWelcomePagePresenter.presentQuit());
-    static Map<String, ButtonActionInterface> actionMap = new HashMap<>();
+    static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
     /**
      * Constructor for the WelcomePageGUIMaker
@@ -32,23 +33,26 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
 
     /**
      *
-     * @param e The action event, helps to maintain the actions performed by the user and the results from their
+     * @param action The action event, helps to maintain the actions performed by the user and the results from their
      *          actions that they perform on the page
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-        String buttonText = e.getActionCommand();
-        ButtonActionInterface button = actionMap.get(buttonText);
-        button.apply();
+    public void actionPerformed(ActionEvent action) {
+        String buttonText = action.getActionCommand();
+        ButtonCommandInterface button = commandMap.get(buttonText);
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        frame.dispose();
     }
 
     /**
      * Creates the JFame for the WelcomePage.
-     * @return a GUI
      */
     @Override
-    public GUI createGUI() {
+    public void createGUI() {
         JLabel messageLabel = new JLabel(englishWelcomePagePresenter.welcomeMessage());
 
         messageLabel.setBounds(70, 100, 250, 35);
@@ -72,10 +76,8 @@ public class WelcomePageGUIMaker implements ActionListener, GUIFactoryInterface 
         frame.setLayout(null);
         frame.setVisible(true);
 
-        actionMap.put(quit.getText(), new QuitButton());
-        actionMap.put(signinButton.getText(), new SignInButton());
-        actionMap.put(signupButton.getText(), new SignUpButton());
-
-        return new WelcomePageGUI(frame);
+        commandMap.put(quit.getText(), new QuitCommand());
+        commandMap.put(signinButton.getText(), new SignInCommand());
+        commandMap.put(signupButton.getText(), new SignUpCommand());
     }
 }

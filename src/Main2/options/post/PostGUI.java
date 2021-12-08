@@ -1,6 +1,6 @@
 package options.post;
 
-import options.OptionsGUI;
+import options.OptionsGUIMaker;
 import user.User;
 import javax.swing.*;
 import java.awt.*;
@@ -131,7 +131,7 @@ JButton post = new JButton(productPresenter.sharePresenter());
 
     if(action.getSource()==back){
         frame.dispose();
-        OptionsGUI optionsGUI = new OptionsGUI(user);
+        OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(user);
     }
     if(action.getSource()==post) {
         //check if any fields are empty

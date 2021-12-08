@@ -1,22 +1,24 @@
 package login.sign_in;
 
-import gui.GUI;
+import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
-import login.GetUserGateway;
+import gui.GeneralGUIMakerInterface;
 import login.sign_in.SignInPresenter.EnglishSignInPresenter;
-import login.welcome_page.WelcomePageGUIMaker;
-import options.OptionsGUI;
 import user.User;
+
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Uses java swing to Take user input for signin credentials to sign user in.
  */
-public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
+public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIMakerInterface {
     EnglishSignInPresenter englishSignInPresenter = new EnglishSignInPresenter();
     JFrame frame = new JFrame();
     JButton loginButton = new JButton(englishSignInPresenter.presentLogin());
@@ -27,6 +29,7 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
     JLabel messageLabel = new JLabel(englishSignInPresenter.presentInputUsername());
     JLabel userIDLabel = new JLabel(englishSignInPresenter.presentUserID());
     JLabel userPasswordLabel = new JLabel(englishSignInPresenter.presentPassword());
+    static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
     /**
      * Constructor for the SignInGUIMaker
@@ -40,31 +43,12 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
      */
     @Override
     public void actionPerformed(ActionEvent action) {
-        EnglishSignInPresenter presenter = new EnglishSignInPresenter();
-        if(action.getSource()==backButton) {
-            frame.dispose();
-            WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-            welcomePageGUIMaker.createGUI();
-        }
-        if(action.getSource()==resetButton) {
-            userIDField.setText("");
-            userPasswordField.setText("");
-        }
-        if(action.getSource()==loginButton) {
-            String userID = userIDField.getText();
-            String password = String.valueOf(userPasswordField.getPassword());
-            SignInController signInController = new SignInController();
-            boolean matchPass = signInController.checkPassMatch(userID, password);
-            if (matchPass){
-                frame.dispose();
-                GetUserGateway getUserGateway = new GetUserGateway();
-                User user = getUserGateway.getUser(userID);
-                // give them their options
-                OptionsGUI optionsGUI = new OptionsGUI(user);
-            } else {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText(presenter.presentWrongPasswordUsername());
-            }
+        String buttonText = action.getActionCommand();
+        ButtonCommandInterface button = commandMap.get(buttonText);
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -73,7 +57,7 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
      */
 
     @Override
-    public GUI createGUI() {
+    public void createGUI() {
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 
@@ -105,7 +89,19 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface {
         frame.setLayout(null);
         frame.setVisible(true);
 
-        return new SignInGUI(frame);
+        commandMap.put(backButton.getText(), new BackWelcomePageCommand(this));
+        commandMap.put(resetButton.getText(), new ResetCommand(this));
+        commandMap.put(loginButton.getText(), new SignInCommand(this));
+
+    }
+
+    public void disposeFrame(){
+        frame.dispose();
+    }
+
+    public void resetFields(){
+        userIDField.setText("");
+        userPasswordField.setText("");
     }
 }
 

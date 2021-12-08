@@ -1,9 +1,9 @@
 package login.welcome_page;
 
-import gui.ButtonActionInterface;
+import gui.ButtonCommandInterface;
 
 
-public class QuitButton implements ButtonActionInterface {
+public class QuitCommand implements ButtonCommandInterface {
     /**
      * When this button is activated, it quits the system.
      */
