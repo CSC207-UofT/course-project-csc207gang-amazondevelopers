@@ -12,6 +12,7 @@ import options.cart.CartGUIMaker;
 import options.cart.EmptyCartGUIMaker;
 import options.follow_users.FollowGUIMaker;
 import options.post.Post;
+import options.post.PostGUIMaker;
 import options.post.SuccessfulPostCreationGUIMaker;
 import options.search.ScrollSearchGUIMaker;
 import options.search.SearchGUIMaker;
@@ -89,7 +90,7 @@ public class GUIFactory {
         }
         // need to change the return type here
         else if (frameType.equalsIgnoreCase("POST")) {
-            return new EmptyCartGUIMaker(this.user);
+            return new PostGUIMaker(this.user);
         }
         return null;
     }
