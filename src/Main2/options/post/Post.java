@@ -103,3 +103,4 @@ public class Post implements Serializable, PostInterface {
     public void setUser(User user){this.user = user;}
 
 }
+//

@@ -15,3 +15,4 @@ public interface PostInterface {
     void setUser(User user);
 
 }
+//
