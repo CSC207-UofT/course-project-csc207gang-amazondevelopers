@@ -1,6 +1,6 @@
 package options;
 
-public class OptionsPresenter {
+public class OptionsPresenter{
 
     /**
      * Asks user what they want to do
@@ -16,13 +16,6 @@ public class OptionsPresenter {
      */
     public String message2(){
         return "Logout";
-    }
-    /**
-     * Settings option
-     * @return String of settings
-     */
-    public String message3(){
-        return "Settings";
     }
     /**
      * Browse option

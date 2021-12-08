@@ -3,12 +3,10 @@ package options.browse.commands;
 import gui.ButtonCommandInterface;
 import gui.GUIFactory;
 import gui.GUIFactoryInterface;
-import options.OptionsGUIMaker;
 import options.post.Post;
 import user.User;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class NextCommand implements ButtonCommandInterface {
@@ -24,7 +22,7 @@ public class NextCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         if (index == feed.size() - 1) {
             frame.setVisible(false);
             frame.dispose();

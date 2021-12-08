@@ -1,8 +1,6 @@
 package login.sign_in;
 
 import login.GetIDandPasswordsGateway;
-
-import java.io.IOException;
 import java.util.HashMap;
 
 /**

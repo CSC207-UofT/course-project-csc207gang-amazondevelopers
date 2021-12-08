@@ -1,7 +1,6 @@
 package product;
 import read_writer.DictionaryReadWriter;
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -23,25 +22,6 @@ public class GetProductGateway implements GetProductGatewayInterface {
         HashMap<String, Object> idToProductHashMap = rw.readFromFile("src/Main2/IdToProduct.ser");
         return (Product) idToProductHashMap.get(productId);
     }
-
-    /**
-     * Check if the product with the given ID is in the .ser file
-     * @param productId the ID of the product
-     * @return true or false, given whenther the product ID is saved in the data base
-     */
-    // return true if id exists in IDToProduct.ser file and false otherwise.
-    public boolean checkId(String productId){
-        File file = new File("src/Main2/IdToProduct.ser");
-        if (file.length() == 0){
-            return false;
-        }
-        else{
-            DictionaryReadWriter rw = new DictionaryReadWriter();
-            HashMap<String, Object> idToProductHashMap = rw.readFromFile("src/Main2/IdToProduct.ser");
-            return idToProductHashMap.containsKey(productId);
-        }
-    }
-
     /**
      * Get the hashmap of the Id to products
      * @return the hashmap of the Id to product

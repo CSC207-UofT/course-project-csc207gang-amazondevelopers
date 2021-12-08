@@ -63,7 +63,6 @@ public class SaveProductGateway implements SaveProductGatewayInterface {
 
     /**
      * Saves changes to the specific product, to the IdtoProduct file.
-     * @param product
     */
     public void saveChangedProduct(Product product) {
 

@@ -3,7 +3,6 @@ package options.search;
 
 import user.User;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,7 +22,7 @@ public class SearchController {
      *
      * @return A list of strings that are toStrings for posts related to that the category,tag of interest.
      */
-    public ArrayList<String> getSearchProductStrings(String productTag) throws IOException, ClassNotFoundException {
+    public ArrayList<String> getSearchProductStrings(String productTag){
         SearchGateway searchGateway = new SearchGateway();
         // product ID's we want to make to toString
         ArrayList<String> productIdList = searchGateway.searchProducts(productTag);
@@ -48,16 +47,12 @@ public class SearchController {
     }
 
     //get a list containing only the ids of the products as strings
-    public ArrayList<String> getProductIDStrings(String productTag) throws IOException, ClassNotFoundException {
+    public ArrayList<String> getProductIDStrings(String productTag){
         SearchGateway searchGateway = new SearchGateway();
         // product ID's we want to make to toString
         ArrayList<String> productIdList = searchGateway.searchProducts(productTag);
 
-        ArrayList<String> idsToString = new ArrayList<>();
-        for (String productId : productIdList) {
-            idsToString.add(productId);
-        }
-        return idsToString;
+        return new ArrayList<>(productIdList);
     }
 }
 

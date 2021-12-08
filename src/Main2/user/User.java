@@ -28,10 +28,10 @@ public class User implements Serializable {
 
     public User(String username){
         this.username = username;
-        this.listPosts = new ArrayList<Post>();
-        this.shoppingCart = new ArrayList<Product>();
-        this.listFollowing = new ArrayList<String>();
-        this.listFollowers = new ArrayList<String>();
+        this.listPosts = new ArrayList<>();
+        this.shoppingCart = new ArrayList<>();
+        this.listFollowing = new ArrayList<>();
+        this.listFollowers = new ArrayList<>();
     }
 
     public String getPassword() {return this.password;}

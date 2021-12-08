@@ -4,5 +4,5 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public interface GetUserDictGatewayInterface {
-    HashMap getUserDict() throws IOException, ClassNotFoundException;
+    HashMap<String,Object> getUserDict() throws IOException, ClassNotFoundException;
 }

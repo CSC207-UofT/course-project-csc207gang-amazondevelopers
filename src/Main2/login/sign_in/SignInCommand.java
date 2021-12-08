@@ -5,10 +5,8 @@ import gui.GUIFactory;
 import gui.GUIFactoryInterface;
 import login.GetUserGateway;
 import login.sign_in.SignInPresenter.EnglishSignInPresenter;
-import options.OptionsGUIMaker;
 import user.User;
 import java.awt.*;
-import java.io.IOException;
 
 public class SignInCommand implements ButtonCommandInterface {
     SignInGUIMaker signInGUIMaker;
@@ -18,7 +16,7 @@ public class SignInCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         EnglishSignInPresenter presenter = new EnglishSignInPresenter();
         String userID = signInGUIMaker.userIDField.getText();
         String password = String.valueOf(signInGUIMaker.userPasswordField.getPassword());

@@ -18,7 +18,7 @@ public class BoughtCartCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         frame.dispose();
         GUIFactory guiFactory = new GUIFactory(this.user);
         GUIFactoryInterface guiFrame = guiFactory.getFrame("BOUGHTCART");

@@ -4,11 +4,8 @@ import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
 import gui.GeneralGUIMakerInterface;
 import login.sign_in.ResetCommand;
-import options.OptionsGUIMaker;
-import options.commands.BuyCommand;
 import options.commands.FollowCommand;
 import options.commands.OptionsCommand;
-import options.commands.SearchCommand;
 import user.User;
 
 import javax.swing.*;
@@ -39,11 +36,7 @@ public class FollowGUIMaker implements ActionListener, GUIFactoryInterface, Gene
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
     }
 
     @Override
