@@ -20,8 +20,6 @@ public class CreatePostControllerTest {
 
         ArrayList<String> info = new ArrayList<>();
         info.add("test");
-
-
         info.add("1.0");
         info.add("testCategory");
         info.add("1");

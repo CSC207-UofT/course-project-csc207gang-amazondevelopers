@@ -1,20 +1,38 @@
 package product_test;
 
+import delete_gateways.DeleteProductsGateway;
+import delete_gateways.DeleteUserGateway;
+import login.SaveUserGateway;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import product.CreateProductController;
+import product.Product;
+import user.User;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+
 public class CreateProductControllerTest {
 
-/**    SignUpGateway signUpGateway = new SignUpGateway();
+    SaveUserGateway saveUserGateway = new SaveUserGateway();
     // create a new user profile to make products for
     User testUser = new User("TestCreateProductUser");
 
     DeleteUserGateway deleteUserGateway = new DeleteUserGateway();
-    CreateProductController createProduct = new CreateProductController();
+    DeleteProductsGateway deleteProductsGateway = new DeleteProductsGateway();
+    CreateProductController createProduct = new CreateProductController(testUser);
 
     @Before
     public void setUp() throws IOException, ClassNotFoundException {
         // if there is a preexisting user TestCreateProductUser, delete it
         deleteUserGateway.deleteUser("TestCreateProductUser");
         // create the new user profile before each test
-        signUpGateway.allowSignUp("TestCreateProductUser", testUser);
+        saveUserGateway.saveUser("TestCreateProductUser", testUser);
+
     }
 
     @After
@@ -25,225 +43,23 @@ public class CreateProductControllerTest {
 
     @Test
     public void createProductSizeTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductTestInputs");
+        String name = "Pokemon";
+        String price = "12";
+        String category = "toy";
+        String quantity = "2";
+        ArrayList<String> information = new ArrayList<String>(Arrays.asList(name, price, category, quantity));
+        Product testProduct = createProduct.createProduct(information);
+        assertEquals("product.Product", testProduct.getClass().getName());
+        assertEquals("Pokemon", testProduct.getName());
+        assertEquals(12, testProduct.getPrice(), 0);
+        assertEquals("toy", testProduct.getCategory());
+        assertEquals(2, testProduct.getQuantity(), 0);
+        ArrayList<String> idList = new ArrayList<String>();
+        idList.add(testProduct.getId());
+        deleteProductsGateway.deleteProducts(idList);
 
-        // skip the header of the file
-        testInOut.getInput();
-        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
 
-
-        assertEquals("shoe", actualProduct.getName());
-        assertEquals(5, actualProduct.getPrice(), 0.0);
-        assertEquals("shoes", actualProduct.getCategory());
-        assertEquals(2, actualProduct.getQuantity());
-        assertEquals("1", actualProduct.getSizes());
-
-        Post newPost = testUser.getListPosts().get(0);
-        assertEquals("these are shoes", newPost.getCaption());
-        assertTrue(newPost.getCanComment());
-        assertTrue(newPost.getCanRate());
     }
 
-    @Test
-    public void createProductNoSizeTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductTestNoSizeInputs");
-
-        // skip the header of the file
-        testInOut.getInput();
-        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-
-        assertEquals("shoe", actualProduct.getName());
-        assertEquals(5, actualProduct.getPrice(), 0.0);
-        assertEquals("shoes", actualProduct.getCategory());
-        assertEquals(2, actualProduct.getQuantity());
-        assertNull(actualProduct.getSizes());
-
-        Post newPost = testUser.getListPosts().get(0);
-        assertEquals("these are shoes", newPost.getCaption());
-        assertTrue(newPost.getCanComment());
-        assertTrue(newPost.getCanRate());
-    }
-
-    @Test
-    public void createProductCantCommentTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductCantCommentTestInputs");
-
-        // skip the header of the file
-        testInOut.getInput();
-        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-
-        assertEquals("shoe", actualProduct.getName());
-        assertEquals(5, actualProduct.getPrice(), 0.0);
-        assertEquals("shoes", actualProduct.getCategory());
-        assertEquals(2, actualProduct.getQuantity());
-        assertNull(actualProduct.getSizes());
-
-        Post newPost = testUser.getListPosts().get(0);
-        assertEquals("these are shoes", newPost.getCaption());
-        assertFalse(newPost.getCanComment());
-        assertTrue(newPost.getCanRate());
-    }
-
-    @Test
-    public void createProductCantRateTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductCantRateTestInputs");
-
-        // skip the header of the file
-        testInOut.getInput();
-        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-
-        assertEquals("shoe", actualProduct.getName());
-        assertEquals(5, actualProduct.getPrice(), 0.0);
-        assertEquals("shoes", actualProduct.getCategory());
-        assertEquals(2, actualProduct.getQuantity());
-        assertNull(actualProduct.getSizes());
-
-        Post newPost = testUser.getListPosts().get(0);
-        assertEquals("these are shoes", newPost.getCaption());
-        assertTrue(newPost.getCanComment());
-        assertFalse(newPost.getCanRate());
-    }
-
-    @Test
-    public void createProductUndoNameTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductUndoNameTestInputs");
-
-        // skip the header of the file
-        testInOut.getInput();
-        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-
-        assertEquals("dress", actualProduct.getName());
-        assertEquals(5, actualProduct.getPrice(), 0.0);
-        assertEquals("shoes", actualProduct.getCategory());
-        assertEquals(2, actualProduct.getQuantity());
-        assertNull(actualProduct.getSizes());
-    }
-
-    @Test
-    public void createProductMultipleUndoTest() throws Exception {
-        SystemInOutTest testInOut = new SystemInOutTest("src/Test/productFunctionsTest/productFunctionsTestInputs/CreateProductMultipleUndoTestInputs");
-
-        // skip the header of the file
-        testInOut.getInput();
-        Product actualProduct =  createProduct.createNewProductFromInput(testInOut, testUser);
-
-        assertEquals("dress", actualProduct.getName());
-        assertEquals(400, actualProduct.getPrice(), 0.0);
-        assertEquals("pants", actualProduct.getCategory());
-        assertEquals(2, actualProduct.getQuantity());
-        assertEquals("3", actualProduct.getSizes());
-
-        Post newPost = testUser.getListPosts().get(0);
-        assertEquals("these are shoes", newPost.getCaption());
-        assertTrue(newPost.getCanComment());
-        assertFalse(newPost.getCanRate());
-    }
-
-//
-//    @Test
-//    void createProductBadInputsAllStringsTest() throws Exception {
-//        testInOut.getInput();
-//        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        deleteProducts.deleteProducts();
-//    }
-//
-//    @Test
-//    void createProductDuplicateProductsTest() throws Exception {
-//        testInOut.getInput();
-//        Product product1 = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        Product product2 = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        List<String> userProducts = testUser.getProductsPosted();
-//        Assertions.assertEquals(1, userProducts.size());
-//
-//        deleteProducts.deleteProducts();
-//    }
-//
-//    @Test
-//    void createProductBadInputsNegativePriceTest() throws Exception {
-//        testInOut.getInput();
-//        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        deleteProducts.deleteProducts();
-//    }
-//
-//    @Test
-//    void createProductZeroPriceTest() throws Exception {
-//        testInOut.getInput();
-//        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        deleteProducts.deleteProducts();
-//    }
-//
-//    @Test
-//    void createProductBadInputsNegativeQuantityTest() throws Exception {
-//        testInOut.getInput();
-//        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        deleteProducts.deleteProducts();
-//    }
-//
-//    @Test
-//    void createProductBadInputsZeroQuantityTest() throws Exception {
-//        testInOut.getInput();
-//        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        deleteProducts.deleteProducts();
-//    }
-
-    //    @Test
-//    void createProductUndoStartTest() throws Exception {
-//        testInOut.getInput();
-//        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        deleteProducts.deleteProducts();
-//    }
-
-    //    @Test
-//    void createProductUndoEndTest() throws Exception {
-//        testInOut.getInput();
-//        Product actualProduct = createProduct.createNewProductFromInput(testInOut, testUser);
-//        testInOut.getInput();
-//
-//        deleteProducts.deleteProducts();
-//    }
-
-
-
-//
-//    private class SystemInOutTest extends SystemInOut {
-//
-//        private final Scanner reader;
-//
-//        /**
-//         *
-//         * @param fileName
-//         * @throws FileNotFoundException
-//         */
-//        public SystemInOutTest(String fileName) throws FileNotFoundException {
-//            File fileToRead = new File(fileName);
-//            this.reader = new Scanner(fileToRead);
-//        }
-//
-//        @Override
-//        public String getInput() throws IOException {
-//            if (reader.hasNextLine()) {
-//                return this.reader.nextLine();
-//            }
-//            else{
-//                return "";
-//            }
-//        }
-//    }
 
 }

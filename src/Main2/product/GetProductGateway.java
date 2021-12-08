@@ -3,6 +3,7 @@ import read_writer.DictionaryReadWriter;
 import java.io.File;
 import java.util.HashMap;
 
+
 /**
  * Gets the product by their ID< and returns that product
  */
@@ -12,7 +13,7 @@ public class GetProductGateway implements GetProductGatewayInterface {
 
 
     /**
-     * Get eh product from the .ser file
+     * Get the product from the .ser file
      * @param productId the ID of the product
      * @return the product given the ID
      */
@@ -22,6 +23,7 @@ public class GetProductGateway implements GetProductGatewayInterface {
         HashMap<String, Object> idToProductHashMap = rw.readFromFile("src/Main2/IdToProduct.ser");
         return (Product) idToProductHashMap.get(productId);
     }
+
     /**
      * Get the hashmap of the Id to products
      * @return the hashmap of the Id to product
