@@ -19,9 +19,8 @@ public class BrowseCommand implements ButtonCommandInterface {
 
     @Override
     public void apply() throws IOException, ClassNotFoundException {
-        BrowseController browseController = new BrowseController(user);
-        ArrayList<Post> feed = null;
-        feed = browseController.getFeed();
+        BrowseController browseController = new BrowseController(this.user);
+        ArrayList<Post> feed = browseController.getFeed();
         if (0 == feed.size()){
             GUIFactory guiFactory = new GUIFactory(this.user);
             GUIFactoryInterface guiFrame = guiFactory.getFrame("EMPTYFEED");

@@ -11,31 +11,32 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class PostGUI implements ActionListener { User user;
-EnglishPostPresenter productPresenter = new EnglishPostPresenter();
-JFrame frame = new JFrame();
-JLabel welcomeMessage = new JLabel(productPresenter.Welcome());
-JLabel nameMessage = new JLabel(productPresenter.namePresenter());
-JLabel priceMessage = new JLabel(productPresenter.pricePresenter());
-JLabel categoryMessage = new JLabel(productPresenter.categoryPresenter());
-JLabel sizeMessage = new JLabel(productPresenter.sizePresenter());
-JLabel rateMessage = new JLabel(productPresenter.ratePresenter());
-JLabel commentMessage = new JLabel(productPresenter.commentPresenter());
-JLabel quantityMessage = new JLabel(productPresenter.quantityPresenter());
-JLabel descriptionMessage = new JLabel(productPresenter.describePresenter());
-String[] sizes = {"Extra small", "Small", "Medium", "Large", "Extra Large", "N/A"};
-String[] choices = {"Yes", "No"};
-JComboBox size = new JComboBox(sizes);
-JComboBox rate = new JComboBox(choices); JComboBox comment = new JComboBox(choices);
+public class PostGUI implements ActionListener {
+    User user;
+    EnglishPostPresenter productPresenter = new EnglishPostPresenter();
+    JFrame frame = new JFrame();
+    JLabel welcomeMessage = new JLabel(productPresenter.Welcome());
+    JLabel nameMessage = new JLabel(productPresenter.namePresenter());
+    JLabel priceMessage = new JLabel(productPresenter.pricePresenter());
+    JLabel categoryMessage = new JLabel(productPresenter.categoryPresenter());
+    JLabel sizeMessage = new JLabel(productPresenter.sizePresenter());
+    JLabel rateMessage = new JLabel(productPresenter.ratePresenter());
+    JLabel commentMessage = new JLabel(productPresenter.commentPresenter());
+    JLabel quantityMessage = new JLabel(productPresenter.quantityPresenter());
+    JLabel descriptionMessage = new JLabel(productPresenter.describePresenter());
+    String[] sizes = {"Extra small", "Small", "Medium", "Large", "Extra Large", "N/A"};
+    String[] choices = {"Yes", "No"};
+    JComboBox size = new JComboBox(sizes);
+    JComboBox rate = new JComboBox(choices); JComboBox comment = new JComboBox(choices);
 
-JTextField name = new JTextField();
-JTextField price = new JTextField();
-JTextField category = new JTextField();
-JTextField quantity = new JTextField();
-JTextField description = new JTextField();
+    JTextField name = new JTextField();
+    JTextField price = new JTextField();
+    JTextField category = new JTextField();
+    JTextField quantity = new JTextField();
+    JTextField description = new JTextField();
 
-JButton back = new JButton(productPresenter.backPresenter());
-JButton post = new JButton(productPresenter.sharePresenter());
+    JButton back = new JButton(productPresenter.backPresenter());
+    JButton post = new JButton(productPresenter.sharePresenter());
 
     /**
      * The constructor for the gui where sizes and positions of buttons, labels, texts are set
@@ -131,7 +132,7 @@ JButton post = new JButton(productPresenter.sharePresenter());
 
     if(action.getSource()==back){
         frame.dispose();
-        OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(user);
+        OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(this.user);
     }
     if(action.getSource()==post) {
         //check if any fields are empty

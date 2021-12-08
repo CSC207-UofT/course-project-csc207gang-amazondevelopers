@@ -28,7 +28,7 @@ public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface
 
 
 
-    public ScrollSearchGUIMaker(User user, String tag) throws ClassNotFoundException {
+    public ScrollSearchGUIMaker(User user, String tag) {
         this.user = user;
         this.tag = tag;
     }
@@ -62,10 +62,10 @@ public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface
         JPanel titlePanel = new JPanel();
         JPanel backPanel = new JPanel();
 
-        SearchController searchController = new SearchController(user);
+        SearchController searchController = new SearchController(this.user);
         ArrayList<String> searchList;
 
-        searchList = searchController.getSearchProductStrings(tag);
+        searchList = searchController.getSearchProductStrings(this.tag);
 
         messageLabel.setBounds(125, 125, 130, 130);
 
