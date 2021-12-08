@@ -29,7 +29,6 @@ public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface
 
 
     public ScrollSearchGUIMaker(User user, String tag) {
-        this.user.getUsername();
         this.user = user;
         this.tag = tag;
     }
