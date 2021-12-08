@@ -48,11 +48,6 @@ public class ProductTest {
         assertEquals("shoe (1): $5.0, 1 in stock", productString);
     }
 
-
-
-
-
-
     @Test
     public void getNameBasicTest() {
         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", 1);
@@ -81,10 +76,6 @@ public class ProductTest {
         assertNotEquals("", actualProduct.getName());
     }
 
-
-
-
-
     @Test
     public void getIDBasicTest() {
         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
@@ -106,16 +97,6 @@ public class ProductTest {
         actualProduct.setId("-500");
         assertEquals("-500", actualProduct.getId());
     }
-//
-//     @Test
-//     void setIdDuplicateIdsTest() {
-//         Product product1 = new Product("shoe", "1", 5.0, "shoes", "2",1);
-//         Product product2 = new Product("dress", "50", 5.0, "dress", "2",1);
-//         product2.setId("1");
-//         assertTrue(!product1.getId().equals(product2.getId()));
-//     }
-
-
 
 
     @Test
@@ -173,11 +154,6 @@ public class ProductTest {
         assertEquals(5.23, product.getPrice(), 0.0);
     }
 
-
-
-
-
-
     @Test
     public void getCategoryBasicTest() {
         Product product = new Product("shoe", "1", 500.0, "shoes", "2",1);
@@ -191,9 +167,6 @@ public class ProductTest {
         assertEquals("shirt", product.getCategory());
 
     }
-
-
-
 
     @Test
     public void getSizesWithSizeTest() {
@@ -227,11 +200,6 @@ public class ProductTest {
         product.setSizes("5");
         assertEquals("5", product.getSizes());
     }
-
-
-
-
-
 
     @Test
     public void getQuantityBasicTest() {

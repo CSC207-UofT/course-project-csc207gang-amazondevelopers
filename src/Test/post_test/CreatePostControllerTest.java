@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 public class CreatePostControllerTest {
     User user1 = new User("test1");
@@ -20,10 +19,6 @@ public class CreatePostControllerTest {
 
         ArrayList<String> info = new ArrayList<>();
         info.add("test");
-
-
-        assertThrows(IndexOutOfBoundsException.class, ()-> createPostController.createPost(info));
-
         info.add("1.0");
         info.add("testCategory");
         info.add("1");
