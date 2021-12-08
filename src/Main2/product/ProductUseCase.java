@@ -29,7 +29,8 @@ public class ProductUseCase {
     public Product createProduct(ArrayList<String> information, String id) {
         String priceString = information.get(1);
         String quantityString = information.get(3);
-        return new Product(information.get(0), id, Double.valueOf(priceString), information.get(2), Integer.parseInt(quantityString));
+        return new Product(information.get(0), id, Double.valueOf(priceString), information.get(2),
+                Integer.parseInt(quantityString));
     }
 
 

@@ -1,9 +1,9 @@
 package cartTest;
+
 import delete_gateways.DeleteProductsGateway;
 import delete_gateways.DeleteUserGateway;
 import login.GetUserGateway;
 import login.SaveUserGateway;
-import options.browse.BrowseController;
 import options.cart.CartController;
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +15,8 @@ import user.User;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 public class CartControllerTest {
     User user1;
     User user2;
