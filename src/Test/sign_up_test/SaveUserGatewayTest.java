@@ -1,12 +1,10 @@
-package loginTest;
+package sign_up_test;
 
 import delete_gateways.DeleteUserGateway;
 import login.SaveUserGateway;
 import user.User;
 import login.GetUserGateway;
 import org.junit.Test;
-
-import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +15,7 @@ public class SaveUserGatewayTest {
     GetUserGateway getUserGateway = new GetUserGateway();
 
     @Test
-    public void allowSignUpBasicTest() throws IOException, ClassNotFoundException {
+    public void allowSignUpBasicTest() {
         User newUser = new User("Person");
         saveUserGateway.saveUser("Person", newUser);
 

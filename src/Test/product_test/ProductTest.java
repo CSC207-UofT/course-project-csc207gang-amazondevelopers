@@ -1,4 +1,4 @@
-package productTest;
+package product_test;
 
 import org.junit.Test;
 import product.Product;
@@ -38,7 +38,7 @@ public class ProductTest {
     public void toStringWithSizeTest() {
         Product actualProduct = new Product("shoe", "1", 5.0, "shoes", "2",1);
         String productString = actualProduct.toString();
-        assertEquals("shoe (1): $5.0, 1 in stock, 2", productString);
+        assertEquals("shoe (1): $5.0, 1 in stock, size: 2", productString);
     }
 
     @Test

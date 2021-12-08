@@ -1,9 +1,8 @@
-package cartTest;
+package cart_test;
 import delete_gateways.DeleteProductsGateway;
 import delete_gateways.DeleteUserGateway;
 import login.GetUserGateway;
 import login.SaveUserGateway;
-import options.browse.BrowseController;
 import options.cart.CartController;
 import org.junit.After;
 import org.junit.Before;

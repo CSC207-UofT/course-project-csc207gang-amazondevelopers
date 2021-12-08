@@ -1,4 +1,4 @@
-package buyTest;
+package buy_test;
 
 import delete_gateways.DeleteProductsGateway;
 import delete_gateways.DeleteUserGateway;

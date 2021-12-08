@@ -1,4 +1,4 @@
-package read_writerTest;
+package read_writer_test;
 
 import org.junit.Before;
 import org.junit.Test;

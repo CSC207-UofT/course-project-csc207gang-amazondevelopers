@@ -1,4 +1,4 @@
-package productTest;
+package product_test;
 
 public class CreateProductControllerTest {
 

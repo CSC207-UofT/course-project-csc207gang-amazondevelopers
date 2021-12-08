@@ -1,9 +1,9 @@
-package buyTest;
+package buy_test;
 
 import org.junit.Test;
 import product.Product;
 import options.buy.ProductUseCase;
-import product.SaveProductGateway;
+
 import static org.junit.Assert.*;
 
 public class ProductUseCaseTest {

@@ -1,4 +1,4 @@
-package postTest;
+package post_test;
 
 import static org.junit.Assert.assertTrue;
 

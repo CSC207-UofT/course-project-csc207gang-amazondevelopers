@@ -1,4 +1,4 @@
-package browseTest;
+package browse_test;
 
 import options.browse.BrowseUseCase;
 import options.post.Post;

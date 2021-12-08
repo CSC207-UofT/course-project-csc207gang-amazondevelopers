@@ -1,4 +1,4 @@
-package browseTest;
+package browse_test;
 
 import delete_gateways.DeleteProductsGateway;
 import delete_gateways.DeleteUserGateway;
@@ -8,9 +8,7 @@ import options.post.Post;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import product.GetProductGateway;
 import product.Product;
-import product.ProductUseCase;
 import product.SaveProductGateway;
 import user.User;
 
