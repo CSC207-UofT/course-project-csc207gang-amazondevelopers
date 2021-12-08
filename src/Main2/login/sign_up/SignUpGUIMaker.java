@@ -1,10 +1,13 @@
 package login.sign_up;
 
 
-import gui.GUI;
+import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
+import gui.GeneralGUIMakerInterface;
+import login.sign_in.BackWelcomePageCommand;
+import login.sign_in.ResetCommand;
 import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
-import login.welcome_page.WelcomePageGUIMaker;
+import user.User;
 
 import javax.swing.*;
 import javax.swing.JLabel;
@@ -12,11 +15,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Take user input for signup credentials to sign user up.
  */
-public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
+public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface, GeneralGUIMakerInterface {
     EnglishSignUpPresenter englishSignUpPresenter = new EnglishSignUpPresenter();
     JFrame frame = new JFrame();
     JButton signUpButton = new JButton(englishSignUpPresenter.signUp());
@@ -27,6 +32,7 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
     JLabel messageLabel = new JLabel(englishSignUpPresenter.message());
     JLabel userIDLabel = new JLabel(englishSignUpPresenter.userID());
     JLabel userPasswordLabel = new JLabel(englishSignUpPresenter.password());
+    static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
 
     /**
@@ -36,61 +42,17 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
     }
 
     /**
-     * @param e The action event, helps to maintain the actions performed by the user and the results from their
+     * @param action The action event, helps to maintain the actions performed by the user and the results from their
      *          actions that they perform on the page
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
-        EnglishSignUpPresenter presenter = new EnglishSignUpPresenter();
-        if (e.getSource() == backButton) {
-            frame.dispose();
-            WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-            welcomePageGUIMaker.createGUI();
-
-        }
-        if (e.getSource() == resetButton) {
-            userIDField.setText("");
-            userPasswordField.setText("");
-        }
-        if (e.getSource() == signUpButton) {
-            SignUpController signUpController = new SignUpController();
-            String userID = userIDField.getText();
-            String password = String.valueOf(userPasswordField.getPassword());
-
-            boolean validIDandPass = signUpController.checkIdAndPass(userID, password);
-
-            boolean existingUsername = false;
-            existingUsername = signUpController.containsUsername(userID);
-
-
-            if (existingUsername) {
-                // taken username
-                messageLabel.setForeground(Color.red);
-                if (!validIDandPass){
-                    // messageLabel.setForeground(Color.red);
-                    messageLabel.setText(presenter.message4());
-                }
-                else {
-                    // messageLabel.setForeground(Color.red);
-                    messageLabel.setText(presenter.message2());
-                }
-
-            }
-            // No password
-            else if (!validIDandPass) {
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText(presenter.message4());
-
-            } else { // can sign up
-                SignUpController.setNewUser(userID, password);
-                messageLabel.setForeground(Color.green);
-                messageLabel.setText(presenter.message3());
-                frame.dispose();
-                WelcomePageGUIMaker welcomePageGUIMaker = new WelcomePageGUIMaker();
-                welcomePageGUIMaker.createGUI();
-            }
-
-
+    public void actionPerformed(ActionEvent action) {
+        String buttonText = action.getActionCommand();
+        ButtonCommandInterface button = commandMap.get(buttonText);
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -99,7 +61,7 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
      */
 
     @Override
-    public GUI createGUI(){
+    public void createGUI(){
         userIDLabel.setBounds(50, 150, 75, 25);
         userPasswordLabel.setBounds(50, 200, 75, 25);
 
@@ -131,7 +93,19 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface {
         frame.setLayout(null);
         frame.setVisible(true);
 
-        return new SignUpGUI(frame);
+        commandMap.put(backButton.getText(), new BackWelcomePageCommand(this));
+        commandMap.put(resetButton.getText(), new ResetCommand(this));
+        commandMap.put(signUpButton.getText(), new SignUpCommand(this));
+
+    }
+
+    public void disposeFrame(){
+        frame.dispose();
+    }
+
+    public void resetFields(){
+        userIDField.setText("");
+        userPasswordField.setText("");
     }
 }
 

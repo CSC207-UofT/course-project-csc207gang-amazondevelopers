@@ -36,4 +36,8 @@ public class UserUseCase {
         //System.out.println(user.getShoppingCart());
             return user.getShoppingCart();
     }
+
+    public List<String> getFollowingList() {
+        return user.getListFollowing();
+    }
 }
