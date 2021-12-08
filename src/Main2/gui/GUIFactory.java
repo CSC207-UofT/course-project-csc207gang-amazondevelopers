@@ -4,8 +4,10 @@ import login.sign_in.SignInGUIMaker;
 import login.sign_up.SignUpGUIMaker;
 import login.welcome_page.WelcomePageGUIMaker;
 import options.OptionsGUIMaker;
+import options.browse.AddedToCartGUIMaker;
 import options.browse.EmptyFeedGUIMaker;
 import options.browse.FeedGUIMaker;
+import options.cart.BoughtCartGUIMaker;
 import options.cart.CartGUIMaker;
 import options.cart.EmptyCartGUIMaker;
 import options.follow_users.FollowGUIMaker;
@@ -21,7 +23,7 @@ public class GUIFactory {
     User user;
     ArrayList<Post> feed;
     int index;
-    String tag;
+    String tagOrName;
 
     public GUIFactory() {
     }
@@ -36,9 +38,9 @@ public class GUIFactory {
         this.index = index;
     }
 
-    public GUIFactory(User user, String tag) {
+    public GUIFactory(User user, String tagOrName) {
         this.user = user;
-        this.tag = tag;
+        this.tagOrName = tagOrName;
     }
 
     public GUIFactoryInterface getFrame(String frameType) throws IOException, ClassNotFoundException {
@@ -73,7 +75,13 @@ public class GUIFactory {
             return new EmptyFeedGUIMaker(this.user);
         }
         else if (frameType.equalsIgnoreCase("SCROLLSEARCH")) {
-            return new ScrollSearchGUIMaker(this.user, this.tag);
+            return new ScrollSearchGUIMaker(this.user, this.tagOrName);
+        }
+        else if (frameType.equalsIgnoreCase("ADDEDTOCART")) {
+            return new AddedToCartGUIMaker(this.user, this.tagOrName);
+        }
+        else if (frameType.equalsIgnoreCase("BOUGHTCART")) {
+            return new BoughtCartGUIMaker(this.user);
         }
         // need to change the return type here
         else if (frameType.equalsIgnoreCase("POST")) {

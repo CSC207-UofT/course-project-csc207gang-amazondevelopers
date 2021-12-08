@@ -1,7 +1,10 @@
 package options.cart;
 
+import gui.ButtonCommandInterface;
+import gui.GUIFactory;
 import gui.GUIFactoryInterface;
 import options.OptionsGUIMaker;
+import options.commands.OptionsCommand;
 import product.Product;
 import user.User;
 import user.UserUseCase;
@@ -10,24 +13,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
-    CartPresenter presenter = new CartPresenter();
-    JFrame frame = new JFrame();
-    JButton returnHome = new JButton("Back");
-    JButton buyButton = new JButton("Buy Cart");
-    JButton buy = new JButton("Buy");
-    JPanel scrollPanel = new JPanel();
-    JPanel indexPanel = new JPanel();
-    JPanel titlePanel = new JPanel();
-    JPanel backPanel = new JPanel();
-    JLabel messageLabel = new JLabel();
-
-
-    JLabel emptyCartMessage = new JLabel(presenter.emptyCartMessage());
     User user;
     ArrayList<String> cartList;
+    static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
     /**
      * A constructor for cart which user can use to buy items saved in cart
@@ -36,25 +30,37 @@ public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
 
     public CartGUIMaker(User user){
         this.user = user;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent action) {
+        String buttonText = action.getActionCommand();
+        ButtonCommandInterface button = commandMap.get(buttonText);
+        try {
+            button.apply();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void createGUI() throws IOException, ClassNotFoundException {
+
+        JFrame frame = new JFrame();
+        JButton returnHome = new JButton("Back");
+        JButton buyButton = new JButton("Buy Cart");
+        JButton buy = new JButton("Buy");
+        JPanel scrollPanel = new JPanel();
+        JPanel indexPanel = new JPanel();
+        JPanel titlePanel = new JPanel();
+        JPanel backPanel = new JPanel();
+        JLabel messageLabel = new JLabel();
+
         UserUseCase userUseCase = new UserUseCase(user);
-//        if (userUseCase.userShoppingCart()==null || userUseCase.userShoppingCart().size()==0){
-        // System.out.println(userUseCase.userShoppingCart());
-         if (userUseCase.userShoppingCart().size()==0){
-             EmptyCartGUIMaker emptyCartGUIMaker = new EmptyCartGUIMaker(this.user);
-//
-//            emptyCartMessage.setBounds(150, 100, 250, 35);
-//            emptyCartMessage.setFont(new Font("Serif", Font.PLAIN, 14));
-//
-//            returnHome.setBounds(60, 150, 300, 25);
-//            returnHome.addActionListener(this);
-//
-//            frame.add(returnHome);
-//            frame.add(emptyCartMessage);
-//
-//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            frame.setSize(420, 420);
-//            frame.setLayout(null);
-//            frame.setVisible(true);
+        if (userUseCase.userShoppingCart().size()==0){
+            GUIFactory guiFactory = new GUIFactory(this.user);
+            GUIFactoryInterface guiFrame = guiFactory.getFrame("EMPTYCART");
+            guiFrame.createGUI();
         }
         else{
             Product prod = userUseCase.userShoppingCart().get(0);
@@ -102,9 +108,10 @@ public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
             frame.add(indexPanel);
             frame.add(scrollPanel);
 
+            commandMap.put(returnHome.getText(), new OptionsCommand(frame, this.user));
+            commandMap.put(buyButton.getText(), new BoughtCartCommand(frame, this.user));
 
         }
-
     }
 
     /**
@@ -116,7 +123,6 @@ public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
      */
 
     private JPanel createProductFrame(Product product){
-
 
         JPanel productPanel = new JPanel();
         JLabel name = new JLabel(product.getName());
@@ -153,28 +159,5 @@ public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
         productPanel.setVisible(true);
 
         return productPanel;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent action) {
-        if(action.getSource()==returnHome) {
-            frame.dispose();
-            OptionsGUIMaker optionsGUIMaker = new OptionsGUIMaker(user);
-        }
-        else if (action.getSource()==buyButton){
-            frame.dispose();
-            BoughtCart boughtCart = new BoughtCart(user);
-            CartController cart = new CartController();
-            try {
-                cart.buyCart(user);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    public void createGUI() {
-
     }
 }
