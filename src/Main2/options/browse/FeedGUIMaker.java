@@ -121,6 +121,7 @@ public class FeedGUIMaker implements ActionListener, GUIFactoryInterface {
         commandMap.put(nextButton.getText(), new NextCommand(this.user, frame, feed, index));
         commandMap.put(backButton.getText(), new BackCommand(this.user, frame, feed, index));
         commandMap.put(cartButton.getText(), new AddToCartCommand(product, this.user, frame));
+        //
     }
 }
 
