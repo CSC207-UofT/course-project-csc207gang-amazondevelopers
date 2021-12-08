@@ -4,11 +4,9 @@ import gui.ButtonCommandInterface;
 import gui.GUIFactory;
 import gui.GUIFactoryInterface;
 import options.browse.BrowseController;
-import options.browse.FeedGUIMaker;
 import options.post.Post;
 import user.User;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class BrowseCommand implements ButtonCommandInterface {
@@ -18,7 +16,7 @@ public class BrowseCommand implements ButtonCommandInterface {
     }
 
     @Override
-    public void apply() throws IOException, ClassNotFoundException {
+    public void apply(){
         BrowseController browseController = new BrowseController(this.user);
         ArrayList<Post> feed = browseController.getFeed();
         if (0 == feed.size()){

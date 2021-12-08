@@ -6,7 +6,6 @@ import login.SaveUserGateway;
 import login.SetIDandPasswordsGateway;
 import user.User;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 /**

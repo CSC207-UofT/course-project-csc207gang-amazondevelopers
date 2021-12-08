@@ -5,7 +5,6 @@ import gui.GUIFactoryInterface;
 import options.browse.EmptyFeedPresenter.EnglishEmptyFeedPresenter;
 import options.commands.OptionsCommand;
 import user.User;
-import options.OptionsGUIMaker;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,11 +25,7 @@ public class EmptyFeedGUIMaker implements ActionListener, GUIFactoryInterface {
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
     }
 
     @Override

@@ -2,7 +2,6 @@ package options.cart;
 
 import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
-import options.OptionsGUIMaker;
 import options.commands.OptionsCommand;
 import user.User;
 
@@ -10,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,15 +24,11 @@ public class BoughtCartGUIMaker implements ActionListener, GUIFactoryInterface {
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
     }
 
     @Override
-    public void createGUI() throws IOException, ClassNotFoundException {
+    public void createGUI(){
         CartPresenter presenter = new CartPresenter();
         JFrame frame = new JFrame();
         JButton returnHome = new JButton("Back to Main");

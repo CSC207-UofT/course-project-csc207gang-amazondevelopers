@@ -22,7 +22,6 @@ public class Post implements Serializable, PostInterface {
     private String product;//The product ID that the post relates to
     private List<Float> ratings;
     private List<String> comments;
-    private String description = "";
     private String caption = "";
     private boolean canComment = false;
     private boolean canRate = false;
@@ -38,17 +37,16 @@ public class Post implements Serializable, PostInterface {
     public Post(String product, String caption, boolean canComment, boolean canRate, User user) {
         this.likes = 0;
         this.product = product;
-        this.description = product.toString();
         this.caption = caption;
         this.canRate = canRate;
         this.canComment = canComment;
         this.user = user;
         //these are first empty arraylists
-        this.ratings = new ArrayList<Float>();
-        this.comments = new ArrayList<String>();
-    }
+        this.ratings = new ArrayList<>();
 
-    public Post() {
+        this.comments = new ArrayList<>();
+    }
+    public Post(){
 
     }
 
@@ -60,9 +58,6 @@ public class Post implements Serializable, PostInterface {
     }
     public String getCaption() {
         return this.caption;
-    }
-    public String getProductToString() {
-        return product.toString();
     }
     public String getProduct(){return product;}
     public void setProduct(String product){this.product = product;}
@@ -95,9 +90,6 @@ public class Post implements Serializable, PostInterface {
     }
     public void setCanComment(boolean bool) {
         this.canComment = bool;
-    }
-    public String getProductDescription() {
-        return this.description;
     }
     public User getUser(){return this.user;}
     public void setUser(User user){this.user = user;}

@@ -2,7 +2,6 @@ package login;
 
 import user.User;
 
-import java.io.IOException;
 
 /**
  * Interface used for Dependency

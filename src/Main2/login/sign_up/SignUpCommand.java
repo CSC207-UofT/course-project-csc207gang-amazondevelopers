@@ -3,7 +3,6 @@ package login.sign_up;
 import gui.ButtonCommandInterface;
 import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
 import login.welcome_page.WelcomePageGUIMaker;
-import user.User;
 
 import java.awt.*;
 
@@ -23,7 +22,7 @@ public class SignUpCommand implements ButtonCommandInterface {
 
         boolean validIDandPass = signUpController.checkIdAndPass(userID, password);
 
-        boolean existingUsername = false;
+        boolean existingUsername;
         existingUsername = signUpController.containsUsername(userID);
 
 

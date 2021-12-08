@@ -32,8 +32,6 @@ public class CreateProductController {
     /**
      * Generates random id for product that does not yet exist in the .ser file
      * @return the String representation of unique id
-     * @throws IOException if the file is empty
-     * @throws ClassNotFoundException if file is empty when trying to get HashMap from ser file
      */
     private String generateID(){
         GetProductGateway getProductGateway = new GetProductGateway();

@@ -3,7 +3,6 @@ package options.search;
 import read_writer.DictionaryReadWriter;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,8 +20,6 @@ public class SearchGateway {
      * Return a list of product under the 'tag' category.
      * @param tag the tag that the users is searching for.
      * @return a string of products that corresponds to the tag
-     * @throws IOException error occured during reading a file, when there is an input / output error
-     * @throws ClassNotFoundException the exception thrown when the class is not found
      */
     public ArrayList<String> searchProducts(String tag) {
 

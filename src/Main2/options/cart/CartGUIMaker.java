@@ -3,7 +3,6 @@ package options.cart;
 import gui.ButtonCommandInterface;
 import gui.GUIFactory;
 import gui.GUIFactoryInterface;
-import options.OptionsGUIMaker;
 import options.commands.OptionsCommand;
 import product.Product;
 import user.User;
@@ -13,14 +12,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
     User user;
-    ArrayList<String> cartList;
     static Map<String, ButtonCommandInterface> commandMap = new HashMap<>();
 
     /**
@@ -36,20 +32,15 @@ public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
     public void actionPerformed(ActionEvent action) {
         String buttonText = action.getActionCommand();
         ButtonCommandInterface button = commandMap.get(buttonText);
-        try {
-            button.apply();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        button.apply();
     }
 
     @Override
-    public void createGUI() throws IOException, ClassNotFoundException {
+    public void createGUI(){
 
         JFrame frame = new JFrame();
         JButton returnHome = new JButton("Back");
         JButton buyButton = new JButton("Buy Cart");
-        JButton buy = new JButton("Buy");
         JPanel scrollPanel = new JPanel();
         JPanel indexPanel = new JPanel();
         JPanel titlePanel = new JPanel();
@@ -72,7 +63,7 @@ public class CartGUIMaker implements ActionListener, GUIFactoryInterface {
                 }
             }
 
-            DefaultListModel<String> list = new DefaultListModel<String>();
+            DefaultListModel<String> list = new DefaultListModel<>();
             for (Product item : userUseCase.userShoppingCart()) {
                 list.addElement(item.getName());
             }
