@@ -91,7 +91,7 @@ public class OptionsGUIMaker implements ActionListener, GUIFactoryInterface, Gen
 
         commandMap.put(logout.getText(), new BackWelcomePageCommand(this));
         commandMap.put(makePost.getText(), new PostCommand(this.user));
-        commandMap.put(search.getText(), new SearchCommand(frame));
+        commandMap.put(search.getText(), new SearchCommand(frame, this.user));
         commandMap.put(findSellers.getText(), new FindSellersCommand(this.user));
         commandMap.put(browse.getText(), new BrowseCommand(this.user));
         commandMap.put(cart.getText(), new CartCommand(this.user));

@@ -161,7 +161,7 @@ JButton post = new JButton(productPresenter.sharePresenter());
                 }
                 frame.dispose();
 
-                SuccessfulPostCreationGUI successfulProductCreation = new SuccessfulPostCreationGUI(this.user);
+                SuccessfulPostCreationGUIMaker successfulProductCreation = new SuccessfulPostCreationGUIMaker(this.user);
             }
         }
     }
