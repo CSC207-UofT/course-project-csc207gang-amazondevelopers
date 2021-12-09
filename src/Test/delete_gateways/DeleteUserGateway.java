@@ -16,14 +16,14 @@ public class DeleteUserGateway {
      * @return true if user was successfully deleted and false otherwise.
      */
     public boolean deleteUser(String username){
-        File file = new File("src/Main2/user.ser");
+        File file = new File("src/Main/user.ser");
         if (!(file.length() == 0)) {
             // access the serialized file for this user.
             DictionaryReadWriter rw = new DictionaryReadWriter();
-            HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main2/user.ser");
+            HashMap<String, Object> usersSavedDict = rw.readFromFile("src/Main/user.ser");
             if (usersSavedDict.containsKey(username)) {
                 usersSavedDict.remove(username);
-                rw.saveToFile("src/Main2/user.ser", usersSavedDict);
+                rw.saveToFile("src/Main/user.ser", usersSavedDict);
                 return true;
             }
         }

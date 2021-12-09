@@ -21,7 +21,7 @@ public class Post implements Serializable, PostInterface {
     private int likes;
     private String product;//The product ID that the post relates to
     private List<Float> ratings;
-    private List<String> comments;
+    private List<String> comments= new ArrayList<>();
     private String caption = "";
     private boolean canComment = false;
     private boolean canRate = false;
@@ -44,7 +44,7 @@ public class Post implements Serializable, PostInterface {
         //these are first empty arraylists
         this.ratings = new ArrayList<>();
 
-        this.comments = new ArrayList<>();
+
     }
     public Post(){
 
