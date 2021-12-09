@@ -6,7 +6,6 @@ import gui.GUIFactoryInterface;
 import user.User;
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class BoughtCartCommand implements ButtonCommandInterface {
     JFrame frame;
