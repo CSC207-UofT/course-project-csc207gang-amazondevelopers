@@ -91,10 +91,16 @@ public class SignInGUIMaker implements ActionListener, GUIFactoryInterface, Gene
 
     }
 
+    /**
+     * Method to dispose the frame
+     */
     public void disposeFrame(){
         frame.dispose();
     }
 
+    /**
+     * Method to reset specific fields that are needed.
+     */
     public void resetFields(){
         userIDField.setText("");
         userPasswordField.setText("");
