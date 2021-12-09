@@ -2,7 +2,6 @@ package options.browse.GetUserDictGateway;
 
 import read_writer.DictionaryReadWriter;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 

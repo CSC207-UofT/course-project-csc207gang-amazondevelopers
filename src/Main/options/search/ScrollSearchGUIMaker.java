@@ -24,7 +24,11 @@ public class ScrollSearchGUIMaker implements ActionListener, GUIFactoryInterface
     public JTextField searchBar = new JTextField(10);
 
 
-
+    /**
+     * setting the attributes of User and String to different values
+     * @param user The user object
+     * @param tag the category of an Product object
+     */
     public ScrollSearchGUIMaker(User user, String tag) {
         this.user = user;
         this.tag = tag;
