@@ -20,7 +20,7 @@ public class PostManagerTest{
     public void testCreatePost(){
 
         assertEquals(postManager.createPostWithRateComment("1", "test", true,
-                true, user1), new Post("test1", "test", true, true, user1));
+                true, user1).getCaption(), new Post("test1", "test", true, true, user1).getCaption());
     }
 
     @Test

@@ -35,7 +35,7 @@ public class SearchControllerTest{
 
     @Before
     public void setUp() throws IOException, ClassNotFoundException {
-        // TODO: fix the comments in each test so that they make sense for the class that they are in
+
         // if there is a preexisting user TestSearchControllerUser, delete it
         deleteUserGateway.deleteUser("TestSearchControllerUser");
         ArrayList<String> ids = new ArrayList<>();
