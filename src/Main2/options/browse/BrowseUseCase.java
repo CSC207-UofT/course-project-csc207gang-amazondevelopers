@@ -25,7 +25,7 @@ public class BrowseUseCase {
     public ArrayList<Post> generateFeed(HashMap<String,Object> users, List<String> followers){
         ArrayList<Post> feed = new ArrayList<>();
         for (String follower : followers) {
-            User user1 =(User) users.get(follower);
+            User user1 = (User) users.get(follower);
             feed.addAll(user1.getListPosts());
         }
         return feed;
