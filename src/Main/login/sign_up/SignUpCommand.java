@@ -6,13 +6,23 @@ import login.welcome_page.WelcomePageGUIMaker;
 
 import java.awt.*;
 
+/**
+ * Class that allows the action of Signing up to the program
+ */
 public class SignUpCommand implements ButtonCommandInterface {
     SignUpGUIMaker signUpGUIMaker;
 
+    /**
+     * Constructor for this class
+     * @param signUpGUIMaker takes in an instance of signUpGUIMaker
+     */
     public SignUpCommand(SignUpGUIMaker signUpGUIMaker) {
         this.signUpGUIMaker = signUpGUIMaker;
     }
 
+    /**
+     * Method that allows user to sign up and if successful, takes user back to welcome page
+     */
     @Override
     public void apply() {
         EnglishSignUpPresenter presenter = new EnglishSignUpPresenter();

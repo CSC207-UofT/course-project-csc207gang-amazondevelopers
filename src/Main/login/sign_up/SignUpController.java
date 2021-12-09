@@ -1,11 +1,9 @@
 package login.sign_up;
 
-
 import login.GetIDandPasswordsGateway;
 import login.SaveUserGateway;
 import login.SetIDandPasswordsGateway;
 import user.User;
-
 import java.util.HashMap;
 
 /**

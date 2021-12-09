@@ -1,5 +1,8 @@
 package login.sign_up.SignUpPresenter;
 
+/**
+ * Presenter Interface that is implemented to present different types of output to users (for SignUp package)
+ */
 public interface SignUpPresenterInterface {
     String message();
     String message2();
