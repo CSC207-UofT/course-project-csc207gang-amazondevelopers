@@ -1,7 +1,5 @@
 package login.sign_in.SignInPresenter;
 
-import login.sign_in.SignInPresenter.SignInPresenterInterface;
-
 /**
  * Presenter to be used for our SignInGUI
  */
