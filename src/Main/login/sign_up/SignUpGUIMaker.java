@@ -1,13 +1,11 @@
 package login.sign_up;
 
-
 import gui.ButtonCommandInterface;
 import gui.GUIFactoryInterface;
 import gui.GeneralGUIMakerInterface;
 import login.sign_in.BackWelcomePageCommand;
 import login.sign_in.ResetCommand;
 import login.sign_up.SignUpPresenter.EnglishSignUpPresenter;
-
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
@@ -93,10 +91,16 @@ public class SignUpGUIMaker implements ActionListener, GUIFactoryInterface, Gene
 
     }
 
+    /**
+     * Method to dispose the frame
+     */
     public void disposeFrame(){
         frame.dispose();
     }
 
+    /**
+     * Method to reset specific fields that are needed.
+     */
     public void resetFields(){
         userIDField.setText("");
         userPasswordField.setText("");
